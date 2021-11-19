@@ -55,6 +55,16 @@
                                 {!! \Form::nDate('meeting_date', 'Meeting Date', null, true) !!}
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nEmail('Email Address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nEmail('Email Address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"]) !!}
+                            </td>
+                        </tr>
 
                         <tr>
                             <td>
@@ -74,16 +84,6 @@
                             </td>
                             <td>
                                 {!! \Form::nPassword('password', 'Password', '123456789', true, ['placeholder' =>"Password Placeholder"]) !!}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code class="d-block">
-                                    \Form::nEmail('Email Address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"])
-                                </code>
-                            </td>
-                            <td>
-                                {!! \Form::nEmail('Email Address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"]) !!}
                             </td>
                         </tr>
                         <tr>

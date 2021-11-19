@@ -1,20 +1,25 @@
-<div class="form-group @if(isset($attributes['inline']) && $attributes['inline'] == true) form-check-inline @endif">
+<div class="form-group">
+
+    {!! Form::nLabel($name, $label, $required) !!}
+
     @php
-        $options = ['class' => 'form-check-input' . ($errors->has($name) ? ' is-invalid' : NULL ), 'id' => $name];
-
+        $options = ['class' => 'custom-control-input ' . ($errors->has($name) ? ' is-invalid' : NULL )];
         $msg = $errors->first($name) ?? null;
-
         if(isset($required) && $required == true)
         $options['required'] = 'required';
 
-        if(isset($attributes['inline']))
-            unset($attributes['inline']);
-
     @endphp
 
-    <div class="form-check">
-        {!! \Form::checkbox($name, $default, $checked, array_merge($options, $attributes)) !!}
-        {!! Form::nLabel($name, $label, $required, ['class' => 'form-check-label']) !!}
-        {!! Form::nError($name, $msg) !!}
-    </div>
+    @foreach($values as $value => $display)
+
+        @php $options['id'] = $name . '-checkbox-'; @endphp
+
+        <div class="custom-control custom-checkbox">
+            {!! \Form::checkbox($name, $value, $checked, array_merge($options, $attributes)) !!}
+
+            {!! Form::nLabel($name . '-checkbox-', $displaynull, ['class' => 'custom-control-label']) !!}
+        </div>
+    @endforeach
+
+    {!! Form::nError($name, $msg) !!}
 </div>

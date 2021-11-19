@@ -21,6 +21,7 @@ class FormServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerPublicAssets();
         $this->registerViews();
+        $this->registerRoutes();
     }
 
     /**

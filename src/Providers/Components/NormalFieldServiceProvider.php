@@ -222,6 +222,6 @@ class NormalFieldServiceProvider extends ServiceProvider
          *
          * @return HtmlString
          */
-        Form::component('nRadio', 'form::' . $style . '.normal.radio', ['name', 'label', 'checked', 'required' => false, 'attributes' => []]);
+        Form::component('nRadio', 'form::' . $style . '.normal.radio', ['name', 'label', 'values' => [], 'checked' => null, 'required' => false, 'attributes' => []]);
     }
 }

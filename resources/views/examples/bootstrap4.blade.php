@@ -58,11 +58,21 @@
                         <tr>
                             <td>
                                 <code class="d-block">
-                                    \Form::nEmail('Email Address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"])
+                                    \Form::nEmail('email_address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nEmail('Email Address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"]) !!}
+                                {!! \Form::nEmail('email_address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nFile('import_file', 'Import File', true, ['accept' => "audio/*"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nFile('import_file', 'Import File', true, ['accept' => "audio/*"]) !!}
                             </td>
                         </tr>
 

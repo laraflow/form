@@ -1,0 +1,57 @@
+{
+    "name": "hafijul233/form-module",
+    "type" : "library",
+    "description": "Laravel collective based bootstrap form components",
+    "support": {
+        "issues": "https://github.com/hafijul233/form-module/issues",
+        "wiki": "https://github.com/hafijul233/form-module/wiki",
+        "source": "https://github.com/hafijul233/form-module",
+        "docs": "http://hafijulislam.me/projects/form-module"
+    },
+    "keywords": [
+        "framework",
+        "laravel",
+        "form",
+        "bootstrap",
+        "components",
+        "php-form"
+    ],
+    "license" : "MIT",
+    "authors": [
+        {
+            "name": "Hafijul Islam",
+            "email": "hafijul233@gmail.com",
+            "homepage": "http://www.hafijulislam.me",
+            "role": "Maintainer"
+        }
+    ],
+    "config": {
+        "preferred-install": "dist"
+    },
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.3 || ^8.0",
+        "laravelcollective/html": "^6.2"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hafijul233\\Form\\Providers\\FormServiceProvider"
+            ],
+            "aliases": {
+                "Form": "Collective\\Html\\FormFacade",
+                "Html" : "Collective\\Html\\HtmlFacade"
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Hafijul233\\Form\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hafijul233\\Form\\Tests\\": "src/Tests/"
+        }
+    }
+}

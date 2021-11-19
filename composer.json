@@ -1,12 +1,12 @@
 {
-    "name": "hafijul233/form-module",
+    "name": "hafijul233/form",
     "type" : "library",
     "description": "Laravel collective based bootstrap form components",
     "support": {
-        "issues": "https://github.com/hafijul233/form-module/issues",
-        "wiki": "https://github.com/hafijul233/form-module/wiki",
-        "source": "https://github.com/hafijul233/form-module",
-        "docs": "http://hafijulislam.me/projects/form-module"
+        "issues": "https://github.com/hafijul233/form/issues",
+        "wiki": "https://github.com/hafijul233/form/wiki",
+        "source": "https://github.com/hafijul233/form",
+        "docs": "http://hafijulislam.me/projects/form"
     },
     "keywords": [
         "framework",

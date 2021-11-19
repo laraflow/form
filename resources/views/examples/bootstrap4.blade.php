@@ -178,6 +178,16 @@
                                 {!! \Form::nSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, ['placeholder' => "Select a State", "multiple" => "multiple"]) !!}
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select a Rating"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select a Rating"]) !!}
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

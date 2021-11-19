@@ -27,12 +27,69 @@
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
                 <div class="tab-pane fade show active" id="nav-address" role="tabpanel" aria-labelledby="nav-address-tab">
+                    <table class="table table-bordered mt-3">
+                        <thead>
+                        <tr>
+                            <th width="50%">Code</th>
+                            <th>Output</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nCheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other'], [3, 2], true)
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nCheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other'], [3, 2], true) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nText('username', 'Username', 'Default Value', true, ['placeholder' =>"Example Placeholder"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nText('username', 'Username', 'Default Value', true, ['placeholder' =>"Example Placeholder"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nPassword('password', 'Password', '123456789', true, ['placeholder' =>"Password Placeholder"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nPassword('password', 'Password', '123456789', true, ['placeholder' =>"Password Placeholder"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nEmail('Email Address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nEmail('Email Address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nEmail('Email Address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nEmail('Email Address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"]) !!}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                     <form>
                         <fieldset>
-                            <legend>Normal Form Elements</legend>
-                            {!! \Form::nText('username', 'Username', 'Default Value', true, ['placeholder' =>"Example Placeholder"]) !!}
-                            {!! \Form::nPassword('password', 'Username', 'Default Value', true, ['placeholder' =>"Example Placeholder"]) !!}
-                            {!! \Form::nEmail('Email Address', 'Username', 'Default Value', true, ['placeholder' =>"Example Placeholder"]) !!}
+
                             {!! \Form::nNumber('Number', 'Username', 'Default Value', true, ['placeholder' =>"Example Placeholder"]) !!}
                         </fieldset>
                     </form>

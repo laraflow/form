@@ -200,7 +200,7 @@ class NormalFieldServiceProvider extends ServiceProvider
          *
          * @return HtmlString
          */
-        Form::component('nCheckbox', 'form::' . $style . '.normal.checkbox', ['name', 'label', 'default' => null, 'checked', 'required' => false, 'attributes' => []]);
+        Form::component('nCheckbox', 'form::' . $style . '.normal.checkbox', ['name', 'label', 'values' => [], 'checked' => [], 'required' => false, 'attributes' => []]);
 
 
 

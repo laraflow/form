@@ -158,6 +158,16 @@
                                 {!! \Form::nSearch('search_text', 'Search Text', null, false, ['placeholder' => "Enter what you want..."]) !!}
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], 2, false, ['placeholder' => "Select a State"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, ['placeholder' => "Select a State"]) !!}
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

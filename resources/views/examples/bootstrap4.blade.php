@@ -48,6 +48,17 @@
                         <tr>
                             <td>
                                 <code class="d-block">
+                                    \Form::nDate('meeting_date', 'Meeting Date', null, true)
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nDate('meeting_date', 'Meeting Date', null, true) !!}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <code class="d-block">
                                     \Form::nText('username', 'Username', 'Default Value', true, ['placeholder' =>"Example Placeholder"])
                                 </code>
                             </td>

@@ -55,5 +55,10 @@
         "psr-4": {
             "Hafijul233\\Form\\Tests\\": "src/Tests/"
         }
+    },
+    "scripts": {
+        "post-package-install": [
+            "@php artisan vendor:publish --tag=form-config"
+        ]
     }
 }

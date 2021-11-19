@@ -45,7 +45,7 @@ class FormServiceProvider extends ServiceProvider
      */
     protected function registerConfig()
     {
-        $this->publishes([__DIR__ . '/../../config/config.php' => config_path('form.php')]);
+        $this->publishes([__DIR__ . '/../../config/config.php' => config_path('form.php')], "form-config");
 
         $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'form');
     }
@@ -59,9 +59,7 @@ class FormServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'form');
 
-        $this->publishes([
-            __DIR__ . '/../../resources/views' => resource_path('views/vendor/form'),
-        ]);
+        $this->publishes([__DIR__ . '/../../resources/views' => resource_path('views/vendor/form')], "form-view");
     }
 
     /**

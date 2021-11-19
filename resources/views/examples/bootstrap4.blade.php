@@ -148,6 +148,16 @@
                                 {!! \Form::nRange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100]) !!}
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nSearch('search_text', 'Search Text', null, false, ['placeholder' => "Enter what you want..."])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nSearch('search_text', 'Search Text', null, false, ['placeholder' => "Enter what you want..."]) !!}
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

@@ -44,9 +44,9 @@ class FormServiceProvider extends ServiceProvider
      */
     protected function registerConfig()
     {
-        $this->publishes([__DIR__ . '/../config/config.php' => config_path('form.php')]);
+        $this->publishes([__DIR__ . '/../../config/config.php' => config_path('form.php')]);
 
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'form');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'form');
     }
 
     /**
@@ -56,10 +56,10 @@ class FormServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'form');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'form');
 
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/form'),
+            __DIR__ . '/../../resources/views' => resource_path('views/vendor/form'),
         ]);
     }
 
@@ -70,7 +70,7 @@ class FormServiceProvider extends ServiceProvider
      */
     public function registerPublicAssets()
     {
-        $this->publishes([__DIR__ . '/../resources/dist/assets' => public_path('vendor/form/assets')], 'form-assets');
+        $this->publishes([__DIR__ . '/../../resources/dist/assets' => public_path('vendor/form/assets')], 'form-assets');
     }
 
     /**
@@ -80,6 +80,6 @@ class FormServiceProvider extends ServiceProvider
      */
     public function registerRoutes()
     {
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
     }
 }

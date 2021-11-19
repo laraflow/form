@@ -26,11 +26,13 @@
         }
     ],
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "sort-packages": true
     },
     "prefer-stable": true,
+    "minimum-stability": "dev",
     "require": {
-        "php": "^7.3 || ^8.0",
+        "php": "^7.3|^8.0",
         "laravelcollective/html": "^6.2"
     },
     "extra": {

@@ -138,6 +138,16 @@
                                 {!! \Form::nRadio('gender', 'Gender', [1=>'Male', 2 => 'Female', 3 => 'Other'], 3, true) !!}
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nRange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nRange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100]) !!}
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

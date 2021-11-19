@@ -75,6 +75,30 @@
                                 {!! \Form::nFile('import_file', 'Import File', true, ['accept' => "audio/*"]) !!}
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nImage('photo', 'Photo', true, [], ['accept' => "image/*"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nImage('photo', 'Photo', true, ['accept' => "image/*"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nImage('profile_photo', 'Profile Photo', true,
+                                    ['preview' => true, 'height' => 128,
+                                    'default' => 'https://via.placeholder.com/300x128.png'], [])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nImage('profile_photo', 'Profile Photo', true,
+                                    ['preview' => true, 'height' => 128,
+                                    'default' => 'https://via.placeholder.com/300x128.png'], []) !!}
+                            </td>
+                        </tr>
 
                         <tr>
                             <td>

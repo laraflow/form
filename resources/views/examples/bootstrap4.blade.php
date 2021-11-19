@@ -168,6 +168,16 @@
                                 {!! \Form::nSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, ['placeholder' => "Select a State"]) !!}
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, ['placeholder' => "Select a State", "multiple" => "multiple"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, ['placeholder' => "Select a State", "multiple" => "multiple"]) !!}
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

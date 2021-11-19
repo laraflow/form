@@ -155,7 +155,19 @@ class NormalFieldServiceProvider extends ServiceProvider
          * @param  array  $optionsAttributes
          * @param  array  $optgroupsAttributes
          */
-        Form::component('nSelect', 'form::' . $style . '.normal.select', ['name', 'label', 'data', 'selected', 'required' => false, 'attributes' => []]);
+        Form::component('nSelect', 'form::' . $style . '.normal.select', ['name', 'label', 'data' => [], 'selected', 'required' => false, 'attributes' => []]);
+
+        /**
+         * Create a select box field.
+         *
+         * @param  string $name
+         * @param  array  $list
+         * @param  string|bool $selected
+         * @param  array  $selectAttributes
+         * @param  array  $optionsAttributes
+         * @param  array  $optgroupsAttributes
+         */
+        Form::component('nSelectMulti', 'form::' . $style . '.normal.selectmulti', ['name', 'label', 'data' => [], 'selected' => [], 'required' => false, 'attributes' => []]);
 
         /**
          * Create a select range field.

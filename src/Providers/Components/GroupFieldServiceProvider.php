@@ -127,6 +127,7 @@ class GroupFieldServiceProvider extends ServiceProvider
          */
         Form::component('gUrl', 'form::' . $style . '.group.url', ['name', 'label', 'default' => null, 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
 
+
         /**
          * @parem string $name
          * @parem string $label

@@ -181,6 +181,16 @@
                         <tr>
                             <td>
                                 <code class="d-block">
+                                    \Form::nSelectMonth('month', 'Month', '2', true, ['placeholder' => "Select a Month"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nSelectMonth('month', 'Month', '2', true, ['placeholder' => "Select a Month"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
                                     \Form::nSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select a Rating"])
                                 </code>
                             </td>
@@ -188,6 +198,17 @@
                                 {!! \Form::nSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select a Rating"]) !!}
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nSelectYear('birth_year', 'Birth Year', 2021, 1971,1997,true, ['placeholder' => "Select a Year"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nSelectYear('birth_year', 'Birth Year', 2021, 1971,1997,true, ['placeholder' => "Select a Year"]) !!}
+                            </td>
+                        </tr>
+
                         </tbody>
                     </table>
                 </div>

@@ -1,22 +1,25 @@
 <div class="form-group row">
-    {!! Form::hLabel($name, $label, $required, $col_size) !!}
+
+    {!! Form::nLabel($name, $label, $required, ['class' => 'col-form-label col-sm-' . $col_size]) !!}
 
     @php
-
-    $field_size = abs(12 - $col_size);
-    $options = ['class' => "form-control " . ($errors->has($name) ? ' is-invalid' : NULL )];
-
-    $msg = $errors->first($name) ?? null;
-
-    if(isset($required) && $required == true)
-    $options['required'] = 'required';
-
+        $options = ['class' => 'custom-control-input ' . ($errors->has($name) ? ' is-invalid' : NULL )];
+        $msg = $errors->first($name) ?? null;
+        if(isset($required) && $required == true)
+        $options['required'] = 'required'
     @endphp
+    <div class="col-sm-{{ (12-$col_size) }}">
+        @foreach($values as $value => $display)
 
-    <div class="col-md-{{ $field_size }}">
-        {!! Form::radio($name, $checked, array_merge($options, $attributes)) !!}
+            @php $id = $name . '-radio-' . $value; $options['id'] = $id @endphp
 
-        {!! Form::hError($name, $msg) !!}
+            <div class="custom-control custom-radio">
+                {!! Form::radio($name, $value, ($value == $checked), array_merge($options, $attributes)) !!}
+
+                {!! Form::nLabel($id, $display,false, ['class' => 'custom-control-label']) !!}
+            </div>
+        @endforeach
+
+        {!! Form::nError($name, $msg) !!}
     </div>
-
 </div>

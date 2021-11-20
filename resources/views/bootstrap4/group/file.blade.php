@@ -2,7 +2,7 @@
     {!! Form::fLabel($name, $label, $required, ['class' => 'd-block mb-2']) !!}
     <div class="custom-file">
         @php
-        $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL ), 'placeholder' => $attributes['placeholder'] ?? $label];
+        $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL )];
 
         $msg = $errors->first($name) ?? null;
 

@@ -1,16 +1,24 @@
 <div class="form-group">
-    {!! Form::nLabel($name, $label, $required, ['class' => 'd-none']) !!}
+
+    {!! Form::nLabel($name . '[]', $label, $required) !!}
 
     @php
-    $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL ), 'placeholder' => $attributes['placeholder'] ?? $label];
-
-    $msg = $errors->first($name) ?? null;
-
-    if(isset($required) && $required == true)
-    $options['required'] = 'required';
+        $options = ['class' => 'custom-control-input ' . ($errors->has($name) ? ' is-invalid' : NULL )];
+        $msg = $errors->first($name) ?? null;
+        if(isset($required) && $required == true)
+        $options['required'] = 'required';
     @endphp
 
-    {!! Form::checkbox($name, $checked, array_merge($options, $attributes)) !!}
+    @foreach($values as $value => $display)
 
-    {!! Form::nError($name, $msg) !!}
+        @php $id = $name . '-checkbox-' . $value; $options['id'] = $id; @endphp
+
+        <div class="custom-control custom-checkbox">
+            {!! \Form::checkbox($name . '[]', $value, in_array($value, $checked), array_merge($options, $attributes)) !!}
+
+            {!! Form::nLabel($id, $display,false, ['class' => 'custom-control-label']) !!}
+        </div>
+    @endforeach
+
+    {!! Form::nError($name . '[]', $msg) !!}
 </div>

@@ -1,34 +1,23 @@
 <div class="form-group">
-    {!! Form::fLabel($name, $label, $required, ['class' => 'd-block mb-2']) !!}
-    <div class="custom-file">
-        @php
-        $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL ), 'placeholder' => $attributes['placeholder'] ?? $label];
+    {!! Form::nLabel($name, $label, $required) !!}
+    @php
+        $options = ['class' => 'form-control custom-file-input ' . ($errors->has($name) ? ' is-invalid' : NULL )];
 
         $msg = $errors->first($name) ?? null;
 
         if(isset($required) && $required == true)
         $options['required'] = 'required';
-        @endphp
-        @if(isset($position) && $position = 'before')
-            <div class="input-group-prepend">
-            <span class="input-group-text">
-                @if(!empty($icon))
-                    <i class="{{ $icon }}"></i>
-                @endif
-            </span>
-            </div>
-        @endif
+    @endphp
+    <div class="custom-file">
+        {!! Form::nLabel('','Choose file...', false, ['class' => 'custom-file-label', 'id' => $name .'_file_label']) !!}
         {!! Form::file($name, array_merge($options, $attributes)) !!}
-        @if(isset($position) && $position = 'after')
-            <div class="input-group-prepend">
-            <span class="input-group-text">
-                @if(!empty($icon))
-                    <i class="{{ $icon }}"></i>
-                @endif
-            </span>
-            </div>
-        @endif
-        {!! Form::nLabel($name, $label, $required, ['class' => 'custom-file-label']) !!}
         {!! Form::nError($name, $msg) !!}
     </div>
+    <script>
+        document.getElementById('{{$name}}').addEventListener('change', function () {
+            var field = document.getElementById('{{$name .'_file_label'}}');
+            field.classList.add("selected");
+            field.innerHTML = this.value.split("\\").pop();
+        });
+    </script>
 </div>

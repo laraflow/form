@@ -209,6 +209,37 @@
                                 {!! \Form::nSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select a Rating"]) !!}
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nTel('mobile', 'Mobile', null, true, ['placeholder' => "Enter Mobile Number"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nTel('mobile', 'Mobile', null, true, ['placeholder' => "Enter Mobile Number"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nText('summary', 'Summary', 'short summary', true, ['placeholder' => "Type some summary"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nText('summary', 'Summary', 'short summary', true, ['placeholder' => "Type some summary"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nTextarea('description', 'Description', 'short description', true, ['placeholder' => "Type some description"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nTextarea('description', 'Description', 'short description', true, ['placeholder' => "Type some description"]) !!}
+                            </td>
+                        </tr>
+
                         </tbody>
                     </table>
                 </div>

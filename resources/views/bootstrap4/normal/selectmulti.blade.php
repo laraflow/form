@@ -2,7 +2,7 @@
     {!! Form::nLabel($name . '[]', $label, $required) !!}
 
     @php
-    $options = ['class' => 'form-control custom-select' . ($errors->has($name) ? ' is-invalid' : NULL )];
+    $options = ['class' => 'form-control custom-select' . ($errors->has($name) ? ' is-invalid' : NULL ), "multiple" => "multiple"];
 
     $msg = $errors->first($name) ?? null;
 

@@ -45,6 +45,11 @@ class InlineFieldServiceProvider extends ServiceProvider
     public function boot()
     {
         $style = Config::get('form.style');
+
+        if ($style == null)
+            throw new \Exception("Configuration File Missing. Please publish the config file");
+
+
         /**
          * @parem string $name
          * @parem string $label

@@ -25,12 +25,7 @@
             "role": "Maintainer"
         }
     ],
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
     "prefer-stable": true,
-    "minimum-stability": "dev",
     "require": {
         "php": "^7.3|^8.0",
         "laravelcollective/html": "^6.2"
@@ -55,10 +50,5 @@
         "psr-4": {
             "Hafijul233\\Form\\Tests\\": "src/Tests/"
         }
-    },
-    "scripts": {
-        "post-package-install": [
-            "@php artisan vendor:publish --tag=form-config"
-        ]
     }
 }

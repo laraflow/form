@@ -2,7 +2,7 @@
     {!! Form::nLabel($name, $label, $required) !!}
 
     @php
-    $options = ['class' => 'form-control custom-select' . ($errors->has($name) ? ' is-invalid' : NULL )];
+    $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL )];
 
     $msg = $errors->first($name) ?? null;
 
@@ -10,6 +10,7 @@
     $options['required'] = 'required';
     @endphp
 
-    {!! Form::selectRange($name, $begin, $end, $selected, array_merge($options, $attributes)) !!}
+    {!! Form::password($name, array_merge($options, $attributes)) !!}
+
     {!! Form::nError($name, $msg) !!}
 </div>

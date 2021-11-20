@@ -21,7 +21,7 @@
             </div>
         @endif
 
-        {!! Form::passwprd($name, array_merge($options, $attributes)) !!}
+        {!! Form::password($name, array_merge($options, $attributes)) !!}
 
         @if(isset($position) && $position == 'after')
             <div class="input-group-append">

@@ -30,7 +30,6 @@
         "sort-packages": true
     },
     "prefer-stable": true,
-    "minimum-stability": "dev",
     "require": {
         "php": "^7.3|^8.0",
         "laravelcollective/html": "^6.2"

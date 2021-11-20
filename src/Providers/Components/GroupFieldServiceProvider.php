@@ -88,15 +88,6 @@ class GroupFieldServiceProvider extends ServiceProvider
          * @parem bool $required
          * @parem array $attributes
          */
-        Form::component('gRange', 'form::' . $style . '.group.range', ['name', 'label', 'default' => null, 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
-
-
-        /**
-         * @parem string $name
-         * @parem string $label
-         * @parem bool $required
-         * @parem array $attributes
-         */
         Form::component('gSearch', 'form::' . $style . '.group.search', ['name', 'label', 'default' => null, 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
 
         /**

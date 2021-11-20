@@ -1,6 +1,5 @@
 <div class="form-group">
     {!! Form::nLabel($name, $label, $required) !!}
-
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL )];
 
@@ -9,6 +8,7 @@
         if(isset($required) && $required == true)
         $options['required'] = 'required';
     @endphp
+
     <div class="input-group">
         @if(isset($position) && $position == 'before')
             <div class="input-group-prepend">
@@ -19,6 +19,7 @@
                 </div>
             </div>
         @endif
+
         {!! Form::password($name, array_merge($options, $attributes)) !!}
 
         @if(isset($position) && $position == 'after')

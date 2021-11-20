@@ -63,7 +63,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>4.</th>
+                            <th>3.</th>
                             <td>
                                 <code class="d-block">
                                     \Form::gNumber('money', 'Money', 100.00, true, 'fab fa-draft2digital', 'before', ['step' =>"0.01", 'min'=> 0])
@@ -73,45 +73,42 @@
                                 {!! \Form::gNumber('money', 'Money', 100.00, true, 'fab fa-draft2digital', 'before', ['step' =>"0.01", 'min'=> 0]) !!}
                             </td>
                         </tr>
+                        <tr>
+                            <th>4.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::gPassword('password', 'Password', true, 'fas fa-lock', 'before',
+                                    ['placeholder' =>"Password Placeholder"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::gPassword('password', 'Password', true, 'fas fa-lock', 'before',
+                                    ['placeholder' =>"Password Placeholder"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>5.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::gRange('rating', 'Rating', 5, true, 'fas fa-sort-numeric-down', 'before', ['min' => 0, 'max' => 100])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::gSearch('rating', 'Rating', 5, true, 'fas fa-sort-numeric-down', 'before', ['min' => 0, 'max' => 100]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>6.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::gSearch('search_text', 'Search Text', null, false, 'fas fa-search', 'before', ['placeholder' => "Enter what you want..."])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::gSearch('search_text', 'Search Text', null, false, 'fas fa-search', 'before', ['placeholder' => "Enter what you want..."]) !!}
+                            </td>
+                        </tr>
                         {{--<tr>
-                            <th>8.</th>
-                            <td>
-                                <code class="d-block">
-                                    \Form::gPassword('password', 'Password', '123456789', true, ['placeholder'
-                                    =>"Password Placeholder"])
-                                </code>
-                            </td>
-                            <td>
-                                {!! \Form::gPassword('password', 'Password', '123456789', true, ['placeholder' =>"Password Placeholder"]) !!}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>9.</th>
-
-                        </tr>
-                        <tr>
-                            <th>10.</th>
-                            <td>
-                                <code class="d-block">
-                                    \Form::gRange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100])
-                                </code>
-                            </td>
-                            <td>
-                                {!! \Form::gRange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100]) !!}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>11.</th>
-                            <td>
-                                <code class="d-block">
-                                    \Form::gSearch('search_text', 'Search Text', null, false, ['placeholder' => "Enter what you want..."])
-                                </code>
-                            </td>
-                            <td>
-                                {!! \Form::gSearch('search_text', 'Search Text', null, false, ['placeholder' => "Enter what you want..."]) !!}
-                            </td>
-                        </tr>
-                        <tr>
                             <th>12.</th>
                             <td>
                                 <code class="d-block">

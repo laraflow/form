@@ -193,7 +193,7 @@ class NormalFieldServiceProvider extends ServiceProvider
          *
          * @return HtmlString
          */
-        Form::component('nSelectMonth', 'form::' . $style . '.normal.selectmonth', ['name', 'label', 'selected' => date('m'), 'required' => false, 'attributes' => []]);
+        Form::component('nSelectMonth', 'form::' . $style . '.normal.selectmonth', ['name', 'label', 'selected' => null, 'required' => false, 'attributes' => []]);
 
 
         /**

@@ -140,18 +140,29 @@
                                 {!! \Form::gSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, 'fas fa-sort', 'before', []) !!}
                             </td>
                         </tr>
-                        {{--<tr>
-                            <th>15.</th>
+                        <tr>
+                            <th>10.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::gSelectMonth('month', 'Month', '2', true, ['placeholder' => "Select a Month"])
+                                    \Form::gSelectDay('work_day', 'Work Day', '2', true, 'fas fa-calendar-day', 'before', ['placeholder' => "Select a Day"])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gSelectMonth('month', 'Month', '2', true, ['placeholder' => "Select a Month"]) !!}
+                                {!! \Form::gSelectDay('work_day', 'Work Day', '2', true, 'fas fa-calendar-day', 'before', ['placeholder' => "Select a Day"]) !!}
                             </td>
                         </tr>
                         <tr>
+                            <th>11.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::gSelectMonth('month', 'Month', '2', true, 'far fa-calendar-alt', 'before', ['placeholder' => "Select a Month"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::gSelectMonth('month', 'Month', '2', true, 'far fa-calendar-alt', 'before', ['placeholder' => "Select a Month"]) !!}
+                            </td>
+                        </tr>
+                        {{--<tr>
                             <th>16.</th>
                             <td>
                                 <code class="d-block">

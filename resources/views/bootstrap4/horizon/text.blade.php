@@ -7,10 +7,11 @@
         $msg = $errors->first($name) ?? null;
 
         if(isset($required) && $required == true)
-            $options['required'] = 'required';
+            $options['required'] = 'required'
     @endphp
+    <div class="col-sm-{{ (12-$col_size) }}">
+        {!! Form::text($name, $default, array_merge($options, $attributes)) !!}
 
-    {!! Form::text($name, $default, array_merge($options, $attributes)) !!}
-
-    {!! Form::nError($name, $msg) !!}
+        {!! Form::nError($name, $msg) !!}
+    </div>
 </div>

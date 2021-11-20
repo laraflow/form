@@ -3,13 +3,13 @@
 
     @php
 
-    $field_size = abs(12 - $col_size);
-    $options = ['class' => "form-control " . ($errors->has($name) ? ' is-invalid' : NULL )];
+        $field_size = abs(12 - $col_size);
+        $options = ['class' => "form-control " . ($errors->has($name) ? ' is-invalid' : NULL )];
 
-    $msg = $errors->first($name) ?? null;
+        $msg = $errors->first($name) ?? null;
 
-    if(isset($required) && $required == true)
-    $options['required'] = 'required';
+        if(isset($required) && $required == true)
+        $options['required'] = 'required'
 
     @endphp
 

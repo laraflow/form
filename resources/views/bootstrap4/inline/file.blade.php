@@ -6,7 +6,7 @@
         $msg = $errors->first($name) ?? null;
 
         if(isset($required) && $required == true)
-        $options['required'] = 'required';
+        $options['required'] = 'required'
     @endphp
     <div class="custom-file">
         {!! Form::nLabel('','Choose file...', false, ['class' => 'custom-file-label', 'id' => $name .'_file_label']) !!}

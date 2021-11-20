@@ -1,6 +1,6 @@
 {
     "name": "hafijul233/form",
-    "type" : "library",
+    "type": "library",
     "description": "Laravel collective based bootstrap form components",
     "support": {
         "issues": "https://github.com/hafijul233/form/issues",
@@ -16,7 +16,7 @@
         "components",
         "php-form"
     ],
-    "license" : "MIT",
+    "license": "MIT",
     "authors": [
         {
             "name": "Hafijul Islam",
@@ -42,7 +42,7 @@
             ],
             "aliases": {
                 "Form": "Collective\\Html\\FormFacade",
-                "Html" : "Collective\\Html\\HtmlFacade"
+                "Html": "Collective\\Html\\HtmlFacade"
             }
         }
     },

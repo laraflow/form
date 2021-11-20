@@ -7,7 +7,7 @@
         $msg = $errors->first($name) ?? null;
 
         if(isset($required) && $required == true)
-        $options['required'] = 'required';
+        $options['required'] = 'required'
     @endphp
 
     {!! Form::range($name, $default, array_merge($options, $attributes)) !!}

@@ -6,7 +6,7 @@
         $msg = $errors->first($name) ?? null;
 
         if(isset($required) && $required == true)
-        $options['required'] = 'required';
+        $options['required'] = 'required'
     @endphp
 
     <div class="input-group">
@@ -20,17 +20,17 @@
             </div>
         @endif
 
-    {!! Form::select($name . '[]', $data, $selected, array_merge($options, $attributes)) !!}
+        {!! Form::select($name . '[]', $data, $selected, array_merge($options, $attributes)) !!}
 
-            @if(isset($position) && $position == 'after')
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                        @if(!empty($icon))
-                            <span class="{{ $icon }}"></span>
-                        @endif
-                    </div>
+        @if(isset($position) && $position == 'after')
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    @if(!empty($icon))
+                        <span class="{{ $icon }}"></span>
+                    @endif
                 </div>
-            @endif
+            </div>
+        @endif
     </div>
     {!! Form::nError($name . '[]', $msg) !!}
 </div>

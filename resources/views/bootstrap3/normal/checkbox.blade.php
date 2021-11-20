@@ -8,12 +8,12 @@
         $options['required'] = 'required';
 
         if(isset($attributes['inline']))
-            unset($attributes['inline']);
+            unset($attributes['inline'])
 
     @endphp
 
     <div class="form-check">
-        {!! \Form::checkbox($name, $default, $checked, array_merge($options, $attributes)) !!}
+        {!! Form::checkbox($name, $default, $checked, array_merge($options, $attributes)) !!}
         {!! Form::nLabel($name, $label, $required, ['class' => 'form-check-label']) !!}
         {!! Form::nError($name, $msg) !!}
     </div>

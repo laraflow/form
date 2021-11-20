@@ -2,10 +2,10 @@
 
 namespace Hafijul233\Form\Providers\Components;
 
+use Collective\Html\FormFacade as Form;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\ServiceProvider;
-use Collective\Html\FormFacade as Form;
 
 /**
  * Class HorizontalFieldServiceProvider
@@ -129,38 +129,37 @@ class HorizontalFieldServiceProvider extends ServiceProvider
         Form::component('hTextarea', 'form::' . $style . '.horizon.textarea', ['name', 'label', 'default' => null, 'required' => false, 'col_size' => 2, 'attributes' => []]);
 
 
-
         /**
          * Create a select box field.
          *
-         * @param  string $name
-         * @param  array  $list
-         * @param  string|bool $selected
-         * @param  array  $selectAttributes
-         * @param  array  $optionsAttributes
-         * @param  array  $optgroupsAttributes
+         * @param string $name
+         * @param array $list
+         * @param string|bool $selected
+         * @param array $selectAttributes
+         * @param array $optionsAttributes
+         * @param array $optgroupsAttributes
          */
         Form::component('hSelect', 'form::' . $style . '.horizon.select', ['name', 'label', 'data', 'selected' => null, 'required' => false, 'col_size' => 2, 'attributes' => []]);
 
         /**
          * Create a select box field.
          *
-         * @param  string $name
-         * @param  array  $list
-         * @param  string|bool $selected
-         * @param  array  $selectAttributes
-         * @param  array  $optionsAttributes
-         * @param  array  $optgroupsAttributes
+         * @param string $name
+         * @param array $list
+         * @param string|bool $selected
+         * @param array $selectAttributes
+         * @param array $optionsAttributes
+         * @param array $optgroupsAttributes
          */
         Form::component('hSelectMulti', 'form::' . $style . '.horizon.selectmulti', ['name', 'label', 'data' => [], 'selected' => [], 'required' => false, 'col_size' => 2, 'attributes' => []]);
         /**
          * Create a select range field.
          *
-         * @param  string $name
-         * @param  string $begin
-         * @param  string $end
-         * @param  string $selected
-         * @param  array  $options
+         * @param string $name
+         * @param string $begin
+         * @param string $end
+         * @param string $selected
+         * @param array $options
          *
          * @return HtmlString
          */
@@ -169,10 +168,10 @@ class HorizontalFieldServiceProvider extends ServiceProvider
         /**
          * Create a select month field.
          *
-         * @param  string $name
-         * @param  string $selected
-         * @param  array  $options
-         * @param  string $format
+         * @param string $name
+         * @param string $selected
+         * @param array $options
+         * @param string $format
          *
          * @return HtmlString
          */
@@ -182,27 +181,26 @@ class HorizontalFieldServiceProvider extends ServiceProvider
         /**
          * Create a checkbox input field.
          *
-         * @param  string $name
-         * @param  mixed  $value
-         * @param  bool   $checked
-         * @param  array  $options
+         * @param string $name
+         * @param mixed $value
+         * @param bool $checked
+         * @param array $options
          *
          * @return HtmlString
          */
-        Form::component('hCheckbox', 'form::' . $style . '.horizon.checkbox', ['name', 'label', 'values' => [], 'checked' => [], 'required' => false,  'col_size' => 2, 'attributes' => []]);
-
+        Form::component('hCheckbox', 'form::' . $style . '.horizon.checkbox', ['name', 'label', 'values' => [], 'checked' => [], 'required' => false, 'col_size' => 2, 'attributes' => []]);
 
 
         /**
          * Create a radio button input field.
          *
-         * @param  string $name
-         * @param  mixed  $value
-         * @param  bool   $checked
-         * @param  array  $options
+         * @param string $name
+         * @param mixed $value
+         * @param bool $checked
+         * @param array $options
          *
          * @return HtmlString
          */
-        Form::component('hRadio', 'form::' . $style . '.horizon.radio', ['name', 'label', 'values' => [], 'checked' => null, 'required' => false,  'col_size' => 2, 'attributes' => []]);
+        Form::component('hRadio', 'form::' . $style . '.horizon.radio', ['name', 'label', 'values' => [], 'checked' => null, 'required' => false, 'col_size' => 2, 'attributes' => []]);
     }
 }

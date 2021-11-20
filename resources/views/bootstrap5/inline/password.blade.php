@@ -7,7 +7,7 @@
         $msg = $errors->first($name) ?? null;
 
         if(isset($required) && $required == true)
-        $options['required'] = 'required';
+        $options['required'] = 'required'
     @endphp
     <div class="input-group">
         @if(isset($position) && $position == 'before')

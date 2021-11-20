@@ -2,12 +2,12 @@
     {!! Form::nLabel($name, $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
-    $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL ), 'rows' => 3];
+        $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL ), 'rows' => 3];
 
-    $msg = $errors->first($name) ?? null;
+        $msg = $errors->first($name) ?? null;
 
-    if(isset($required) && $required == true)
-    $options['required'] = 'required';
+        if(isset($required) && $required == true)
+        $options['required'] = 'required'
     @endphp
 
     {!! Form::textarea($name, $default, array_merge($options, $attributes)) !!}

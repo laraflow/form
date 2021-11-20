@@ -133,7 +133,6 @@ class GroupFieldServiceProvider extends ServiceProvider
         Form::component('gTextarea', 'form::' . $style . '.group.textarea', ['name', 'label', 'default' => null, 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
 
 
-
         /**
          * Create a select box field.
          *
@@ -145,6 +144,18 @@ class GroupFieldServiceProvider extends ServiceProvider
          * @param  array  $optgroupsAttributes
          */
         Form::component('gSelect', 'form::' . $style . '.group.select', ['name', 'label', 'data', 'selected', 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
+
+        /**
+         * Create a select box field.
+         *
+         * @param  string $name
+         * @param  array  $list
+         * @param  string|bool $selected
+         * @param  array  $selectAttributes
+         * @param  array  $optionsAttributes
+         * @param  array  $optgroupsAttributes
+         */
+        Form::component('gSelectMulti', 'form::' . $style . '.group.selectmulti', ['name', 'label', 'data' => [], 'selected' => [], 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
 
         /**
          * Create a select range field.

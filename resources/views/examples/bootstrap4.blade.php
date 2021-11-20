@@ -59,7 +59,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gEmail('email_address', 'Email Address', 'john@doe.com', true, 'far fa-envelope', 'after', ['placeholder' =>"Email Example Placeholder"]) !!}
+                                {!! \Form::gEmail('email_address', 'Email Address', 'john@doe.com', true, 'far fa-envelope', 'before', ['placeholder' =>"Email Example Placeholder"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -77,8 +77,7 @@
                             <th>4.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::gPassword('password', 'Password', true, 'fas fa-lock', 'before',
-                                    ['placeholder' =>"Password Placeholder"])
+                                    \Form::gPassword('password', 'Password', true, 'fas fa-lock', 'before', ['placeholder' =>"Password Placeholder"])
                                 </code>
                             </td>
                             <td>
@@ -108,40 +107,40 @@
                                 {!! \Form::gSearch('search_text', 'Search Text', null, false, 'fas fa-search', 'before', ['placeholder' => "Enter what you want..."]) !!}
                             </td>
                         </tr>
+                        <tr>
+                            <th>7.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::gSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], 2, false, 'fas fa-sort', 'before', ['placeholder' => "Select a State"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::gSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, 'fas fa-sort', 'before', ['placeholder' => "Select a State"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>8.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::gSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, 'fas fa-sort', 'before', ['placeholder' => "Select a Animal"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::gSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, 'fas fa-sort', 'before', ['placeholder' => "Select a Animal"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>9.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::gSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, 'fas fa-sort', 'before', [])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::gSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, 'fas fa-sort', 'before', []) !!}
+                            </td>
+                        </tr>
                         {{--<tr>
-                            <th>12.</th>
-                            <td>
-                                <code class="d-block">
-                                    \Form::gSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], 2, false, ['placeholder' => "Select a State"])
-                                </code>
-                            </td>
-                            <td>
-                                {!! \Form::gSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, ['placeholder' => "Select a State"]) !!}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>13.</th>
-                            <td>
-                                <code class="d-block">
-                                    \Form::gSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, ['placeholder' => "Select a Animal"])
-                                </code>
-                            </td>
-                            <td>
-                                {!! \Form::gSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, ['placeholder' => "Select a Animal"]) !!}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>14.</th>
-                            <td>
-                                <code class="d-block">
-                                    \Form::gSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, [])
-                                </code>
-                            </td>
-                            <td>
-                                {!! \Form::gSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, []) !!}
-                            </td>
-                        </tr>
-                        <tr>
                             <th>15.</th>
                             <td>
                                 <code class="d-block">

@@ -1,6 +1,5 @@
-
 <div class="form-group">
-    {!! Form::nLabel($name, $label, $required, ['class' => 'd-none']) !!}
+    {!! Form::nLabel($name, $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
     $options = ['class' => 'form-control custom-select' . ($errors->has($name) ? ' is-invalid' : NULL )];
@@ -10,16 +9,8 @@
     if(isset($required) && $required == true)
     $options['required'] = 'required';
     @endphp
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">
-                @if(!empty($icon))
-                <i class="{{ $icon }}"></i>
-                @endif
-            </span>
-        </div>
-        {!! Form::selectMonth($name, $selected, array_merge($options, $attributes)) !!}
+
+    {!! Form::selectMonth($name, $selected, array_merge($options, $attributes)) !!}
 
     {!! Form::nError($name, $msg) !!}
-    </div>
 </div>

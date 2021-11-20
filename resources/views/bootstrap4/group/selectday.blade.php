@@ -1,5 +1,6 @@
+
 <div class="form-group">
-    {!! Form::nLabel($name, $label, $required, ['class' => 'd-none']) !!}
+    {!! Form::nLabel($name, $label, $required) !!}
 
     @php
     $options = ['class' => 'form-control custom-select' . ($errors->has($name) ? ' is-invalid' : NULL )];
@@ -17,8 +18,8 @@
                 @endif
             </span>
         </div>
-        {!! Form::selectYear($name, $begin, $end, $selected, array_merge($options, $attributes)) !!}
+        {!! Form::select($name, config('form.days'), $selected, array_merge($options, $attributes)) !!}
 
-        {!! Form::nError($name, $msg) !!}
+    {!! Form::nError($name, $msg) !!}
     </div>
 </div>

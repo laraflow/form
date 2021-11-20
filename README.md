@@ -7,7 +7,7 @@
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/hafijul233/form/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/hafijul233/form/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/hafijul233/form/?branch=main)
 ### Introduction
-``hafijul233/form`` is a collection of [Laravel Collective/HTML](https://packagist.org/packages/laravelcollective/html) components.
+[``hafijul233/form``](https://packagist.org/packages/hafijul233/form) is a collection of [Laravel Collective/HTML](https://packagist.org/packages/laravelcollective/html) components.
 it was initially planed to create only [Bootstrap4](https://getbootstrap.com/) form element styles.
 
 ### Features

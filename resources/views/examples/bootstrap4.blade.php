@@ -239,7 +239,16 @@
                                 {!! \Form::nTextarea('description', 'Description', 'short description', true, ['placeholder' => "Type some description"]) !!}
                             </td>
                         </tr>
-
+                        <tr>
+                            <td>
+                                <code class="d-block">
+                                    \Form::nUrl('website', 'Website', null, true, ['placeholder' => "Enter Your Portfolio link"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nUrl('website', 'Website', null, true, ['placeholder' => "Enter Your Portfolio link"]) !!}
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

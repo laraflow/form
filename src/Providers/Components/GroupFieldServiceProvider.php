@@ -45,7 +45,13 @@ class GroupFieldServiceProvider extends ServiceProvider
      *
      * Label
      *  +-----------------------------------+
-     *  |            Field                  |
+     *  | icon |       Field                |
+     *  +-----------------------------------+
+     *
+     *                  OR
+     * Label
+     *  +-----------------------------------+
+     *  |              Field         | icon |
      *  +-----------------------------------+
      */
     public function boot()
@@ -133,15 +139,6 @@ class GroupFieldServiceProvider extends ServiceProvider
          * @parem bool $required
          * @parem array $attributes
          */
-        Form::component('gFile', 'form::' . $style . '.group.file', ['name', 'label', 'default' => null, 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
-
-
-        /**
-         * @parem string $name
-         * @parem string $label
-         * @parem bool $required
-         * @parem array $attributes
-         */
         Form::component('gTextarea', 'form::' . $style . '.group.textarea', ['name', 'label', 'default' => null, 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
 
 
@@ -197,33 +194,6 @@ class GroupFieldServiceProvider extends ServiceProvider
          * @return \Illuminate\Support\HtmlString
          */
         Form::component('gSelectMonth', 'form::' . $style . '.group.selectmonth', ['name', 'label', 'selected' => date('m'), 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
-
-
-        /**
-         * Create a checkbox input field.
-         *
-         * @param  string $name
-         * @param  mixed  $value
-         * @param  bool   $checked
-         * @param  array  $options
-         *
-         * @return \Illuminate\Support\HtmlString
-         */
-        Form::component('gCheckbox', 'form::' . $style . '.group.checkbox', ['name', 'label', 'checked', 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
-
-
-
-        /**
-         * Create a radio button input field.
-         *
-         * @param  string $name
-         * @param  mixed  $value
-         * @param  bool   $checked
-         * @param  array  $options
-         *
-         * @return \Illuminate\Support\HtmlString
-         */
-        Form::component('gRadio', 'form::' . $style . '.group.radio', ['name', 'label', 'checked', 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
 
     }
 }

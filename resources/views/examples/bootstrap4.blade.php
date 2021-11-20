@@ -171,6 +171,17 @@
                         <tr>
                             <td>
                                 <code class="d-block">
+                                    \Form::nSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, ['placeholder' => "Select a Animal"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::nSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, ['placeholder' => "Select a Animal"]) !!}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <code class="d-block">
                                     \Form::nSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, ['placeholder' => "Select a State", "multiple" => "multiple"])
                                 </code>
                             </td>
@@ -198,17 +209,6 @@
                                 {!! \Form::nSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select a Rating"]) !!}
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <code class="d-block">
-                                    \Form::nSelectYear('birth_year', 'Birth Year', 2021, 1971,1997,true, ['placeholder' => "Select a Year"])
-                                </code>
-                            </td>
-                            <td>
-                                {!! \Form::nSelectYear('birth_year', 'Birth Year', 2021, 1971,1997,true, ['placeholder' => "Select a Year"]) !!}
-                            </td>
-                        </tr>
-
                         </tbody>
                     </table>
                 </div>

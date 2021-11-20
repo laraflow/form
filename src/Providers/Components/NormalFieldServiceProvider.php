@@ -184,20 +184,6 @@ class NormalFieldServiceProvider extends ServiceProvider
 
 
         /**
-         * Create a select year field.
-         *
-         * @param  string $name
-         * @param  string $begin
-         * @param  string $end
-         * @param  string $selected
-         * @param  array  $options
-         *
-         * @return mixed
-         */
-        Form::component('nSelectYear', 'form::' . $style . '.normal.selectyear', ['name', 'label', 'begin', 'end', 'selected' => date('Y'), 'required' => false, 'attributes' => []]);
-
-
-        /**
          * Create a select month field.
          *
          * @param  string $name

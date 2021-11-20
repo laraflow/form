@@ -6,12 +6,12 @@
     {!! Form::nLabel($name, $label, $required) !!}
 
     @php
-    $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL )];
+        $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL )];
 
-    $msg = $errors->first($name) ?? null;
+        $msg = $errors->first($name) ?? null;
 
-    if(isset($required) && $required == true)
-    $options['required'] = 'required';
+        if(isset($required) && $required == true)
+        $options['required'] = 'required'
     @endphp
 
     {!! Form::radio($name, $checked, array_merge($options, $attributes)) !!}

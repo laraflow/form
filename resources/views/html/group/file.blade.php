@@ -2,12 +2,12 @@
     {!! Form::fLabel($name, $label, $required, ['class' => 'd-block mb-2']) !!}
     <div class="custom-file">
         @php
-        $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL )];
+            $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL )];
 
-        $msg = $errors->first($name) ?? null;
+            $msg = $errors->first($name) ?? null;
 
-        if(isset($required) && $required == true)
-        $options['required'] = 'required';
+            if(isset($required) && $required == true)
+            $options['required'] = 'required'
         @endphp
         @if(isset($position) && $position = 'before')
             <div class="input-group-prepend">

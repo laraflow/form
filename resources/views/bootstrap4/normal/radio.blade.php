@@ -1,20 +1,24 @@
-<div class="custom-control custom-radio">
-    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked>
-    <label class="custom-control-label" for="customRadio1">Custom radio</label>
-</div>
 <div class="form-group">
+
     {!! Form::nLabel($name, $label, $required) !!}
 
     @php
-    $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL )];
-
-    $msg = $errors->first($name) ?? null;
-
-    if(isset($required) && $required == true)
-    $options['required'] = 'required';
+        $options = ['class' => 'custom-control-input ' . ($errors->has($name) ? ' is-invalid' : NULL )];
+        $msg = $errors->first($name) ?? null;
+        if(isset($required) && $required == true)
+        $options['required'] = 'required'
     @endphp
 
-    {!! Form::radio($name, $checked, array_merge($options, $attributes)) !!}
+    @foreach($values as $value => $display)
+
+        @php $id = $name . '-radio-' . $value; $options['id'] = $id @endphp
+
+        <div class="custom-control custom-radio">
+            {!! Form::radio($name, $value, ($value == $checked), array_merge($options, $attributes)) !!}
+
+            {!! Form::nLabel($id, $display,false, ['class' => 'custom-control-label']) !!}
+        </div>
+    @endforeach
 
     {!! Form::nError($name, $msg) !!}
 </div>

@@ -1,4 +1,3 @@
-
 <div class="form-group">
     {!! Form::nLabel($name, $label, $required) !!}
 
@@ -8,7 +7,7 @@
         $msg = $errors->first($name) ?? null;
 
         if(isset($required) && $required == true)
-            $options['required'] = 'required';
+            $options['required'] = 'required'
     @endphp
     <div class="input-group">
         <div class="input-group-prepend">

@@ -2,10 +2,10 @@
 
 namespace Hafijul233\Form\Providers\Components;
 
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\ServiceProvider;
 use Collective\Html\FormFacade as Form;
 use Collective\Html\HtmlFacade as Html;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\ServiceProvider;
 
 /**
  * Class LabelServiceProvider
@@ -63,7 +63,7 @@ class LabelServiceProvider extends ServiceProvider
                 $value .= '<span style="color: #dc3545; font-weight:700">*</span>';
             }
 
-            return str_replace('label', 'span',Form::label($name, $value, $options, false));
+            return str_replace('label', 'span', Form::label($name, $value, $options, false));
         });
 
         //Errors

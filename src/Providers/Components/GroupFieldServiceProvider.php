@@ -172,20 +172,6 @@ class GroupFieldServiceProvider extends ServiceProvider
 
 
         /**
-         * Create a select year field.
-         *
-         * @param  string $name
-         * @param  string $begin
-         * @param  string $end
-         * @param  string $selected
-         * @param  array  $options
-         *
-         * @return mixed
-         */
-        Form::component('gSelectYear', 'form::' . $style . '.group.selectyear', ['name', 'label', 'begin', 'end', 'selected' => date('Y'), 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
-
-
-        /**
          * Create a select month field.
          *
          * @param  string $name

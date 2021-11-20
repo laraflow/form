@@ -3,7 +3,7 @@
     {!! Form::nLabel($name, $label, $required) !!}
 
     @php
-    $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL )];
+    $options = ['class' => 'form-control custom-select' . ($errors->has($name) ? ' is-invalid' : NULL )];
 
     $msg = $errors->first($name) ?? null;
 
@@ -18,7 +18,7 @@
                 @endif
             </span>
         </div>
-        {!! Form::range($name, $default, array_merge($options, $attributes)) !!}
+        {!! Form::select($name, config('form.days'), $selected, array_merge($options, $attributes)) !!}
 
     {!! Form::nError($name, $msg) !!}
     </div>

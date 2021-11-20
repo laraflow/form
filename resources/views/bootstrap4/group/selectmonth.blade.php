@@ -18,7 +18,7 @@
                 @endif
             </span>
         </div>
-        {!! Form::selectMonth($name, $selected, array_merge($options, $attributes)) !!}
+        {!! Form::select($name, config('form.months'), $selected, array_merge($options, $attributes)) !!}
 
     {!! Form::nError($name, $msg) !!}
     </div>

@@ -1,6 +1,6 @@
-<div class="form-group">
+<div class="form-inline">
 
-    {!! Form::nLabel($name . '[]', $label, $required) !!}
+    {!! Form::nLabel($name . '[]', $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
         $options = ['class' => 'custom-control-input ' . ($errors->has($name) ? ' is-invalid' : NULL )];
@@ -13,7 +13,7 @@
 
         @php $id = $name . '-checkbox-' . $value; $options['id'] = $id; @endphp
 
-        <div class="custom-control custom-checkbox">
+        <div class="custom-control custom-checkbox custom-control-inline">
             {!! \Form::checkbox($name . '[]', $value, in_array($value, $checked), array_merge($options, $attributes)) !!}
 
             {!! Form::nLabel($id, $display,false, ['class' => 'custom-control-label']) !!}

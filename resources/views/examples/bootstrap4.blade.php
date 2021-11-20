@@ -21,18 +21,18 @@
         <div class="col-12">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                    <a class="nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
                        aria-controls="nav-home" aria-selected="false">Group</a>
                     <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
                        aria-controls="nav-profile" aria-selected="false">Horizon</a>
-                    <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                    <a class="nav-link  active" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
                        aria-controls="nav-contact" aria-selected="false">Inline</a>
                     <a class="nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab"
                        aria-controls="nav-address" aria-selected="true">Normal</a>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <table class="table table-bordered mt-3">
                         <thead>
                         <tr>
@@ -228,7 +228,256 @@
                     </table>
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+                <div class="tab-pane fade show active" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <table class="table table-bordered mt-3">
+                        <thead>
+                        <tr>
+                            <th width="20">#</th>
+                            <th width="40%">Code</th>
+                            <th width="*">Output</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>1.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iCheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other'], [3, 2],
+                                    true)
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iCheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other inline'], [3, 2], true) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>2.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iDate('meeting_date', 'Meeting Date', null, true)
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iDate('meeting_date', 'Meeting Date', null, true) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>3.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iEmail('email_address', 'Email Address', 'john@doe.com', true, ['placeholder'
+                                    =>"Email Example Placeholder"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iEmail('email_address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>4.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iFile('import_file', 'Import File', true, ['accept' => "audio/*"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iFile('import_file', 'Import File', true, ['accept' => "audio/*"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>5.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iImage('photo', 'Photo', true, [], ['accept' => "image/*"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iImage('photo', 'Photo', true, ['accept' => "image/*"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>6.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iImage('profile_photo', 'Profile Photo', true,
+                                    ['preview' => true, 'height' => 128,
+                                    'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iImage('profile_photo', 'Profile Photo', true,
+                                    ['preview' => true, 'height' => 128,
+                                    'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>7.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iNumber('money', 'Money', 100.00, true, ['step' =>"0.01", 'min'=> 0])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iNumber('money', 'Money', 100.00, true, ['step' =>"0.01", 'min'=> 0]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>8.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iPassword('password', 'Password', '123456789', true, ['placeholder'
+                                    =>"Password Placeholder"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iPassword('password', 'Password', '123456789', true, ['placeholder' =>"Password Placeholder"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>9.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iRadio('gender', 'Gender', [1=>'Male', 2 => 'Female', 3 => 'Other'], 3, true)
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iRadio('gender', 'Gender', [1=>'Male', 2 => 'Female', 3 => 'Other'], 3, true) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>10.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iRange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iRange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>11.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iSearch('search_text', 'Search Text', null, false, ['placeholder' => "Enter
+                                    what you want..."])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iSearch('search_text', 'Search Text', null, false, ['placeholder' => "Enter what you want..."]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>12.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], 2, false,
+                                    ['placeholder' => "Select a State"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, ['placeholder' => "Select a State"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>13.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' =>
+                                    ['spaniel' => 'Spaniel']], 2, false, ['placeholder' => "Select a Animal"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, ['placeholder' => "Select a Animal"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>14.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] ,
+                                    false, [])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, []) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>15.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iSelectMonth('month', 'Month', '2', true, ['placeholder' => "Select a
+                                    Month"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iSelectMonth('month', 'Month', '2', true, ['placeholder' => "Select a Month"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>16.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select
+                                    a Rating"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select a Rating"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>17.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iTel('mobile', 'Mobile', null, true, ['placeholder' => "Enter Mobile
+                                    Number"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iTel('mobile', 'Mobile', null, true, ['placeholder' => "Enter Mobile Number"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>18.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iText('summary', 'Summary', 'short summary', true, ['placeholder' => "Type
+                                    some summary"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iText('summary', 'Summary', 'short summary', true, ['placeholder' => "Type some summary"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>19.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iTextarea('description', 'Description', 'short description', true,
+                                    ['placeholder' => "Type some description"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iTextarea('description', 'Description', 'short description', true, ['placeholder' => "Type some description"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>20.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::iUrl('website', 'Website', null, true, ['placeholder' => "Enter Your
+                                    Portfolio link"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::iUrl('website', 'Website', null, true, ['placeholder' => "Enter Your Portfolio link"]) !!}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="tab-pane fade" id="nav-address" role="tabpanel"
                      aria-labelledby="nav-address-tab">
                     <table class="table table-bordered mt-3">

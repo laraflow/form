@@ -73,7 +73,7 @@ class InlineFieldServiceProvider extends ServiceProvider
          * @parem bool $required
          * @parem array $attributes
          */
-        Form::component('iPassword', 'form::' . $style . '.inline.password', ['name', 'label', 'default' => null, 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
+        Form::component('iPassword', 'form::' . $style . '.inline.password', ['name', 'label', 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
 
         /**
          * @parem string $name

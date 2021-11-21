@@ -63,7 +63,7 @@ class HorizontalFieldServiceProvider extends ServiceProvider
          * @parem bool $required
          * @parem array $attributes
          */
-        Form::component('hPassword', 'form::' . $style . '.horizon.password', ['name', 'label', 'default' => null, 'required' => false, 'col_size' => 2, 'attributes' => []]);
+        Form::component('hPassword', 'form::' . $style . '.horizon.password', ['name', 'label', 'required' => false, 'col_size' => 2, 'attributes' => []]);
 
         /**
          * @parem string $name

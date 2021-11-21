@@ -69,7 +69,7 @@ class NormalFieldServiceProvider extends ServiceProvider
          * @parem bool $required
          * @parem array $attributes
          */
-        Form::component('nPassword', 'form::' . $style . '.normal.password', ['name', 'label', 'default' => null, 'required' => false, 'attributes' => []]);
+        Form::component('nPassword', 'form::' . $style . '.normal.password', ['name', 'label', 'required' => false, 'attributes' => []]);
 
         /**
          * @parem string $name

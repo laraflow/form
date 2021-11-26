@@ -28,7 +28,7 @@
                         document.getElementById("{{$name}}_preview").setAttribute('src', e.target.result);
                     };
                     r.readAsDataURL(i.files[0]);
-                    document.getElementById("{{$name}}_label").innerText = (i.files[0].name ?? "Choose a file");
+                    document.getElementById('{{$name .'_file_label'}}').innerText = (i.files[0].name ?? "Choose a file");
                 }
             });
         </script>

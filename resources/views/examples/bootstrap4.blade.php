@@ -266,8 +266,7 @@
                             <td>
                                 <code class="d-block">
                                     \Form::hEmail('email_address', 'Email Address', 'john@doe.com', true, 2,
-                                    ['placeholder'
-                                    =>"Email Example Placeholder"])
+                                    ['placeholder' =>"Email Example Placeholder"])
                                 </code>
                             </td>
                             <td>
@@ -326,12 +325,12 @@
                             <th>8.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hPassword('password', 'Password', '123456789', true, 2, ['placeholder'
+                                    \Form::hPassword('password', 'Password', true, 2, ['placeholder'
                                     =>"Password Placeholder"])
                                 </code>
                             </td>
                             <td>
-                                {!! Form::hPassword('password', 'Password', '123456789', true,  2, ['placeholder' =>"Password Placeholder"]) !!}
+                                {!! Form::hPassword('password', 'Password', true, 2, ['placeholder' =>"Password Placeholder"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -519,12 +518,12 @@
                             <th>3.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::iEmail('email_address', 'Email Address', 'john@doe.com', true, ['placeholder'
-                                    =>"Email Example Placeholder"])
+                                    Form::iEmail('email_address', 'Email Address', 'john@doe.com', true,
+                                    'fas fa-envelop', 'before', ['placeholder' =>"Email Example Placeholder"])
                                 </code>
                             </td>
                             <td>
-                                {!! Form::iEmail('email_address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"]) !!}
+                                {!! Form::iEmail('email_address', 'Email Address', 'john@doe.com', true, 'fas fa-envelop', 'before', ['placeholder' =>"Email Example Placeholder"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -568,11 +567,11 @@
                             <th>7.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::iNumber('money', 'Money', 100.00, true, ['step' =>"0.01", 'min'=> 0])
+                                    \Form::iNumber('money', 'Money', 100.00, true, 'fas fa-user', 'before', ['step' =>"0.01", 'min'=> 0])
                                 </code>
                             </td>
                             <td>
-                                {!! Form::iNumber('money', 'Money', 100.00, true, ['step' =>"0.01", 'min'=> 0]) !!}
+                                {!! Form::iNumber('money', 'Money', 100.00, true, 'fas fa-user', 'before', ['step' =>"0.01", 'min'=> 0]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -613,12 +612,12 @@
                             <th>11.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::iSearch('search_text', 'Search Text', null, false, ['placeholder' => "Enter
+                                    \Form::iSearch('search_text', 'Search Text', null, false, 'fas fa-user', 'before', ['placeholder' => "Enter
                                     what you want..."])
                                 </code>
                             </td>
                             <td>
-                                {!! Form::iSearch('search_text', 'Search Text', null, false, ['placeholder' => "Enter what you want..."]) !!}
+                                {!! Form::iSearch('search_text', 'Search Text', null, false, 'fas fa-user', 'before', ['placeholder' => "Enter what you want..."]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -626,11 +625,11 @@
                             <td>
                                 <code class="d-block">
                                     \Form::iSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], 2, false,
-                                    ['placeholder' => "Select a State"])
+                                    'fas fa-user', 'before', ['placeholder' => "Select a State"])
                                 </code>
                             </td>
                             <td>
-                                {!! Form::iSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, ['placeholder' => "Select a State"]) !!}
+                                {!! Form::iSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, 'fas fa-user', 'before',['placeholder' => "Select a State"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -642,7 +641,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! Form::iSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, ['placeholder' => "Select a Animal"]) !!}
+                                {!! Form::iSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, 'fas fa-user', 'before', ['placeholder' => "Select a Animal"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -654,7 +653,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! Form::iSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, []) !!}
+                                {!! Form::iSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, 'fas fa-user', 'before', []) !!}
                             </td>
                         </tr>
                         <tr>
@@ -666,43 +665,43 @@
                                 </code>
                             </td>
                             <td>
-                                {!! Form::iSelectMonth('month', 'Month', '2', true, ['placeholder' => "Select a Month"]) !!}
+                                {!! Form::iSelectMonth('month', 'Month', '2', true, 'fas fa-user', 'before', ['placeholder' => "Select a Month"]) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>16.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::iSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select
+                                    \Form::iSelectRange('rating', 'Rating', 1,100, 20, false, 'fas fa-user', 'before',['placeholder' => "Select
                                     a Rating"])
                                 </code>
                             </td>
                             <td>
-                                {!! Form::iSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select a Rating"]) !!}
+                                {!! Form::iSelectRange('rating', 'Rating', 1,100, 20, false, 'fas fa-user', 'before', ['placeholder' => "Select a Rating"]) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>17.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::iTel('mobile', 'Mobile', null, true, ['placeholder' => "Enter Mobile
+                                    \Form::iTel('mobile', 'Mobile', null, true, 'fas fa-user', 'before',['placeholder' => "Enter Mobile
                                     Number"])
                                 </code>
                             </td>
                             <td>
-                                {!! Form::iTel('mobile', 'Mobile', null, true, ['placeholder' => "Enter Mobile Number"]) !!}
+                                {!! Form::iTel('mobile', 'Mobile', null, true, 'fas fa-user', 'before',['placeholder' => "Enter Mobile Number"]) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>18.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::iText('summary', 'Summary', 'short summary', true, ['placeholder' => "Type
+                                    \Form::iText('summary', 'Summary', 'short summary', true, 'fas fa-user', 'before',['placeholder' => "Type
                                     some summary"])
                                 </code>
                             </td>
                             <td>
-                                {!! Form::iText('summary', 'Summary', 'short summary', true, ['placeholder' => "Type some summary"]) !!}
+                                {!! Form::iText('summary', 'Summary', 'short summary', true, 'fas fa-user', 'before',['placeholder' => "Type some summary"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -710,23 +709,23 @@
                             <td>
                                 <code class="d-block">
                                     \Form::iTextarea('description', 'Description', 'short description', true,
-                                    ['placeholder' => "Type some description"])
+                                    'fas fa-user', 'before',['placeholder' => "Type some description"])
                                 </code>
                             </td>
                             <td>
-                                {!! Form::iTextarea('description', 'Description', 'short description', true, ['placeholder' => "Type some description"]) !!}
+                                {!! Form::iTextarea('description', 'Description', 'short description', true, 'fas fa-user', 'before',['placeholder' => "Type some description"]) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>20.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::iUrl('website', 'Website', null, true, ['placeholder' => "Enter Your
+                                    \Form::iUrl('website', 'Website', null, true, 'fas fa-user', 'before',['placeholder' => "Enter Your
                                     Portfolio link"])
                                 </code>
                             </td>
                             <td>
-                                {!! Form::iUrl('website', 'Website', null, true, ['placeholder' => "Enter Your Portfolio link"]) !!}
+                                {!! Form::iUrl('website', 'Website', null, true, 'fas fa-user', 'before',['placeholder' => "Enter Your Portfolio link"]) !!}
                             </td>
                         </tr>
                         </tbody>
@@ -830,12 +829,12 @@
                             <th>8.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::nPassword('password', 'Password', '123456789', true, ['placeholder'
+                                    \Form::nPassword('password', 'Password', true, ['placeholder'
                                     =>"Password Placeholder"])
                                 </code>
                             </td>
                             <td>
-                                {!! Form::nPassword('password', 'Password', '123456789', true, ['placeholder' =>"Password Placeholder"]) !!}
+                                {!! Form::nPassword('password', 'Password', true, ['placeholder' =>"Password Placeholder"]) !!}
                             </td>
                         </tr>
                         <tr>

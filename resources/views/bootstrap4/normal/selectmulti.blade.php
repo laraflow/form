@@ -12,5 +12,5 @@
 
     {!! Form::select($name . '[]', $data, $selected, array_merge($options, $attributes)) !!}
 
-    {!! Form::nError($name . '[]', $msg) !!}
+    {!! Form::nError($name, $msg) !!}
 </div>

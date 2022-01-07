@@ -1,9 +1,9 @@
 <div class="form-group">
-    {!! Form::nLabel($name . '[]', $label, $required, ['class' => 'sr-only d-none']) !!}
+    {!! Form::nLabel($name, $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
         $options = ['class' => 'form-control custom-select' . ($errors->has($name) ? ' is-invalid' : NULL ), "multiple" => "multiple"];
-
+$options['id'] = $name;
         $msg = $errors->first($name) ?? null;
 
         if(isset($required) && $required == true)
@@ -34,5 +34,5 @@
         @endif
     </div>
 
-    {!! Form::nError($name . '[]', $msg) !!}
+    {!! Form::nError($name, $msg) !!}
 </div>

@@ -51,7 +51,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gDate('birth_date', 'Birth Date', null, true, 'far fa-calendar-alt', 'before') !!}
+                                {!! Form::gDate('birth_date', 'Birth Date', null, true, 'far fa-calendar-alt', 'before') !!}
                             </td>
                         </tr>
                         <tr>
@@ -63,7 +63,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gEmail('email_address', 'Email Address', 'john@doe.com', true, 'far fa-envelope', 'before', ['placeholder' =>"Email Example Placeholder"]) !!}
+                                {!! Form::gEmail('email_address', 'Email Address', 'john@doe.com', true, 'far fa-envelope', 'before', ['placeholder' =>"Email Example Placeholder"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -75,7 +75,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gNumber('money', 'Money', 100.00, true, 'fab fa-draft2digital', 'before', ['step' =>"0.01", 'min'=> 0]) !!}
+                                {!! Form::gNumber('money', 'Money', 100.00, true, 'fab fa-draft2digital', 'before', ['step' =>"0.01", 'min'=> 0]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -87,7 +87,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gPassword('password', 'Password', true, 'fas fa-lock', 'before',
+                                {!! Form::gPassword('password', 'Password', true, 'fas fa-lock', 'before',
                                     ['placeholder' =>"Password Placeholder"]) !!}
                             </td>
                         </tr>
@@ -100,7 +100,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gSearch('search_text', 'Search Text', null, false, 'fas fa-search', 'before', ['placeholder' => "Enter what you want..."]) !!}
+                                {!! Form::gSearch('search_text', 'Search Text', null, false, 'fas fa-search', 'before', ['placeholder' => "Enter what you want..."]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -112,7 +112,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, 'fas fa-sort', 'before', ['placeholder' => "Select a State"]) !!}
+                                {!! Form::gSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, 'fas fa-sort', 'before', ['placeholder' => "Select a State"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -125,7 +125,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, 'fas fa-sort', 'before', ['placeholder' => "Select a Animal"]) !!}
+                                {!! Form::gSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, 'fas fa-sort', 'before', ['placeholder' => "Select a Animal"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -137,7 +137,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, 'fas fa-sort', 'before', []) !!}
+                                {!! Form::gSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, 'fas fa-sort', 'before', []) !!}
                             </td>
                         </tr>
                         <tr>
@@ -149,7 +149,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gSelectDay('work_day', 'Work Day', '2', true, 'fas fa-calendar-day', 'before', ['placeholder' => "Select a Day"]) !!}
+                                {!! Form::gSelectDay('work_day', 'Work Day', '2', true, 'fas fa-calendar-day', 'before', ['placeholder' => "Select a Day"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -161,7 +161,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gSelectMonth('month', 'Month', '2', true, 'far fa-calendar-alt', 'before', ['placeholder' => "Select a Month"]) !!}
+                                {!! Form::gSelectMonth('month', 'Month', '2', true, 'far fa-calendar-alt', 'before', ['placeholder' => "Select a Month"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -173,7 +173,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gSelectRange('rating', 'Rating', 1,100, 20, false, 'fas fa-sort-amount-down-alt', 'before', ['placeholder' => "Select a Rating"]) !!}
+                                {!! Form::gSelectRange('rating', 'Rating', 1,100, 20, false, 'fas fa-sort-amount-down-alt', 'before', ['placeholder' => "Select a Rating"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -185,7 +185,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gTel('mobile', 'Mobile', null, true, 'fas fa-mobile-alt', 'before', ['placeholder' => "Enter Mobile Number"]) !!}
+                                {!! Form::gTel('mobile', 'Mobile', null, true, 'fas fa-mobile-alt', 'before', ['placeholder' => "Enter Mobile Number"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -197,7 +197,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gText('summary', 'Summary', 'short summary', true, 'fas fa-font', 'before',  ['placeholder' => "Type some summary"]) !!}
+                                {!! Form::gText('summary', 'Summary', 'short summary', true, 'fas fa-font', 'before',  ['placeholder' => "Type some summary"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -209,7 +209,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gTextarea('description', 'Description', 'short description', true, 'fas fa-font', 'before', ['placeholder' => "Type some description"]) !!}
+                                {!! Form::gTextarea('description', 'Description', 'short description', true, 'fas fa-font', 'before', ['placeholder' => "Type some description"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -221,13 +221,14 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::gUrl('website', 'Website', null, true,  'fas fa-globe', 'before', ['placeholder' => "Enter Your Portfolio link"]) !!}
+                                {!! Form::gUrl('website', 'Website', null, true,  'fas fa-globe', 'before', ['placeholder' => "Enter Your Portfolio link"]) !!}
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <div class="tab-pane fade show active" id="nav-profile" role="tabpanel"
+                     aria-labelledby="nav-profile-tab">
                     <table class="table table-bordered mt-3">
                         <thead>
                         <tr>
@@ -241,11 +242,12 @@
                             <th>1.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hCheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other'], [3, 2], true)
+                                    \Form::hCheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other'], [3, 2],
+                                    true)
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hCheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other'], [3, 2], true) !!}
+                                {!! Form::hCheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other'], [3, 2], true) !!}
                             </td>
                         </tr>
                         <tr>
@@ -256,19 +258,20 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hDate('meeting_date', 'Meeting Date', null, true) !!}
+                                {!! Form::hDate('meeting_date', 'Meeting Date', null, true) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>3.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hEmail('email_address', 'Email Address', 'john@doe.com', true, 2, ['placeholder'
+                                    \Form::hEmail('email_address', 'Email Address', 'john@doe.com', true, 2,
+                                    ['placeholder'
                                     =>"Email Example Placeholder"])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hEmail('email_address', 'Email Address', 'john@doe.com', true, 2, ['placeholder' =>"Email Example Placeholder"]) !!}
+                                {!! Form::hEmail('email_address', 'Email Address', 'john@doe.com', true, 2, ['placeholder' =>"Email Example Placeholder"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -279,90 +282,92 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hFile('import_file', 'Import File', true, 2, ['accept' => "audio/*"]) !!}
+                                {!! Form::hFile('import_file', 'Import File', true, 2, ['accept' => "audio/*"]) !!}
                             </td>
                         </tr>
-{{--                        <tr>
-                            <th>5.</th>
-                            <td>
-                                <code class="d-block">
-                                    \Form::hImage('photo', 'Photo', true, [], ['accept' => "image/*"])
-                                </code>
-                            </td>
-                            <td>
-                                {!! \Form::hImage('photo', 'Photo', true, ['accept' => "image/*"]) !!}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>6.</th>
-                            <td>
-                                <code class="d-block">
-                                    \Form::hImage('profile_photo', 'Profile Photo', true,
-                                    ['preview' => true, 'height' => 128,
-                                    'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"])
-                                </code>
-                            </td>
-                            <td>
-                                {!! \Form::hImage('profile_photo', 'Profile Photo', true,
-                                    ['preview' => true, 'height' => 128,
-                                    'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"]) !!}
-                            </td>
-                        </tr>--}}
+                        {{--                        <tr>
+                                                    <th>5.</th>
+                                                    <td>
+                                                        <code class="d-block">
+                                                            \Form::hImage('photo', 'Photo', true, [], ['accept' => "image/*"])
+                                                        </code>
+                                                    </td>
+                                                    <td>
+                                                        {!! \Form::hImage('photo', 'Photo', true, ['accept' => "image/*"]) !!}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>6.</th>
+                                                    <td>
+                                                        <code class="d-block">
+                                                            \Form::hImage('profile_photo', 'Profile Photo', true,
+                                                            ['preview' => true, 'height' => 128,
+                                                            'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"])
+                                                        </code>
+                                                    </td>
+                                                    <td>
+                                                        {!! \Form::hImage('profile_photo', 'Profile Photo', true,
+                                                            ['preview' => true, 'height' => 128,
+                                                            'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"]) !!}
+                                                    </td>
+                                                </tr>--}}
                         <tr>
                             <th>7.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hNumber('money', 'Money', 100.00, true,  2, ['step' =>"0.01", 'min'=> 0])
+                                    \Form::hNumber('money', 'Money', 100.00, true, 2, ['step' =>"0.01", 'min'=> 0])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hNumber('money', 'Money', 100.00, true,  2, ['step' =>"0.01", 'min'=> 0]) !!}
+                                {!! Form::hNumber('money', 'Money', 100.00, true,  2, ['step' =>"0.01", 'min'=> 0]) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>8.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hPassword('password', 'Password', '123456789', true,  2, ['placeholder'
+                                    \Form::hPassword('password', 'Password', '123456789', true, 2, ['placeholder'
                                     =>"Password Placeholder"])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hPassword('password', 'Password', '123456789', true,  2, ['placeholder' =>"Password Placeholder"]) !!}
+                                {!! Form::hPassword('password', 'Password', '123456789', true,  2, ['placeholder' =>"Password Placeholder"]) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>9.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hRadio('gender', 'Gender', [1=>'Male', 2 => 'Female', 3 => 'Other'], 3, true, 2)
+                                    \Form::hRadio('gender', 'Gender', [1=>'Male', 2 => 'Female', 3 => 'Other'], 3, true,
+                                    2)
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hRadio('gender', 'Gender', [1=>'Male', 2 => 'Female', 3 => 'Other'], 3, true, 2) !!}
+                                {!! Form::hRadio('gender', 'Gender', [1=>'Male', 2 => 'Female', 3 => 'Other'], 3, true, 2) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>10.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hRange('rating', 'Rating', 5, true,  2, ['min' => 0, 'max' => 100])
+                                    \Form::hRange('rating', 'Rating', 5, true, 2, ['min' => 0, 'max' => 100])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hRange('rating', 'Rating', 5, true,  2, ['min' => 0, 'max' => 100]) !!}
+                                {!! Form::hRange('rating', 'Rating', 5, true,  2, ['min' => 0, 'max' => 100]) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>11.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hSearch('search_text', 'Search Text', null, false,  2, ['placeholder' => "Enter
+                                    \Form::hSearch('search_text', 'Search Text', null, false, 2, ['placeholder' =>
+                                    "Enter
                                     what you want..."])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hSearch('search_text', 'Search Text', null, false,  2, ['placeholder' => "Enter what you want..."]) !!}
+                                {!! Form::hSearch('search_text', 'Search Text', null, false,  2, ['placeholder' => "Enter what you want..."]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -374,7 +379,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, 2,  ['placeholder' => "Select a State"]) !!}
+                                {!! Form::hSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, 2,  ['placeholder' => "Select a State"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -382,11 +387,11 @@
                             <td>
                                 <code class="d-block">
                                     \Form::hSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' =>
-                                    ['spaniel' => 'Spaniel']], 2, false,  2, ['placeholder' => "Select a Animal"])
+                                    ['spaniel' => 'Spaniel']], 2, false, 2, ['placeholder' => "Select a Animal"])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false,  2, ['placeholder' => "Select a Animal"]) !!}
+                                {!! Form::hSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false,  2, ['placeholder' => "Select a Animal"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -394,59 +399,60 @@
                             <td>
                                 <code class="d-block">
                                     \Form::hSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] ,
-                                    false,  2, [])
+                                    false, 2, [])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false,  2, []) !!}
+                                {!! Form::hSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false,  2, []) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>15.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hSelectMonth('month', 'Month', '2', true,  2, ['placeholder' => "Select a
+                                    \Form::hSelectMonth('month', 'Month', '2', true, 2, ['placeholder' => "Select a
                                     Month"])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hSelectMonth('month', 'Month', '2', true,  2, ['placeholder' => "Select a Month"]) !!}
+                                {!! Form::hSelectMonth('month', 'Month', '2', true,  2, ['placeholder' => "Select a Month"]) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>16.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hSelectRange('rating', 'Rating', 1,100, 20, false,  2, ['placeholder' => "Select
+                                    \Form::hSelectRange('rating', 'Rating', 1,100, 20, false, 2, ['placeholder' =>
+                                    "Select
                                     a Rating"])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hSelectRange('rating', 'Rating', 1,100, 20, false,  2, ['placeholder' => "Select a Rating"]) !!}
+                                {!! Form::hSelectRange('rating', 'Rating', 1,100, 20, false,  2, ['placeholder' => "Select a Rating"]) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>17.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hTel('mobile', 'Mobile', null, true,  2, ['placeholder' => "Enter Mobile
+                                    \Form::hTel('mobile', 'Mobile', null, true, 2, ['placeholder' => "Enter Mobile
                                     Number"])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hTel('mobile', 'Mobile', null, true,  2, ['placeholder' => "Enter Mobile Number"]) !!}
+                                {!! Form::hTel('mobile', 'Mobile', null, true,  2, ['placeholder' => "Enter Mobile Number"]) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>18.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hText('summary', 'Summary', 'short summary', true,  2, ['placeholder' => "Type
+                                    \Form::hText('summary', 'Summary', 'short summary', true, 2, ['placeholder' => "Type
                                     some summary"])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hText('summary', 'Summary', 'short summary', true,  2, ['placeholder' => "Type some summary"]) !!}
+                                {!! Form::hText('summary', 'Summary', 'short summary', true,  2, ['placeholder' => "Type some summary"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -454,23 +460,23 @@
                             <td>
                                 <code class="d-block">
                                     \Form::hTextarea('description', 'Description', 'short description', true,
-                                     2, ['placeholder' => "Type some description"])
+                                    2, ['placeholder' => "Type some description"])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hTextarea('description', 'Description', 'short description', true,  2, ['placeholder' => "Type some description"]) !!}
+                                {!! Form::hTextarea('description', 'Description', 'short description', true,  2, ['placeholder' => "Type some description"]) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>20.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hUrl('website', 'Website', null, true,  2, ['placeholder' => "Enter Your
+                                    \Form::hUrl('website', 'Website', null, true, 2, ['placeholder' => "Enter Your
                                     Portfolio link"])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hUrl('website', 'Website', null, true,  2, ['placeholder' => "Enter Your Portfolio link"]) !!}
+                                {!! Form::hUrl('website', 'Website', null, true,  2, ['placeholder' => "Enter Your Portfolio link"]) !!}
                             </td>
                         </tr>
                         </tbody>
@@ -495,7 +501,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iCheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other inline'], [3, 2], true) !!}
+                                {!! Form::iCheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other inline'], [3, 2], true) !!}
                             </td>
                         </tr>
                         <tr>
@@ -506,7 +512,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iDate('meeting_date', 'Meeting Date', null, true) !!}
+                                {!! Form::iDate('meeting_date', 'Meeting Date', null, true) !!}
                             </td>
                         </tr>
                         <tr>
@@ -518,7 +524,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iEmail('email_address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"]) !!}
+                                {!! Form::iEmail('email_address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -529,7 +535,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iFile('import_file', 'Import File', true, ['accept' => "audio/*"]) !!}
+                                {!! Form::iFile('import_file', 'Import File', true, ['accept' => "audio/*"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -540,7 +546,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iImage('photo', 'Photo', true, ['accept' => "image/*"]) !!}
+                                {!! Form::iImage('photo', 'Photo', true, ['accept' => "image/*"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -553,7 +559,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iImage('profile_photo', 'Profile Photo', true,
+                                {!! Form::iImage('profile_photo', 'Profile Photo', true,
                                     ['preview' => true, 'height' => 128,
                                     'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"]) !!}
                             </td>
@@ -566,7 +572,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iNumber('money', 'Money', 100.00, true, ['step' =>"0.01", 'min'=> 0]) !!}
+                                {!! Form::iNumber('money', 'Money', 100.00, true, ['step' =>"0.01", 'min'=> 0]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -578,7 +584,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iPassword('password', 'Password', '123456789', true, ['placeholder' =>"Password Placeholder"]) !!}
+                                {!! Form::iPassword('password', 'Password', '123456789', true, ['placeholder' =>"Password Placeholder"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -589,7 +595,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iRadio('gender', 'Gender', [1=>'Male', 2 => 'Female', 3 => 'Other'], 3, true) !!}
+                                {!! Form::iRadio('gender', 'Gender', [1=>'Male', 2 => 'Female', 3 => 'Other'], 3, true) !!}
                             </td>
                         </tr>
                         <tr>
@@ -600,7 +606,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iRange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100]) !!}
+                                {!! Form::iRange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -612,7 +618,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iSearch('search_text', 'Search Text', null, false, ['placeholder' => "Enter what you want..."]) !!}
+                                {!! Form::iSearch('search_text', 'Search Text', null, false, ['placeholder' => "Enter what you want..."]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -624,7 +630,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, ['placeholder' => "Select a State"]) !!}
+                                {!! Form::iSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, ['placeholder' => "Select a State"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -636,7 +642,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, ['placeholder' => "Select a Animal"]) !!}
+                                {!! Form::iSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, ['placeholder' => "Select a Animal"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -648,7 +654,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, []) !!}
+                                {!! Form::iSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, []) !!}
                             </td>
                         </tr>
                         <tr>
@@ -660,7 +666,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iSelectMonth('month', 'Month', '2', true, ['placeholder' => "Select a Month"]) !!}
+                                {!! Form::iSelectMonth('month', 'Month', '2', true, ['placeholder' => "Select a Month"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -672,7 +678,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select a Rating"]) !!}
+                                {!! Form::iSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select a Rating"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -684,7 +690,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iTel('mobile', 'Mobile', null, true, ['placeholder' => "Enter Mobile Number"]) !!}
+                                {!! Form::iTel('mobile', 'Mobile', null, true, ['placeholder' => "Enter Mobile Number"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -696,7 +702,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iText('summary', 'Summary', 'short summary', true, ['placeholder' => "Type some summary"]) !!}
+                                {!! Form::iText('summary', 'Summary', 'short summary', true, ['placeholder' => "Type some summary"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -708,7 +714,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iTextarea('description', 'Description', 'short description', true, ['placeholder' => "Type some description"]) !!}
+                                {!! Form::iTextarea('description', 'Description', 'short description', true, ['placeholder' => "Type some description"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -720,7 +726,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::iUrl('website', 'Website', null, true, ['placeholder' => "Enter Your Portfolio link"]) !!}
+                                {!! Form::iUrl('website', 'Website', null, true, ['placeholder' => "Enter Your Portfolio link"]) !!}
                             </td>
                         </tr>
                         </tbody>
@@ -746,7 +752,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nCheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other'], [3, 2], true) !!}
+                                {!! Form::nCheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other'], [3, 2], true) !!}
                             </td>
                         </tr>
                         <tr>
@@ -757,7 +763,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nDate('meeting_date', 'Meeting Date', null, true) !!}
+                                {!! Form::nDate('meeting_date', 'Meeting Date', null, true) !!}
                             </td>
                         </tr>
                         <tr>
@@ -769,7 +775,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nEmail('email_address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"]) !!}
+                                {!! Form::nEmail('email_address', 'Email Address', 'john@doe.com', true, ['placeholder' =>"Email Example Placeholder"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -780,7 +786,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nFile('import_file', 'Import File', true, ['accept' => "audio/*"]) !!}
+                                {!! Form::nFile('import_file', 'Import File', true, ['accept' => "audio/*"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -791,7 +797,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nImage('photo', 'Photo', true, ['accept' => "image/*"]) !!}
+                                {!! Form::nImage('photo', 'Photo', true, ['accept' => "image/*"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -804,7 +810,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nImage('profile_photo', 'Profile Photo', true,
+                                {!! Form::nImage('profile_photo', 'Profile Photo', true,
                                     ['preview' => true, 'height' => 128,
                                     'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"]) !!}
                             </td>
@@ -817,7 +823,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nNumber('money', 'Money', 100.00, true, ['step' =>"0.01", 'min'=> 0]) !!}
+                                {!! Form::nNumber('money', 'Money', 100.00, true, ['step' =>"0.01", 'min'=> 0]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -829,7 +835,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nPassword('password', 'Password', '123456789', true, ['placeholder' =>"Password Placeholder"]) !!}
+                                {!! Form::nPassword('password', 'Password', '123456789', true, ['placeholder' =>"Password Placeholder"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -840,7 +846,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nRadio('gender', 'Gender', [1=>'Male', 2 => 'Female', 3 => 'Other'], 3, true) !!}
+                                {!! Form::nRadio('gender', 'Gender', [1=>'Male', 2 => 'Female', 3 => 'Other'], 3, true) !!}
                             </td>
                         </tr>
                         <tr>
@@ -851,7 +857,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nRange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100]) !!}
+                                {!! Form::nRange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -863,7 +869,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nSearch('search_text', 'Search Text', null, false, ['placeholder' => "Enter what you want..."]) !!}
+                                {!! Form::nSearch('search_text', 'Search Text', null, false, ['placeholder' => "Enter what you want..."]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -875,7 +881,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, ['placeholder' => "Select a State"]) !!}
+                                {!! Form::nSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, ['placeholder' => "Select a State"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -887,7 +893,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, ['placeholder' => "Select a Animal"]) !!}
+                                {!! Form::nSelect('animal', 'Animal', [ 'Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']], 2, false, ['placeholder' => "Select a Animal"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -899,7 +905,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, []) !!}
+                                {!! Form::nSelectMulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2,1] , false, []) !!}
                             </td>
                         </tr>
                         <tr>
@@ -911,7 +917,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nSelectMonth('month', 'Month', '2', true, ['placeholder' => "Select a Month"]) !!}
+                                {!! Form::nSelectMonth('month', 'Month', '2', true, ['placeholder' => "Select a Month"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -923,7 +929,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select a Rating"]) !!}
+                                {!! Form::nSelectRange('rating', 'Rating', 1,100, 20, false, ['placeholder' => "Select a Rating"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -935,7 +941,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nTel('mobile', 'Mobile', null, true, ['placeholder' => "Enter Mobile Number"]) !!}
+                                {!! Form::nTel('mobile', 'Mobile', null, true, ['placeholder' => "Enter Mobile Number"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -947,7 +953,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nText('summary', 'Summary', 'short summary', true, ['placeholder' => "Type some summary"]) !!}
+                                {!! Form::nText('summary', 'Summary', 'short summary', true, ['placeholder' => "Type some summary"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -959,7 +965,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nTextarea('description', 'Description', 'short description', true, ['placeholder' => "Type some description"]) !!}
+                                {!! Form::nTextarea('description', 'Description', 'short description', true, ['placeholder' => "Type some description"]) !!}
                             </td>
                         </tr>
                         <tr>
@@ -971,7 +977,7 @@
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::nUrl('website', 'Website', null, true, ['placeholder' => "Enter Your Portfolio link"]) !!}
+                                {!! Form::nUrl('website', 'Website', null, true, ['placeholder' => "Enter Your Portfolio link"]) !!}
                             </td>
                         </tr>
                         </tbody>

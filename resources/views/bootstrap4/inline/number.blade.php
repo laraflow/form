@@ -10,28 +10,33 @@
         $options['required'] = 'required'
     @endphp
 
-    <div class="input-group">
-        @if(isset($position) && $position == 'before')
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    @if(!empty($icon))
-                        <span class="{{ $icon }}"></span>
-                    @endif
+    @if(!empty($icon))
+        <div class="input-group">
+            @if(isset($position) && $position == 'before')
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        @if(!empty($icon))
+                            <span class="{{ $icon }}"></span>
+                        @endif
+                    </div>
                 </div>
-            </div>
-        @endif
+            @endif
 
+            {!! Form::number($name, $default, array_merge($options, $attributes)) !!}
+
+            @if(isset($position) && $position == 'after')
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        @if(!empty($icon))
+                            <span class="{{ $icon }}"></span>
+                        @endif
+                    </div>
+                </div>
+            @endif
+        </div>
+    @else
         {!! Form::number($name, $default, array_merge($options, $attributes)) !!}
+    @endif
 
-        @if(isset($position) && $position == 'after')
-            <div class="input-group-append">
-                <div class="input-group-text">
-                    @if(!empty($icon))
-                        <span class="{{ $icon }}"></span>
-                    @endif
-                </div>
-            </div>
-        @endif
-    </div>
     {!! Form::nError($name, $msg) !!}
 </div>

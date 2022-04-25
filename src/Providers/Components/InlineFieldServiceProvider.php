@@ -46,8 +46,9 @@ class InlineFieldServiceProvider extends ServiceProvider
     {
         $style = Config::get('form.style');
 
-        if ($style == null)
-            throw new \Exception("Configuration File Missing. Please publish the config file");
+        if ($style == null) {
+            $style = 'bootstrap4';
+        }
 
 
         /**

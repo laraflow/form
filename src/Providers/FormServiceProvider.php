@@ -45,9 +45,9 @@ class FormServiceProvider extends ServiceProvider
      */
     protected function registerConfig()
     {
-        $this->publishes([__DIR__ . '/../../config/config.php' => config_path('form.php')], "form-config");
+        $this->publishes([__DIR__ . '/../../config/form.php' => config_path('form.php')], "form-config");
 
-        $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'form');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/form.php', 'form');
     }
 
     /**

@@ -2,14 +2,13 @@
 
 namespace Hafijul233\Form\Providers\Components;
 
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\ServiceProvider;
 use Collective\Html\FormFacade as Form;
 use Collective\Html\HtmlFacade as Html;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\ServiceProvider;
 
 /**
  * Class LabelServiceProvider
- * @package Hafijul233\Form\Providers\Components
  */
 class LabelServiceProvider extends ServiceProvider
 {
@@ -40,7 +39,6 @@ class LabelServiceProvider extends ServiceProvider
     {
         //Labels
         Form::macro('nLabel', function ($name, $value, $required = false, $options = []) {
-
             if ($required) {
                 $value .= '<span style="color: #dc3545; font-weight:700">*</span>';
             }
@@ -49,7 +47,6 @@ class LabelServiceProvider extends ServiceProvider
         });
 
         Form::macro('hLabel', function ($name, $value, $required = false, $col_size = 2, $options = []) {
-
             if ($required) {
                 $value .= '<span style="color: #dc3545; font-weight:700">*</span>';
             }
@@ -58,43 +55,37 @@ class LabelServiceProvider extends ServiceProvider
         });
 
         Form::macro('fLabel', function ($name, $value, $required = false, $options = []) {
-
             if ($required) {
                 $value .= '<span style="color: #dc3545; font-weight:700">*</span>';
             }
 
-            return str_replace('label', 'span',Form::label($name, $value, $options, false));
+            return str_replace('label', 'span', Form::label($name, $value, $options, false));
         });
 
         //Errors
         Form::macro('nError', function ($name, $msg = null) {
-
-            return '<span id="' . $name . '-error" class="invalid-feedback">' . $msg . '</span>';
+            return '<span id="'.$name.'-error" class="invalid-feedback">'.$msg.'</span>';
         });
 
         Form::macro('hError', function ($name, $msg = null) {
-
-            return '<span id="' . $name . '-error" class="invalid-feedback">' . $msg . '</span>';
+            return '<span id="'.$name.'-error" class="invalid-feedback">'.$msg.'</span>';
         });
 
         Form::macro('fError', function ($name, $msg = null) {
-
-            return '<span id="' . $name . '-error" class="invalid-feedback">' . $msg . '</span>';
+            return '<span id="'.$name.'-error" class="invalid-feedback">'.$msg.'</span>';
         });
 
         //Actions
         Form::macro('nSubmit', function ($name, $value, $options = []) {
-
             $attributes = array_merge($options, ['class' => 'btn btn-primary fw-bold', 'name' => $name, 'type' => 'submit']);
 
-            return Form::button('<i class="mdi mdi-check-bold  fw-bold"></i>&nbsp;&nbsp;' . $value, $attributes);
+            return Form::button('<i class="mdi mdi-check-bold  fw-bold"></i>&nbsp;&nbsp;'.$value, $attributes);
         });
 
         Form::macro('nCancel', function ($title, $options = []) {
-
             $attributes = array_merge($options, ['class' => 'btn btn-danger fw-bold']);
 
-            return Html::link(URL::previous(), '<i class="mdi mdi-close-outline fw-bolder"></i>&nbsp;&nbsp;' . $title, $attributes, null, false);
+            return Html::link(URL::previous(), '<i class="mdi mdi-close-outline fw-bolder"></i>&nbsp;&nbsp;'.$title, $attributes, null, false);
         });
     }
 }

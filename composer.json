@@ -6,7 +6,7 @@
         "issues": "https://github.com/hafijul233/form/issues",
         "wiki": "https://github.com/hafijul233/form/wiki",
         "source": "https://github.com/hafijul233/form",
-        "docs": "http://hafijulislam.me/projects/form"
+        "docs": "https://hafijulislam.me/projects/form"
     },
     "keywords": [
         "framework",
@@ -21,15 +21,17 @@
         {
             "name": "Hafijul Islam",
             "email": "hafijul233@gmail.com",
-            "homepage": "http://www.hafijulislam.me",
+            "homepage": "https://www.hafijulislam.me",
             "role": "Maintainer"
         }
     ],
     "prefer-stable": true,
     "require": {
         "php": "^7.3|^8.0",
-        "laravelcollective/html": "^6.2"
+        "laravelcollective/html": "^6.2",
+        "illuminate/contracts": "^8.83"
     },
+
     "extra": {
         "laravel": {
             "providers": [

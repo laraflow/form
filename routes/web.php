@@ -16,4 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('web')->group(function () {
     Route::view('/form/examples', 'form::examples.bootstrap4');
 });
-

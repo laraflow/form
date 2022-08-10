@@ -7,8 +7,6 @@
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/hafijul233/form/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/hafijul233/form/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/hafijul233/form/?branch=main)
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/hafijul233/form.svg?style=flat-square)](https://packagist.org/packages/hafijul233/form)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/hafijul233/form/run-tests?label=tests)](https://github.com/hafijul233/form/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/hafijul233/form/Check%20&%20fix%20styling?label=code%20style)](https://github.com/hafijul233/form/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/hafijul233/form.svg?style=flat-square)](https://packagist.org/packages/hafijul233/form)
 

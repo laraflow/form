@@ -64,28 +64,28 @@ class LabelServiceProvider extends ServiceProvider
 
         //Errors
         Form::macro('nError', function ($name, $msg = null) {
-            return '<span id="'.$name.'-error" class="invalid-feedback">'.$msg.'</span>';
+            return '<span id="' . $name . '-error" class="invalid-feedback">' . $msg . '</span>';
         });
 
         Form::macro('hError', function ($name, $msg = null) {
-            return '<span id="'.$name.'-error" class="invalid-feedback">'.$msg.'</span>';
+            return '<span id="' . $name . '-error" class="invalid-feedback">' . $msg . '</span>';
         });
 
         Form::macro('fError', function ($name, $msg = null) {
-            return '<span id="'.$name.'-error" class="invalid-feedback">'.$msg.'</span>';
+            return '<span id="' . $name . '-error" class="invalid-feedback">' . $msg . '</span>';
         });
 
         //Actions
         Form::macro('nSubmit', function ($name, $value, $options = []) {
             $attributes = array_merge($options, ['class' => 'btn btn-primary fw-bold', 'name' => $name, 'type' => 'submit']);
 
-            return Form::button('<i class="mdi mdi-check-bold  fw-bold"></i>&nbsp;&nbsp;'.$value, $attributes);
+            return Form::button('<i class="mdi mdi-check-bold  fw-bold"></i>&nbsp;&nbsp;' . $value, $attributes);
         });
 
         Form::macro('nCancel', function ($title, $options = []) {
             $attributes = array_merge($options, ['class' => 'btn btn-danger fw-bold']);
 
-            return Html::link(URL::previous(), '<i class="mdi mdi-close-outline fw-bolder"></i>&nbsp;&nbsp;'.$title, $attributes, null, false);
+            return Html::link(URL::previous(), '<i class="mdi mdi-close-outline fw-bolder"></i>&nbsp;&nbsp;' . $title, $attributes, null, false);
         });
     }
 }

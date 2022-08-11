@@ -47,7 +47,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString datalist(string $id, array $list= [])
  * // macros
  * @method static HtmlString  nLabel(string $name, string $value, bool $required = false, array $options = [])
- * 
+ *
  * @see \Hafijul233\Form\Builders\FormBuilder
  */
 class Form extends Facade

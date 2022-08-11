@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Routing\RouteCollection;
 use Illuminate\Routing\UrlGenerator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\App;
 use Illuminate\Session\Store;
+use Illuminate\Support\Collection;
 use Mockery as m;
 
 class FormBuilderTest extends PHPUnit\Framework\TestCase
@@ -30,12 +29,12 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
 
         // prepare request for test with some data
         $request = Request::create('/foo', 'GET', [
-            "person" => [
-                "name" => "John",
-                "surname" => "Doe",
+            'person' => [
+                'name' => 'John',
+                'surname' => 'Doe',
             ],
-            "agree" => 1,
-            "checkbox_array" => [1, 2, 3],
+            'agree' => 1,
+            'checkbox_array' => [1, 2, 3],
         ]);
 
         $request = Request::createFromBase($request);
@@ -54,30 +53,30 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
     public function testRequestValue()
     {
         $this->formBuilder->considerRequest();
-        $name = $this->formBuilder->text("person[name]", "Not John");
-        $surname = $this->formBuilder->text("person[surname]", "Not Doe");
+        $name = $this->formBuilder->text('person[name]', 'Not John');
+        $surname = $this->formBuilder->text('person[surname]', 'Not Doe');
         $this->assertEquals('<input name="person[name]" type="text" value="John">', $name);
         $this->assertEquals('<input name="person[surname]" type="text" value="Doe">', $surname);
 
-        $checked = $this->formBuilder->checkbox("agree", 1);
-        $unchecked = $this->formBuilder->checkbox("no_value", 1);
+        $checked = $this->formBuilder->checkbox('agree', 1);
+        $unchecked = $this->formBuilder->checkbox('no_value', 1);
         $this->assertEquals('<input checked="checked" name="agree" type="checkbox" value="1">', $checked);
         $this->assertEquals('<input name="no_value" type="checkbox" value="1">', $unchecked);
 
-        $checked_array = $this->formBuilder->checkbox("checkbox_array[]", 1);
-        $unchecked_array = $this->formBuilder->checkbox("checkbox_array[]", 4);
+        $checked_array = $this->formBuilder->checkbox('checkbox_array[]', 1);
+        $unchecked_array = $this->formBuilder->checkbox('checkbox_array[]', 4);
         $this->assertEquals('<input checked="checked" name="checkbox_array[]" type="checkbox" value="1">', $checked_array);
         $this->assertEquals('<input name="checkbox_array[]" type="checkbox" value="4">', $unchecked_array);
 
-        $checked = $this->formBuilder->radio("agree", 1);
-        $unchecked = $this->formBuilder->radio("no_value", 1);
+        $checked = $this->formBuilder->radio('agree', 1);
+        $unchecked = $this->formBuilder->radio('no_value', 1);
         $this->assertEquals('<input checked="checked" name="agree" type="radio" value="1">', $checked);
         $this->assertEquals('<input name="no_value" type="radio" value="1">', $unchecked);
 
         // now we check that Request is ignored and value take precedence
         $this->formBuilder->considerRequest(false);
-        $name = $this->formBuilder->text("person[name]", "Not John");
-        $surname = $this->formBuilder->text("person[surname]", "Not Doe");
+        $name = $this->formBuilder->text('person[name]', 'Not John');
+        $surname = $this->formBuilder->text('person[surname]', 'Not Doe');
         $this->assertEquals('<input name="person[name]" type="text" value="Not John">', $name);
         $this->assertEquals('<input name="person[surname]" type="text" value="Not Doe">', $surname);
     }
@@ -92,12 +91,12 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
 
         $this->assertEquals('<form method="GET" action="http://localhost/foo" accept-charset="UTF-8">', $form1);
         $this->assertEquals('<form method="POST" action="http://localhost/foo" accept-charset="UTF-8" class="form" id="id-form"><input name="_token" type="hidden" value="abc">',
-          $form2);
+            $form2);
         $this->assertEquals('<form method="GET" action="http://localhost/foo" accept-charset="UTF-16">', $form3);
         $this->assertEquals('<form method="GET" action="http://localhost/foo" accept-charset="UTF-16" enctype="multipart/form-data">',
-          $form4);
+            $form4);
         $this->assertEquals('<form method="POST" action="http://localhost/foo" accept-charset="UTF-8"><input name="_method" type="hidden" value="PUT"><input name="_token" type="hidden" value="abc">',
-          $form5);
+            $form5);
     }
 
     public function testFormRoute()
@@ -156,6 +155,7 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
             foreach ($data as $key => $attribute) {
                 $dataAttributes[] = $key.'="'.$attribute.'"';
             }
+
             return '<input name="'.$name.'" type="text" value="'.$value.'" '.implode(' ', $dataAttributes).'>';
         });
 
@@ -285,8 +285,8 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
         $form3 = $this->formBuilder->month('foo', null, ['class' => 'span2']);
 
         $this->assertEquals('<input name="foo" type="month">', $form1);
-        $this->assertEquals('<input name="foo" type="month" value="' . \Carbon\Carbon::now()->format('Y-m') . '">',
-          $form2);
+        $this->assertEquals('<input name="foo" type="month" value="'.\Carbon\Carbon::now()->format('Y-m').'">',
+            $form2);
         $this->assertEquals('<input class="span2" name="foo" type="month">', $form3);
     }
 
@@ -343,8 +343,8 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
 
         $this->assertEquals('<input name="foo" type="date">', $form1);
         $this->assertEquals('<input name="foo" type="date" value="2015-02-20">', $form2);
-        $this->assertEquals('<input name="foo" type="date" value="' . \Carbon\Carbon::now()->format('Y-m-d') . '">',
-          $form3);
+        $this->assertEquals('<input name="foo" type="date" value="'.\Carbon\Carbon::now()->format('Y-m-d').'">',
+            $form3);
         $this->assertEquals('<input class="span2" name="foo" type="date">', $form4);
     }
 
@@ -355,8 +355,8 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
         $form3 = $this->formBuilder->time('foo', null, ['class' => 'span2']);
 
         $this->assertEquals('<input name="foo" type="time">', $form1);
-        $this->assertEquals('<input name="foo" type="time" value="' . \Carbon\Carbon::now()->format('H:i') . '">',
-          $form2);
+        $this->assertEquals('<input name="foo" type="time" value="'.\Carbon\Carbon::now()->format('H:i').'">',
+            $form2);
         $this->assertEquals('<input class="span2" name="foo" type="time">', $form3);
     }
 
@@ -378,8 +378,8 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
         $form3 = $this->formBuilder->week('foo', null, ['class' => 'span2']);
 
         $this->assertEquals('<input name="foo" type="week">', $form1);
-        $this->assertEquals('<input name="foo" type="week" value="' . \Carbon\Carbon::now()->format('Y-\WW') . '">',
-          $form2);
+        $this->assertEquals('<input name="foo" type="week" value="'.\Carbon\Carbon::now()->format('Y-\WW').'">',
+            $form2);
         $this->assertEquals('<input class="span2" name="foo" type="week">', $form3);
     }
 
@@ -412,19 +412,19 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
     public function testSelect()
     {
         $select = $this->formBuilder->select(
-          'size',
-          ['L' => 'Large', 'S' => 'Small']
+            'size',
+            ['L' => 'Large', 'S' => 'Small']
         );
         $this->assertEquals($select,
-          '<select name="size"><option value="L">Large</option><option value="S">Small</option></select>');
+            '<select name="size"><option value="L">Large</option><option value="S">Small</option></select>');
 
         $select = $this->formBuilder->select(
-          'size',
-          ['L' => 'Large', 'S' => 'Small'],
-          'L'
+            'size',
+            ['L' => 'Large', 'S' => 'Small'],
+            'L'
         );
         $this->assertEquals($select,
-          '<select name="size"><option value="L" selected="selected">Large</option><option value="S">Small</option></select>');
+            '<select name="size"><option value="L" selected="selected">Large</option><option value="S">Small</option></select>');
 
         $select = $this->formBuilder->select(
             'size',
@@ -437,20 +437,20 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
             '<select multiple name="size"><option value="0">All Sizes</option><option value="L">Large</option><option value="M" selected="selected">Medium</option><option value="S">Small</option></select>');
 
         $select = $this->formBuilder->select(
-          'size',
-          ['L' => 'Large', 'S' => 'Small'],
-          null,
-          ['class' => 'class-name', 'id' => 'select-id']
+            'size',
+            ['L' => 'Large', 'S' => 'Small'],
+            null,
+            ['class' => 'class-name', 'id' => 'select-id']
         );
         $this->assertEquals($select,
-          '<select class="class-name" id="select-id" name="size"><option value="L">Large</option><option value="S">Small</option></select>');
+            '<select class="class-name" id="select-id" name="size"><option value="L">Large</option><option value="S">Small</option></select>');
 
         $this->formBuilder->label('select-name-id');
         $select = $this->formBuilder->select(
-          'select-name-id',
-          [],
-          null,
-          ['name' => 'select-name']
+            'select-name-id',
+            [],
+            null,
+            ['name' => 'select-name']
         );
         $this->assertEquals($select, '<select name="select-name" id="select-name-id"></select>');
 
@@ -492,7 +492,7 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
             [],
             [
                 'Large sizes' => [
-                    'L' => ['disabled']
+                    'L' => ['disabled'],
                 ],
                 'M' => ['disabled'],
             ],
@@ -595,7 +595,7 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
             [],
             [
                 'Large sizes' => [
-                    'L' => ['disabled']
+                    'L' => ['disabled'],
                 ],
                 'M' => ['disabled'],
             ],
@@ -619,38 +619,38 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
         $session->shouldReceive('getOldInput')->once()->with('size')->andReturn('M');
         $select = $this->formBuilder->select('size', $list, 'S');
         $this->assertEquals($select,
-          '<select name="size"><option value="L">Large</option><option value="M" selected="selected">Medium</option><option value="S">Small</option></select>');
+            '<select name="size"><option value="L">Large</option><option value="M" selected="selected">Medium</option><option value="S">Small</option></select>');
 
         $session->shouldReceive('getOldInput')->once()->with('size.multi')->andReturn(['L', 'S']);
         $select = $this->formBuilder->select('size[multi][]', $list, 'M', ['multiple' => 'multiple']);
         $this->assertEquals($select,
-          '<select multiple="multiple" name="size[multi][]"><option value="L" selected="selected">Large</option><option value="M">Medium</option><option value="S" selected="selected">Small</option></select>');
+            '<select multiple="multiple" name="size[multi][]"><option value="L" selected="selected">Large</option><option value="M">Medium</option><option value="S" selected="selected">Small</option></select>');
 
         $session->shouldReceive('getOldInput')->once()->with('size.key')->andReturn(null);
         $select = $this->formBuilder->select('size[key]', $list);
         $this->assertEquals($select,
-          '<select name="size[key]"><option value="L">Large</option><option value="M">Medium</option><option value="S" selected="selected">Small</option></select>');
+            '<select name="size[key]"><option value="L">Large</option><option value="M">Medium</option><option value="S" selected="selected">Small</option></select>');
     }
 
     public function testFormWithOptionalPlaceholder()
     {
         $select = $this->formBuilder->select(
-          'size',
-          ['L' => 'Large', 'S' => 'Small'],
-          null,
-          ['placeholder' => 'Select One...']
+            'size',
+            ['L' => 'Large', 'S' => 'Small'],
+            null,
+            ['placeholder' => 'Select One...']
         );
         $this->assertEquals($select,
-          '<select name="size"><option selected="selected" value="">Select One...</option><option value="L">Large</option><option value="S">Small</option></select>');
+            '<select name="size"><option selected="selected" value="">Select One...</option><option value="L">Large</option><option value="S">Small</option></select>');
 
         $select = $this->formBuilder->select(
-          'size',
-          ['L' => 'Large', 'S' => 'Small'],
-          'L',
-          ['placeholder' => 'Select One...']
+            'size',
+            ['L' => 'Large', 'S' => 'Small'],
+            'L',
+            ['placeholder' => 'Select One...']
         );
         $this->assertEquals($select,
-          '<select name="size"><option value="">Select One...</option><option value="L" selected="selected">Large</option><option value="S">Small</option></select>');
+            '<select name="size"><option value="">Select One...</option><option value="L" selected="selected">Large</option><option value="S">Small</option></select>');
 
         $select = $this->formBuilder->select(
             'encoded_html',
@@ -670,11 +670,11 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
         $select3 = (string) $this->formBuilder->selectYear('year', 2000, 2020, '2000');
 
         $this->assertStringContainsString('<select name="year"><option value="2000">2000</option><option value="2001">2001</option>',
-          $select1);
+            $select1);
         $this->assertStringContainsString('<select id="foo" name="year"><option value="2000">2000</option><option value="2001">2001</option>',
-          $select2);
+            $select2);
         $this->assertStringContainsString('<select name="year"><option value="2000" selected="selected">2000</option><option value="2001">2001</option>',
-          $select3);
+            $select3);
     }
 
     public function testFormSelectRange()
@@ -692,7 +692,7 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
         $month3 = (string) $this->formBuilder->selectMonth('month', null, ['id' => 'foo']);
 
         $this->assertStringContainsString('<select name="month"><option value="1">January</option><option value="2">February</option>',
-          $month1);
+            $month1);
         $this->assertStringContainsString('<select name="month"><option value="1" selected="selected">January</option>', $month2);
         $this->assertStringContainsString('<select id="foo" name="month"><option value="1">January</option>', $month3);
     }
@@ -840,7 +840,7 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
         $url = 'http://laravel.com/';
         $image = $this->formBuilder->image($url);
 
-        $this->assertEquals('<input src="' . $url . '" type="image">', $image);
+        $this->assertEquals('<input src="'.$url.'" type="image">', $image);
     }
 
     public function testFormColor()
@@ -888,7 +888,7 @@ class FormBuilderTest extends PHPUnit\Framework\TestCase
 
         $input = $this->formBuilder->text('test', null, ['class' => [
             'class-a',
-            false ? 'class-b' : 'class-c'
+            false ? 'class-b' : 'class-c',
         ]]);
         $this->assertEquals('<input class="class-a class-c" name="test" type="text">', $input);
     }

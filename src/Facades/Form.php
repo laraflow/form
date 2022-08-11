@@ -40,13 +40,11 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString radio(string $name, mixed $value = 1, bool $checked = null, array $options = [])
  * @method static HtmlString reset(string $value, array $attributes = [])
 
- * @see \Hafijul233\Form\Builders\FormBuilder
- * @package Hafijul233\Form\Facades
  *
+ * @see \Hafijul233\Form\Builders\FormBuilder
  */
 class Form extends Facade
 {
-
     /**
      * Get the registered name of the component.
      *

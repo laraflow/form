@@ -8,11 +8,9 @@ use Illuminate\Support\Facades\Facade;
  * Class Html
  *
  * @see \Hafijul233\Form\Builders\HtmlBuilder
- * @package Hafijul233\Form\Facades
  */
 class Html extends Facade
 {
-
     /**
      * Get the registered name of the component.
      *

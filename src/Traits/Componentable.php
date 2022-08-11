@@ -9,11 +9,9 @@ use Illuminate\Support\HtmlString;
 
 /**
  * Trait Componentable
- * @package Hafijul233\Form\Traits
  */
 trait Componentable
 {
-
     /**
      * The registered components.
      *
@@ -24,10 +22,9 @@ trait Componentable
     /**
      * Register a custom component.
      *
-     * @param       $name
-     * @param       $view
-     * @param array $signature
-     *
+     * @param    $name
+     * @param    $view
+     * @param  array  $signature
      * @return void
      */
     public static function component($name, $view, array $signature)
@@ -38,9 +35,8 @@ trait Componentable
     /**
      * Dynamically handle calls to the class.
      *
-     * @param string $method
-     * @param array $parameters
-     *
+     * @param  string  $method
+     * @param  array  $parameters
      * @return View|mixed
      *
      * @throws BadMethodCallException
@@ -58,7 +54,6 @@ trait Componentable
      * Check if a component is registered.
      *
      * @param $name
-     *
      * @return bool
      */
     public static function hasComponent($name)
@@ -69,9 +64,8 @@ trait Componentable
     /**
      * Render a custom component.
      *
-     * @param        $name
-     * @param array $arguments
-     *
+     * @param    $name
+     * @param  array  $arguments
      * @return HtmlString
      */
     protected function renderComponent($name, array $arguments)
@@ -87,9 +81,8 @@ trait Componentable
     /**
      * Prepare the component data, while respecting provided defaults.
      *
-     * @param array $signature
-     * @param array $arguments
-     *
+     * @param  array  $signature
+     * @param  array  $arguments
      * @return array
      */
     protected function getComponentData(array $signature, array $arguments)

@@ -2,14 +2,14 @@
 
 use Carbon\Carbon;
 use Collective\Html\Eloquent\FormAccessible;
-use Illuminate\Database\Eloquent\Model;
 use Collective\Html\FormBuilder;
 use Collective\Html\HtmlBuilder;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Routing\RouteCollection;
 use Illuminate\Routing\UrlGenerator;
-use Illuminate\Database\Capsule\Manager as Capsule;
 use Mockery as m;
 
 class FormAccessibleTest extends PHPUnit\Framework\TestCase
@@ -22,15 +22,15 @@ class FormAccessibleTest extends PHPUnit\Framework\TestCase
         $this->now = Carbon::now();
 
         $this->modelData = [
-          'string'     => 'abcdefghijklmnop',
-          'email'      => 'tj@tjshafer.com',
-          'address'    => [
-              'street' => 'abcde st'
-          ],
-          'array'      => [1, 2, 3,],
-          'transform_key' => 'testing testing',
-          'created_at' => $this->now,
-          'updated_at' => $this->now,
+            'string' => 'abcdefghijklmnop',
+            'email' => 'tj@tjshafer.com',
+            'address' => [
+                'street' => 'abcde st',
+            ],
+            'array' => [1, 2, 3],
+            'transform_key' => 'testing testing',
+            'created_at' => $this->now,
+            'updated_at' => $this->now,
         ];
 
         $this->urlGenerator = new UrlGenerator(new RouteCollection(), Request::create('/foo', 'GET'));
@@ -59,7 +59,7 @@ class FormAccessibleTest extends PHPUnit\Framework\TestCase
         $model = new ModelThatUsesForms($this->modelData);
         $relatedModel = new ModelThatUsesForms($this->modelData);
         $relatedModel->address = [
-            'street' => '123 Evergreen Terrace'
+            'street' => '123 Evergreen Terrace',
         ];
         $model->setRelation('related', $relatedModel);
 
@@ -172,11 +172,11 @@ class User extends Model
 
     public function formNameAttribute($value)
     {
-        return 'Get name for form: ' . $value;
+        return 'Get name for form: '.$value;
     }
 
     public function getNameAttribute($value)
     {
-        return 'Get name: ' . $value;
+        return 'Get name: '.$value;
     }
 }

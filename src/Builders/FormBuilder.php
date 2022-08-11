@@ -1097,14 +1097,14 @@ class FormBuilder
      * @param string $name
      * @param string $begin
      * @param string $end
-     * @param string $selected
+     * @param string|null $selected
      * @param array $options
      *
      * @return mixed
      */
-    public function selectYear()
+    public function selectYear(string $name, string $begin, string $end, string $selected = null, array $options = []): HtmlString
     {
-        return call_user_func_array([$this, 'selectRange'], func_get_args());
+        return $this->selectRange($name, $begin, $end, $selected, $options);
     }
 
     /**

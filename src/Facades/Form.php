@@ -34,7 +34,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString week(string $name, string $value = null, array $options = [])
  * @method static HtmlString selectRange(string $name, string $begin, string $end, string $selected = null, array $options = [])
  * @method static HtmlString select(string $name, array $list = [], string $selected = null, array $selectAttributes = [], array $optionsAttributes = [], array $optgroupsAttributes = [])
- *
+ * @method static HtmlString selectYear(string $name, string $begin, string $end, string $selected = null, array $options = [])
  *
  * @see \Hafijul233\Form\Builders\FormBuilder
  * @package Hafijul233\Form\Facades

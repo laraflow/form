@@ -39,8 +39,15 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString checkbox(string $name, mixed $value = 1, bool $checked = null, array $options = [])
  * @method static HtmlString radio(string $name, mixed $value = 1, bool $checked = null, array $options = [])
  * @method static HtmlString reset(string $value, array $attributes = [])
-
- *
+ * @method static HtmlString image(string $url, string $name = null, array $attributes = [])
+ * @method static HtmlString month(string $name, string $value = null, array $options = [])
+ * @method static HtmlString color(string $name, string $value = null, array $options = [])
+ * @method static HtmlString submit(string $value = null, array $options = [])
+ * @method static HtmlString button(string $value = null, array $options = [])
+ * @method static HtmlString datalist(string $id, array $list= [])
+ * // macros
+ * @method static HtmlString  nLabel(string $name, string $value, bool $required = false, array $options = [])
+ * 
  * @see \Hafijul233\Form\Builders\FormBuilder
  */
 class Form extends Facade

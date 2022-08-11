@@ -13,6 +13,7 @@ use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Traits\Macroable;
 
@@ -1117,12 +1118,14 @@ class FormBuilder
      *
      * @return HtmlString
      */
-    public function selectMonth($name, $selected = null, $options = [], $format = '%B')
+    public function selectMonth($name, $selected = null, $format = '%B', $options = [])
     {
-        $months = [];
+        $months = Config::get('form.months') ?? [];
 
-        foreach (range(1, 12) as $month) {
-            $months[$month] = strftime($format, mktime(0, 0, 0, $month, 1));
+        if (empty($months)) {
+            foreach (range(1, 12) as $month) {
+                $months[$month] = strftime($format, mktime(0, 0, 0, $month, 1));
+            }
         }
 
         return $this->select($name, $months, $selected, $options);

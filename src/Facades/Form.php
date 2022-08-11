@@ -20,7 +20,9 @@ use phpDocumentor\Reflection\Types\Boolean;
  * @method static \Illuminate\Support\HtmlString close()
  * @method static \Illuminate\Support\HtmlString label(string $name, string $value = null, array $options = [], bool $escape_html = true)
  * @method static \Illuminate\Support\HtmlString text(string $name, string $value = null, array $options = [])
- * @method static \Illuminate\Support\HtmlString password(string $name, string $value = null, array $options = [])
+ * @method static \Illuminate\Support\HtmlString password(string $name, array $options = [])
+ * @method static \Illuminate\Support\HtmlString range(string $name, string $value = null, array $options = [])
+ * @method static \Illuminate\Support\HtmlString range(string $name, string $value = null, array $options = [])
  *
  * @method static \Illuminate\Support\HtmlString void assertSentOnDemandTimes(string $notification, int $times = 1)
  * @method static \Illuminate\Support\HtmlString void assertSentToTimes(mixed $notifiable, string $notification, int $times = 1)

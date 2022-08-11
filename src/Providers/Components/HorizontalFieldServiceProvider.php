@@ -184,7 +184,7 @@ class HorizontalFieldServiceProvider extends ServiceProvider
          * @param  array  $options
          * @return HtmlString
          */
-        Form::component('hCheckbox', 'form::'.$style.'.horizon.checkbox', ['name', 'label', 'values' => [], 'checked' => [], 'required' => false,  'col_size' => 2, 'attributes' => []]);
+        Form::component('hCheckbox', 'form::'.$style.'.horizon.checkbox', ['name', 'label', 'values' => [], 'checked' => [], 'required' => false, 'col_size' => 2, 'attributes' => []]);
 
         /**
          * Create a radio button input field.
@@ -195,6 +195,6 @@ class HorizontalFieldServiceProvider extends ServiceProvider
          * @param  array  $options
          * @return HtmlString
          */
-        Form::component('hRadio', 'form::'.$style.'.horizon.radio', ['name', 'label', 'values' => [], 'checked' => null, 'required' => false,  'col_size' => 2, 'attributes' => []]);
+        Form::component('hRadio', 'form::'.$style.'.horizon.radio', ['name', 'label', 'values' => [], 'checked' => null, 'required' => false, 'col_size' => 2, 'attributes' => []]);
     }
 }

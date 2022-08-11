@@ -25,20 +25,6 @@ class FormServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->app->register(LabelServiceProvider::class);
-        $this->app->register(HorizontalFieldServiceProvider::class);
-        $this->app->register(GroupFieldServiceProvider::class);
-        $this->app->register(InlineFieldServiceProvider::class);
-        $this->app->register(NormalFieldServiceProvider::class);
-    }
-
-    /**
      * Register config.
      *
      * @return void
@@ -48,6 +34,16 @@ class FormServiceProvider extends ServiceProvider
         $this->publishes([__DIR__.'/../../config/form.php' => config_path('form.php')], 'form-config');
 
         $this->mergeConfigFrom(__DIR__.'/../../config/form.php', 'form');
+    }
+
+    /**
+     * Register Asset Publish Exports on public folder
+     *
+     * @return void
+     */
+    public function registerPublicAssets()
+    {
+        $this->publishes([__DIR__.'/../../resources/dist/assets' => public_path('vendor/form/assets')], 'form-assets');
     }
 
     /**
@@ -63,16 +59,6 @@ class FormServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register Asset Publish Exports on public folder
-     *
-     * @return void
-     */
-    public function registerPublicAssets()
-    {
-        $this->publishes([__DIR__.'/../../resources/dist/assets' => public_path('vendor/form/assets')], 'form-assets');
-    }
-
-    /**
      * Register Route for testing form Examples
      *
      * @return void
@@ -80,5 +66,19 @@ class FormServiceProvider extends ServiceProvider
     public function registerRoutes()
     {
         $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
+    }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->register(LabelServiceProvider::class);
+        $this->app->register(HorizontalFieldServiceProvider::class);
+        $this->app->register(GroupFieldServiceProvider::class);
+        $this->app->register(InlineFieldServiceProvider::class);
+        $this->app->register(NormalFieldServiceProvider::class);
     }
 }

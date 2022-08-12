@@ -112,11 +112,11 @@ class FormBuilder
      * Create a new form builder instance.
      *
      * @param Factory $view
-     * @param string $csrfToken
+     * @param string|null $csrfToken
      * @param UrlGenerator|null $url
      * @param Request|null $request
      */
-    public function __construct(Factory $view, string $csrfToken, UrlGenerator $url = null, Request $request = null)
+    public function __construct(Factory $view, string $csrfToken = null, UrlGenerator $url = null, Request $request = null)
     {
         $this->view = $view;
         $this->csrfToken = $csrfToken;

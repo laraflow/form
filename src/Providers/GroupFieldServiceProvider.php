@@ -12,11 +12,6 @@ use Illuminate\Support\ServiceProvider;
 class GroupFieldServiceProvider extends ServiceProvider
 {
     /**
-     * @var array
-     */
-    public $config = [];
-
-    /**
      * Load All Normal Bootstrap Style Forms
      *
      * Example:

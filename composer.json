@@ -50,10 +50,7 @@
     "autoload": {
         "psr-4": {
             "Hafijul233\\Form\\": "src"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {

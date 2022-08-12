@@ -3,7 +3,6 @@
 namespace Hafijul233\Form;
 
 use Hafijul233\Form\Builders\FormBuilder;
-use Hafijul233\Form\Builders\HtmlBuilder;
 use Hafijul233\Form\Providers\GroupFieldServiceProvider;
 use Hafijul233\Form\Providers\HorizontalFieldServiceProvider;
 use Hafijul233\Form\Providers\InlineFieldServiceProvider;
@@ -105,15 +104,9 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
      */
     protected function registerBuilder()
     {
-        // Register the HTML builder instance.
-        $this->app->singleton('html', function ($app) {
-            return new HtmlBuilder($app['url'], $app['view']);
-        });
-        $this->app->alias('html', HtmlBuilder::class);
-
         // Register the form builder instance.
         $this->app->singleton('form', function ($app) {
-            $form = new FormBuilder($app['html'], $app['url'], $app['view'], $app['session.store']->token(), $app['request']);
+            $form = new FormBuilder($app['url'], $app['view'], $app['session.store']->token(), $app['request']);
 
             return $form->setSessionStore($app['session.store']);
         });

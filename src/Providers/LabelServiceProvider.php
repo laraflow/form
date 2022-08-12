@@ -23,10 +23,10 @@ class LabelServiceProvider extends ServiceProvider
             return str_replace('label', 'span', Form::label($name, $value, $required, $options, false));
         });
 
-/*        Form::macro('nCancel', function ($title, $options = []) {
-            $attributes = array_merge($options, ['class' => 'btn btn-danger fw-bold']);
+        /*        Form::macro('nCancel', function ($title, $options = []) {
+                    $attributes = array_merge($options, ['class' => 'btn btn-danger fw-bold']);
 
-            return Html::link('<i class="mdi mdi-close-outline fw-bolder"></i>&nbsp;&nbsp;' . $title, $attributes, null, false);
-        });*/
+                    return Html::link('<i class="mdi mdi-close-outline fw-bolder"></i>&nbsp;&nbsp;' . $title, $attributes, null, false);
+                });*/
     }
 }

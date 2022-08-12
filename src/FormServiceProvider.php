@@ -29,13 +29,13 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
      */
     public function boot()
     {
-        $this->publishes([__DIR__ . '/../config/form.php' => config_path('form.php')], 'form-config');
-        $this->publishes([__DIR__ . '/../resources/dist/assets' => public_path('vendor/form/assets')], 'form-assets');
-        $this->publishes([__DIR__ . '/../resources/views' => resource_path('views/vendor/form')], 'form-view');
+        $this->publishes([__DIR__.'/../config/form.php' => config_path('form.php')], 'form-config');
+        $this->publishes([__DIR__.'/../resources/dist/assets' => public_path('vendor/form/assets')], 'form-assets');
+        $this->publishes([__DIR__.'/../resources/views' => resource_path('views/vendor/form')], 'form-view');
 
-        $this->mergeConfigFrom(__DIR__ . '/../config/form.php', 'form');
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'form');
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        $this->mergeConfigFrom(__DIR__.'/../config/form.php', 'form');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'form');
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     }
 
     /**
@@ -82,7 +82,7 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
                 foreach ($methods as $method) {
                     if (in_array($method, $this->directives)) {
                         $snakeMethod = Str::snake($method);
-                        $directive = strtolower($namespace) . '_' . $snakeMethod;
+                        $directive = strtolower($namespace).'_'.$snakeMethod;
 
                         $bladeCompiler->directive($directive, function ($expression) use ($namespace, $method) {
                             return "<?php echo $namespace::$method($expression); ?>";

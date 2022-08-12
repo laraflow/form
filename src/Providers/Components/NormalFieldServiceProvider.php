@@ -2,33 +2,13 @@
 
 namespace Hafijul233\Form\Providers\Components;
 
-use Collective\Html\FormFacade as Form;
+use Hafijul233\Form\Facades\Form;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\ServiceProvider;
 
 class NormalFieldServiceProvider extends ServiceProvider
 {
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return [];
-    }
-
     /**
      * Load All Normal Bootstrap Style Forms
      *

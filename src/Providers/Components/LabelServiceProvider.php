@@ -2,8 +2,8 @@
 
 namespace Hafijul233\Form\Providers\Components;
 
-use Collective\Html\FormFacade as Form;
-use Collective\Html\HtmlFacade as Html;
+use Hafijul233\Form\Facades\Form;
+use Hafijul233\Form\Facades\Html;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 

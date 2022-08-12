@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafijul233\Form\Providers\Components;
+namespace Hafijul233\Form\Providers;
 
 use Hafijul233\Form\Facades\Form;
 use Illuminate\Support\Facades\Config;

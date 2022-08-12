@@ -3,6 +3,7 @@
 namespace Hafijul233\Form\Builders;
 
 use BadMethodCallException;
+use Hafijul233\Form\Traits\ComponentTrait;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -11,9 +12,9 @@ use Illuminate\Support\Traits\Macroable;
 
 class HtmlBuilder
 {
-    use Macroable, Componentable {
+    use Macroable, ComponentTrait {
         Macroable::__call as macroCall;
-        Componentable::__call as componentCall;
+        ComponentTrait::__call as componentCall;
     }
 
     /**
@@ -56,12 +57,12 @@ class HtmlBuilder
     /**
      * Generate a link to a JavaScript file.
      *
-     * @param  string  $url
-     * @param  array  $attributes
-     * @param  bool  $secure
+     * @param string $url
+     * @param array $attributes
+     * @param null $secure
      * @return HtmlString
      */
-    public function script($url, $attributes = [], $secure = null)
+    public function script(string $url, $attributes = [], $secure = null)
     {
         $attributes['src'] = $this->url->asset($url, $secure);
 
@@ -71,10 +72,10 @@ class HtmlBuilder
     /**
      * Transform the string to an Html serializable object
      *
-     * @param $html
+     * @param string $html
      * @return HtmlString
      */
-    protected function toHtmlString($html)
+    protected function toHtmlString(string $html): HtmlString
     {
         return new HtmlString($html);
     }
@@ -85,7 +86,7 @@ class HtmlBuilder
      * @param  array  $attributes
      * @return string
      */
-    public function attributes($attributes)
+    public function attributes(array $attributes): string
     {
         $html = [];
 

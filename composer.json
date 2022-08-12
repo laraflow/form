@@ -76,12 +76,12 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Hafijul233\\Form\\Providers\\HtmlServiceProvider",
-                "Hafijul233\\Form\\Providers\\FormServiceProvider"
+                "Hafijul233\\Form\\HtmlServiceProvider",
+                "Hafijul233\\Form\\FormServiceProvider"
             ],
             "aliases": {
-                "Form": "Collective\\Html\\FormFacade",
-                "Html": "Collective\\Html\\HtmlFacade"
+                "Form": "Hafijul233\\Html\\Form",
+                "Html": "Hafijul233\\Html\\Html"
             }
         }
     },

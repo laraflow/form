@@ -1,12 +1,12 @@
 <?php
 
-namespace Hafijul233\Form\Providers;
+namespace Hafijul233\Form;
 
-use Hafijul233\Form\Providers\Components\GroupFieldServiceProvider;
-use Hafijul233\Form\Providers\Components\HorizontalFieldServiceProvider;
-use Hafijul233\Form\Providers\Components\InlineFieldServiceProvider;
-use Hafijul233\Form\Providers\Components\LabelServiceProvider;
-use Hafijul233\Form\Providers\Components\NormalFieldServiceProvider;
+use Hafijul233\Form\Providers\GroupFieldServiceProvider;
+use Hafijul233\Form\Providers\HorizontalFieldServiceProvider;
+use Hafijul233\Form\Providers\InlineFieldServiceProvider;
+use Hafijul233\Form\Providers\LabelServiceProvider;
+use Hafijul233\Form\Providers\NormalFieldServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class FormServiceProvider extends ServiceProvider

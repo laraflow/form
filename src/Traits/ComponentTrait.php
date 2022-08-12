@@ -8,9 +8,9 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\HtmlString;
 
 /**
- * Trait Componentable
+ * Trait ComponentTrait
  */
-trait Componentable
+trait ComponentTrait
 {
     /**
      * The registered components.
@@ -41,7 +41,7 @@ trait Componentable
      *
      * @throws BadMethodCallException
      */
-    public function __call($method, $parameters)
+    public function __call($method, $parameters): View
     {
         if (static::hasComponent($method)) {
             return $this->renderComponent($method, $parameters);
@@ -56,7 +56,7 @@ trait Componentable
      * @param $name
      * @return bool
      */
-    public static function hasComponent($name)
+    public static function hasComponent($name): bool
     {
         return isset(static::$components[$name]);
     }
@@ -68,7 +68,7 @@ trait Componentable
      * @param  array  $arguments
      * @return HtmlString
      */
-    protected function renderComponent($name, array $arguments)
+    protected function renderComponent($name, array $arguments): HtmlString
     {
         $component = static::$components[$name];
         $data = $this->getComponentData($component['signature'], $arguments);
@@ -85,7 +85,7 @@ trait Componentable
      * @param  array  $arguments
      * @return array
      */
-    protected function getComponentData(array $signature, array $arguments)
+    protected function getComponentData(array $signature, array $arguments): array
     {
         $data = [];
 

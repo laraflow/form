@@ -1,12 +1,16 @@
 <?php
 
-namespace Hafijul233\Form\Eloquent;
+namespace Hafijul233\Form\Traits;
 
 use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionMethod;
 
-trait FormAccessible
+/**
+ * Trait FormAccessibleTrait
+ * @package Hafijul233\Form\Traits
+ */
+trait FormAccessibleTrait
 {
     /**
      * A cached ReflectionClass instance for $this
@@ -59,10 +63,10 @@ trait FormAccessible
     }
 
     /**
-     * @param $key
+     * @param string $key
      * @return bool
      */
-    public function hasFormMutator($key)
+    public function hasFormMutator(string $key): bool
     {
         $methods = $this->getReflection()->getMethods(ReflectionMethod::IS_PUBLIC);
 
@@ -79,7 +83,7 @@ trait FormAccessible
      *
      * @return ReflectionClass
      */
-    protected function getReflection()
+    protected function getReflection(): ReflectionClass
     {
         if (! $this->reflection) {
             $this->reflection = new ReflectionClass($this);

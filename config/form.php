@@ -21,6 +21,36 @@ return [
     'locale' => 'en',
 
     /**
+     * Form local language for field that support localization
+     *
+     * @reference month, day etc
+     *
+     * @var string style
+     * @value bootstrap3, bootstrap4, bootstrap5
+     */
+    'error_class' => 'invalid-feedback',
+
+    /**
+     * Form local language for field that support localization
+     *
+     * @reference month, day etc
+     *
+     * @var string style
+     * @value bootstrap3, bootstrap4, bootstrap5
+     */
+    'submit_class' => 'btn btn-primary fw-bold',
+
+    /**
+     * Form local language for field that support localization
+     *
+     * @reference month, day etc
+     *
+     * @var string style
+     * @value bootstrap3, bootstrap4, bootstrap5
+     */
+    'cancel_class' => 'invalid-feedback',
+
+    /**
      * Form month values what value and label month dropdown
      * will have
      *

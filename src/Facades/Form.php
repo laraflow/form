@@ -16,7 +16,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString getValueAttribute(string $name, string $value = null)
  * @method static HtmlString token()
  * @method static HtmlString close()
- * @method static HtmlString label(string $name, string $value = null, array $options = [], bool $escape_html = true)
+ * @method static HtmlString label(string $name, string $value = null, bool $required = false, array $options = [], bool $escape_html = true)
  * @method static HtmlString text(string $name, string $value = null, array $options = [])
  * @method static HtmlString password(string $name, array $options = [])
  * @method static HtmlString range(string $name, string $value = null, array $options = [])
@@ -28,6 +28,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString textarea(string $name, string $value = null, array $options = [])
  * @method static HtmlString file(string $name, array $options = [])
  * @method static HtmlString date(string $name, string $value = null, array $options = [])
+ * @method static HtmlString error(string $name, mixed $error, array $options = [])
  * @method static HtmlString datetime(string $name, string $value = null, array $options = [])
  * @method static HtmlString datetimeLocal(string $name, string $value = null, array $options = [])
  * @method static HtmlString time(string $name, string $value = null, array $options = [])
@@ -42,10 +43,10 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString image(string $url, string $name = null, array $attributes = [])
  * @method static HtmlString month(string $name, string $value = null, array $options = [])
  * @method static HtmlString color(string $name, string $value = null, array $options = [])
- * @method static HtmlString submit(string $value = null, array $options = [])
+ * @method static HtmlString submit(string $name = 'submit', string $value = null, bool $button = false, array $options = [])
  * @method static HtmlString button(string $value = null, array $options = [])
  * @method static HtmlString datalist(string $id, array $list = [])
- * @method static HtmlString component(string $name, string $view, array $attributes = [])
+ * @method static HtmlString component(string $name, string $view, array $attributes)
  * @method static HtmlString macro(string $name, \Closure $function)
  *
  * // macros
@@ -60,7 +61,7 @@ class Form extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return 'form';
     }

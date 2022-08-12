@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafijul233\Form\Providers;
+namespace Hafijul233\Form;
 
 use Hafijul233\Form\Builders\FormBuilder;
 use Hafijul233\Form\Builders\HtmlBuilder;

@@ -37,6 +37,50 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
     }
 
     /**
+     * Register config.
+     *
+     * @return void
+     */
+    protected function registerConfig()
+    {
+        $this->publishes([__DIR__ . '/../../config/form.php' => config_path('form.php')], 'form-config');
+
+        $this->mergeConfigFrom(__DIR__ . '/../../config/form.php', 'form');
+    }
+
+    /**
+     * Register Asset Publish Exports on public folder
+     *
+     * @return void
+     */
+    protected function registerPublicAssets()
+    {
+        $this->publishes([__DIR__ . '/../../resources/dist/assets' => public_path('vendor/form/assets')], 'form-assets');
+    }
+
+    /**
+     * Register views.
+     *
+     * @return void
+     */
+    protected function registerViews()
+    {
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'form');
+
+        $this->publishes([__DIR__ . '/../../resources/views' => resource_path('views/vendor/form')], 'form-view');
+    }
+
+    /**
+     * Register Route for testing form Examples
+     *
+     * @return void
+     */
+    protected function registerRoutes()
+    {
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void
@@ -52,60 +96,6 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
         $this->registerBuilder();
 
         $this->registerBladeDirectives();
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides(): array
-    {
-        return ['form', FormBuilder::class];
-    }
-
-    /**
-     * Register config.
-     *
-     * @return void
-     */
-    protected function registerConfig()
-    {
-        $this->publishes([__DIR__.'/../../config/form.php' => config_path('form.php')], 'form-config');
-
-        $this->mergeConfigFrom(__DIR__.'/../../config/form.php', 'form');
-    }
-
-    /**
-     * Register Asset Publish Exports on public folder
-     *
-     * @return void
-     */
-    protected function registerPublicAssets()
-    {
-        $this->publishes([__DIR__.'/../../resources/dist/assets' => public_path('vendor/form/assets')], 'form-assets');
-    }
-
-    /**
-     * Register views.
-     *
-     * @return void
-     */
-    protected function registerViews()
-    {
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'form');
-
-        $this->publishes([__DIR__.'/../../resources/views' => resource_path('views/vendor/form')], 'form-view');
-    }
-
-    /**
-     * Register Route for testing form Examples
-     *
-     * @return void
-     */
-    protected function registerRoutes()
-    {
-        $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
     }
 
     /**
@@ -147,7 +137,7 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
                 foreach ($methods as $method) {
                     if (in_array($method, $this->directives)) {
                         $snakeMethod = Str::snake($method);
-                        $directive = strtolower($namespace).'_'.$snakeMethod;
+                        $directive = strtolower($namespace) . '_' . $snakeMethod;
 
                         $bladeCompiler->directive($directive, function ($expression) use ($namespace, $method) {
                             return "<?php echo $namespace::$method($expression); ?>";
@@ -156,5 +146,15 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
                 }
             }
         });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides(): array
+    {
+        return ['form', FormBuilder::class];
     }
 }

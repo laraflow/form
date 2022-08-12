@@ -122,10 +122,9 @@ class FormBuilder
      * @param string $csrfToken
      * @param Request|null $request
      */
-    public function __construct(HtmlBuilder $html, UrlGenerator $url, Factory $view, string $csrfToken, Request $request = null)
+    public function __construct(UrlGenerator $url, Factory $view, string $csrfToken, Request $request = null)
     {
         $this->url = $url;
-        $this->html = $html;
         $this->view = $view;
         $this->csrfToken = $csrfToken;
         $this->request = $request;
@@ -185,7 +184,7 @@ class FormBuilder
         // Finally, we will concatenate all of the attributes into a single string so
         // we can build out the final form open statement. We'll also append on an
         // extra value for the hidden _method field if it's needed for the form.
-        $attributes = $this->html->attributes($attributes);
+        $attributes = $this->attributes($attributes);
 
         return $this->toHtmlString('<form' . $attributes . '>' . $append);
     }
@@ -356,7 +355,7 @@ class FormBuilder
 
         $options = array_merge($options, $merge);
 
-        return $this->toHtmlString('<input' . $this->html->attributes($options) . '>');
+        return $this->toHtmlString('<input' . $this->attributes($options) . '>');
     }
 
     /**
@@ -515,6 +514,59 @@ class FormBuilder
     }
 
     /**
+     * Build an HTML attribute string from an array.
+     *
+     * @param array $attributes
+     * @return string
+     */
+    public function attributes(array $attributes): string
+    {
+        $html = [];
+
+        foreach ((array)$attributes as $key => $value) {
+            $element = $this->attributeElement($key, $value);
+
+            if (!is_null($element)) {
+                $html[] = $element;
+            }
+        }
+
+        return count($html) > 0 ? ' ' . implode(' ', $html) : '';
+    }
+
+    /**
+     * Build a single attribute element.
+     *
+     * @param string $key
+     * @param string $value
+     * @return string
+     */
+    protected function attributeElement($key, $value)
+    {
+        // For numeric keys we will assume that the value is a boolean attribute
+        // where the presence of the attribute represents a true value and the
+        // absence represents a false value.
+        // This will convert HTML attributes such as "required" to a correct
+        // form instead of using incorrect numerics.
+        if (is_numeric($key)) {
+            return $value;
+        }
+
+        // Treat boolean attributes as HTML properties
+        if (is_bool($value) && $key !== 'value') {
+            return $value ? $key : '';
+        }
+
+        if (is_array($value) && $key === 'class') {
+            return 'class="' . implode(' ', $value) . '"';
+        }
+
+        if (!is_null($value)) {
+            return $key . '="' . e($value, false) . '"';
+        }
+    }
+
+    /**
      * Generate a hidden field with the current CSRF token.
      *
      * @return string
@@ -575,12 +627,12 @@ class FormBuilder
     {
         $this->labels[] = $name;
 
-        $options = $this->html->attributes($options);
+        $options = $this->attributes($options);
 
         $value = $this->formatLabel($name, $value);
 
         if ($escape_html) {
-            $value = $this->html->entities($value);
+            $value = $this->entities($value);
         }
 
         if ($required) {
@@ -600,6 +652,17 @@ class FormBuilder
     protected function formatLabel(string $name, $value): string
     {
         return $value ?: ucwords(str_replace('_', ' ', $name));
+    }
+
+    /**
+     * Convert an HTML string to entities.
+     *
+     * @param string $value
+     * @return string
+     */
+    public function entities($value)
+    {
+        return htmlentities($value, ENT_QUOTES, 'UTF-8', false);
     }
 
     /**
@@ -832,7 +895,7 @@ class FormBuilder
         // Next we will convert the attributes into a string form. Also we have removed
         // the size attribute, as it was merely a short-cut for the rows and cols on
         // the element. Then we'll create the final textarea elements HTML for us.
-        $options = $this->html->attributes($options);
+        $options = $this->attributes($options);
 
         return $this->toHtmlString('<textarea' . $options . '>' . e($value, false) . '</textarea>');
     }
@@ -870,6 +933,21 @@ class FormBuilder
         $segments = explode('x', $options['size']);
 
         return array_merge($options, ['cols' => $segments[0], 'rows' => $segments[1]]);
+    }
+
+    /**
+     * Create a select year field.
+     *
+     * @param string $name
+     * @param string $begin
+     * @param string $end
+     * @param string|null $selected
+     * @param array $options
+     * @return mixed
+     */
+    public function selectYear(string $name, string $begin, string $end, string $selected = null, array $options = []): HtmlString
+    {
+        return $this->selectRange($name, $begin, $end, $selected, $options);
     }
 
     /**
@@ -941,7 +1019,7 @@ class FormBuilder
         // Once we have all of this HTML, we can join this into a single element after
         // formatting the attributes into an HTML "attributes" string, then we will
         // build out a final select statement, which will contain all the values.
-        $selectAttributes = $this->html->attributes($selectAttributes);
+        $selectAttributes = $this->attributes($selectAttributes);
 
         $list = implode('', $html);
 
@@ -964,7 +1042,7 @@ class FormBuilder
             'value' => '',
         ];
 
-        return $this->toHtmlString('<option' . $this->html->attributes($options) . '>' . e($display, false) . '</option>');
+        return $this->toHtmlString('<option' . $this->attributes($options) . '>' . e($display, false) . '</option>');
     }
 
     /**
@@ -1031,7 +1109,7 @@ class FormBuilder
             }
         }
 
-        return $this->toHtmlString('<optgroup label="' . e($space . $label, false) . '"' . $this->html->attributes($attributes) . '>' . implode('', $html) . '</optgroup>');
+        return $this->toHtmlString('<optgroup label="' . e($space . $label, false) . '"' . $this->attributes($attributes) . '>' . implode('', $html) . '</optgroup>');
     }
 
     /**
@@ -1049,27 +1127,12 @@ class FormBuilder
 
         $options = array_merge(['value' => $value, 'selected' => $selected], $attributes);
 
-        $string = '<option' . $this->html->attributes($options) . '>';
+        $string = '<option' . $this->attributes($options) . '>';
         if ($display !== null) {
             $string .= e($display, false) . '</option>';
         }
 
         return $this->toHtmlString($string);
-    }
-
-    /**
-     * Create a select year field.
-     *
-     * @param string $name
-     * @param string $begin
-     * @param string $end
-     * @param string|null $selected
-     * @param array $options
-     * @return mixed
-     */
-    public function selectYear(string $name, string $begin, string $end, string $selected = null, array $options = []): HtmlString
-    {
-        return $this->selectRange($name, $begin, $end, $selected, $options);
     }
 
     /**
@@ -1353,7 +1416,7 @@ class FormBuilder
             $options['type'] = 'button';
         }
 
-        return $this->toHtmlString('<button' . $this->html->attributes($options) . '>' . $value . '</button>');
+        return $this->toHtmlString('<button' . $this->attributes($options) . '>' . $value . '</button>');
     }
 
     /**
@@ -1381,11 +1444,22 @@ class FormBuilder
             }
         }
 
-        $attributes = $this->html->attributes($attributes);
+        $attributes = $this->attributes($attributes);
 
         $list = implode('', $html);
 
         return $this->toHtmlString("<datalist{$attributes}>{$list}</datalist>");
+    }
+
+    /**
+     * Determine if an array is associative.
+     *
+     * @param array $array
+     * @return bool
+     */
+    protected function isAssociativeArray(array $array): bool
+    {
+        return array_values($array) !== $array;
     }
 
     /**
@@ -1402,22 +1476,11 @@ class FormBuilder
             $options['class'] = Config::get('form.error_class', "invalid-feedback");
         }
 
-        $options = $this->html->attributes($options);
+        $options = $this->attributes($options);
 
         $message = $errors->first($name) ?? null;
 
         return $this->toHtmlString('<span id="' . $name . '-error" ' . $options . '>' . $message . '</span>');
-    }
-
-    /**
-     * Determine if an array is associative.
-     *
-     * @param array $array
-     * @return bool
-     */
-    protected function isAssociativeArray(array $array): bool
-    {
-        return array_values($array) !== $array;
     }
 
     /**

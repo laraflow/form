@@ -2,6 +2,7 @@
 
 namespace Hafijul233\Form\Facades;
 
+use Closure;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\HtmlString;
 
@@ -47,7 +48,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString button(string $value = null, array $options = [])
  * @method static HtmlString datalist(string $id, array $list = [])
  * @method static HtmlString component(string $name, string $view, array $attributes)
- * @method static HtmlString macro(string $name, \Closure $function)
+ * @method static HtmlString macro(string $name, Closure $function)
  *
  * // macros
  * @method static HtmlString  nLabel(string $name, string $value, bool $required = false, array $options = [])

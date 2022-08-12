@@ -27,7 +27,7 @@ class LabelServiceProvider extends ServiceProvider
         Form::macro('nCancel', function ($title, $options = []) {
             $attributes = array_merge($options, ['class' => 'btn btn-danger fw-bold']);
 
-            return Html::link('<i class="mdi mdi-close-outline fw-bolder"></i>&nbsp;&nbsp;'.$title, $attributes, null, false);
+            return Html::link('<i class="mdi mdi-close-outline fw-bolder"></i>&nbsp;&nbsp;' . $title, $attributes, null, false);
         });
     }
 }

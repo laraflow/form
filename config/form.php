@@ -51,6 +51,16 @@ return [
     'cancel_class' => 'invalid-feedback',
 
     /**
+     * Form local language for field that support localization
+     *
+     * @reference month, day etc
+     *
+     * @var string style
+     * @value bootstrap3, bootstrap4, bootstrap5
+     */
+    'horizon_label_size' => '2',
+
+    /**
      * Form month values what value and label month dropdown
      * will have
      *

@@ -17,7 +17,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString getValueAttribute(string $name, string $value = null)
  * @method static HtmlString token()
  * @method static HtmlString close()
- * @method static HtmlString label(string $name, string $value = null, bool $required = false, array $options = [], bool $escape_html = true)
+ * @method static HtmlString label(string $name, string $title = null, bool $required = false, array $options = [], bool $escape_html = true)
  * @method static HtmlString text(string $name, string $value = null, array $options = [])
  * @method static HtmlString password(string $name, array $options = [])
  * @method static HtmlString range(string $name, string $value = null, array $options = [])
@@ -51,7 +51,8 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString macro(string $name, Closure $function)
  *
  * // macros
- * @method static HtmlString  nLabel(string $name, string $value, bool $required = false, array $options = [])
+ * @method static HtmlString  hLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
+ * @method static HtmlString  fLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
  *
  * @see \Hafijul233\Form\Builders\FormBuilder
  */

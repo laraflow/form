@@ -615,29 +615,29 @@ class FormBuilder
      * Create a form label element.
      *
      * @param  string  $name
-     * @param  null  $value
+     * @param  null  $title
      * @param  bool  $required
      * @param  array  $options
      * @param  bool  $escape_html
      * @return HtmlString
      */
-    public function label(string $name, $value = null, bool $required = false, array $options = [], $escape_html = true): HtmlString
+    public function label(string $name, $title = null, bool $required = false, array $options = [], $escape_html = true): HtmlString
     {
         $this->labels[] = $name;
 
         $options = $this->attributes($options);
 
-        $value = $this->formatLabel($name, $value);
+        $title = $this->formatLabel($name, $title);
 
         if ($escape_html) {
-            $value = $this->entities($value);
+            $title = $this->entities($title);
         }
 
         if ($required) {
-            $value = '<span style="color: #dc3545; font-weight:700">*</span> '.$value;
+            $title = '<span style="color: #dc3545; font-weight:700">*</span> '.$title;
         }
 
-        return $this->toHtmlString("<label for=\"{$name}\" {$options}>{$value}</label>");
+        return $this->toHtmlString("<label for=\"{$name}\" {$options}>{$title}</label>");
     }
 
     /**

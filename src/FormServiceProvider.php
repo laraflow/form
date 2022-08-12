@@ -83,7 +83,7 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
     {
         // Register the form builder instance.
         $this->app->singleton('form', function ($app) {
-            $form = new FormBuilder($app['url'], $app['view'], $app['session.store']->token(), $app['request']);
+            $form = new FormBuilder($app['view'], $app['session.store']->token(), $app['url'], $app['request']);
 
             return $form->setSessionStore($app['session.store']);
         });

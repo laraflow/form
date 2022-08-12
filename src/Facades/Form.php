@@ -44,7 +44,10 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString color(string $name, string $value = null, array $options = [])
  * @method static HtmlString submit(string $value = null, array $options = [])
  * @method static HtmlString button(string $value = null, array $options = [])
- * @method static HtmlString datalist(string $id, array $list= [])
+ * @method static HtmlString datalist(string $id, array $list = [])
+ * @method static HtmlString component(string $name, string $view, array $attributes = [])
+ * @method static HtmlString macro(string $name, \Closure $function)
+ *
  * // macros
  * @method static HtmlString  nLabel(string $name, string $value, bool $required = false, array $options = [])
  *

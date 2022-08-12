@@ -27,12 +27,7 @@ class FormBuilder
         ComponentTrait::__call as componentCall;
     }
 
-    /**
-     * The HTML builder instance.
-     *
-     * @var \Collective\Html\HtmlBuilder
-     */
-    protected $html;
+    protected $payload;
 
     /**
      * The URL generator instance.
@@ -116,7 +111,6 @@ class FormBuilder
     /**
      * Create a new form builder instance.
      *
-     * @param HtmlBuilder $html
      * @param UrlGenerator $url
      * @param Factory $view
      * @param string $csrfToken
@@ -363,9 +357,9 @@ class FormBuilder
      *
      * @param string $name
      * @param array $attributes
-     * @return string
+     * @return string|null
      */
-    public function getIdAttribute(string $name, array $attributes): string
+    public function getIdAttribute(string $name, array $attributes): ?string
     {
         if (array_key_exists('id', $attributes)) {
             return $attributes['id'];
@@ -374,6 +368,8 @@ class FormBuilder
         if (in_array($name, $this->labels)) {
             return $name;
         }
+
+        return null;
     }
 
     /**
@@ -421,6 +417,8 @@ class FormBuilder
         if (isset($this->model)) {
             return $this->getModelValueAttribute($name);
         }
+
+        return null;
     }
 
     /**
@@ -445,14 +443,14 @@ class FormBuilder
                 }
 
                 if (!empty($this->payload[$key])) {
-                    $value = $this->payload[$key]->shift();
-
-                    return $value;
+                    return $this->payload[$key]->shift();
                 }
             }
 
             return $payload;
         }
+
+        return [];
     }
 
     /**
@@ -541,7 +539,7 @@ class FormBuilder
      * @param string $value
      * @return string
      */
-    protected function attributeElement($key, $value)
+    protected function attributeElement(string $key, string $value): string
     {
         // For numeric keys we will assume that the value is a boolean attribute
         // where the presence of the attribute represents a true value and the
@@ -564,6 +562,8 @@ class FormBuilder
         if (!is_null($value)) {
             return $key . '="' . e($value, false) . '"';
         }
+
+        return '';
     }
 
     /**
@@ -639,7 +639,7 @@ class FormBuilder
             $value = '<span style="color: #dc3545; font-weight:700">*</span> ' . $value;
         }
 
-        return $this->toHtmlString('<label for="' . $name . '"' . $options . '>' . $value . '</label>');
+        return $this->toHtmlString("<label for=\"{$name}\" {$options}>{$value}</label>");
     }
 
     /**
@@ -1480,7 +1480,7 @@ class FormBuilder
 
         $message = $errors->first($name) ?? null;
 
-        return $this->toHtmlString('<span id="' . $name . '-error" ' . $options . '>' . $message . '</span>');
+        return $this->toHtmlString("<span id=\"{$name}-error\" {$options}>{$message}</span>");
     }
 
     /**

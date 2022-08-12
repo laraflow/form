@@ -23,7 +23,7 @@ trait FormAccessibleTrait
      * @param string $key
      * @return mixed
      */
-    public function getFormValue($key)
+    public function getFormValue(string $key)
     {
         $value = $this->getAttributeFromArray($key);
 
@@ -108,7 +108,7 @@ trait FormAccessibleTrait
      * @param string $key
      * @return bool
      */
-    public function isNestedModel($key)
+    public function isNestedModel(string $key): bool
     {
         return in_array($key, array_keys($this->getRelations()));
     }

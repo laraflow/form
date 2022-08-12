@@ -6,7 +6,8 @@ parameters:
     paths:
         - src
         - config
-        - database
+        - routes
+        - resources
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
     checkModelProperties: true

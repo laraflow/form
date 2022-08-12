@@ -3,6 +3,11 @@
 namespace Hafijul233\Form;
 
 use Hafijul233\Form\Builders\FormBuilder;
+use Hafijul233\Form\Providers\GroupFieldServiceProvider;
+use Hafijul233\Form\Providers\HorizontalFieldServiceProvider;
+use Hafijul233\Form\Providers\InlineFieldServiceProvider;
+use Hafijul233\Form\Providers\LabelServiceProvider;
+use Hafijul233\Form\Providers\NormalFieldServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -24,54 +29,13 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
      */
     public function boot()
     {
-        $this->registerConfig();
-        $this->registerPublicAssets();
-        $this->registerViews();
-        $this->registerRoutes();
-    }
+        $this->publishes([__DIR__ . '/../config/form.php' => config_path('form.php')], 'form-config');
+        $this->publishes([__DIR__ . '/../resources/dist/assets' => public_path('vendor/form/assets')], 'form-assets');
+        $this->publishes([__DIR__ . '/../resources/views' => resource_path('views/vendor/form')], 'form-view');
 
-    /**
-     * Register config.
-     *
-     * @return void
-     */
-    protected function registerConfig()
-    {
-        $this->publishes([__DIR__ . '/../../config/form.php' => config_path('form.php')], 'form-config');
-
-        $this->mergeConfigFrom(__DIR__ . '/../../config/form.php', 'form');
-    }
-
-    /**
-     * Register Asset Publish Exports on public folder
-     *
-     * @return void
-     */
-    protected function registerPublicAssets()
-    {
-        $this->publishes([__DIR__ . '/../../resources/dist/assets' => public_path('vendor/form/assets')], 'form-assets');
-    }
-
-    /**
-     * Register views.
-     *
-     * @return void
-     */
-    protected function registerViews()
-    {
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'form');
-
-        $this->publishes([__DIR__ . '/../../resources/views' => resource_path('views/vendor/form')], 'form-view');
-    }
-
-    /**
-     * Register Route for testing form Examples
-     *
-     * @return void
-     */
-    protected function registerRoutes()
-    {
-        $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
+        $this->mergeConfigFrom(__DIR__ . '/../config/form.php', 'form');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'form');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
     }
 
     /**
@@ -81,7 +45,6 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
      */
     public function register()
     {
-        // Register the form builder instance.
         $this->app->singleton('form', function ($app) {
             $form = new FormBuilder($app['view'], $app['session.store']->token(), $app['url'], $app['request']);
 
@@ -90,7 +53,15 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
 
         $this->app->alias('form', FormBuilder::class);
 
-        $this->app->register(ComponentServiceProvider::class);
+        $this->app->register(LabelServiceProvider::class);
+
+        $this->app->register(HorizontalFieldServiceProvider::class);
+
+        $this->app->register(GroupFieldServiceProvider::class);
+
+        $this->app->register(InlineFieldServiceProvider::class);
+
+        $this->app->register(NormalFieldServiceProvider::class);
 
         $this->registerBladeDirectives();
     }

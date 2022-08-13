@@ -1,13 +1,14 @@
 # Hafijul233/Form
-[![Build Status](https://scrutinizer-ci.com/g/hafijul233/form/badges/build.png?b=main)](https://scrutinizer-ci.com/g/hafijul233/form/build-status/main)
 [![Latest Stable Version](https://poser.pugx.org/hafijul233/form/v)](//packagist.org/packages/hafijul233/form)
 [![Total Downloads](https://poser.pugx.org/hafijul233/form/downloads)](//packagist.org/packages/hafijul233/form)
-[![Latest Unstable Version](https://poser.pugx.org/hafijul233/form/v/unstable)](//packagist.org/packages/hafijul233/form)
+[![run-tests](https://github.com/hafijul233/form/workflows/run-tests/badge.svg)](//github.com/hafijul233/form/actions/workflows/run-tests.yml)
 [![License](https://poser.pugx.org/hafijul233/form/license)](//packagist.org/packages/hafijul233/form)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/hafijul233/form/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
+[![Latest Unstable Version](https://poser.pugx.org/hafijul233/form/v/unstable)](//packagist.org/packages/hafijul233/form)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/hafijul233/form/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/hafijul233/form/?branch=main)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/hafijul233/form/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
+[![Build Status](https://scrutinizer-ci.com/g/hafijul233/form/badges/build.png?b=main)](https://scrutinizer-ci.com/g/hafijul233/form/build-status/main)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/hafijul233/form/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/hafijul233/form/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/hafijul233/form/Check%20&%20fix%20styling?label=code%20style)](https://github.com/hafijul233/form/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 
 ## Introduction
 [``hafijul233/form``](https://packagist.org/packages/hafijul233/form) is a collection of [Laravel Collective/HTML](https://packagist.org/packages/laravelcollective/html) components.

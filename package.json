@@ -1,0 +1,26 @@
+{
+  "name": "form",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://scrutinizer-ci.com/g/hafijul233/form/badges/build.png?b=main)](https://scrutinizer-ci.com/g/hafijul233/form/build-status/main) [![Latest Stable Version](https://poser.pugx.org/hafijul233/form/v)](//packagist.org/packages/hafijul233/form) [![Total Downloads](https://poser.pugx.org/hafijul233/form/downloads)](//packagist.org/packages/hafijul233/form) [![Latest Unstable Version](https://poser.pugx.org/hafijul233/form/v/unstable)](//packagist.org/packages/hafijul233/form) [![License](https://poser.pugx.org/hafijul233/form/license)](//packagist.org/packages/hafijul233/form) [![Code Intelligence Status](https://scrutinizer-ci.com/g/hafijul233/form/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/hafijul233/form/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/hafijul233/form/?branch=main)",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hafijul233/form.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hafijul233/form/issues"
+  },
+  "homepage": "https://github.com/hafijul233/form#readme",
+  "devDependencies": {
+    "blade-formatter": "^1.27.4"
+  }
+}

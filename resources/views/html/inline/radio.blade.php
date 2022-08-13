@@ -3,18 +3,17 @@
     <label class="custom-control-label" for="customRadio1">Custom radio</label>
 </div>
 <div class="form-group">
-    {!! Form::nLabel($name, $label, $required, ['class' => 'd-none']) !!}
+    {!! \Form::label($name, $label, $required, ['class' => 'd-none']) !!}
 
     @php
-        $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL ), 'placeholder' => $attributes['placeholder'] ?? $label];
-
-        $msg = $errors->first($name) ?? null;
-
-        if(isset($required) && $required == true)
-        $options['required'] = 'required'
+        $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null), 'placeholder' => $attributes['placeholder'] ?? $label];
+        
+        if (isset($required) && $required == true) {
+            $options['required'] = 'required';
+        }
     @endphp
 
-    {!! Form::radio($name, $checked, array_merge($options, $attributes)) !!}
+    {!! \Form::radio($name, $checked, array_merge($options, $attributes)) !!}
 
-    {!! Form::nError($name, $msg) !!}
+    {!! \Form::error($name) !!}
 </div>

@@ -1,6 +1,6 @@
 <div class="form-group">
 
-    {!! Form::nLabel($name, $label, $required) !!}
+    {!! Form::label($name, $label, $required) !!}
 
     @php
         $options = ['class' => 'custom-control-input ' . ($errors->has($name) ? ' is-invalid' : NULL )];

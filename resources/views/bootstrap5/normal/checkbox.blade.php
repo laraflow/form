@@ -2,7 +2,7 @@
     @php
         $options = ['class' => 'form-check-input' . ($errors->has($name) ? ' is-invalid' : NULL ), 'id' => $name];
 
-        $msg = $errors->first($name) ?? null;
+
 
         if(isset($required) && $required == true)
         $options['required'] = 'required';

@@ -4,7 +4,7 @@
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL ), 'rows' => 3];
 
-        $msg = $errors->first($name) ?? null;
+
 
         if(isset($required) && $required == true)
         $options['required'] = 'required'

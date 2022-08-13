@@ -13,7 +13,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
 
-class FormServiceProvider extends ServiceProvider implements DeferrableProvider
+class FormServiceProvider extends ServiceProvider
 {
     /**
      * Supported Blade Directives
@@ -29,15 +29,15 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
      */
     public function boot()
     {
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'form');
+
         $this->publishes([__DIR__.'/../config/form.php' => config_path('form.php')], 'form-config');
 
         $this->publishes([__DIR__.'/../resources/dist' => public_path('vendor/form')], 'form-assets');
 
         $this->publishes([__DIR__.'/../resources/views' => resource_path('views/vendor/form')], 'form-view');
-
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'form');
 
     }
 
@@ -105,13 +105,14 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
 
         $this->registerBladeDirectives();
     }
-    /**
+
+/*    /**
      * Get the services provided by the provider.
      *
      * @return array
-     */
+     *
     public function provides(): array
     {
         return ['form', FormBuilder::class];
-    }
+    }*/
 }

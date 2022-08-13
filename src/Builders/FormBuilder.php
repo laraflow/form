@@ -1046,11 +1046,11 @@ class FormBuilder
     /**
      * Determine if the value is selected.
      *
-     * @param  string  $value
+     * @param  string|null  $value
      * @param  mixed  $selected
      * @return mixed
      */
-    protected function getSelectedValue(string $value, $selected)
+    protected function getSelectedValue($value, $selected)
     {
         if (is_array($selected)) {
             return in_array($value, $selected, true) || in_array((string) $value, $selected, true) ? 'selected' : null;

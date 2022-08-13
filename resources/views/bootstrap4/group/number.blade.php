@@ -31,6 +31,6 @@
             </div>
         @endif
     </div>
-    {!! Form::nError($name, $msg) !!}
+    {!! Form::error($name) !!}
 </div>
 

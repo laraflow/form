@@ -29,6 +29,6 @@
             </div>
         @endif
         {!! Form::nLabel($name, $label, $required, ['class' => 'custom-file-label']) !!}
-        {!! Form::nError($name, $msg) !!}
+        {!! Form::error($name) !!}
     </div>
 </div>

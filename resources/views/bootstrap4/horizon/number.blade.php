@@ -11,6 +11,6 @@
     @endphp
     <div class="col-sm-{{ (12-$col_size) }}">
         {!! Form::number($name, $default, array_merge($options, $attributes)) !!}
-        {!! Form::nError($name, $msg) !!}
+        {!! Form::error($name) !!}
     </div>
 </div>

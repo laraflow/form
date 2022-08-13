@@ -32,5 +32,5 @@ $options['id'] = $name;
             </div>
         @endif
     </div>
-    {!! Form::nError($name, $msg) !!}
+    {!! Form::error($name) !!}
 </div>

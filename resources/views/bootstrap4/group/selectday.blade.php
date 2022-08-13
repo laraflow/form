@@ -19,6 +19,6 @@
         </div>
         {!! Form::select($name, config('form.days'), $selected, array_merge($options, $attributes)) !!}
 
-        {!! Form::nError($name, $msg) !!}
+        {!! Form::error($name) !!}
     </div>
 </div>

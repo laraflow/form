@@ -19,6 +19,6 @@
         </div>
         {!! Form::selectRange($name, $begin, $end, $selected, array_merge($options, $attributes)) !!}
 
-        {!! Form::nError($name, $msg) !!}
+        {!! Form::error($name) !!}
     </div>
 </div>

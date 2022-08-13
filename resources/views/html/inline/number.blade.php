@@ -29,6 +29,6 @@
             </span>
             </div>
         @endif
-        {!! Form::nError($name, $msg) !!}
+        {!! Form::error($name) !!}
     </div>
 </div>

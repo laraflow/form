@@ -11,7 +11,7 @@
     <div class="custom-file">
         {!! Form::nLabel('','Choose file...', false, ['class' => 'custom-file-label', 'id' => $name .'_file_label']) !!}
         {!! Form::file($name, array_merge($options, $attributes)) !!}
-        {!! Form::nError($name, $msg) !!}
+        {!! Form::error($name) !!}
     </div>
 
     @if(($preview['preview'] ?? false))

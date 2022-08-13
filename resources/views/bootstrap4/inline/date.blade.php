@@ -37,5 +37,5 @@
     @else
         {!! Form::date($name, $default, array_merge($options, $attributes)) !!}
     @endif
-    {!! Form::nError($name, $msg) !!}
+    {!! Form::error($name) !!}
 </div>

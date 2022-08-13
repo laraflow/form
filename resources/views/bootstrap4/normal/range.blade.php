@@ -17,5 +17,5 @@
             <div class="font-weight-bolder">{{ $attributes['max'] }}</div>
         </div>
     @endif
-    {!! Form::nError($name, $msg) !!}
+    {!! Form::error($name) !!}
 </div>

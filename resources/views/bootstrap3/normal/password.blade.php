@@ -12,5 +12,5 @@
 
     {!! Form::password($name, array_merge($options, $attributes)) !!}
 
-    {!! Form::nError($name, $msg) !!}
+    {!! Form::error($name) !!}
 </div>

@@ -37,5 +37,5 @@
     @else
         {!! Form::selectRange($name, $begin, $end, $selected, array_merge($options, $attributes)) !!}
     @endif
-    {!! Form::nError($name, $msg) !!}
+    {!! Form::error($name) !!}
 </div>

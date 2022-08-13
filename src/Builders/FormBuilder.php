@@ -635,7 +635,7 @@ class FormBuilder
         }
 
         if ($required) {
-            $title = '<span style="color: #dc3545; font-weight:700">*</span> ' . $title;
+            $title = $title . '<span style="color: #dc3545; font-weight:700">*</span>';
         }
 
         return $this->toHtmlString("<label for=\"{$name}\" {$options}>{$title}</label>");

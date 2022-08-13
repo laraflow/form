@@ -30,12 +30,15 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
     public function boot()
     {
         $this->publishes([__DIR__.'/../config/form.php' => config_path('form.php')], 'form-config');
-        $this->publishes([__DIR__.'/../resources/dist/assets' => public_path('vendor/form/assets')], 'form-assets');
+
+        $this->publishes([__DIR__.'/../resources/dist' => public_path('vendor/form')], 'form-assets');
+
         $this->publishes([__DIR__.'/../resources/views' => resource_path('views/vendor/form')], 'form-view');
 
-        $this->mergeConfigFrom(__DIR__.'/../config/form.php', 'form');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'form');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'form');
+
     }
 
     /**
@@ -45,6 +48,8 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/form.php', 'form');
+
         $this->app->singleton('form', function ($app) {
             $form = new FormBuilder($app['view'], $app['session.store']->token(), $app['url'], $app['request']);
 
@@ -53,17 +58,9 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
 
         $this->app->alias('form', FormBuilder::class);
 
-        $this->app->register(LabelServiceProvider::class);
 
-        $this->app->register(HorizontalFieldServiceProvider::class);
 
-        $this->app->register(GroupFieldServiceProvider::class);
-
-        $this->app->register(InlineFieldServiceProvider::class);
-
-        $this->app->register(NormalFieldServiceProvider::class);
-
-        $this->registerBladeDirectives();
+        $this->registerComponentProviders();
     }
 
     /**
@@ -93,6 +90,21 @@ class FormServiceProvider extends ServiceProvider implements DeferrableProvider
         });
     }
 
+
+    protected function registerComponentProviders()
+    {
+        $this->app->register(LabelServiceProvider::class);
+
+        $this->app->register(HorizontalFieldServiceProvider::class);
+
+        $this->app->register(GroupFieldServiceProvider::class);
+
+        $this->app->register(InlineFieldServiceProvider::class);
+
+        $this->app->register(NormalFieldServiceProvider::class);
+
+        $this->registerBladeDirectives();
+    }
     /**
      * Get the services provided by the provider.
      *

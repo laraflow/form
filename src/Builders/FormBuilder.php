@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Traits\Macroable;
 use Illuminate\Support\ViewErrorBag;
@@ -1500,7 +1501,9 @@ class FormBuilder
             : ($errors->first($name) ?? null);
 
         $message = null;
+
         $options = $this->attributes($options);
+
         if (is_array($errorMessage)) {
             $message = "<ul id=\"{$name}-error\">";
             foreach ($errorMessage as $error) {
@@ -1510,7 +1513,7 @@ class FormBuilder
         } else {
             $message = ("<span id=\"{$name}-error\" {$options}>{$message}</span>");
         }
-
+        Log::info('validation', [$message]);
         return $this->toHtmlString($message);
     }
 

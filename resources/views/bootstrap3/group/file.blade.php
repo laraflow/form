@@ -28,7 +28,7 @@
             </span>
             </div>
         @endif
-        {!! \Form::nLabel($name, $label, $required, ['class' => 'custom-file-label']) !!}
+        {!! \Form::label($name, $label, $required, ['class' => 'custom-file-label']) !!}
         {!! \Form::error($name) !!}
     </div>
 </div>

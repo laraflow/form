@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! \Form::nLabel($name, $label, $required, ['class' => 'd-none']) !!}
+    {!! \Form::label($name, $label, $required, ['class' => 'd-none']) !!}
 
     @php
         $options = ['class' => 'form-control custom-select' . ($errors->has($name) ? ' is-invalid' : NULL )];

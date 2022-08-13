@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! \Form::nLabel($name, $label, $required, ['class' => 'sr-only d-none']) !!}
+    {!! \Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
     @php
         $options = ['class' => 'form-control custom-file-input ' . ($errors->has($name) ? ' is-invalid' : NULL )];
 
@@ -9,7 +9,7 @@
         $options['required'] = 'required'
     @endphp
     <div class="custom-file">
-        {!! \Form::nLabel('','Choose file...', false, ['class' => 'custom-file-label', 'id' => $name .'_file_label']) !!}
+        {!! \Form::label('','Choose file...', false, ['class' => 'custom-file-label', 'id' => $name .'_file_label']) !!}
         {!! \Form::file($name, array_merge($options, $attributes)) !!}
         {!! \Form::error($name) !!}
     </div>

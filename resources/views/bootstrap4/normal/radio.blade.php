@@ -16,7 +16,7 @@
         <div class="custom-control custom-radio">
             {!! \Form::radio($name, $value, ($value == $checked), array_merge($options, $attributes)) !!}
 
-            {!! \Form::nLabel($id, $display,false, ['class' => 'custom-control-label']) !!}
+            {!! \Form::label($id, $display,false, ['class' => 'custom-control-label']) !!}
         </div>
     @endforeach
 

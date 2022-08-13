@@ -1510,10 +1510,11 @@ class FormBuilder
                 $message .= ("<li {$options}>{$error}</li>");
             }
             $message .= '</ul>';
-        } else {
+        }
+        else {
             $message = ("<span id=\"{$name}-error\" {$options}>{$errorMessage}</span>");
         }
-        Log::info('validation', [$message]);
+
         return $this->toHtmlString($message);
     }
 

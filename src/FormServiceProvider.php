@@ -8,7 +8,6 @@ use Hafijul233\Form\Providers\HorizontalFieldServiceProvider;
 use Hafijul233\Form\Providers\InlineFieldServiceProvider;
 use Hafijul233\Form\Providers\LabelServiceProvider;
 use Hafijul233\Form\Providers\NormalFieldServiceProvider;
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
@@ -38,7 +37,6 @@ class FormServiceProvider extends ServiceProvider
         $this->publishes([__DIR__.'/../resources/dist' => public_path('vendor/form')], 'form-assets');
 
         $this->publishes([__DIR__.'/../resources/views' => resource_path('views/vendor/form')], 'form-view');
-
     }
 
     /**
@@ -57,8 +55,6 @@ class FormServiceProvider extends ServiceProvider
         });
 
         $this->app->alias('form', FormBuilder::class);
-
-
 
         $this->registerComponentProviders();
     }
@@ -90,7 +86,6 @@ class FormServiceProvider extends ServiceProvider
         });
     }
 
-
     protected function registerComponentProviders()
     {
         $this->app->register(LabelServiceProvider::class);
@@ -106,13 +101,13 @@ class FormServiceProvider extends ServiceProvider
         $this->registerBladeDirectives();
     }
 
-/*    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     *
-    public function provides(): array
-    {
-        return ['form', FormBuilder::class];
-    }*/
+    /*    /**
+         * Get the services provided by the provider.
+         *
+         * @return array
+         *
+        public function provides(): array
+        {
+            return ['form', FormBuilder::class];
+        }*/
 }

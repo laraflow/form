@@ -8,7 +8,6 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/hafijul233/form/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/hafijul233/form/?branch=main)
 
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/hafijul233/form/Check%20&%20fix%20styling?label=code%20style)](https://github.com/hafijul233/form/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/hafijul233/form.svg?style=flat-square)](https://packagist.org/packages/hafijul233/form)
 
 ## Introduction
 [``hafijul233/form``](https://packagist.org/packages/hafijul233/form) is a collection of [Laravel Collective/HTML](https://packagist.org/packages/laravelcollective/html) components.

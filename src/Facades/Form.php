@@ -5,7 +5,6 @@ namespace Hafijul233\Form\Facades;
 use Closure;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\HtmlString;
-use Illuminate\Support\ViewErrorBag;
 
 /**
  * Class Form

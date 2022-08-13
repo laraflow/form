@@ -5,6 +5,7 @@ namespace Hafijul233\Form\Facades;
 use Closure;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\ViewErrorBag;
 
 /**
  * Class Form
@@ -29,7 +30,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString textarea(string $name, string $value = null, array $options = [])
  * @method static HtmlString file(string $name, array $options = [])
  * @method static HtmlString date(string $name, string $value = null, array $options = [])
- * @method static HtmlString error(string $name, mixed $error, array $options = [])
+ * @method static HtmlString error(string $name, ViewErrorBag $error, array $options = [])
  * @method static HtmlString datetime(string $name, string $value = null, array $options = [])
  * @method static HtmlString datetimeLocal(string $name, string $value = null, array $options = [])
  * @method static HtmlString time(string $name, string $value = null, array $options = [])

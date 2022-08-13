@@ -37,11 +37,11 @@ trait ComponentTrait
      *
      * @param  string  $method
      * @param  array  $parameters
-     * @return View|mixed
+     * @return View|HtmlString|mixed
      *
      * @throws BadMethodCallException
      */
-    public function __call($method, $parameters): View
+    public function __call($method, $parameters)
     {
         if (static::hasComponent($method)) {
             return $this->renderComponent($method, $parameters);
@@ -66,9 +66,9 @@ trait ComponentTrait
      *
      * @param    $name
      * @param  array  $arguments
-     * @return HtmlString
+     * @return View|HtmlString
      */
-    protected function renderComponent($name, array $arguments): HtmlString
+    protected function renderComponent($name, array $arguments)
     {
         $component = static::$components[$name];
         $data = $this->getComponentData($component['signature'], $arguments);
@@ -85,7 +85,7 @@ trait ComponentTrait
      * @param  array  $arguments
      * @return array
      */
-    protected function getComponentData(array $signature, array $arguments): array
+    protected function getComponentData(array $signature, array $arguments)
     {
         $data = [];
 

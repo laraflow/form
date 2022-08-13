@@ -1,5 +1,5 @@
 <div class="form-group row">
-    {!! Form::hLabel($name, $label, $required, $col_size) !!}
+    {!! \Form::hLabel($name, $label, $required, $col_size) !!}
 
     @php
         $field_size = abs(12 - $col_size);
@@ -11,7 +11,7 @@
         $options['required'] = 'required'
     @endphp
     <div class="col-md-{{ $field_size }}">
-        {!! Form::number($name, $default, array_merge($options, $attributes)) !!}
-        {!! Form::hError($name, $msg) !!}
+        {!! \Form::number($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Form::hError($name, $msg) !!}
     </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! Form::nLabel($name, $label, $required) !!}
+    {!! \Form::nLabel($name, $label, $required) !!}
     @php
         $options = ['class' => 'form-control custom-select ' . ($errors->has($name) ? ' is-invalid' : NULL )];
 
@@ -20,7 +20,7 @@
             </div>
         @endif
 
-        {!! Form::select($name, $data, $selected, array_merge($options, $attributes)) !!}
+        {!! \Form::select($name, $data, $selected, array_merge($options, $attributes)) !!}
 
         @if(isset($position) && $position == 'after')
             <div class="input-group-append">
@@ -32,5 +32,5 @@
             </div>
         @endif
     </div>
-    {!! Form::error($name) !!}
+    {!! \Form::error($name) !!}
 </div>

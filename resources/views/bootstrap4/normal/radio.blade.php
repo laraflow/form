@@ -1,6 +1,6 @@
 <div class="form-group">
 
-    {!! Form::label($name, $label, $required) !!}
+    {!! \Form::label($name, $label, $required) !!}
 
     @php
         $options = ['class' => 'custom-control-input ' . ($errors->has($name) ? ' is-invalid' : NULL )];
@@ -14,11 +14,11 @@
         @php $id = $name . '-radio-' . $value; $options['id'] = $id @endphp
 
         <div class="custom-control custom-radio">
-            {!! Form::radio($name, $value, ($value == $checked), array_merge($options, $attributes)) !!}
+            {!! \Form::radio($name, $value, ($value == $checked), array_merge($options, $attributes)) !!}
 
-            {!! Form::nLabel($id, $display,false, ['class' => 'custom-control-label']) !!}
+            {!! \Form::nLabel($id, $display,false, ['class' => 'custom-control-label']) !!}
         </div>
     @endforeach
 
-    {!! Form::error($name) !!}
+    {!! \Form::error($name) !!}
 </div>

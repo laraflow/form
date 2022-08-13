@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! Form::nLabel($name, $label, $required, ['class' => 'sr-only d-none']) !!}
+    {!! \Form::nLabel($name, $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL )];
@@ -22,7 +22,7 @@
                 </div>
             @endif
 
-            {!! Form::url($name, $default, array_merge($options, $attributes)) !!}
+            {!! \Form::url($name, $default, array_merge($options, $attributes)) !!}
 
             @if(isset($position) && $position == 'after')
                 <div class="input-group-append">
@@ -35,7 +35,7 @@
             @endif
         </div>
     @else
-        {!! Form::url($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Form::url($name, $default, array_merge($options, $attributes)) !!}
     @endif
-    {!! Form::error($name) !!}
+    {!! \Form::error($name) !!}
 </div>

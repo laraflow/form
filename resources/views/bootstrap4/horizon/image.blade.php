@@ -1,5 +1,5 @@
 <div class="form-group row">
-    {!! Form::nLabel($name, $label, $required, ['class' => 'col-form-label col-sm-' . $col_size]) !!}
+    {!! \Form::nLabel($name, $label, $required, ['class' => 'col-form-label col-sm-' . $col_size]) !!}
     @php
         $options = ['class' => 'form-control custom-file-input ' . ($errors->has($name) ? ' is-invalid' : NULL )];
 
@@ -10,9 +10,9 @@
     @endphp
     <div class="col-sm-{{ (12-$col_size) }}">
         <div class="custom-file">
-            {!! Form::nLabel('','Choose file...', false, ['class' => 'custom-file-label', 'id' => $name .'_file_label']) !!}
-            {!! Form::file($name, array_merge($options, $attributes)) !!}
-            {!! Form::error($name) !!}
+            {!! \Form::nLabel('','Choose file...', false, ['class' => 'custom-file-label', 'id' => $name .'_file_label']) !!}
+            {!! \Form::file($name, array_merge($options, $attributes)) !!}
+            {!! \Form::error($name) !!}
         </div>
 
         @if(($preview['preview'] ?? false))

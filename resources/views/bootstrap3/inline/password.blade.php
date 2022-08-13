@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! Form::nLabel($name, $label, $required, ['class' => 'd-none']) !!}
+    {!! \Form::nLabel($name, $label, $required, ['class' => 'd-none']) !!}
 
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL ), 'placeholder' => $attributes['placeholder'] ?? $label];
@@ -19,7 +19,7 @@
                 </div>
             </div>
         @endif
-        {!! Form::password($name, array_merge($options, $attributes)) !!}
+        {!! \Form::password($name, array_merge($options, $attributes)) !!}
 
         @if(isset($position) && $position == 'after')
             <div class="input-group-append">
@@ -31,5 +31,5 @@
             </div>
         @endif
     </div>
-    {!! Form::error($name) !!}
+    {!! \Form::error($name) !!}
 </div>

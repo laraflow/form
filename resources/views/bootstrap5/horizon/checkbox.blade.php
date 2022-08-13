@@ -1,5 +1,5 @@
 <div class="form-group row">
-    {!! Form::hLabel($name, $label, $required, $col_size) !!}
+    {!! \Form::hLabel($name, $label, $required, $col_size) !!}
 
     @php
 
@@ -14,9 +14,9 @@
     @endphp
 
     <div class="col-md-{{ $field_size }}">
-        {!! Form::checkbox($name, $checked, array_merge($options, $attributes)) !!}
+        {!! \Form::checkbox($name, $checked, array_merge($options, $attributes)) !!}
 
-        {!! Form::hError($name, $msg) !!}
+        {!! \Form::hError($name, $msg) !!}
     </div>
 
 </div>

@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! Form::nLabel($name, $label, $required, ['class' => 'd-none']) !!}
+    {!! \Form::nLabel($name, $label, $required, ['class' => 'd-none']) !!}
 
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL ), 'placeholder' => $attributes['placeholder'] ?? $label];
@@ -10,7 +10,7 @@
         $options['required'] = 'required'
     @endphp
 
-    {!! Form::checkbox($name, $checked, array_merge($options, $attributes)) !!}
+    {!! \Form::checkbox($name, $checked, array_merge($options, $attributes)) !!}
 
-    {!! Form::error($name) !!}
+    {!! \Form::error($name) !!}
 </div>

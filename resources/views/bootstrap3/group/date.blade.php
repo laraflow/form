@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! Form::label($name, $label, $required) !!}
+    {!! \Form::label($name, $label, $required) !!}
 
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL )];
@@ -19,7 +19,7 @@
             </span>
             </div>
         @endif
-        {!! Form::date($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Form::date($name, $default, array_merge($options, $attributes)) !!}
         @if(isset($position) && $position = 'after')
             <div class="input-group-prepend">
             <span class="input-group-text">
@@ -29,6 +29,6 @@
             </span>
             </div>
         @endif
-        {!! Form::error($name) !!}
+        {!! \Form::error($name) !!}
     </div>
 </div>

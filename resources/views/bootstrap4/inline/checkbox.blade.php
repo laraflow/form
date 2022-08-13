@@ -1,6 +1,6 @@
 <div class="form-inline">
 
-    {!! Form::nLabel($name . '[]', $label, $required, ['class' => 'sr-only d-none']) !!}
+    {!! \Form::nLabel($name . '[]', $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
         $options = ['class' => 'custom-control-input ' . ($errors->has($name) ? ' is-invalid' : NULL )];
@@ -14,11 +14,11 @@
         @php $id = $name . '-checkbox-' . $value; $options['id'] = $id @endphp
 
         <div class="custom-control custom-checkbox custom-control-inline">
-            {!! Form::checkbox($name . '[]', $value, in_array($value, $checked), array_merge($options, $attributes)) !!}
+            {!! \Form::checkbox($name . '[]', $value, in_array($value, $checked), array_merge($options, $attributes)) !!}
 
-            {!! Form::nLabel($id, $display,false, ['class' => 'custom-control-label']) !!}
+            {!! \Form::nLabel($id, $display,false, ['class' => 'custom-control-label']) !!}
         </div>
     @endforeach
 
-    {!! Form::nError($name . '[]', $msg) !!}
+    {!! \Form::nError($name . '[]', $msg) !!}
 </div>

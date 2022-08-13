@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! Form::label($name, $label, $required) !!}
+    {!! \Form::label($name, $label, $required) !!}
 
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL )];
@@ -10,7 +10,7 @@
         $options['required'] = 'required'
     @endphp
 
-    {!! Form::url($name, $default, array_merge($options, $attributes)) !!}
+    {!! \Form::url($name, $default, array_merge($options, $attributes)) !!}
 
-    {!! Form::error($name) !!}
+    {!! \Form::error($name) !!}
 </div>

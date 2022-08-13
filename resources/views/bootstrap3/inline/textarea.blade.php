@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! Form::nLabel($name, $label, $required, ['class' => 'd-none']) !!}
+    {!! \Form::nLabel($name, $label, $required, ['class' => 'd-none']) !!}
 
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL ), 'placeholder' => $attributes['placeholder'] ?? $label];
@@ -17,8 +17,8 @@
                 @endif
             </span>
         </div>
-        {!! Form::textarea($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Form::textarea($name, $default, array_merge($options, $attributes)) !!}
 
-        {!! Form::error($name) !!}
+        {!! \Form::error($name) !!}
     </div>
 </div>

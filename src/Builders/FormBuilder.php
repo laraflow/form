@@ -1472,23 +1472,48 @@ class FormBuilder
      * Create a form error display element.
      *
      * @param string $name
+     * @param bool $all
      * @param array $options
      * @return HtmlString
      */
-    public function error(string $name, array $options = []): HtmlString
+    public function error(string $name, bool $all = false, array $options = []): HtmlString
     {
         if (empty($options['class'])) {
             $options['class'] = Config::get('form.error_class', 'invalid-feedback');
         }
 
-        $options = $this->attributes($options);
+        return $this->getErrorMessage($name, $all, $options);
+    }
 
+    /**
+     * @param string $name
+     * @param bool $list
+     * @param array $options
+     * @return HtmlString
+     */
+    protected function getErrorMessage(string $name, bool $list = false, array $options = []): HtmlString
+    {
         $errors = $this->request->session()->get('errors') ?? new ViewErrorBag;
 
-        $message = $errors->first($name) ?? null;
+        $errorMessage = ($list)
+            ? (($errors->all($name) ?? []))
+            : ($errors->first($name) ?? null);
 
-        return $this->toHtmlString("<span id=\"{$name}-error\" {$options}>{$message}</span>");
+        $message = null;
+        $options = $this->attributes($options);
+        if (is_array($errorMessage)) {
+            $message = "<ul id=\"{$name}-error\">";
+            foreach ($errorMessage as $error) {
+                $message .= ("<li {$options}>{$error}</li>");
+            }
+            $message .= '</ul>';
+        } else {
+            $message = ("<span id=\"{$name}-error\" {$options}>{$message}</span>");
+        }
+
+        return $this->toHtmlString($message);
     }
+
 
     /**
      * Take Request in fill process

@@ -30,7 +30,7 @@ use Illuminate\Support\ViewErrorBag;
  * @method static HtmlString textarea(string $name, string $value = null, array $options = [])
  * @method static HtmlString file(string $name, array $options = [])
  * @method static HtmlString date(string $name, string $value = null, array $options = [])
- * @method static HtmlString error(string $name, array $options = [])
+ * @method static HtmlString error(string $name, bool $all = false, array $options = [])
  * @method static HtmlString datetime(string $name, string $value = null, array $options = [])
  * @method static HtmlString datetimeLocal(string $name, string $value = null, array $options = [])
  * @method static HtmlString time(string $name, string $value = null, array $options = [])

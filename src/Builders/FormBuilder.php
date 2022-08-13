@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Traits\Macroable;
+use Illuminate\Support\ViewErrorBag;
 
 /**
  * Class FormBuilder
@@ -1482,7 +1483,9 @@ class FormBuilder
 
         $options = $this->attributes($options);
 
-        $message = $this->request->session()->get('errors')->first($name) ?? null;
+        $errors = $this->request->session()->get('errors') ?? new ViewErrorBag;
+
+        $message = $errors->first($name) ?? null;
 
         return $this->toHtmlString("<span id=\"{$name}-error\" {$options}>{$message}</span>");
     }

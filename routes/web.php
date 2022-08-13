@@ -1,5 +1,6 @@
 <?php
 
+use Hafijul233\Form\Controllers\ExampleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('web')->group(function () {
-    Route::view('/form/examples', 'form::examples.bootstrap4');
+    Route::get('/form/examples', ExampleController::class);
 });

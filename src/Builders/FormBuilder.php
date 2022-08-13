@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Traits\Macroable;
 use Illuminate\Support\ViewErrorBag;
@@ -1509,8 +1508,7 @@ class FormBuilder
                 $message .= ("<li {$options}>{$error}</li>");
             }
             $message .= '</ul>';
-        }
-        else {
+        } else {
             $message = ("<span id=\"{$name}-error\" {$options}>{$errorMessage}</span>");
         }
 

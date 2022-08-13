@@ -1139,12 +1139,11 @@ class FormBuilder
      * Create a select month field.
      *
      * @param string $name
-     * @param string $selected
+     * @param null $selected
      * @param array $options
-     * @param string $format
      * @return HtmlString
      */
-    public function selectMonth(string $name, $selected = null, $format = '%B', array $options = []): HtmlString
+    public function selectMonth(string $name, $selected = null, array $options = []): HtmlString
     {
         $months = Config::get('form.months', [
             '1' => 'January',

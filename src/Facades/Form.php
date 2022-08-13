@@ -37,7 +37,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString selectRange(string $name, string $begin, string $end, string $selected = null, array $options = [])
  * @method static HtmlString select(string $name, array $list = [], string $selected = null, array $selectAttributes = [], array $optionsAttributes = [], array $optgroupsAttributes = [])
  * @method static HtmlString selectYear(string $name, string $begin, string $end, string $selected = null, array $options = [])
- * @method static HtmlString selectMonth(string $name, string $selected = null, string $format = '%B', array $options = [])
+ * @method static HtmlString selectMonth(string $name, string $selected = null, array $options = [])
  * @method static HtmlString checkbox(string $name, mixed $value = 1, bool $checked = null, array $options = [])
  * @method static HtmlString radio(string $name, mixed $value = 1, bool $checked = null, array $options = [])
  * @method static HtmlString reset(string $value, array $attributes = [])

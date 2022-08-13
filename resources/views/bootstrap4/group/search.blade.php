@@ -1,19 +1,18 @@
 <div class="form-group">
     {!! \Form::label($name, $label, $required) !!}
     @php
-        $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : NULL )];
-
-
-
-        if(isset($required) && $required == true)
-        $options['required'] = 'required'
+        $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null)];
+        
+        if (isset($required) && $required == true) {
+            $options['required'] = 'required';
+        }
     @endphp
 
     <div class="input-group">
-        @if(isset($position) && $position == 'before')
+        @if (isset($position) && $position == 'before')
             <div class="input-group-prepend">
                 <div class="input-group-text">
-                    @if(!empty($icon))
+                    @if (!empty($icon))
                         <span class="{{ $icon }}"></span>
                     @endif
                 </div>
@@ -22,10 +21,10 @@
 
         {!! \Form::search($name, $default, array_merge($options, $attributes)) !!}
 
-        @if(isset($position) && $position == 'after')
+        @if (isset($position) && $position == 'after')
             <div class="input-group-append">
                 <div class="input-group-text">
-                    @if(!empty($icon))
+                    @if (!empty($icon))
                         <span class="{{ $icon }}"></span>
                     @endif
                 </div>

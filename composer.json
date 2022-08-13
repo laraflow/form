@@ -75,7 +75,7 @@
                 "Hafijul233\\Form\\FormServiceProvider"
             ],
             "aliases": {
-                "Form": "Hafijul233\\Html\\Form"
+                "Form": "Hafijul233\\Form\\Facades\\Form"
             }
         }
     },

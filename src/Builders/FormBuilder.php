@@ -1117,11 +1117,11 @@ class FormBuilder
      *
      * @param string $display
      * @param string $value
-     * @param string $selected
+     * @param string|null $selected
      * @param array $attributes
      * @return HtmlString
      */
-    protected function option(string $display, string $value, string $selected, array $attributes = []): HtmlString
+    protected function option(string $display, string $value, $selected, array $attributes = []): HtmlString
     {
         $selected = $this->getSelectedValue($value, $selected);
 

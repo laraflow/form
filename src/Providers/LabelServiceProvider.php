@@ -17,7 +17,6 @@ class LabelServiceProvider extends ServiceProvider
     public function boot()
     {
         Form::macro('hLabel', function ($name, $value, $required = false, $options = []) {
-
             $col_size = Config::get('form.horizon_label_size', 2);
 
             if (isset($options['col_size'])) {

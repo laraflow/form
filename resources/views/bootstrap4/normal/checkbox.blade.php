@@ -4,7 +4,7 @@
 
     @php
         $options = ['class' => 'custom-control-input '];
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -17,7 +17,12 @@
         @endphp
 
         <div class="custom-control custom-checkbox">
-            {!! \Hafijul233\Form\Facades\Form::checkbox($name . '[]', $value, in_array($value, $checked), array_merge($options, $attributes)) !!}
+            {!! \Hafijul233\Form\Facades\Form::checkbox(
+                $name . '[]',
+                $value,
+                in_array($value, $checked),
+                array_merge($options, $attributes),
+            ) !!}
 
             {!! \Hafijul233\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
         </div>

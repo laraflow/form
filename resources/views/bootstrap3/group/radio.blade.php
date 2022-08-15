@@ -6,8 +6,7 @@
     {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
 
     @php
-
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }

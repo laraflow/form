@@ -2,8 +2,7 @@
     {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
-
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }

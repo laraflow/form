@@ -2,7 +2,7 @@
     {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
     @php
         $options = ['class' => 'form-control custom-file-input '];
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }

@@ -4,7 +4,7 @@
 
     @php
         $options = ['class' => 'custom-control-input ' . ($errors->has($name) ? ' is-invalid' : null)];
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }

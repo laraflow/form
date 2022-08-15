@@ -3,7 +3,7 @@
     <div class="custom-file">
         @php
             $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null), 'placeholder' => $attributes['placeholder'] ?? $label];
-
+            
             if (isset($required) && $required == true) {
                 $options['required'] = 'required';
             }

@@ -3,7 +3,7 @@
 
     @php
         $options = ['class' => 'form-control custom-select' . ($errors->has($name) ? ' is-invalid' : null)];
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -21,7 +21,12 @@
                 </div>
             @endif
 
-            {!! \Hafijul233\Form\Facades\Form::select($name, config('form.months'), $selected, array_merge($options, $attributes)) !!}
+            {!! \Hafijul233\Form\Facades\Form::select(
+                $name,
+                config('form.months'),
+                $selected,
+                array_merge($options, $attributes),
+            ) !!}
 
             @if (isset($position) && $position == 'after')
                 <div class="input-group-append">
@@ -34,7 +39,12 @@
             @endif
         </div>
     @else
-        {!! \Hafijul233\Form\Facades\Form::select($name, config('form.months'), $selected, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::select(
+            $name,
+            config('form.months'),
+            $selected,
+            array_merge($options, $attributes),
+        ) !!}
     @endif
     {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

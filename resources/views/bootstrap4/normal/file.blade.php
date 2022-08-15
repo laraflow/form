@@ -2,13 +2,16 @@
     {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
     @php
         $options = ['class' => 'form-control custom-file-input ' . ($errors->has($name) ? ' is-invalid' : null)];
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
     @endphp
     <div class="custom-file">
-        {!! \Hafijul233\Form\Facades\Form::label('', 'Choose file...', false, ['class' => 'custom-file-label', 'id' => $name . '_file_label']) !!}
+        {!! \Hafijul233\Form\Facades\Form::label('', 'Choose file...', false, [
+            'class' => 'custom-file-label',
+            'id' => $name . '_file_label',
+        ]) !!}
         {!! \Hafijul233\Form\Facades\Form::file($name, array_merge($options, $attributes)) !!}
         {!! \Hafijul233\Form\Facades\Form::error($name) !!}
     </div>

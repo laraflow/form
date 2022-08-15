@@ -3,7 +3,7 @@
 
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null), 'rows' => 3];
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }

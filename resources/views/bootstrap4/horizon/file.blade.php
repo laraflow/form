@@ -1,15 +1,20 @@
 <div class="form-group row">
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'col-form-label col-sm-' . $col_size]) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, [
+        'class' => 'col-form-label col-sm-' . $col_size,
+    ]) !!}
     @php
         $options = ['class' => 'form-control custom-file-input ' . ($errors->has($name) ? ' is-invalid' : null)];
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
     @endphp
     <div class="col-sm-{{ 12 - $col_size }}">
         <div class="custom-file">
-            {!! \Hafijul233\Form\Facades\Form::label('', 'Choose file...', false, ['class' => 'custom-file-label', 'id' => $name . '_file_label']) !!}
+            {!! \Hafijul233\Form\Facades\Form::label('', 'Choose file...', false, [
+                'class' => 'custom-file-label',
+                'id' => $name . '_file_label',
+            ]) !!}
             {!! \Hafijul233\Form\Facades\Form::file($name, array_merge($options, $attributes)) !!}
             {!! \Hafijul233\Form\Facades\Form::error($name) !!}
         </div>

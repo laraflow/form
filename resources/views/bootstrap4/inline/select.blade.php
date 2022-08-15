@@ -3,7 +3,7 @@
 
     @php
         $options = ['class' => 'form-control custom-select' . ($errors->has($name) ? ' is-invalid' : null)];
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }

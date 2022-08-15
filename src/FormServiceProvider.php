@@ -28,15 +28,15 @@ class FormServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'form');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'form');
 
-        $this->publishes([__DIR__ . '/../config/form.php' => config_path('form.php')], 'form-config');
+        $this->publishes([__DIR__.'/../config/form.php' => config_path('form.php')], 'form-config');
 
-        $this->publishes([__DIR__ . '/../resources/dist' => public_path('vendor/form')], 'form-assets');
+        $this->publishes([__DIR__.'/../resources/dist' => public_path('vendor/form')], 'form-assets');
 
-        $this->publishes([__DIR__ . '/../resources/views' => resource_path('views/vendor/form')], 'form-view');
+        $this->publishes([__DIR__.'/../resources/views' => resource_path('views/vendor/form')], 'form-view');
     }
 
     /**
@@ -46,7 +46,7 @@ class FormServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/form.php', 'form');
+        $this->mergeConfigFrom(__DIR__.'/../config/form.php', 'form');
 
         $this->app->singleton('form', function ($app) {
             $form = new FormBuilder($app['view'], $app['session.store']->token(), $app['url'], $app['request']);
@@ -90,7 +90,7 @@ class FormServiceProvider extends ServiceProvider
                 foreach ($methods as $method) {
                     if (in_array($method, $this->directives)) {
                         $snakeMethod = Str::snake($method);
-                        $directive = strtolower($namespace) . '_' . $snakeMethod;
+                        $directive = strtolower($namespace).'_'.$snakeMethod;
 
                         $bladeCompiler->directive($directive, function ($expression) use ($namespace, $method) {
                             return "<?php echo $namespace::$method($expression); ?>";

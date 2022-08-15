@@ -72,8 +72,25 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString  gSelectDay(string $name, string $label, mixed $selected = null, $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
  * @method static HtmlString  gSelectMonth(string $name, string $label, mixed $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
  *
- *
- *
+ * @see \Hafijul233\Form\Providers\HorizontalFieldServiceProvider
+ * @method static HtmlString hText(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hEmail(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hPassword(string $name, string $label, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hRange(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hSearch(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hTel(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hNumber(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hDate(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hUrl(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hFile(string $name, string $label, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hTextarea(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hSelect(string $name, string $label, mixed $data = [], mixed $selected = null, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hSelectMulti(string $name, string $label, mixed $data = [], mixed $selected = [], bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hSelectRange(string $name, string $label, mixed $begin = 0, mixed $end = 100, $selected = null, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hSelectDay(string $name, string $label, mixed $selected = null, $selected = null, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hSelectMonth(string $name, string $label, mixed $selected = null, bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hCheckbox(string $name, string $label, mixed $values = [], mixed $checked = [], bool $required = false, int $col_size = 2, array $attributes = [])
+ * @method static HtmlString hRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, int $col_size = 2, array $attributes = [])
  *
  */
 class Form extends Facade

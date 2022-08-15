@@ -4,7 +4,7 @@
     ]) !!}
 
     @php
-        $options = ['class' => 'form-control custom-range ' . ($errors->has($name) ? ' is-invalid' : null)];
+        $options = ['class' => 'form-control custom-range '];
         
         if (isset($required) && $required == true) {
             $options['required'] = 'required';

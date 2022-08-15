@@ -2,7 +2,6 @@
     {!! \Hafijul233\Form\Facades\Form::fLabel($name, $label, $required, ['class' => 'd-block mb-2']) !!}
     <div class="custom-file">
         @php
-            $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null)];
             
             if (isset($required) && $required == true) {
                 $options['required'] = 'required';

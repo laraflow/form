@@ -4,7 +4,7 @@
     @php
         
         $field_size = abs(12 - $col_size);
-        $options = ['class' => 'form-control ' . ($errors->has($name) ? ' is-invalid' : null)];
+        $options = ['class' => 'form-control '];
         
         if (isset($required) && $required == true) {
             $options['required'] = 'required';

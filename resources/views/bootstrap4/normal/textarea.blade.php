@@ -2,7 +2,7 @@
     {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
 
     @php
-        $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null), 'rows' => 3];
+        $options = ['class' => 'form-control', 'rows' => 3];
         
         if (isset($required) && $required == true) {
             $options['required'] = 'required';

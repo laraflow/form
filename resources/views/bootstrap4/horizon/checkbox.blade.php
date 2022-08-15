@@ -6,7 +6,7 @@
 
     @php
         $options = ['class' => 'custom-control-input '];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -24,7 +24,7 @@
                     $name . '[]',
                     $value,
                     in_array($value, $checked),
-                    array_merge($options, $attributes),
+                    $required,  $attributes,
                 ) !!}
 
                 {!! \Hafijul233\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}

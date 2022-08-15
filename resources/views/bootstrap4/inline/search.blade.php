@@ -2,7 +2,7 @@
     {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -20,7 +20,7 @@
                 </div>
             @endif
 
-            {!! \Hafijul233\Form\Facades\Form::search($name, $default, array_merge($options, $attributes)) !!}
+            {!! \Hafijul233\Form\Facades\Form::search($name, $default, $required,  $attributes) !!}
 
             @if (isset($position) && $position == 'after')
                 <div class="input-group-append">
@@ -33,7 +33,7 @@
             @endif
         </div>
     @else
-        {!! \Hafijul233\Form\Facades\Form::search($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::search($name, $default, $required,  $attributes) !!}
     @endif
     {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

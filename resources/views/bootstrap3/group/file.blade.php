@@ -2,7 +2,7 @@
     {!! \Hafijul233\Form\Facades\Form::fLabel($name, $label, $required, ['class' => 'd-block mb-2']) !!}
     <div class="custom-file">
         @php
-            
+
             if (isset($required) && $required == true) {
                 $options['required'] = 'required';
             }
@@ -16,7 +16,7 @@
                 </span>
             </div>
         @endif
-        {!! \Hafijul233\Form\Facades\Form::file($name, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::file($name, $required,  $attributes) !!}
         @if (isset($position) && ($position = 'after'))
             <div class="input-group-prepend">
                 <span class="input-group-text">

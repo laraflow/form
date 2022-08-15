@@ -4,13 +4,13 @@
     ]) !!}
 
     @php
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
     @endphp
     <div class="col-sm-{{ 12 - $col_size }}">
-        {!! \Hafijul233\Form\Facades\Form::search($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::search($name, $default, $required,  $attributes) !!}
 
         {!! \Hafijul233\Form\Facades\Form::error($name) !!}
     </div>

@@ -3,13 +3,13 @@
 
     @php
         $options = ['class' => 'form-control', 'placeholder' => $attributes['placeholder'] ?? $label];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
     @endphp
 
-    {!! \Hafijul233\Form\Facades\Form::checkbox($name, $checked, array_merge($options, $attributes)) !!}
+    {!! \Hafijul233\Form\Facades\Form::checkbox($name, $checked, $required,  $attributes) !!}
 
     {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

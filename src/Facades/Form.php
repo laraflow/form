@@ -53,10 +53,12 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString macro(string $name, Closure $function)
  *
  * @see \Hafijul233\Form\Providers\LabelServiceProvider
+ *
  * @method static HtmlString  hLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
  * @method static HtmlString  fLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
  *
  * @see \Hafijul233\Form\Providers\GroupFieldServiceProvider
+ *
  * @method static HtmlString  gText(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
  * @method static HtmlString  gEmail(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
  * @method static HtmlString  gPassword(string $name, string $label, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
@@ -73,6 +75,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString  gSelectMonth(string $name, string $label, mixed $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
  *
  * @see \Hafijul233\Form\Providers\HorizontalFieldServiceProvider
+ *
  * @method static HtmlString hText(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
  * @method static HtmlString hEmail(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
  * @method static HtmlString hPassword(string $name, string $label, bool $required = false, int $col_size = 2, array $attributes = [])
@@ -91,7 +94,6 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString hSelectMonth(string $name, string $label, mixed $selected = null, bool $required = false, int $col_size = 2, array $attributes = [])
  * @method static HtmlString hCheckbox(string $name, string $label, mixed $values = [], mixed $checked = [], bool $required = false, int $col_size = 2, array $attributes = [])
  * @method static HtmlString hRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, int $col_size = 2, array $attributes = [])
- *
  */
 class Form extends Facade
 {

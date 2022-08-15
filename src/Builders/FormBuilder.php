@@ -328,7 +328,7 @@ class FormBuilder
 
     private function classAttributes($name, &$options = [], string $field = 'field')
     {
-        $classes = Config::get('form.field.default_class', []);
+        $classes = Config::get("form.{$field}.default_class", []);
 
         if ($this->errors->has($name)) {
             $classes = [$classes, ...Config::get("form:{$field}.error_class", [])];
@@ -340,7 +340,7 @@ class FormBuilder
                 : [$classes, $options['class']];
         }
 
-        $options['class'] = implode(" ", $classes);
+        $options['class'] = implode(" ", Arr::flatten($classes));
     }
 
     /**

@@ -96,6 +96,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString hRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, int $col_size = 2, array $attributes = [])
  *
  * @see \Hafijul233\Form\Providers\InlineFieldServiceProvider
+ *
  * @method static HtmlString iText(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
  * @method static HtmlString iEmail(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
  * @method static HtmlString iPassword(string $name, string $label, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
@@ -116,6 +117,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString iRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
  *
  * @see \Hafijul233\Form\Providers\NormalFieldServiceProvider
+ *
  * @method static HtmlString nText(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
  * @method static HtmlString nEmail(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
  * @method static HtmlString nPassword(string $name, string $label, bool $required = false, array $attributes = [])

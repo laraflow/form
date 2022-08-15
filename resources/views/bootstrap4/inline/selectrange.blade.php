@@ -1,9 +1,9 @@
 <div class="form-group">
-    {!! \Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
         $options = ['class' => 'form-control custom-select' . ($errors->has($name) ? ' is-invalid' : null)];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -21,7 +21,7 @@
                 </div>
             @endif
 
-            {!! \Form::selectRange($name, $begin, $end, $selected, array_merge($options, $attributes)) !!}
+            {!! \Hafijul233\Form\Facades\Form::selectRange($name, $begin, $end, $selected, array_merge($options, $attributes)) !!}
 
             @if (isset($position) && $position == 'after')
                 <div class="input-group-append">
@@ -34,7 +34,7 @@
             @endif
         </div>
     @else
-        {!! \Form::selectRange($name, $begin, $end, $selected, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::selectRange($name, $begin, $end, $selected, array_merge($options, $attributes)) !!}
     @endif
-    {!! \Form::error($name) !!}
+    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

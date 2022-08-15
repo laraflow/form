@@ -1,4 +1,4 @@
-{!! \Form::hLabel($name, $label, $required) !!}
+{!! \Hafijul233\Form\Facades\Form::hLabel($name, $label, $required) !!}
 
 @php
 $options = ['class' => 'form-control col-md-10'];
@@ -8,4 +8,4 @@ if (isset($required) && $required == true) {
 }
 @endphp
 
-{!! \Form::file($name, $default, array_merge($options, $attributes)) !!}
+{!! \Hafijul233\Form\Facades\Form::file($name, $default, array_merge($options, $attributes)) !!}

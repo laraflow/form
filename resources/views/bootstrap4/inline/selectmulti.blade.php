@@ -1,10 +1,10 @@
 <div class="form-group">
-    {!! \Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
         $options = ['class' => 'form-control custom-select' . ($errors->has($name) ? ' is-invalid' : null), 'multiple' => 'multiple'];
         $options['id'] = $name;
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -22,7 +22,7 @@
                 </div>
             @endif
 
-            {!! \Form::select($name . '[]', $data, $selected, array_merge($options, $attributes)) !!}
+            {!! \Hafijul233\Form\Facades\Form::select($name . '[]', $data, $selected, array_merge($options, $attributes)) !!}
 
             @if (isset($position) && $position == 'after')
                 <div class="input-group-append">
@@ -35,7 +35,7 @@
             @endif
         </div>
     @else
-        {!! \Form::select($name . '[]', $data, $selected, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::select($name . '[]', $data, $selected, array_merge($options, $attributes)) !!}
     @endif
-    {!! \Form::error($name) !!}
+    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

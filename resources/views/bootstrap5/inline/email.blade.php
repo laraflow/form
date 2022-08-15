@@ -1,9 +1,9 @@
 <div class="form-group">
-    {!! \Form::label($name, $label, $required, ['class' => 'd-none']) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'd-none']) !!}
 
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null), 'placeholder' => $attributes['placeholder'] ?? $label];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -18,7 +18,7 @@
                 </div>
             </div>
         @endif
-        {!! \Form::email($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::email($name, $default, array_merge($options, $attributes)) !!}
 
         @if (isset($position) && $position == 'after')
             <div class="input-group-append">
@@ -30,5 +30,5 @@
             </div>
         @endif
     </div>
-    {!! \Form::error($name) !!}
+    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

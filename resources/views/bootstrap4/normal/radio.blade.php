@@ -1,10 +1,10 @@
 <div class="form-group">
 
-    {!! \Form::label($name, $label, $required) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
 
     @php
         $options = ['class' => 'custom-control-input ' . ($errors->has($name) ? ' is-invalid' : null)];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -17,11 +17,11 @@
         @endphp
 
         <div class="custom-control custom-radio">
-            {!! \Form::radio($name, $value, $value == $checked, array_merge($options, $attributes)) !!}
+            {!! \Hafijul233\Form\Facades\Form::radio($name, $value, $value == $checked, array_merge($options, $attributes)) !!}
 
-            {!! \Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
+            {!! \Hafijul233\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
         </div>
     @endforeach
 
-    {!! \Form::error($name) !!}
+    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

@@ -1,16 +1,16 @@
 <div class="form-group">
-    {!! \Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
     @php
         $options = ['class' => 'form-control custom-file-input ' . ($errors->has($name) ? ' is-invalid' : null)];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
     @endphp
     <div class="custom-file">
-        {!! \Form::label('', 'Choose file...', false, ['class' => 'custom-file-label', 'id' => $name . '_file_label']) !!}
-        {!! \Form::file($name, array_merge($options, $attributes)) !!}
-        {!! \Form::error($name) !!}
+        {!! \Hafijul233\Form\Facades\Form::label('', 'Choose file...', false, ['class' => 'custom-file-label', 'id' => $name . '_file_label']) !!}
+        {!! \Hafijul233\Form\Facades\Form::file($name, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::error($name) !!}
     </div>
 
     @if ($preview['preview'] ?? false)

@@ -10,25 +10,15 @@ return [
      */
     'style' => 'bootstrap4',
 
-    /**
-     * Form local language for field that support localization
-     *
-     * @reference month, day etc
-     *
-     * @var string style
-     * @value bootstrap3, bootstrap4, bootstrap5
-     */
-    'locale' => 'en',
+    'field' => [
+        'default_class' => ['form-control'],
+        'error_class' => ['is-invalid'],
+    ],
 
-    /**
-     * Form local language for field that support localization
-     *
-     * @reference month, day etc
-     *
-     * @var string style
-     * @value bootstrap3, bootstrap4, bootstrap5
-     */
-    'error_class' => 'invalid-feedback',
+    'message' => [
+        'default_class' => ['font-weight-bold'],
+        'error_class' => ['invalid-feedback'],
+    ],
 
     /**
      * Form local language for field that support localization

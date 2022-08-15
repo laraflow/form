@@ -4,13 +4,13 @@
     @php
         $options = ['class' => 'form-control custom-select', 'multiple' => 'multiple'];
         $options['id'] = $name;
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
     @endphp
 
-    {!! \Hafijul233\Form\Facades\Form::select($name . '[]', $data, $selected, $required,  $attributes) !!}
+    {!! \Hafijul233\Form\Facades\Form::select($name . '[]', $data, $selected, $required, $attributes) !!}
 
     {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

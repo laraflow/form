@@ -7,13 +7,13 @@
 
     @php
         $options = ['class' => 'form-control', 'placeholder' => $attributes['placeholder'] ?? $label];
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
     @endphp
 
-    {!! \Hafijul233\Form\Facades\Form::radio($name, $checked, $required,  $attributes) !!}
+    {!! \Hafijul233\Form\Facades\Form::radio($name, $checked, $required, $attributes) !!}
 
     {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

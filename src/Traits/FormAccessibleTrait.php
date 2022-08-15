@@ -19,7 +19,7 @@ trait FormAccessibleTrait
     protected $reflection;
 
     /**
-     * @param  string  $key
+     * @param string $key
      * @return mixed
      */
     public function getFormValue(string $key)
@@ -30,7 +30,7 @@ trait FormAccessibleTrait
         // instance on retrieval, which makes it quite convenient to work with
         // date fields without having to create a mutator for each property.
         if (in_array($key, $this->getDates())) {
-            if (! is_null($value)) {
+            if (!is_null($value)) {
                 $value = $this->asDateTime($value);
             }
         }
@@ -62,7 +62,7 @@ trait FormAccessibleTrait
     }
 
     /**
-     * @param  string  $key
+     * @param string $key
      * @return bool
      */
     public function hasFormMutator(string $key): bool
@@ -71,10 +71,10 @@ trait FormAccessibleTrait
 
         $mutator = collect($methods)
             ->first(function (ReflectionMethod $method) use ($key) {
-                return $method->getName() === 'form'.Str::studly($key).'Attribute';
+                return $method->getName() === 'form' . Str::studly($key) . 'Attribute';
             });
 
-        return (bool) $mutator;
+        return (bool)$mutator;
     }
 
     /**
@@ -84,7 +84,7 @@ trait FormAccessibleTrait
      */
     protected function getReflection(): ReflectionClass
     {
-        if (! $this->reflection) {
+        if (!$this->reflection) {
             $this->reflection = new ReflectionClass($this);
         }
 
@@ -98,13 +98,13 @@ trait FormAccessibleTrait
      */
     private function mutateFormAttribute($key, $value)
     {
-        return $this->{'form'.Str::studly($key).'Attribute'}($value);
+        return $this->{'form' . Str::studly($key) . 'Attribute'}($value);
     }
 
     /**
      * Check for a nested model.
      *
-     * @param  string  $key
+     * @param string $key
      * @return bool
      */
     public function isNestedModel(string $key): bool

@@ -9,6 +9,8 @@ use Illuminate\Support\HtmlString;
 /**
  * Class Form
  *
+ * @see \Hafijul233\Form\Builders\FormBuilder
+ *
  * @method static HtmlString model(mixed $model, array $options = [])
  * @method static HtmlString open(array $options = [])
  * @method static HtmlString hidden(string $name, mixed $value = null, array $options = [])
@@ -50,11 +52,29 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString component(string $name, string $view, array $attributes)
  * @method static HtmlString macro(string $name, Closure $function)
  *
- * // macros
+ * @see \Hafijul233\Form\Providers\LabelServiceProvider
  * @method static HtmlString  hLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
  * @method static HtmlString  fLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
  *
- * @see \Hafijul233\Form\Builders\FormBuilder
+ * @see \Hafijul233\Form\Providers\GroupFieldServiceProvider
+ * @method static HtmlString  gText(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ * @method static HtmlString  gEmail(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ * @method static HtmlString  gPassword(string $name, string $label, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ * @method static HtmlString  gSearch(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ * @method static HtmlString  gTel(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ * @method static HtmlString  gNumber(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ * @method static HtmlString  gDate(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ * @method static HtmlString  gUrl(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ * @method static HtmlString  gTextarea(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ * @method static HtmlString  gSelect(string $name, string $label, mixed $data = [], mixed $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ * @method static HtmlString  gSelectMulti(string $name, string $label, mixed $data = [], mixed $selected = [], bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ * @method static HtmlString  gSelectRange(string $name, string $label, mixed $begin = 0, mixed $end = 100, $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ * @method static HtmlString  gSelectDay(string $name, string $label, mixed $selected = null, $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ * @method static HtmlString  gSelectMonth(string $name, string $label, mixed $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
+ *
+ *
+ *
+ *
  */
 class Form extends Facade
 {

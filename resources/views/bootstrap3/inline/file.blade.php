@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! \Form::fLabel($name, $label, $required, ['class' => 'd-block mb-2']) !!}
+    {!! \Hafijul233\Form\Facades\Form::fLabel($name, $label, $required, ['class' => 'd-block mb-2']) !!}
     <div class="custom-file">
         @php
             $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null), 'placeholder' => $attributes['placeholder'] ?? $label];
@@ -17,7 +17,7 @@
                 </span>
             </div>
         @endif
-        {!! \Form::file($name, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::file($name, array_merge($options, $attributes)) !!}
         @if (isset($position) && ($position = 'after'))
             <div class="input-group-prepend">
                 <span class="input-group-text">
@@ -27,7 +27,7 @@
                 </span>
             </div>
         @endif
-        {!! \Form::label($name, $label, $required, ['class' => 'custom-file-label']) !!}
-        {!! \Form::error($name) !!}
+        {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'custom-file-label']) !!}
+        {!! \Hafijul233\Form\Facades\Form::error($name) !!}
     </div>
 </div>

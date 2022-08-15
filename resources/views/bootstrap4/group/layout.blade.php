@@ -2,12 +2,10 @@
     {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null)];
-        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
     @endphp
-
     <div class="input-group">
         @if (isset($position) && $position == 'before')
             <div class="input-group-prepend">
@@ -19,7 +17,7 @@
             </div>
         @endif
 
-        {!! \Hafijul233\Form\Facades\Form::password($name, array_merge($options, $attributes)) !!}
+        @yield('element')
 
         @if (isset($position) && $position == 'after')
             <div class="input-group-append">

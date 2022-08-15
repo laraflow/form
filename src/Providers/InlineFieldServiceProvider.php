@@ -17,7 +17,7 @@ class InlineFieldServiceProvider extends ServiceProvider
      * Example:
      *
      *  +-----------------------------------+
-     *  |            Field                  |
+     *  |       Placeholder Title           |
      *  +-----------------------------------+
      */
     public function boot()

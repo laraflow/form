@@ -1,6 +1,6 @@
 <div class="form-group">
 
-    {!! \Form::label($name . '[]', $label, $required) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name . '[]', $label, $required) !!}
 
     @php
         $options = ['class' => 'custom-control-input ' . ($errors->has($name) ? ' is-invalid' : null)];
@@ -17,11 +17,16 @@
         @endphp
 
         <div class="custom-control custom-checkbox">
-            {!! \Form::checkbox($name . '[]', $value, in_array($value, $checked), array_merge($options, $attributes)) !!}
+            {!! \Hafijul233\Form\Facades\Form::checkbox(
+                $name . '[]',
+                $value,
+                in_array($value, $checked),
+                array_merge($options, $attributes),
+            ) !!}
 
-            {!! \Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
+            {!! \Hafijul233\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
         </div>
     @endforeach
 
-    {!! \Form::error($name . '[]') !!}
+    {!! \Hafijul233\Form\Facades\Form::error($name . '[]') !!}
 </div>

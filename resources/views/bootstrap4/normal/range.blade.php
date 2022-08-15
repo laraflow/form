@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! \Form::label($name, $label, $required) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
 
     @php
         $options = ['class' => 'form-control custom-range ' . ($errors->has($name) ? ' is-invalid' : null)];
@@ -9,12 +9,12 @@
         }
     @endphp
 
-    {!! \Form::range($name, $default, array_merge($options, $attributes)) !!}
+    {!! \Hafijul233\Form\Facades\Form::range($name, $default, array_merge($options, $attributes)) !!}
     @if (isset($attributes['min']) && isset($attributes['max']))
         <div class="d-flex justify-content-between">
             <div class="font-weight-bolder">{{ $attributes['min'] }}</div>
             <div class="font-weight-bolder">{{ $attributes['max'] }}</div>
         </div>
     @endif
-    {!! \Form::error($name) !!}
+    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

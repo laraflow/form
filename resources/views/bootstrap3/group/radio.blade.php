@@ -3,7 +3,7 @@
     <label class="custom-control-label" for="customRadio1">Custom radio</label>
 </div>
 <div class="form-group">
-    {!! \Form::label($name, $label, $required) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
 
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null)];
@@ -13,7 +13,7 @@
         }
     @endphp
 
-    {!! \Form::radio($name, $checked, array_merge($options, $attributes)) !!}
+    {!! \Hafijul233\Form\Facades\Form::radio($name, $checked, array_merge($options, $attributes)) !!}
 
-    {!! \Form::error($name) !!}
+    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

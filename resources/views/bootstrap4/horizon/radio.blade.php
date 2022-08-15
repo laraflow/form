@@ -1,6 +1,8 @@
 <div class="form-group row">
 
-    {!! \Form::label($name, $label, $required, ['class' => 'col-form-label col-sm-' . $col_size]) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, [
+        'class' => 'col-form-label col-sm-' . $col_size,
+    ]) !!}
 
     @php
         $options = ['class' => 'custom-control-input ' . ($errors->has($name) ? ' is-invalid' : null)];
@@ -17,12 +19,12 @@
             @endphp
 
             <div class="custom-control custom-radio">
-                {!! \Form::radio($name, $value, $value == $checked, array_merge($options, $attributes)) !!}
+                {!! \Hafijul233\Form\Facades\Form::radio($name, $value, $value == $checked, array_merge($options, $attributes)) !!}
 
-                {!! \Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
+                {!! \Hafijul233\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
             </div>
         @endforeach
 
-        {!! \Form::error($name) !!}
+        {!! \Hafijul233\Form\Facades\Form::error($name) !!}
     </div>
 </div>

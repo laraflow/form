@@ -1,5 +1,5 @@
 <div class="form-group row">
-    {!! \Form::hLabel($name, $label, $required, $col_size) !!}
+    {!! \Hafijul233\Form\Facades\Form::hLabel($name, $label, $required, $col_size) !!}
 
     @php
         $field_size = abs(12 - $col_size);
@@ -10,7 +10,7 @@
         }
     @endphp
     <div class="col-md-{{ $field_size }}">
-        {!! \Form::url($name, $default, array_merge($options, $attributes)) !!}
-        {!! \Form::hError($name, $msg) !!}
+        {!! \Hafijul233\Form\Facades\Form::url($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::hError($name, $msg) !!}
     </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! \Form::label($name, $label, $required, ['class' => 'd-none']) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'd-none']) !!}
 
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null), 'placeholder' => $attributes['placeholder'] ?? $label];
@@ -16,8 +16,8 @@
                 @endif
             </span>
         </div>
-        {!! \Form::url($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::url($name, $default, array_merge($options, $attributes)) !!}
 
-        {!! \Form::error($name) !!}
+        {!! \Hafijul233\Form\Facades\Form::error($name) !!}
     </div>
 </div>

@@ -49,14 +49,14 @@ class GroupFieldServiceProvider extends ServiceProvider
 
         Form::component('gTextarea', 'form::'.$style.'.group.textarea', ['name', 'label', 'default' => null, 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
 
-        Form::component('gSelect', 'form::'.$style.'.group.select', ['name', 'label', 'data', 'selected', 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
+        Form::component('gSelect', 'form::'.$style.'.group.select', ['name', 'label', 'data' => [], 'selected' => null, 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
 
         Form::component('gSelectMulti', 'form::'.$style.'.group.selectmulti', ['name', 'label', 'data' => [], 'selected' => [], 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
 
-        Form::component('gSelectRange', 'form::'.$style.'.group.selectrange', ['name', 'label', 'begin', 'end', 'selected', 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
+        Form::component('gSelectRange', 'form::'.$style.'.group.selectrange', ['name', 'label', 'begin' => 0, 'end' => 100, 'selected' => null, 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
 
         Form::component('gSelectDay', 'form::'.$style.'.group.selectday', ['name', 'label', 'selected' => null, 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
 
-        Form::component('gSelectMonth', 'form::'.$style.'.group.selectmonth', ['name', 'label', 'selected' => date('m'), 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
+        Form::component('gSelectMonth', 'form::'.$style.'.group.selectmonth', ['name', 'label', 'selected' => null, 'required' => false, 'icon' => null, 'position' => 'before', 'attributes' => []]);
     }
 }

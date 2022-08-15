@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! \Form::label($name, $label, $required) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
 
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null), 'rows' => 3];
@@ -9,7 +9,7 @@
         }
     @endphp
 
-    {!! \Form::textarea($name, $default, array_merge($options, $attributes)) !!}
+    {!! \Hafijul233\Form\Facades\Form::textarea($name, $default, array_merge($options, $attributes)) !!}
 
-    {!! \Form::error($name) !!}
+    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

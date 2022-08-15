@@ -13,8 +13,8 @@
     @endphp
 
     <div class="form-check">
-        {!! \Form::checkbox($name, $default, $checked, array_merge($options, $attributes)) !!}
-        {!! \Form::label($name, $label, $required, ['class' => 'form-check-label']) !!}
-        {!! \Form::error($name) !!}
+        {!! \Hafijul233\Form\Facades\Form::checkbox($name, $default, $checked, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'form-check-label']) !!}
+        {!! \Hafijul233\Form\Facades\Form::error($name) !!}
     </div>
 </div>

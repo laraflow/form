@@ -1,5 +1,7 @@
 <div class="form-group row">
-    {!! \Form::label($name, $label, $required, ['class' => 'col-form-label col-sm-' . $col_size]) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, [
+        'class' => 'col-form-label col-sm-' . $col_size,
+    ]) !!}
 
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null)];
@@ -9,8 +11,8 @@
         }
     @endphp
     <div class="col-sm-{{ 12 - $col_size }}">
-        {!! \Form::tel($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::tel($name, $default, array_merge($options, $attributes)) !!}
 
-        {!! \Form::error($name) !!}
+        {!! \Hafijul233\Form\Facades\Form::error($name) !!}
     </div>
 </div>

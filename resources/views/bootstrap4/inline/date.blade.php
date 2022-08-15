@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! \Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
         $options = ['class' => 'form-control' . ($errors->has($name) ? ' is-invalid' : null)];
@@ -21,7 +21,7 @@
                 </div>
             @endif
 
-            {!! \Form::date($name, $default, array_merge($options, $attributes)) !!}
+            {!! \Hafijul233\Form\Facades\Form::date($name, $default, array_merge($options, $attributes)) !!}
 
             @if (isset($position) && $position == 'after')
                 <div class="input-group-append">
@@ -34,7 +34,7 @@
             @endif
         </div>
     @else
-        {!! \Form::date($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::date($name, $default, array_merge($options, $attributes)) !!}
     @endif
-    {!! \Form::error($name) !!}
+    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

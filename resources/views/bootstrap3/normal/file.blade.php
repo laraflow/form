@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! \Form::label($name, $label, $required) !!}
+    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
     @php
         $options = ['class' => 'form-control custom-file-input ' . ($errors->has($name) ? ' is-invalid' : null)];
         
@@ -8,12 +8,12 @@
         }
     @endphp
     <div class="custom-file">
-        {!! \Form::label('Choose file...', $label, $required, [
+        {!! \Hafijul233\Form\Facades\Form::label('Choose file...', $label, $required, [
             'class' => 'custom-file-label',
             'id' => $name . '_file_label',
         ]) !!}
-        {!! \Form::file($name, array_merge($options, $attributes)) !!}
-        {!! \Form::error($name) !!}
+        {!! \Hafijul233\Form\Facades\Form::file($name, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::error($name) !!}
     </div>
 
     @if ($preview[0] ?? false)

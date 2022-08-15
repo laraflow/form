@@ -59,6 +59,21 @@ class FormServiceProvider extends ServiceProvider
         $this->registerComponentProviders();
     }
 
+    protected function registerComponentProviders()
+    {
+        $this->app->register(LabelServiceProvider::class);
+
+        $this->app->register(HorizontalFieldServiceProvider::class);
+
+        $this->app->register(GroupFieldServiceProvider::class);
+
+        $this->app->register(InlineFieldServiceProvider::class);
+
+        $this->app->register(NormalFieldServiceProvider::class);
+
+        $this->registerBladeDirectives();
+    }
+
     /**
      * Register Blade directives.
      *
@@ -84,21 +99,6 @@ class FormServiceProvider extends ServiceProvider
                 }
             }
         });
-    }
-
-    protected function registerComponentProviders()
-    {
-        $this->app->register(LabelServiceProvider::class);
-
-        $this->app->register(HorizontalFieldServiceProvider::class);
-
-        $this->app->register(GroupFieldServiceProvider::class);
-
-        $this->app->register(InlineFieldServiceProvider::class);
-
-        $this->app->register(NormalFieldServiceProvider::class);
-
-        $this->registerBladeDirectives();
     }
 
     /*    /**

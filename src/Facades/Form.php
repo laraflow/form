@@ -113,27 +113,25 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString iRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
  *
  * @see \Hafijul233\Form\Providers\NormalFieldServiceProvider
- * @method static HtmlString nText(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nEmail(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nPassword(string $name, string $label, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nRange(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nSearch(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nTel(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nNumber(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nDate(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nUrl(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nFile(string $name, string $label, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nTextarea(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nSelect(string $name, string $label, mixed $data = [], mixed $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nSelectMulti(string $name, string $label, mixed $data = [], mixed $selected = [], bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nSelectRange(string $name, string $label, mixed $begin = 0, mixed $end = 100, $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nSelectDay(string $name, string $label, mixed $selected = null, $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nSelectMonth(string $name, string $label, mixed $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nCheckbox(string $name, string $label, mixed $values = [], mixed $checked = [], bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString nRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- *
- *
- */
+ * @method static HtmlString nText(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString nEmail(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString nPassword(string $name, string $label, bool $required = false, array $attributes = [])
+ * @method static HtmlString nRange(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString nSearch(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString nTel(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString nNumber(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString nDate(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString nUrl(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString nFile(string $name, string $label, bool $required = false, array $attributes = [])
+ * @method static HtmlString nTextarea(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString nSelect(string $name, string $label, mixed $data = [], mixed $selected = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString nSelectMulti(string $name, string $label, mixed $data = [], mixed $selected = [], bool $required = false, array $attributes = [])
+ * @method static HtmlString nSelectRange(string $name, string $label, mixed $begin = 0, mixed $end = 100, $selected = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString nSelectDay(string $name, string $label, mixed $selected = null, $selected = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString nSelectMonth(string $name, string $label, mixed $selected = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString nCheckbox(string $name, string $label, mixed $values = [], mixed $checked = [], bool $required = false, array $attributes = [])
+ * @method static HtmlString nRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, array $attributes = [])
+ **/
 class Form extends Facade
 {
     /**

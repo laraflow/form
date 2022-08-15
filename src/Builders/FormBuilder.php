@@ -26,6 +26,9 @@ class FormBuilder
         ComponentTrait::__call as componentCall;
     }
 
+    /**
+     * @var array
+     */
     protected $payload;
 
     /**
@@ -195,734 +198,6 @@ class FormBuilder
     }
 
     /**
-     * Create a hidden input field.
-     *
-     * @param string $name
-     * @param null $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function hidden(string $name, $value = null, array $options = []): HtmlString
-    {
-        return $this->input('hidden', $name, $value, $options);
-    }
-
-    /**
-     * Create a form input field.
-     *
-     * @param string $type
-     * @param string $name
-     * @param null $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function input(string $type, string $name, $value = null, array $options = []): HtmlString
-    {
-        $this->type = $type;
-
-        if (!isset($options['name'])) {
-            $options['name'] = $name;
-        }
-
-        //updating class fields
-        $this->classAttributes($name, $options, 'field');
-
-        // We will get the appropriate value for the given field. We will look for the
-        // value in the session for the value in the old input data then we'll look
-        // in the model instance if one is set. Otherwise we will just use empty.
-        $id = $this->getIdAttribute($name, $options);
-
-        if (!in_array($type, $this->skipValueTypes)) {
-            $value = $this->getValueAttribute($name, $value);
-        }
-
-        // Once we have the type, value, and ID we can merge them into the rest of the
-        // attributes array so we can convert them into their HTML attribute format
-        // when creating the HTML element. Then, we will return the entire input.
-        $merge = compact('type', 'value', 'id');
-
-        $options = array_merge($options, $merge);
-
-        return $this->toHtmlString('<input' . $this->attributes($options) . '>');
-    }
-
-    /**
-     * Get a value from the session's old input.
-     *
-     * @param string $name
-     * @return mixed
-     */
-    public function old(string $name)
-    {
-        $key = $this->transformKey($name);
-        $payload = $this->session->getOldInput($key);
-
-        if (!is_array($payload)) {
-            return $payload;
-        }
-
-        if (!in_array($this->type, ['select', 'checkbox'])) {
-            if (!isset($this->payload[$key])) {
-                $this->payload[$key] = collect($payload);
-            }
-
-            if (!empty($this->payload[$key])) {
-                return $this->payload[$key]->shift();
-            }
-        }
-
-        return $payload;
-    }
-
-    /**
-     * Generate a hidden field with the current CSRF token.
-     *
-     * @return string
-     */
-    public function token()
-    {
-        $token = !empty($this->csrfToken) ? $this->csrfToken : $this->session->token();
-
-        return $this->hidden('_token', $token);
-    }
-
-    /**
-     * Get the current model instance on the form builder.
-     *
-     * @return mixed $model
-     */
-    public function getModel()
-    {
-        return $this->model;
-    }
-
-    /**
-     * Set the model instance on the form builder.
-     *
-     * @param mixed $model
-     * @return void
-     */
-    public function setModel($model)
-    {
-        $this->model = $model;
-    }
-
-    /**
-     * Close the current form.
-     *
-     * @return string
-     */
-    public function close()
-    {
-        $this->labels = [];
-
-        $this->model = null;
-
-        return $this->toHtmlString('</form>');
-    }
-
-    /**
-     * Create a form label element.
-     *
-     * @param string $name
-     * @param null $title
-     * @param bool $required
-     * @param array $options
-     * @param bool $escape_html
-     * @return HtmlString
-     */
-    public function label(string $name, $title = null, bool $required = false, array $options = [], $escape_html = true): HtmlString
-    {
-        $this->labels[] = $name;
-
-        $options = $this->attributes($options);
-
-        $title = $this->formatLabel($name, $title);
-
-        if ($escape_html) {
-            $title = $this->entities($title);
-        }
-
-        if ($required) {
-            $title = $title . '<span style="color: #dc3545; font-weight:700">*</span>';
-        }
-
-        return $this->toHtmlString("<label for=\"{$name}\" {$options}>{$title}</label>");
-    }
-
-    /**
-     * Format the label value.
-     *
-     * @param string $name
-     * @param string|null $value
-     * @return string
-     */
-    protected function formatLabel(string $name, string $value = null): string
-    {
-        return $value ?: ucwords(str_replace('_', ' ', $name));
-    }
-
-    /**
-     * Create a text input field.
-     *
-     * @param string $name
-     * @param string $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function text(string $name, $value = null, array $options = []): HtmlString
-    {
-        return $this->input('text', $name, $value, $options);
-    }
-
-    /**
-     * Create a password input field.
-     *
-     * @param string $name
-     * @param array $options
-     * @return HtmlString
-     */
-    public function password(string $name, array $options = []): HtmlString
-    {
-        return $this->input('password', $name, '', $options);
-    }
-
-    /**
-     * Create a range input field.
-     *
-     * @param string $name
-     * @param string $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function range(string $name, $value = null, array $options = []): HtmlString
-    {
-        return $this->input('range', $name, $value, $options);
-    }
-
-    /**
-     * Create a search input field.
-     *
-     * @param string $name
-     * @param string $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function search(string $name, $value = null, array $options = []): HtmlString
-    {
-        return $this->input('search', $name, $value, $options);
-    }
-
-    /**
-     * Create an e-mail input field.
-     *
-     * @param string $name
-     * @param string $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function email(string $name, $value = null, array $options = []): HtmlString
-    {
-        return $this->input('email', $name, $value, $options);
-    }
-
-    /**
-     * Create a tel input field.
-     *
-     * @param string $name
-     * @param string $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function tel(string $name, $value = null, array $options = []): HtmlString
-    {
-        return $this->input('tel', $name, $value, $options);
-    }
-
-    /**
-     * Create a number input field.
-     *
-     * @param string $name
-     * @param string $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function number(string $name, $value = null, array $options = []): HtmlString
-    {
-        return $this->input('number', $name, $value, $options);
-    }
-
-    /**
-     * Create a date input field.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function date(string $name, $value = null, array $options = []): HtmlString
-    {
-        if ($value instanceof DateTime) {
-            $value = $value->format('Y-m-d');
-        }
-
-        return $this->input('date', $name, $value, $options);
-    }
-
-    /**
-     * Create a datetime input field.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function datetime(string $name, $value = null, array $options = []): HtmlString
-    {
-        if ($value instanceof DateTime) {
-            $value = $value->format(DateTime::RFC3339);
-        }
-
-        return $this->input('datetime', $name, $value, $options);
-    }
-
-    /**
-     * Create a datetime-local input field.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function datetimeLocal(string $name, $value = null, array $options = []): HtmlString
-    {
-        if ($value instanceof DateTime) {
-            $value = $value->format('Y-m-d\TH:i');
-        }
-
-        return $this->input('datetime-local', $name, $value, $options);
-    }
-
-    /**
-     * Create a time input field.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function time(string $name, $value = null, array $options = []): HtmlString
-    {
-        if ($value instanceof DateTime) {
-            $value = $value->format('H:i');
-        }
-
-        return $this->input('time', $name, $value, $options);
-    }
-
-    /**
-     * Create a url input field.
-     *
-     * @param string $name
-     * @param string $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function url(string $name, $value = null, array $options = []): HtmlString
-    {
-        return $this->input('url', $name, $value, $options);
-    }
-
-    /**
-     * Create a week input field.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function week(string $name, $value = null, array $options = []): HtmlString
-    {
-        if ($value instanceof DateTime) {
-            $value = $value->format('Y-\WW');
-        }
-
-        return $this->input('week', $name, $value, $options);
-    }
-
-    /**
-     * Create a file input field.
-     *
-     * @param string $name
-     * @param array $options
-     * @return HtmlString
-     */
-    public function file(string $name, array $options = []): HtmlString
-    {
-        return $this->input('file', $name, null, $options);
-    }
-
-    /**
-     * Create a textarea input field.
-     *
-     * @param string $name
-     * @param string $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function textarea(string $name, $value = null, array $options = []): HtmlString
-    {
-        $this->type = 'textarea';
-
-        if (!isset($options['name'])) {
-            $options['name'] = $name;
-        }
-
-        // Next we will look for the rows and cols attributes, as each of these are put
-        // on the textarea element definition. If they are not present, we will just
-        // assume some sane default values for these attributes for the developer.
-        $options = $this->setTextAreaSize($options);
-
-        $options['id'] = $this->getIdAttribute($name, $options);
-
-        $value = (string)$this->getValueAttribute($name, $value);
-
-        unset($options['size']);
-
-        // Next we will convert the attributes into a string form. Also we have removed
-        // the size attribute, as it was merely a short-cut for the rows and cols on
-        // the element. Then we'll create the final textarea elements HTML for us.
-        $options = $this->attributes($options);
-
-        return $this->toHtmlString('<textarea' . $options . '>' . e($value, false) . '</textarea>');
-    }
-
-    /**
-     * Create a select year field.
-     *
-     * @param string $name
-     * @param string $begin
-     * @param string $end
-     * @param string|null $selected
-     * @param array $options
-     * @return HtmlString
-     */
-    public function selectYear(string $name, string $begin, string $end, string $selected = null, array $options = []): HtmlString
-    {
-        return $this->selectRange($name, $begin, $end, $selected, $options);
-    }
-
-    /**
-     * Create a select range field.
-     *
-     * @param string $name
-     * @param string $begin
-     * @param string $end
-     * @param string $selected
-     * @param array $options
-     * @return HtmlString
-     */
-    public function selectRange(string $name, $begin, $end, $selected = null, array $options = []): HtmlString
-    {
-        $range = array_combine($range = range($begin, $end), $range);
-
-        return $this->select($name, $range, $selected, $options);
-    }
-
-    /**
-     * Create a select box field.
-     *
-     * @param string $name
-     * @param array $list
-     * @param null $selected
-     * @param array $selectAttributes
-     * @param array $optionsAttributes
-     * @param array $optgroupsAttributes
-     * @return HtmlString
-     */
-    public function select(
-        string $name,
-        array $list = [],
-        $selected = null,
-        array $selectAttributes = [],
-        array $optionsAttributes = [],
-        array $optgroupsAttributes = []
-    ): HtmlString
-    {
-        $this->type = 'select';
-
-        // When building a select box the "value" attribute is really the selected one
-        // so we will use that when checking the model or session for a value which
-        // should provide a convenient method of re-populating the forms on post.
-        $selected = $this->getValueAttribute($name, $selected);
-
-        $selectAttributes['id'] = $this->getIdAttribute($name, $selectAttributes);
-
-        if (!isset($selectAttributes['name'])) {
-            $selectAttributes['name'] = $name;
-        }
-
-        // We will simply loop through the options and build an HTML value for each of
-        // them until we have an array of HTML declarations. Then we will join them
-        // all together into one single HTML element that can be put on the form.
-        $html = [];
-
-        if (isset($selectAttributes['placeholder'])) {
-            $html[] = $this->placeholderOption($selectAttributes['placeholder'], $selected);
-            unset($selectAttributes['placeholder']);
-        }
-
-        foreach ($list as $value => $display) {
-            $optionAttributes = $optionsAttributes[$value] ?? [];
-            $optgroupAttributes = $optgroupsAttributes[$value] ?? [];
-            $html[] = $this->getSelectOption($display, $value, $selected, $optionAttributes, $optgroupAttributes);
-        }
-
-        // Once we have all of this HTML, we can join this into a single element after
-        // formatting the attributes into an HTML "attributes" string, then we will
-        // build out a final select statement, which will contain all the values.
-        $selectAttributes = $this->attributes($selectAttributes);
-
-        $list = implode('', $html);
-
-        return $this->toHtmlString("<select{$selectAttributes}>{$list}</select>");
-    }
-
-    /**
-     * Create a select month field.
-     *
-     * @param string $name
-     * @param null $selected
-     * @param array $options
-     * @return HtmlString
-     */
-    public function selectMonth(string $name, $selected = null, array $options = []): HtmlString
-    {
-        $months = Config::get('form.months', [
-            '1' => 'January',
-            '2' => 'February',
-            '3' => 'March',
-            '4' => 'April',
-            '5' => 'May',
-            '6' => 'June',
-            '7' => 'July',
-            '8' => 'August',
-            '9' => 'September',
-            '10' => 'October',
-            '11' => 'November',
-            '12' => 'December',
-        ]);
-
-        return $this->select($name, $months, $selected, $options);
-    }
-
-    /**
-     * Create a checkbox input field.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param bool $checked
-     * @param array $options
-     * @return HtmlString
-     */
-    public function checkbox(string $name, $value = 1, $checked = null, array $options = []): HtmlString
-    {
-        return $this->checkable('checkbox', $name, $value, $checked, $options);
-    }
-
-    /**
-     * Create a radio button input field.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param bool $checked
-     * @param array $options
-     * @return HtmlString
-     */
-    public function radio(string $name, $value = null, $checked = null, array $options = []): HtmlString
-    {
-        if (is_null($value)) {
-            $value = $name;
-        }
-
-        return $this->checkable('radio', $name, $value, $checked, $options);
-    }
-
-    /**
-     * Create a HTML reset input element.
-     *
-     * @param string $value
-     * @param array $attributes
-     * @return HtmlString
-     */
-    public function reset(string $value, $attributes = []): HtmlString
-    {
-        return $this->input('reset', null, $value, $attributes);
-    }
-
-    /**
-     * Create a HTML image input element.
-     *
-     * @param string $url
-     * @param null $name
-     * @param array $attributes
-     * @return HtmlString
-     */
-    public function image(string $url, $name = null, $attributes = []): HtmlString
-    {
-        $attributes['src'] = $this->url->asset($url);
-
-        return $this->input('image', $name, null, $attributes);
-    }
-
-    /**
-     * Create a month input field.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function month(string $name, $value = null, array $options = []): HtmlString
-    {
-        if ($value instanceof DateTime) {
-            $value = $value->format('Y-m');
-        }
-
-        return $this->input('month', $name, $value, $options);
-    }
-
-    /**
-     * Create a color input field.
-     *
-     * @param string $name
-     * @param string $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function color(string $name, $value = null, array $options = []): HtmlString
-    {
-        return $this->input('color', $name, $value, $options);
-    }
-
-    /**
-     * Create a submit button element.
-     *
-     * @param string $name
-     * @param null $value
-     * @param bool $button
-     * @param array $options
-     * @return HtmlString
-     */
-    public function submit($name = 'submit', $value = null, $button = false, array $options = []): HtmlString
-    {
-        if ($button) {
-            $options['type'] = 'submit';
-            $options['name'] = $name;
-
-            if (empty($options['class'])) {
-                $options['class'] = Config::get('form.submit_class', 'btn btn-primary fw-bold');
-            }
-
-            return $this->button($value, $options);
-        }
-
-        return $this->input('submit', null, $value, $options);
-    }
-
-    /**
-     * Create a button element.
-     *
-     * @param string $value
-     * @param array $options
-     * @return HtmlString
-     */
-    public function button($value = null, array $options = []): HtmlString
-    {
-        if (!array_key_exists('type', $options)) {
-            $options['type'] = 'button';
-        }
-
-        return $this->toHtmlString('<button' . $this->attributes($options) . '>' . $value . '</button>');
-    }
-
-    /**
-     * Create a datalist box field.
-     *
-     * @param string $id
-     * @param array $list
-     * @return HtmlString
-     */
-    public function datalist(string $id, $list = []): HtmlString
-    {
-        $this->type = 'datalist';
-
-        $attributes['id'] = $id;
-
-        $html = [];
-
-        if ($this->isAssociativeArray($list)) {
-            foreach ($list as $value => $display) {
-                $html[] = $this->option($display, $value, null, []);
-            }
-        } else {
-            foreach ($list as $value) {
-                $html[] = $this->option($value, $value, null, []);
-            }
-        }
-
-        $attributes = $this->attributes($attributes);
-
-        $list = implode('', $html);
-
-        return $this->toHtmlString("<datalist{$attributes}>{$list}</datalist>");
-    }
-
-    /**
-     * Create a form error display element.
-     *
-     * @param string $name
-     * @param bool $all
-     * @param array $options
-     * @return HtmlString
-     */
-    public function error(string $name, bool $all = false, array $options = []): HtmlString
-    {
-
-        $this->classAttributes($name, $options, 'message');
-
-        if (empty($options['class'])) {
-            $options['class'] = Config::get('form.error_class', 'invalid-feedback');
-        }
-
-        return $this->getErrorMessage($name, $all, $options);
-    }
-
-    /**
-     * Dynamically handle calls to the class.
-     *
-     * @param string $method
-     * @param array $parameters
-     * @return mixed
-     *
-     * @throws BadMethodCallException
-     */
-    public function __call(string $method, array $parameters)
-    {
-        if (static::hasComponent($method)) {
-            return $this->componentCall($method, $parameters);
-        }
-
-        if (static::hasMacro($method)) {
-            return $this->macroCall($method, $parameters);
-        }
-
-        throw new BadMethodCallException("Method {$method} does not exist.");
-    }
-
-    //------------------------------------------- Internal Methods ---------------------------------------------------//
-
-    /**
      * Parse the form action method.
      *
      * @param string $method
@@ -1042,6 +317,64 @@ class FormBuilder
         return $appendage;
     }
 
+    /**
+     * Create a hidden input field.
+     *
+     * @param string $name
+     * @param null $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function hidden(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        return $this->input('hidden', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create a form input field.
+     *
+     * @param string $type
+     * @param string $name
+     * @param null $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function input(string $type, string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        $this->type = $type;
+
+        if (!isset($options['name'])) {
+            $options['name'] = $name;
+        }
+
+        //updating class fields
+        $this->classAttributes($name, $options);
+
+        // We will get the appropriate value for the given field. We will look for the
+        // value in the session for the value in the old input data then we'll look
+        // in the model instance if one is set. Otherwise we will just use empty.
+        $id = $this->getIdAttribute($name, $options);
+
+        if (!in_array($type, $this->skipValueTypes)) {
+            $value = $this->getValueAttribute($name, $value);
+        }
+
+        // Once we have the type, value, and ID we can merge them into the rest of the
+        // attributes array so we can convert them into their HTML attribute format
+        // when creating the HTML element. Then, we will return the entire input.
+        $merge = compact('type', 'value', 'id');
+
+        $options = array_merge($options, $merge);
+
+        if ($required === true) {
+            $options['required'] = "required";
+        }
+
+        return $this->toHtmlString('<input' . $this->attributes($options) . '>');
+    }
+
     protected function classAttributes($name, &$options = [], string $field = 'field')
     {
         $classes = Config::get("form.{$field}.default_class", []);
@@ -1126,6 +459,34 @@ class FormBuilder
         }
 
         return null;
+    }
+
+    /**
+     * Get a value from the session's old input.
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function old(string $name): ?array
+    {
+        $key = $this->transformKey($name);
+        $payload = $this->session->getOldInput($key);
+
+        if (!is_array($payload)) {
+            return $payload;
+        }
+
+        if (!in_array($this->type, ['select', 'checkbox'])) {
+            if (!isset($this->payload[$key])) {
+                $this->payload[$key] = collect($payload);
+            }
+
+            if (!empty($this->payload[$key])) {
+                return $this->payload[$key]->shift();
+            }
+        }
+
+        return $payload;
     }
 
     /**
@@ -1237,6 +598,94 @@ class FormBuilder
     }
 
     /**
+     * Generate a hidden field with the current CSRF token.
+     *
+     * @return string
+     */
+    public function token()
+    {
+        $token = !empty($this->csrfToken) ? $this->csrfToken : $this->session->token();
+
+        return $this->hidden('_token', $token);
+    }
+
+    /**
+     * Get the current model instance on the form builder.
+     *
+     * @return mixed $model
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * Set the model instance on the form builder.
+     *
+     * @param mixed $model
+     * @return void
+     */
+    public function setModel($model)
+    {
+        $this->model = $model;
+    }
+
+    /**
+     * Close the current form.
+     *
+     * @return string
+     */
+    public function close()
+    {
+        $this->labels = [];
+
+        $this->model = null;
+
+        return $this->toHtmlString('</form>');
+    }
+
+    /**
+     * Create a form label element.
+     *
+     * @param string $name
+     * @param null $title
+     * @param bool $required
+     * @param array $options
+     * @param bool $escape_html
+     * @return HtmlString
+     */
+    public function label(string $name, $title = null, bool $required = false, array $options = [], $escape_html = true): HtmlString
+    {
+        $this->labels[] = $name;
+
+        $options = $this->attributes($options);
+
+        $title = $this->formatLabel($name, $title);
+
+        if ($escape_html) {
+            $title = $this->entities($title);
+        }
+
+        if ($required) {
+            $title = $title . '<span style="color: #dc3545; font-weight:700">*</span>';
+        }
+
+        return $this->toHtmlString("<label for=\"{$name}\" {$options}>{$title}</label>");
+    }
+
+    /**
+     * Format the label value.
+     *
+     * @param string $name
+     * @param string|null $value
+     * @return string
+     */
+    protected function formatLabel(string $name, string $value = null): string
+    {
+        return $value ?: ucwords(str_replace('_', ' ', $name));
+    }
+
+    /**
      * Convert an HTML string to entities.
      *
      * @param string $value
@@ -1245,6 +694,262 @@ class FormBuilder
     protected function entities(string $value): string
     {
         return htmlentities($value, ENT_QUOTES, 'UTF-8', false);
+    }
+
+    /**
+     * Create a text input field.
+     *
+     * @param string $name
+     * @param null $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function text(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        return $this->input('text', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create a password input field.
+     *
+     * @param string $name
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function password(string $name, bool $required = false, array $options = []): HtmlString
+    {
+        return $this->input('password', $name, null, $required, $options);
+    }
+
+    /**
+     * Create a range input field.
+     *
+     * @param string $name
+     * @param null $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function range(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        return $this->input('range', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create a search input field.
+     *
+     * @param string $name
+     * @param null $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function search(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        return $this->input('search', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create an e-mail input field.
+     *
+     * @param string $name
+     * @param null $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function email(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        return $this->input('email', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create a tel input field.
+     *
+     * @param string $name
+     * @param null $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function tel(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        return $this->input('tel', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create a number input field.
+     *
+     * @param string $name
+     * @param null $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function number(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        return $this->input('number', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create a date input field.
+     *
+     * @param string $name
+     * @param mixed $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function date(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        if ($value instanceof DateTime) {
+            $value = $value->format('Y-m-d');
+        }
+
+        return $this->input('date', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create a datetime input field.
+     *
+     * @param string $name
+     * @param mixed $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function datetime(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        if ($value instanceof DateTime) {
+            $value = $value->format(DateTime::RFC3339);
+        }
+
+        return $this->input('datetime', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create a datetime-local input field.
+     *
+     * @param string $name
+     * @param mixed $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function datetimeLocal(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        if ($value instanceof DateTime) {
+            $value = $value->format('Y-m-d\TH:i');
+        }
+
+        return $this->input('datetime-local', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create a time input field.
+     *
+     * @param string $name
+     * @param mixed $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function time(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        if ($value instanceof DateTime) {
+            $value = $value->format('H:i');
+        }
+
+        return $this->input('time', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create a url input field.
+     *
+     * @param string $name
+     * @param null $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function url(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        return $this->input('url', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create a week input field.
+     *
+     * @param string $name
+     * @param mixed $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function week(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        if ($value instanceof DateTime) {
+            $value = $value->format('Y-\WW');
+        }
+
+        return $this->input('week', $name, $value, $required, $options);
+    }
+
+    //------------------------------------------- Internal Methods ---------------------------------------------------//
+
+    /**
+     * Create a file input field.
+     *
+     * @param string $name
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function file(string $name, bool $required = false, array $options = []): HtmlString
+    {
+        return $this->input('file', $name, null, $required, $options);
+    }
+
+    /**
+     * Create a textarea input field.
+     *
+     * @param string $name
+     * @param null $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function textarea(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        $this->type = 'textarea';
+
+        if (!isset($options['name'])) {
+            $options['name'] = $name;
+        }
+
+        $this->classAttributes($name, $options);
+
+        // Next we will look for the rows and cols attributes, as each of these are put
+        // on the textarea element definition. If they are not present, we will just
+        // assume some sane default values for these attributes for the developer.
+        $options = $this->setTextAreaSize($options);
+
+        $options['id'] = $this->getIdAttribute($name, $options);
+
+        $value = (string)$this->getValueAttribute($name, $value);
+
+        unset($options['size']);
+
+        // Next we will convert the attributes into a string form. Also we have removed
+        // the size attribute, as it was merely a short-cut for the rows and cols on
+        // the element. Then we'll create the final textarea elements HTML for us.
+        if ($required === true) {
+            $options['required'] = "required";
+        }
+
+        return $this->toHtmlString('<textarea' . $this->attributes($options) . '>' . e($value, false) . '</textarea>');
     }
 
     /**
@@ -1280,6 +985,105 @@ class FormBuilder
         $segments = explode('x', $options['size']);
 
         return array_merge($options, ['cols' => $segments[0], 'rows' => $segments[1]]);
+    }
+
+    /**
+     * Create a select year field.
+     *
+     * @param string $name
+     * @param string $begin
+     * @param string $end
+     * @param string|null $selected
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function selectYear(string $name, string $begin, string $end, string $selected = null, bool $required = false, array $options = []): HtmlString
+    {
+        return $this->selectRange($name, $begin, $end, $selected, $required, $options);
+    }
+
+    /**
+     * Create a select range field.
+     *
+     * @param string $name
+     * @param string $begin
+     * @param string $end
+     * @param null $selected
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function selectRange(string $name, $begin, $end, $selected = null, bool $required = false, array $options = []): HtmlString
+    {
+        $range = array_combine($range = range($begin, $end), $range);
+
+        return $this->select($name, $range, $selected, $required, $options);
+    }
+
+    /**
+     * Create a select box field.
+     *
+     * @param string $name
+     * @param array $list
+     * @param null $selected
+     * @param bool $required
+     * @param array $selectAttributes
+     * @param array $optionsAttributes
+     * @param array $optgroupsAttributes
+     * @return HtmlString
+     */
+    public function select(
+        string $name,
+        array $list = [],
+        $selected = null,
+        bool $required = false,
+        array $selectAttributes = [],
+        array $optionsAttributes = [],
+        array $optgroupsAttributes = []
+    ): HtmlString
+    {
+        $this->type = 'select';
+
+        $this->classAttributes($name, $selectAttributes);
+        // When building a select box the "value" attribute is really the selected one
+        // so we will use that when checking the model or session for a value which
+        // should provide a convenient method of re-populating the forms on post.
+        $selected = $this->getValueAttribute($name, $selected);
+
+        $selectAttributes['id'] = $this->getIdAttribute($name, $selectAttributes);
+
+        if (!isset($selectAttributes['name'])) {
+            $selectAttributes['name'] = $name;
+        }
+
+        // We will simply loop through the options and build an HTML value for each of
+        // them until we have an array of HTML declarations. Then we will join them
+        // all together into one single HTML element that can be put on the form.
+        $html = [];
+
+        if (isset($selectAttributes['placeholder'])) {
+            $html[] = $this->placeholderOption($selectAttributes['placeholder'], $selected);
+            unset($selectAttributes['placeholder']);
+        }
+
+        foreach ($list as $value => $display) {
+            $optionAttributes = $optionsAttributes[$value] ?? [];
+            $optgroupAttributes = $optgroupsAttributes[$value] ?? [];
+            $html[] = $this->getSelectOption($display, $value, $selected, $optionAttributes, $optgroupAttributes);
+        }
+
+        // Once we have all of this HTML, we can join this into a single element after
+        // formatting the attributes into an HTML "attributes" string, then we will
+        // build out a final select statement, which will contain all the values.
+
+        if ($required === true) {
+            $selectAttributes['required'] = "required";
+        }
+
+        $list = implode('', $html);
+
+        return $this->toHtmlString("<select{$this->attributes($selectAttributes)}>{$list}</select>");
     }
 
     /**
@@ -1333,7 +1137,7 @@ class FormBuilder
      * @param array $optgroupAttributes
      * @return HtmlString
      */
-    public function getSelectOption($display, string $value, $selected, array $attributes = [], array $optgroupAttributes = []): HtmlString
+    public function getSelectOption($display, string $value, $selected = null, array $attributes = [], array $optgroupAttributes = []): HtmlString
     {
         if (is_iterable($display)) {
             return $this->optionGroup($display, $value, $selected, $optgroupAttributes, $attributes);
@@ -1378,7 +1182,7 @@ class FormBuilder
      * @param array $attributes
      * @return HtmlString
      */
-    protected function option(string $display, string $value, $selected, array $attributes = []): HtmlString
+    protected function option(string $display, string $value, $selected = null, array $attributes = []): HtmlString
     {
         $selected = $this->getSelectedValue($value, $selected);
 
@@ -1393,16 +1197,61 @@ class FormBuilder
     }
 
     /**
+     * Create a select month field.
+     *
+     * @param string $name
+     * @param null $selected
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function selectMonth(string $name, $selected = null, bool $required = false, array $options = []): HtmlString
+    {
+        $months = Config::get('form.months', [
+            '1' => 'January',
+            '2' => 'February',
+            '3' => 'March',
+            '4' => 'April',
+            '5' => 'May',
+            '6' => 'June',
+            '7' => 'July',
+            '8' => 'August',
+            '9' => 'September',
+            '10' => 'October',
+            '11' => 'November',
+            '12' => 'December',
+        ]);
+
+        return $this->select($name, $months, $selected, $required, $options);
+    }
+
+    /**
+     * Create a checkbox input field.
+     *
+     * @param string $name
+     * @param mixed $value
+     * @param null $checked
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function checkbox(string $name, $value = 1, $checked = null, bool $required = false, array $options = []): HtmlString
+    {
+        return $this->checkable('checkbox', $name, $value, $checked, $required, $options);
+    }
+
+    /**
      * Create a checkable input field.
      *
      * @param string $type
      * @param string $name
      * @param mixed $value
      * @param bool $checked
+     * @param bool $required
      * @param array $options
      * @return HtmlString
      */
-    protected function checkable(string $type, string $name, $value, bool $checked, array $options = []): HtmlString
+    protected function checkable(string $type, string $name, $value, bool $checked, bool $required = false, array $options = []): HtmlString
     {
         $this->type = $type;
 
@@ -1412,7 +1261,7 @@ class FormBuilder
             $options['checked'] = 'checked';
         }
 
-        return $this->input($type, $name, $value, $options);
+        return $this->input($type, $name, $value, $required, $options);
     }
 
     /**
@@ -1524,6 +1373,158 @@ class FormBuilder
     }
 
     /**
+     * Create a radio button input field.
+     *
+     * @param string $name
+     * @param mixed $value
+     * @param null $checked
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function radio(string $name, $value = null, $checked = null, bool $required = false, array $options = []): HtmlString
+    {
+        if (is_null($value)) {
+            $value = $name;
+        }
+
+        return $this->checkable('radio', $name, $value, $checked, $required, $options);
+    }
+
+    /**
+     * Create a HTML reset input element.
+     *
+     * @param string $value
+     * @param array $attributes
+     * @return HtmlString
+     */
+    public function reset(string $value, $attributes = []): HtmlString
+    {
+        return $this->input('reset', null, $value, false, $attributes);
+    }
+
+    /**
+     * Create a HTML image input element.
+     *
+     * @param string $url
+     * @param null $name
+     * @param bool $required
+     * @param array $attributes
+     * @return HtmlString
+     */
+    public function image(string $url, $name = null, bool $required = false, $attributes = []): HtmlString
+    {
+        $attributes['src'] = $this->url->asset($url);
+
+        return $this->input('image', $name, null, $required, $attributes);
+    }
+
+    /**
+     * Create a month input field.
+     *
+     * @param string $name
+     * @param mixed $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function month(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        if ($value instanceof DateTime) {
+            $value = $value->format('Y-m');
+        }
+
+        return $this->input('month', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create a color input field.
+     *
+     * @param string $name
+     * @param null $value
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    public function color(string $name, $value = null, bool $required = false, array $options = []): HtmlString
+    {
+        return $this->input('color', $name, $value, $required, $options);
+    }
+
+    /**
+     * Create a submit button element.
+     *
+     * @param string $name
+     * @param null $value
+     * @param bool $button
+     * @param array $options
+     * @return HtmlString
+     */
+    public function submit($name = 'submit', $value = null, $button = false, array $options = []): HtmlString
+    {
+        if ($button) {
+            $options['type'] = 'submit';
+            $options['name'] = $name;
+
+            if (empty($options['class'])) {
+                $options['class'] = Config::get('form.submit_class', 'btn btn-primary fw-bold');
+            }
+
+            return $this->button($value, $options);
+        }
+
+        return $this->input('submit', null, $value, false, $options);
+    }
+
+    /**
+     * Create a button element.
+     *
+     * @param string $value
+     * @param array $options
+     * @return HtmlString
+     */
+    public function button($value = null, array $options = []): HtmlString
+    {
+        if (!array_key_exists('type', $options)) {
+            $options['type'] = 'button';
+        }
+
+        return $this->toHtmlString('<button' . $this->attributes($options) . '>' . $value . '</button>');
+    }
+
+    /**
+     * Create a datalist box field.
+     *
+     * @param string $id
+     * @param array $list
+     * @return HtmlString
+     */
+    public function datalist(string $id, $list = []): HtmlString
+    {
+        $this->type = 'datalist';
+
+        $attributes['id'] = $id;
+
+        $html = [];
+
+        if ($this->isAssociativeArray($list)) {
+            foreach ($list as $value => $display) {
+                $html[] = $this->option($display, $value, null, []);
+            }
+        } else {
+            foreach ($list as $value) {
+                $html[] = $this->option($value, $value, null, []);
+            }
+        }
+
+        $attributes = $this->attributes($attributes);
+
+        $list = implode('', $html);
+
+        return $this->toHtmlString("<datalist{$attributes}>{$list}</datalist>");
+    }
+
+    /**
      * Determine if an array is associative.
      *
      * @param array $array
@@ -1532,6 +1533,26 @@ class FormBuilder
     protected function isAssociativeArray(array $array): bool
     {
         return array_values($array) !== $array;
+    }
+
+    /**
+     * Create a form error display element.
+     *
+     * @param string $name
+     * @param bool $all
+     * @param array $options
+     * @return HtmlString
+     */
+    public function error(string $name, bool $all = false, array $options = []): HtmlString
+    {
+
+        $this->classAttributes($name, $options, 'message');
+
+        if (empty($options['class'])) {
+            $options['class'] = Config::get('form.error_class', 'invalid-feedback');
+        }
+
+        return $this->getErrorMessage($name, $all, $options);
     }
 
     /**
@@ -1563,6 +1584,28 @@ class FormBuilder
         }
 
         return $this->toHtmlString($message);
+    }
+
+    /**
+     * Dynamically handle calls to the class.
+     *
+     * @param string $method
+     * @param array $parameters
+     * @return mixed
+     *
+     * @throws BadMethodCallException
+     */
+    public function __call(string $method, array $parameters)
+    {
+        if (static::hasComponent($method)) {
+            return $this->componentCall($method, $parameters);
+        }
+
+        if (static::hasMacro($method)) {
+            return $this->macroCall($method, $parameters);
+        }
+
+        throw new BadMethodCallException("Method {$method} does not exist.");
     }
 
     /**

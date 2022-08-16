@@ -897,8 +897,6 @@ class FormBuilder
         return $this->input('week', $name, $value, $required, $options);
     }
 
-    //------------------------------------------- Internal Methods ---------------------------------------------------//
-
     /**
      * Create a file input field.
      *
@@ -950,41 +948,6 @@ class FormBuilder
         }
 
         return $this->toHtmlString('<textarea' . $this->attributes($options) . '>' . e($value, false) . '</textarea>');
-    }
-
-    /**
-     * Set the text area size on the attributes.
-     *
-     * @param array $options
-     * @return array
-     */
-    protected function setTextAreaSize(array $options): array
-    {
-        if (isset($options['size'])) {
-            return $this->setQuickTextAreaSize($options);
-        }
-
-        // If the "size" attribute was not specified, we will just look for the regular
-        // columns and rows attributes, using sane defaults if these do not exist on
-        // the attributes array. We'll then return this entire options array back.
-        $cols = Arr::get($options, 'cols', 50);
-
-        $rows = Arr::get($options, 'rows', 10);
-
-        return array_merge($options, compact('cols', 'rows'));
-    }
-
-    /**
-     * Set the text area size using the quick "size" attribute.
-     *
-     * @param array $options
-     * @return array
-     */
-    protected function setQuickTextAreaSize(array $options): array
-    {
-        $segments = explode('x', $options['size']);
-
-        return array_merge($options, ['cols' => $segments[0], 'rows' => $segments[1]]);
     }
 
     /**
@@ -1087,116 +1050,6 @@ class FormBuilder
     }
 
     /**
-     * Create a placeholder select element option.
-     *
-     * @param $display
-     * @param $selected
-     * @return HtmlString
-     */
-    protected function placeholderOption($display, $selected): HtmlString
-    {
-        $selected = $this->getSelectedValue(null, $selected);
-
-        $options = [
-            'selected' => $selected,
-            'value' => '',
-        ];
-
-        return $this->toHtmlString('<option' . $this->attributes($options) . '>' . e($display, false) . '</option>');
-    }
-
-    /**
-     * Determine if the value is selected.
-     *
-     * @param string|null $value
-     * @param mixed $selected
-     * @return mixed
-     */
-    protected function getSelectedValue($value, $selected)
-    {
-        if (is_array($selected)) {
-            return in_array($value, $selected, true) || in_array((string)$value, $selected, true) ? 'selected' : null;
-        } elseif ($selected instanceof Collection) {
-            return $selected->contains($value) ? 'selected' : null;
-        }
-        /** @phpstan-ignore-next-line */
-        if (is_int($value) && is_bool($selected)) {
-            return (bool)$value === $selected;
-        }
-
-        return ((string)$value === (string)$selected) ? 'selected' : null;
-    }
-
-    /**
-     * Get the select option for the given value.
-     *
-     * @param mixed $display
-     * @param string $value
-     * @param string|null $selected
-     * @param array $attributes
-     * @param array $optgroupAttributes
-     * @return HtmlString
-     */
-    public function getSelectOption($display, string $value, $selected = null, array $attributes = [], array $optgroupAttributes = []): HtmlString
-    {
-        if (is_iterable($display)) {
-            return $this->optionGroup($display, $value, $selected, $optgroupAttributes, $attributes);
-        }
-
-        return $this->option($display, $value, $selected, $attributes);
-    }
-
-    /**
-     * Create an option group form element.
-     *
-     * @param array $list
-     * @param string $label
-     * @param string $selected
-     * @param array $attributes
-     * @param array $optionsAttributes
-     * @param int $level
-     * @return HtmlString
-     */
-    protected function optionGroup(array $list, string $label, string $selected, array $attributes = [], array $optionsAttributes = [], $level = 0): HtmlString
-    {
-        $html = [];
-        $space = str_repeat('&nbsp;', $level);
-        foreach ($list as $value => $display) {
-            $optionAttributes = $optionsAttributes[$value] ?? [];
-            if (is_iterable($display)) {
-                $html[] = $this->optionGroup($display, $value, $selected, $attributes, $optionAttributes, $level + 5);
-            } else {
-                $html[] = $this->option($space . $display, $value, $selected, $optionAttributes);
-            }
-        }
-
-        return $this->toHtmlString('<optgroup label="' . e($space . $label, false) . '"' . $this->attributes($attributes) . '>' . implode('', $html) . '</optgroup>');
-    }
-
-    /**
-     * Create a select element option.
-     *
-     * @param string $display
-     * @param string $value
-     * @param string|null $selected
-     * @param array $attributes
-     * @return HtmlString
-     */
-    protected function option(string $display, string $value, $selected = null, array $attributes = []): HtmlString
-    {
-        $selected = $this->getSelectedValue($value, $selected);
-
-        $options = array_merge(['value' => $value, 'selected' => $selected], $attributes);
-
-        $string = '<option' . $this->attributes($options) . '>';
-        if ($display !== null) {
-            $string .= e($display, false) . '</option>';
-        }
-
-        return $this->toHtmlString($string);
-    }
-
-    /**
      * Create a select month field.
      *
      * @param string $name
@@ -1238,138 +1091,6 @@ class FormBuilder
     public function checkbox(string $name, $value = 1, $checked = null, bool $required = false, array $options = []): HtmlString
     {
         return $this->checkable('checkbox', $name, $value, $checked, $required, $options);
-    }
-
-    /**
-     * Create a checkable input field.
-     *
-     * @param string $type
-     * @param string $name
-     * @param mixed $value
-     * @param bool $checked
-     * @param bool $required
-     * @param array $options
-     * @return HtmlString
-     */
-    protected function checkable(string $type, string $name, $value, bool $checked, bool $required = false, array $options = []): HtmlString
-    {
-        $this->type = $type;
-
-        $checked = $this->getCheckedState($type, $name, $value, $checked);
-
-        if ($checked) {
-            $options['checked'] = 'checked';
-        }
-
-        return $this->input($type, $name, $value, $required, $options);
-    }
-
-    /**
-     * Get the check state for a checkable input.
-     *
-     * @param string $type
-     * @param string $name
-     * @param mixed $value
-     * @param bool $checked
-     * @return bool
-     */
-    protected function getCheckedState(string $type, string $name, $value, bool $checked): bool
-    {
-        switch ($type) {
-            case 'checkbox':
-                return $this->getCheckboxCheckedState($name, $value, $checked);
-
-            case 'radio':
-                return $this->getRadioCheckedState($name, $value, $checked);
-
-            default:
-                return $this->compareValues($name, $value);
-        }
-    }
-
-    /**
-     * Get the check state for a checkbox input.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param bool $checked
-     * @return bool
-     */
-    protected function getCheckboxCheckedState(string $name, $value, bool $checked): bool
-    {
-        $request = $this->request($name);
-
-        if (!$this->oldInputIsEmpty() && is_null($this->old($name)) && !$request) {
-            return false;
-        }
-
-        if ($this->missingOldAndModel($name) && is_null($request)) {
-            return $checked;
-        }
-
-        $posted = $this->getValueAttribute($name, $checked);
-
-        if (is_array($posted)) {
-            return in_array($value, $posted);
-        } elseif ($posted instanceof Collection) {
-            return $posted->contains('id', $value);
-        } else {
-            return (bool)$posted;
-        }
-    }
-
-    /**
-     * Determine if the old input is empty.
-     *
-     * @return bool
-     */
-    private function oldInputIsEmpty(): bool
-    {
-        return count((array)$this->session->getOldInput()) === 0;
-    }
-
-    /**
-     * Determine if old input or model input exists for a key.
-     *
-     * @param string $name
-     * @return bool
-     */
-    protected function missingOldAndModel(string $name): bool
-    {
-        return is_null($this->old($name)) && is_null($this->getModelValueAttribute($name));
-    }
-
-    /**
-     * Get the check state for a radio input.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param bool $checked
-     * @return bool
-     */
-    protected function getRadioCheckedState(string $name, $value, bool $checked): bool
-    {
-        $request = $this->request($name);
-
-        if ($this->missingOldAndModel($name) && !$request) {
-            return $checked;
-        }
-
-        return $this->compareValues($name, $value);
-    }
-
-    /**
-     * Determine if the provide value loosely compares to the value assigned to the field.
-     * Use loose comparison because Laravel model casting may be in affect and therefore
-     * 1 == true and 0 == false.
-     *
-     * @param string $name
-     * @param string $value
-     * @return bool
-     */
-    protected function compareValues(string $name, string $value): bool
-    {
-        return $this->getValueAttribute($name) == $value;
     }
 
     /**
@@ -1525,17 +1246,6 @@ class FormBuilder
     }
 
     /**
-     * Determine if an array is associative.
-     *
-     * @param array $array
-     * @return bool
-     */
-    protected function isAssociativeArray(array $array): bool
-    {
-        return array_values($array) !== $array;
-    }
-
-    /**
      * Create a form error display element.
      *
      * @param string $name
@@ -1553,6 +1263,296 @@ class FormBuilder
         }
 
         return $this->getErrorMessage($name, $all, $options);
+    }
+
+    //------------------------------------------- Internal Methods ---------------------------------------------------//
+
+    /**
+     * Set the text area size on the attributes.
+     *
+     * @param array $options
+     * @return array
+     */
+    protected function setTextAreaSize(array $options): array
+    {
+        if (isset($options['size'])) {
+            return $this->setQuickTextAreaSize($options);
+        }
+
+        // If the "size" attribute was not specified, we will just look for the regular
+        // columns and rows attributes, using sane defaults if these do not exist on
+        // the attributes array. We'll then return this entire options array back.
+        $cols = Arr::get($options, 'cols', 50);
+
+        $rows = Arr::get($options, 'rows', 10);
+
+        return array_merge($options, compact('cols', 'rows'));
+    }
+
+    /**
+     * Set the text area size using the quick "size" attribute.
+     *
+     * @param array $options
+     * @return array
+     */
+    protected function setQuickTextAreaSize(array $options): array
+    {
+        $segments = explode('x', $options['size']);
+
+        return array_merge($options, ['cols' => $segments[0], 'rows' => $segments[1]]);
+    }
+
+    /**
+     * Create a placeholder select element option.
+     *
+     * @param $display
+     * @param $selected
+     * @return HtmlString
+     */
+    protected function placeholderOption($display, $selected): HtmlString
+    {
+        $selected = $this->getSelectedValue(null, $selected);
+
+        $options = [
+            'selected' => $selected,
+            'value' => '',
+        ];
+
+        return $this->toHtmlString('<option' . $this->attributes($options) . '>' . e($display, false) . '</option>');
+    }
+
+    /**
+     * Determine if the value is selected.
+     *
+     * @param string|null $value
+     * @param mixed $selected
+     * @return mixed
+     */
+    protected function getSelectedValue($value, $selected)
+    {
+        if (is_array($selected)) {
+            return in_array($value, $selected, true) || in_array((string)$value, $selected, true) ? 'selected' : null;
+        } elseif ($selected instanceof Collection) {
+            return $selected->contains($value) ? 'selected' : null;
+        }
+        /** @phpstan-ignore-next-line */
+        if (is_int($value) && is_bool($selected)) {
+            return (bool)$value === $selected;
+        }
+
+        return ((string)$value === (string)$selected) ? 'selected' : null;
+    }
+
+    /**
+     * Get the select option for the given value.
+     *
+     * @param mixed $display
+     * @param string $value
+     * @param string|null $selected
+     * @param array $attributes
+     * @param array $optgroupAttributes
+     * @return HtmlString
+     */
+    public function getSelectOption($display, string $value, $selected = null, array $attributes = [], array $optgroupAttributes = []): HtmlString
+    {
+        if (is_iterable($display)) {
+            return $this->optionGroup($display, $value, $selected, $optgroupAttributes, $attributes);
+        }
+
+        return $this->option($display, $value, $selected, $attributes);
+    }
+
+    /**
+     * Create an option group form element.
+     *
+     * @param array $list
+     * @param string $label
+     * @param string $selected
+     * @param array $attributes
+     * @param array $optionsAttributes
+     * @param int $level
+     * @return HtmlString
+     */
+    protected function optionGroup(array $list, string $label, string $selected, array $attributes = [], array $optionsAttributes = [], $level = 0): HtmlString
+    {
+        $html = [];
+        $space = str_repeat('&nbsp;', $level);
+        foreach ($list as $value => $display) {
+            $optionAttributes = $optionsAttributes[$value] ?? [];
+            if (is_iterable($display)) {
+                $html[] = $this->optionGroup($display, $value, $selected, $attributes, $optionAttributes, $level + 5);
+            } else {
+                $html[] = $this->option($space . $display, $value, $selected, $optionAttributes);
+            }
+        }
+
+        return $this->toHtmlString('<optgroup label="' . e($space . $label, false) . '"' . $this->attributes($attributes) . '>' . implode('', $html) . '</optgroup>');
+    }
+
+    /**
+     * Create a select element option.
+     *
+     * @param string $display
+     * @param string $value
+     * @param string|null $selected
+     * @param array $attributes
+     * @return HtmlString
+     */
+    protected function option(string $display, string $value, $selected = null, array $attributes = []): HtmlString
+    {
+        $selected = $this->getSelectedValue($value, $selected);
+
+        $options = array_merge(['value' => $value, 'selected' => $selected], $attributes);
+
+        $string = '<option' . $this->attributes($options) . '>';
+        if ($display !== null) {
+            $string .= e($display, false) . '</option>';
+        }
+
+        return $this->toHtmlString($string);
+    }
+
+    /**
+     * Create a checkable input field.
+     *
+     * @param string $type
+     * @param string $name
+     * @param mixed $value
+     * @param bool $checked
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    protected function checkable(string $type, string $name, $value, bool $checked, bool $required = false, array $options = []): HtmlString
+    {
+        $this->type = $type;
+
+        $checked = $this->getCheckedState($type, $name, $value, $checked);
+
+        if ($checked) {
+            $options['checked'] = 'checked';
+        }
+
+        return $this->input($type, $name, $value, $required, $options);
+    }
+
+    /**
+     * Get the check state for a checkable input.
+     *
+     * @param string $type
+     * @param string $name
+     * @param mixed $value
+     * @param bool $checked
+     * @return bool
+     */
+    protected function getCheckedState(string $type, string $name, $value, bool $checked): bool
+    {
+        switch ($type) {
+            case 'checkbox':
+                return $this->getCheckboxCheckedState($name, $value, $checked);
+
+            case 'radio':
+                return $this->getRadioCheckedState($name, $value, $checked);
+
+            default:
+                return $this->compareValues($name, $value);
+        }
+    }
+
+    /**
+     * Get the check state for a checkbox input.
+     *
+     * @param string $name
+     * @param mixed $value
+     * @param bool $checked
+     * @return bool
+     */
+    protected function getCheckboxCheckedState(string $name, $value, bool $checked): bool
+    {
+        $request = $this->request($name);
+
+        if (!$this->oldInputIsEmpty() && is_null($this->old($name)) && !$request) {
+            return false;
+        }
+
+        if ($this->missingOldAndModel($name) && is_null($request)) {
+            return $checked;
+        }
+
+        $posted = $this->getValueAttribute($name, $checked);
+
+        if (is_array($posted)) {
+            return in_array($value, $posted);
+        } elseif ($posted instanceof Collection) {
+            return $posted->contains('id', $value);
+        } else {
+            return (bool)$posted;
+        }
+    }
+
+    /**
+     * Determine if the old input is empty.
+     *
+     * @return bool
+     */
+    private function oldInputIsEmpty(): bool
+    {
+        return count((array)$this->session->getOldInput()) === 0;
+    }
+
+    /**
+     * Determine if old input or model input exists for a key.
+     *
+     * @param string $name
+     * @return bool
+     */
+    protected function missingOldAndModel(string $name): bool
+    {
+        return is_null($this->old($name)) && is_null($this->getModelValueAttribute($name));
+    }
+
+    /**
+     * Get the check state for a radio input.
+     *
+     * @param string $name
+     * @param mixed $value
+     * @param bool $checked
+     * @return bool
+     */
+    protected function getRadioCheckedState(string $name, $value, bool $checked): bool
+    {
+        $request = $this->request($name);
+
+        if ($this->missingOldAndModel($name) && !$request) {
+            return $checked;
+        }
+
+        return $this->compareValues($name, $value);
+    }
+
+    /**
+     * Determine if the provide value loosely compares to the value assigned to the field.
+     * Use loose comparison because Laravel model casting may be in affect and therefore
+     * 1 == true and 0 == false.
+     *
+     * @param string $name
+     * @param string $value
+     * @return bool
+     */
+    protected function compareValues(string $name, string $value): bool
+    {
+        return $this->getValueAttribute($name) == $value;
+    }
+
+    /**
+     * Determine if an array is associative.
+     *
+     * @param array $array
+     * @return bool
+     */
+    protected function isAssociativeArray(array $array): bool
+    {
+        return array_values($array) !== $array;
     }
 
     /**

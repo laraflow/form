@@ -2,5 +2,5 @@
 
 @section('element')
     @php $attributes['rows'][] = 3; @endphp
-    {!! \Hafijul233\Form\Facades\Form::textarea($name, $default, $required,  $attributes) !!}
+    {!! \Hafijul233\Form\Facades\Form::textarea($name, $default, $required, $attributes) !!}
 @endsection

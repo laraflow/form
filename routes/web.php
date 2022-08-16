@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('web')->group(function () {
-    Route::get('/form/examples', function (Request $request) {
+    Route::get('/form/examples', function () {
         $viewPath = Config::get('form.style', 'bootstrap4');
 
         return view("form::examples.{$viewPath}");

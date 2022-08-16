@@ -1,15 +1,6 @@
-<div class="form-group">
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
+@extends('form::bootstrap4.normal.layout')
 
-    @php
-        $options = ['class' => 'form-control', 'rows' => 3];
-
-        if (isset($required) && $required == true) {
-            $options['required'] = 'required';
-        }
-    @endphp
-
+@section('element')
+    @php $attributes['rows'][] = 3; @endphp
     {!! \Hafijul233\Form\Facades\Form::textarea($name, $default, $required,  $attributes) !!}
-
-    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
-</div>
+@endsection

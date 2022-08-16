@@ -1,20 +1,9 @@
-<div class="form-group">
+@extends('form::bootstrap4.normal.layout')
 
-    {!! \Hafijul233\Form\Facades\Form::label($name . '[]', $label, $required) !!}
-
-    @php
-        $options = ['class' => 'custom-control-input '];
-
-        if (isset($required) && $required == true) {
-            $options['required'] = 'required';
-        }
-    @endphp
-
+@section('element')
+    @php $attributes['class'][] = 'custom-control-input'; @endphp
     @foreach ($values as $value => $display)
-        @php
-            $id = $name . '-checkbox-' . $value;
-            $options['id'] = $id;
-        @endphp
+        @php $options['id'] = $name . '-checkbox-' . $value; @endphp
 
         <div class="custom-control custom-checkbox">
             {!! \Hafijul233\Form\Facades\Form::checkbox(
@@ -27,6 +16,5 @@
             {!! \Hafijul233\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
         </div>
     @endforeach
+@endsection
 
-    {!! \Hafijul233\Form\Facades\Form::error($name . '[]') !!}
-</div>

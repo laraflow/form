@@ -1,12 +1,8 @@
-<div class="form-group">
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
-    @php
-        $options = ['class' => 'form-control custom-file-input '];
+@extends('form::bootstrap4.normal.layout')
 
-        if (isset($required) && $required == true) {
-            $options['required'] = 'required';
-        }
-    @endphp
+@section('element')
+    @php $attributes['class'][] = 'custom-file-input'; @endphp
+
     <div class="custom-file">
         {!! \Hafijul233\Form\Facades\Form::label('', 'Choose file...', false, [
             'class' => 'custom-file-label',
@@ -45,4 +41,5 @@
             field.innerHTML = fileName;
         });
     </script>
-</div>
+
+@endsection

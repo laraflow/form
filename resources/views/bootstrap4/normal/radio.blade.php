@@ -1,27 +1,14 @@
-<div class="form-group">
+@extends('form::bootstrap4.normal.layout')
 
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
-
-    @php
-        $options = ['class' => 'custom-control-input '];
-
-        if (isset($required) && $required == true) {
-            $options['required'] = 'required';
-        }
-    @endphp
-
+@section('element')
+    @php $attributes['class'][] = 'custom-control-input'; @endphp
     @foreach ($values as $value => $display)
-        @php
-            $id = $name . '-radio-' . $value;
-            $options['id'] = $id;
-        @endphp
+        @php $options['id'] = $name . '-radio-' . $value; @endphp
 
         <div class="custom-control custom-radio">
             {!! \Hafijul233\Form\Facades\Form::radio($name, $value, $value == $checked, $required,  $attributes) !!}
 
-            {!! \Hafijul233\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
+            {!! \Hafijul233\Form\Facades\Form::label($options['id'], $display, false, ['class' => 'custom-control-label']) !!}
         </div>
     @endforeach
-
-    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
-</div>
+@endsection

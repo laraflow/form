@@ -1,13 +1,5 @@
-<div class="form-group">
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
+@extends('form::bootstrap4.normal.layout')
 
-    @php
-
-        if (isset($required) && $required == true) {
-            $options['required'] = 'required';
-        }
-    @endphp
-
+@section('element')
     {!! \Hafijul233\Form\Facades\Form::number($name, $default, $required,  $attributes) !!}
-    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
-</div>
+@endsection

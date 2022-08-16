@@ -133,7 +133,9 @@ class FormBuilder
         $this->url = $url;
         $this->request = $request;
 
-        $this->errors = $this->request->session()->get('errors') ?? new ViewErrorBag;
+        $this->errors = ($this->request->hasSession())
+            ? $this->request->session()->get('errors')
+            : new ViewErrorBag;
     }
 
     //--------------------------------------------- Usable Methods ---------------------------------------------------//

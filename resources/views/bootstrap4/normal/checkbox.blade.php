@@ -14,7 +14,7 @@
                 $attributes,
             ) !!}
 
-            {!! \Hafijul233\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
+            {!! \Hafijul233\Form\Facades\Form::label($options['id'], $display, false, ['class' => 'custom-control-label']) !!}
         </div>
     @endforeach
 @endsection

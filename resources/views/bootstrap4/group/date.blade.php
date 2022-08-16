@@ -1,7 +1,7 @@
 <div class="form-group">
     {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
     @php
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -18,7 +18,7 @@
             </div>
         @endif
 
-        {!! \Hafijul233\Form\Facades\Form::date($name, $default, $required,  $attributes) !!}
+        {!! \Hafijul233\Form\Facades\Form::date($name, $default, $required, $attributes) !!}
 
         @if (isset($position) && $position == 'after')
             <div class="input-group-append">

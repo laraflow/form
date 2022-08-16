@@ -8,4 +8,4 @@ if (isset($required) && $required == true) {
 }
 @endphp
 
-{!! \Hafijul233\Form\Facades\Form::file($name, $default, $required,  $attributes) !!}
+{!! \Hafijul233\Form\Facades\Form::file($name, $default, $required, $attributes) !!}

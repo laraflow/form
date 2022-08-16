@@ -8,7 +8,7 @@
             'class' => 'custom-file-label',
             'id' => $name . '_file_label',
         ]) !!}
-        {!! \Hafijul233\Form\Facades\Form::file($name, $required,  $attributes) !!}
+        {!! \Hafijul233\Form\Facades\Form::file($name, $required, $attributes) !!}
         {!! \Hafijul233\Form\Facades\Form::error($name) !!}
     </div>
 
@@ -41,5 +41,4 @@
             field.innerHTML = fileName;
         });
     </script>
-
 @endsection

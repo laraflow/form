@@ -3,7 +3,7 @@
 @section('element')
     @php $attributes['class'][] = 'custom-file-input custom-range'; @endphp
 
-    {!! \Hafijul233\Form\Facades\Form::range($name, $default, $required,  $attributes) !!}
+    {!! \Hafijul233\Form\Facades\Form::range($name, $default, $required, $attributes) !!}
 
     @if (isset($attributes['min']) && isset($attributes['max']))
         <div class="d-flex justify-content-between">

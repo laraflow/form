@@ -6,7 +6,7 @@
         @php $options['id'] = $name . '-radio-' . $value; @endphp
 
         <div class="custom-control custom-radio">
-            {!! \Hafijul233\Form\Facades\Form::radio($name, $value, $value == $checked, $required,  $attributes) !!}
+            {!! \Hafijul233\Form\Facades\Form::radio($name, $value, $value == $checked, $required, $attributes) !!}
 
             {!! \Hafijul233\Form\Facades\Form::label($options['id'], $display, false, ['class' => 'custom-control-label']) !!}
         </div>

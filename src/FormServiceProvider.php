@@ -87,6 +87,7 @@ class FormServiceProvider extends ServiceProvider
             ];
 
             foreach ($namespaces as $namespace => $methods) {
+                dd($methods);
                 foreach ($methods as $method) {
                     if (in_array($method, $this->directives)) {
                         $snakeMethod = Str::snake($method);
@@ -100,14 +101,4 @@ class FormServiceProvider extends ServiceProvider
             }
         });
     }
-
-    /*    /**
-         * Get the services provided by the provider.
-         *
-         * @return array
-         *
-        public function provides(): array
-        {
-            return ['form', FormBuilder::class];
-        }*/
 }

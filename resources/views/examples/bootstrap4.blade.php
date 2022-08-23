@@ -766,24 +766,24 @@
                             <th>5.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hImage('photo', 'Photo', true, [], 2, ['accept' => "image/*"])
+                                    \Form::hImage('photo', 'Photo', true, 2, ['preview' => false, 'height' => 100, 'default' => '/img/logo-app.png'], ['accept' => "image/*"])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hImage('photo', 'Photo', true, 2, ['accept' => "image/*"]) !!}
+                                {!! \Form::hImage('photo', 'Photo', true, 2, ['preview' => false, 'height' => 100, 'default' => '/img/logo-app.png'], ['accept' => "image/*"]) !!}
                             </td>
                         </tr>
                         <tr>
                             <th>6.</th>
                             <td>
                                 <code class="d-block">
-                                    \Form::hImage('profile_photo', 'Profile Photo', true,
+                                    \Form::hImage('profile_photo', 'Profile Photo', true, 2,
                                     ['preview' => true, 'height' => 128,
                                     'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"])
                                 </code>
                             </td>
                             <td>
-                                {!! \Form::hImage('profile_photo', 'Profile Photo', true,
+                                {!! \Form::hImage('profile_photo', 'Profile Photo', true, 2,
                                     ['preview' => true, 'height' => 128,
                                     'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"]) !!}
                             </td>

@@ -6,7 +6,7 @@
 
     @php
         $options = ['class' => 'custom-control-input '];
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -15,7 +15,7 @@
         @foreach ($values as $value => $display)
             @php
                 $id = $name . '-radio-' . $value;
-                $options['id'] = $id
+                $options['id'] = $id;
             @endphp
 
             <div class="custom-control custom-radio">

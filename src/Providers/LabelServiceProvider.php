@@ -5,12 +5,43 @@ namespace Hafijul233\Form\Providers;
 use Hafijul233\Form\Facades\Form;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 
 /**
  * Class LabelServiceProvider
  */
 class LabelServiceProvider extends ServiceProvider
 {
+    /**
+     * Supported Blade Directives
+     *
+     * @var array
+     */
+    protected $directives = ['hlabel' => 'hLabel', 'flabel' => 'fLabel'];
+
+    /**
+     * Register Blade directives.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->registerBladeDirectives();
+    }
+
+    protected function registerBladeDirectives()
+    {
+        $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
+
+
+            foreach ($this->directives as $directive => $method) {
+                $bladeCompiler->directive("form_{$directive}", function ($expression) use ($method) {
+                    return "<?php echo \Hafijul233\Form\Facades\Form::{$method}({$expression}); ?>";
+                });
+            }
+        });
+    }
+
     /**
      * Loading All Label Style
      */
@@ -37,4 +68,5 @@ class LabelServiceProvider extends ServiceProvider
                     return Html::link('<i class="mdi mdi-close-outline fw-bolder"></i>&nbsp;&nbsp;' . $title, $attributes, null, false);
                 });*/
     }
+
 }

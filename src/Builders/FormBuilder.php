@@ -1608,7 +1608,7 @@ class FormBuilder
      *
      * @return  Session  $session
      */
-    protected function getSessionStore(): Session
+    public function getSessionStore(): Session
     {
         return $this->session;
     }
@@ -1619,7 +1619,7 @@ class FormBuilder
      * @param Session $session
      * @return $this
      */
-    protected function setSessionStore(Session $session): self
+    public function setSessionStore(Session $session): self
     {
         $this->session = $session;
 

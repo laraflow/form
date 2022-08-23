@@ -7,7 +7,7 @@
     @foreach ($values as $value => $display)
         @php
             $id = $name . '-checkbox-' . $value;
-            $options['id'] = $id
+            $options['id'] = $id;
         @endphp
 
         <div class="custom-control custom-checkbox">
@@ -15,7 +15,8 @@
                 $name . '[]',
                 $value,
                 in_array($value, $checked),
-                $required,  $attributes,
+                $required,
+                $attributes,
             ) !!}
 
             {!! \Hafijul233\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}

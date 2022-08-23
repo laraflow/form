@@ -2,12 +2,12 @@
 
     {!! \Hafijul233\Form\Facades\Form::label($name . '[]', $label, $required) !!}
 
-    @php $attributes['class'][] = 'custom-control-input'; @endphp
+    @php $attributes['class'][] = 'custom-control-input' @endphp
 
     @foreach ($values as $value => $display)
         @php
             $id = $name . '-checkbox-' . $value;
-            $options['id'] = $id;
+            $options['id'] = $id
         @endphp
 
         <div class="custom-control custom-checkbox">

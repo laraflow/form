@@ -1,6 +1,7 @@
-@extends('form::bootstrap4.normal.layout')
+<div class="form-group">
 
-@section('element')
-    @php $attributes['class'][] = 'custom-select'; @endphp
+    {!! \Hafijul233\Form\Facades\Form::label($name . '[]', $label, $required) !!}
+    @php $attributes['class'][] = 'custom-select' @endphp
     {!! \Hafijul233\Form\Facades\Form::selectRange($name, $begin, $end, $selected, $required, $attributes) !!}
-@endsection
+    {!! \Hafijul233\Form\Facades\Form::error($name . '[]') !!}
+</div>

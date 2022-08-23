@@ -1,6 +1,8 @@
-@extends('form::bootstrap4.normal.layout')
+<div class="form-group">
 
-@section('element')
-    @php $attributes['rows'] = $attributes['rows'] ?? 3; @endphp
+    {!! \Hafijul233\Form\Facades\Form::label($name . '[]', $label, $required) !!}
+    @php $attributes['rows'] = $attributes['rows'] ?? 3 @endphp
     {!! \Hafijul233\Form\Facades\Form::textarea($name, $default, $required, $attributes) !!}
-@endsection
+
+    {!! \Hafijul233\Form\Facades\Form::error($name . '[]') !!}
+</div>

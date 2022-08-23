@@ -4,7 +4,7 @@
     ]) !!}
     @php
         $options = ['class' => 'form-control custom-file-input '];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -19,7 +19,7 @@
             {!! \Hafijul233\Form\Facades\Form::error($name) !!}
         </div>
         <script>
-            document.getElementById('{{ $name }}').addEventListener('change', function() {
+            document.getElementById('{{ $name }}').addEventListener('change', function () {
                 var field = document.getElementById('{{ $name . '_file_label' }}');
                 field.classList.add("selected");
                 field.innerHTML = this.value.split("\\").pop();

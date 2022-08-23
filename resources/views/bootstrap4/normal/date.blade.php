@@ -1,6 +1,8 @@
-@extends('form::bootstrap4.normal.layout')
+<div class="form-group">
 
-@section('element')
-    <h1> {{ date('Y-m-d') }}</h1>
+    {!! \Hafijul233\Form\Facades\Form::label($name . '[]', $label, $required) !!}
+
     {!! \Hafijul233\Form\Facades\Form::date($name, $default, $required, $attributes) !!}
-@endsection
+
+    {!! \Hafijul233\Form\Facades\Form::error($name . '[]') !!}
+</div>

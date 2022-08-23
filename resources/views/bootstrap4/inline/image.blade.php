@@ -2,7 +2,7 @@
     {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
     @php
         $options = ['class' => 'form-control custom-file-input '];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -21,11 +21,11 @@
             <img id="{{ $name }}_preview" src="{{ $preview['default'] }}" height="{{ $preview['height'] ?? 90 }}">
         </div>
         <script>
-            document.getElementById("{{ $name }}").addEventListener("change", function() {
+            document.getElementById("{{ $name }}").addEventListener("change", function () {
                 var i = this;
                 if (i.files && i.files[0]) {
                     var r = new FileReader();
-                    r.onload = function(e) {
+                    r.onload = function (e) {
                         document.getElementById("{{ $name }}_preview").setAttribute('src', e.target.result);
                     };
                     r.readAsDataURL(i.files[0]);
@@ -36,7 +36,7 @@
         </script>
     @endif
     <script>
-        document.getElementById('{{ $name }}').addEventListener('change', function() {
+        document.getElementById('{{ $name }}').addEventListener('change', function () {
 
             var fileName = this.value.split("\\").pop();
 

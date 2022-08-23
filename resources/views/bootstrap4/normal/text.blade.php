@@ -1,5 +1,6 @@
-@extends('form::bootstrap4.normal.layout')
+<div class="form-group">
 
-@section('element')
+    {!! \Hafijul233\Form\Facades\Form::label($name . '[]', $label, $required) !!}
     {!! \Hafijul233\Form\Facades\Form::text($name, $default, $required, $attributes) !!}
-@endsection
+    {!! \Hafijul233\Form\Facades\Form::error($name . '[]') !!}
+</div>

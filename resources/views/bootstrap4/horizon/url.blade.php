@@ -4,7 +4,7 @@
     ]) !!}
 
     @php
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }

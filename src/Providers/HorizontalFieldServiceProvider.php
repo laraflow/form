@@ -67,6 +67,8 @@ class HorizontalFieldServiceProvider extends ServiceProvider
 
         Form::component('hFile', 'form::'.$style.'.horizon.file', ['name', 'label', 'required' => false, 'col_size' => 2, 'attributes' => []]);
 
+        Form::component('hImage', 'form::'.$style.'.horizon.image', ['name', 'label', 'required' => false, 'col_size' => 2, 'preview' => ['preview' => false, 'height' => 100, 'default' => '/img/logo-app.png'], 'attributes' => ['accept' => 'image/*']]);
+
         Form::component('hTextarea', 'form::'.$style.'.horizon.textarea', ['name', 'label', 'default' => null, 'required' => false, 'col_size' => 2, 'attributes' => []]);
 
         Form::component('hSelect', 'form::'.$style.'.horizon.select', ['name', 'label', 'data', 'selected' => null, 'required' => false, 'col_size' => 2, 'attributes' => []]);

@@ -1,14 +1,8 @@
 <div class="form-group row">
     {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, [
-        'class' => 'col-form-label col-sm-' . $col_size,
+        'class' => ['col-form-label col-sm-' . $col_size],
     ]) !!}
-    @php
-        $options = ['class' => 'form-control custom-file-input '];
-
-        if (isset($required) && $required == true) {
-            $options['required'] = 'required';
-        }
-    @endphp
+    @php $attributes['class'][] = 'custom-file-input'; @endphp
     <div class="col-sm-{{ 12 - $col_size }}">
         <div class="custom-file">
             {!! \Hafijul233\Form\Facades\Form::label('', 'Choose file...', false, [

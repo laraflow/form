@@ -762,32 +762,32 @@
                                 {!! \Form::hFile('import_file', 'Import File', true, 2, ['accept' => 'audio/*']) !!}
                             </td>
                         </tr>
-                        {{-- <tr>
-                                            <th>5.</th>
-                                            <td>
-                                                <code class="d-block">
-                                                    \Form::hImage('photo', 'Photo', true, [], ['accept' => "image/*"])
-                                                </code>
-                                            </td>
-                                            <td>
-                                                {!! \Form::hImage('photo', 'Photo', true, ['accept' => "image/*"]) !!}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>6.</th>
-                                            <td>
-                                                <code class="d-block">
-                                                    \Form::hImage('profile_photo', 'Profile Photo', true,
-                                                    ['preview' => true, 'height' => 128,
-                                                    'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"])
-                                                </code>
-                                            </td>
-                                            <td>
-                                                {!! \Form::hImage('profile_photo', 'Profile Photo', true,
-                                                    ['preview' => true, 'height' => 128,
-                                                    'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"]) !!}
-                                            </td>
-                                        </tr> --}}
+                        <tr>
+                            <th>5.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::hImage('photo', 'Photo', true, [], 2, ['accept' => "image/*"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::hImage('photo', 'Photo', true, 2, ['accept' => "image/*"]) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>6.</th>
+                            <td>
+                                <code class="d-block">
+                                    \Form::hImage('profile_photo', 'Profile Photo', true,
+                                    ['preview' => true, 'height' => 128,
+                                    'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"])
+                                </code>
+                            </td>
+                            <td>
+                                {!! \Form::hImage('profile_photo', 'Profile Photo', true,
+                                    ['preview' => true, 'height' => 128,
+                                    'default' => 'https://via.placeholder.com/300x128.png'], ['accept' => "image/*"]) !!}
+                            </td>
+                        </tr>
                         <tr>
                             <th>7.</th>
                             <td>

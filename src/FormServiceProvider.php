@@ -87,12 +87,11 @@ class FormServiceProvider extends ServiceProvider
             ];
 
             foreach ($namespaces as $namespace => $methods) {
-                dd($methods);
                 foreach ($methods as $method) {
                     if (in_array($method, $this->directives)) {
                         $snakeMethod = Str::snake($method);
                         $directive = strtolower($namespace).'_'.$snakeMethod;
-
+                        dump($directive);
                         $bladeCompiler->directive($directive, function ($expression) use ($namespace, $method) {
                             return "<?php echo $namespace::$method($expression); ?>";
                         });

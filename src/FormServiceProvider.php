@@ -91,7 +91,6 @@ class FormServiceProvider extends ServiceProvider
                     if (in_array($method, $this->directives)) {
                         $snakeMethod = Str::snake($method);
                         $directive = strtolower($namespace).'_'.$snakeMethod;
-                        dump($directive);
                         $bladeCompiler->directive($directive, function ($expression) use ($namespace, $method) {
                             return "<?php echo $namespace::$method($expression); ?>";
                         });

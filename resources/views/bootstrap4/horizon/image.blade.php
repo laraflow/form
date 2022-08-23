@@ -16,14 +16,14 @@
         @if ($preview['preview'] ?? false)
             <div class="img-thumbnail mt-2 text-center">
                 <img id="{{ $name }}_preview" src="{{ $preview['default'] }}"
-                     height="{{ $preview['height'] ?? 90 }}">
+                    height="{{ $preview['height'] ?? 90 }}">
             </div>
             <script>
-                document.getElementById("{{ $name }}").addEventListener("change", function () {
+                document.getElementById("{{ $name }}").addEventListener("change", function() {
                     var i = this;
                     if (i.files && i.files[0]) {
                         var r = new FileReader();
-                        r.onload = function (e) {
+                        r.onload = function(e) {
                             document.getElementById("{{ $name }}_preview").setAttribute('src', e.target.result);
                         };
                         r.readAsDataURL(i.files[0]);
@@ -34,7 +34,7 @@
             </script>
         @endif
         <script>
-            document.getElementById('{{ $name }}').addEventListener('change', function () {
+            document.getElementById('{{ $name }}').addEventListener('change', function() {
 
                 var fileName = this.value.split("\\").pop();
 

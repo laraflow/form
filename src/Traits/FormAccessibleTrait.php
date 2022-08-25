@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafijul233\Form\Traits;
+namespace Laraflow\Form\Traits;
 
 use Illuminate\Support\Str;
 use ReflectionClass;

@@ -1,9 +1,9 @@
 <div class="form-group">
 
-    {!! \Hafijul233\Form\Facades\Form::label($name . '[]', $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name . '[]', $label, $required) !!}
     @php $attributes['class'][] = 'custom-file-input custom-range' @endphp
 
-    {!! \Hafijul233\Form\Facades\Form::range($name, $default, $required, $attributes) !!}
+    {!! \Laraflow\Form\Facades\Form::range($name, $default, $required, $attributes) !!}
 
     @if (isset($attributes['min']) && isset($attributes['max']))
         <div class="d-flex justify-content-between">
@@ -13,4 +13,4 @@
     @endif
     <div class="form-group">
 
-        {!! \Hafijul233\Form\Facades\Form::label($name . '[]', $label, $required) !!}
+        {!! \Laraflow\Form\Facades\Form::label($name . '[]', $label, $required) !!}

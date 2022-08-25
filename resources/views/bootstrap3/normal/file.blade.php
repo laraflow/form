@@ -1,19 +1,19 @@
 <div class="form-group">
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
     @php
         $options = ['class' => 'form-control custom-file-input '];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
     @endphp
     <div class="custom-file">
-        {!! \Hafijul233\Form\Facades\Form::label('Choose file...', $label, $required, [
+        {!! \Laraflow\Form\Facades\Form::label('Choose file...', $label, $required, [
             'class' => 'custom-file-label',
             'id' => $name . '_file_label',
         ]) !!}
-        {!! \Hafijul233\Form\Facades\Form::file($name, $required, $attributes) !!}
-        {!! \Hafijul233\Form\Facades\Form::error($name) !!}
+        {!! \Laraflow\Form\Facades\Form::file($name, $required, $attributes) !!}
+        {!! \Laraflow\Form\Facades\Form::error($name) !!}
     </div>
 
     @if ($preview[0] ?? false)

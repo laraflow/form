@@ -1,8 +1,8 @@
 <div class="form-group">
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
     @php
         $options = ['class' => 'form-control custom-select '];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -19,7 +19,7 @@
             </div>
         @endif
 
-        {!! \Hafijul233\Form\Facades\Form::selectRange($name, $begin, $end, $selected, $required, $attributes) !!}
+        {!! \Laraflow\Form\Facades\Form::selectRange($name, $begin, $end, $selected, $required, $attributes) !!}
 
         @if (isset($position) && $position == 'after')
             <div class="input-group-append">
@@ -31,5 +31,5 @@
             </div>
         @endif
     </div>
-    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
+    {!! \Laraflow\Form\Facades\Form::error($name) !!}
 </div>

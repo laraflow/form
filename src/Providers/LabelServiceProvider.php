@@ -1,8 +1,8 @@
 <?php
 
-namespace Hafijul233\Form\Providers;
+namespace Laraflow\Form\Providers;
 
-use Hafijul233\Form\Facades\Form;
+use Laraflow\Form\Facades\Form;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
@@ -34,7 +34,7 @@ class LabelServiceProvider extends ServiceProvider
         $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
             foreach ($this->directives as $directive => $method) {
                 $bladeCompiler->directive("form_{$directive}", function ($expression) use ($method) {
-                    return "<?php echo \Hafijul233\Form\Facades\Form::{$method}({$expression}); ?>";
+                    return "<?php echo \Laraflow\Form\Facades\Form::{$method}({$expression}); ?>";
                 });
             }
         });

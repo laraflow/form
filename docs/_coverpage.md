@@ -1,6 +1,6 @@
 ![logo](_media/icon.svg)
 
-# Laravel Form <small>0.0.9</small>
+# Laraflow Form <small>0.0.9</small>
 
 > A simple form generator using blade components
 
@@ -9,5 +9,5 @@
 - Auto fill data old values
 - 4+ variant on each style
 
-[GitHub](https://github.com/hafijul233/form)
+[GitHub](https://github.com/laraflow/form)
 [Getting Started](#getting-start)

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafijul233\Form\Traits;
+namespace Laraflow\Form\Traits;
 
 use BadMethodCallException;
 use Illuminate\Contracts\View\View;

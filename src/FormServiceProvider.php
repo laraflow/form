@@ -1,13 +1,13 @@
 <?php
 
-namespace Hafijul233\Form;
+namespace Laraflow\Form;
 
-use Hafijul233\Form\Builders\FormBuilder;
-use Hafijul233\Form\Providers\GroupFieldServiceProvider;
-use Hafijul233\Form\Providers\HorizontalFieldServiceProvider;
-use Hafijul233\Form\Providers\InlineFieldServiceProvider;
-use Hafijul233\Form\Providers\LabelServiceProvider;
-use Hafijul233\Form\Providers\NormalFieldServiceProvider;
+use Laraflow\Form\Builders\FormBuilder;
+use Laraflow\Form\Providers\GroupFieldServiceProvider;
+use Laraflow\Form\Providers\HorizontalFieldServiceProvider;
+use Laraflow\Form\Providers\InlineFieldServiceProvider;
+use Laraflow\Form\Providers\LabelServiceProvider;
+use Laraflow\Form\Providers\NormalFieldServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
@@ -88,7 +88,7 @@ class FormServiceProvider extends ServiceProvider
                 if (in_array($method, $this->directives)) {
                     $snakeMethod = Str::snake($method);
                     $bladeCompiler->directive("form_{$snakeMethod}", function ($expression) use ($method) {
-                        return "<?php echo \Hafijul233\Form\Facades\Form::{$method}({$expression}); ?>";
+                        return "<?php echo \Laraflow\Form\Facades\Form::{$method}({$expression}); ?>";
                     });
                 }
             }

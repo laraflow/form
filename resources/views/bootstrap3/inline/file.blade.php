@@ -1,9 +1,9 @@
 <div class="form-group">
-    {!! \Hafijul233\Form\Facades\Form::fLabel($name, $label, $required, ['class' => 'd-block mb-2']) !!}
+    {!! \Laraflow\Form\Facades\Form::fLabel($name, $label, $required, ['class' => 'd-block mb-2']) !!}
     <div class="custom-file">
         @php
             $options = ['class' => 'form-control', 'placeholder' => $attributes['placeholder'] ?? $label];
-            
+
             if (isset($required) && $required == true) {
                 $options['required'] = 'required';
             }
@@ -17,7 +17,7 @@
                 </span>
             </div>
         @endif
-        {!! \Hafijul233\Form\Facades\Form::file($name, $required, $attributes) !!}
+        {!! \Laraflow\Form\Facades\Form::file($name, $required, $attributes) !!}
         @if (isset($position) && ($position = 'after'))
             <div class="input-group-prepend">
                 <span class="input-group-text">
@@ -27,7 +27,7 @@
                 </span>
             </div>
         @endif
-        {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'custom-file-label']) !!}
-        {!! \Hafijul233\Form\Facades\Form::error($name) !!}
+        {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, ['class' => 'custom-file-label']) !!}
+        {!! \Laraflow\Form\Facades\Form::error($name) !!}
     </div>
 </div>

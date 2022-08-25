@@ -8,7 +8,7 @@ locally.
 To get start using this package follow these instructions. You can install the package via composer:
 
 ```bash
-composer require hafijul233/form
+composer require laraflow/form
 ```
 
 You need to publish the config file with:

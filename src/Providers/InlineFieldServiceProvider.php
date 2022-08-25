@@ -32,8 +32,6 @@ class InlineFieldServiceProvider extends ServiceProvider
     protected function registerBladeDirectives()
     {
         $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
-
-
             foreach ($this->directives as $directive => $method) {
                 $bladeCompiler->directive("form_{$directive}", function ($expression) use ($method) {
                     return "<?php echo \Hafijul233\Form\Facades\Form::{$method}({$expression}); ?>";
@@ -41,7 +39,6 @@ class InlineFieldServiceProvider extends ServiceProvider
             }
         });
     }
-
 
     /**
      * Load All Inline Bootstrap Style Forms

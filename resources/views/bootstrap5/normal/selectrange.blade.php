@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
 
     @php
         $options = ['class' => 'form-control custom-select'];
@@ -9,6 +9,6 @@
         }
     @endphp
 
-    {!! \Hafijul233\Form\Facades\Form::selectRange($name, $begin, $end, $selected, $required, $attributes) !!}
-    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
+    {!! \Laraflow\Form\Facades\Form::selectRange($name, $begin, $end, $selected, $required, $attributes) !!}
+    {!! \Laraflow\Form\Facades\Form::error($name) !!}
 </div>

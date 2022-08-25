@@ -1,10 +1,10 @@
 <?php
 
-namespace Hafijul233\Form\Builders;
+namespace Laraflow\Form\Builders;
 
 use BadMethodCallException;
 use DateTime;
-use Hafijul233\Form\Traits\ComponentTrait;
+use Laraflow\Form\Traits\ComponentTrait;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Contracts\View\Factory;

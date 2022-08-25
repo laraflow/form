@@ -1,5 +1,5 @@
 <div class="form-group row">
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, [
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, [
         'class' => 'col-form-label col-sm-' . $col_size,
     ]) !!}
 
@@ -10,7 +10,7 @@
         }
     @endphp
     <div class="col-sm-{{ 12 - $col_size }}">
-        {!! \Hafijul233\Form\Facades\Form::number($name, $default, $required, $attributes) !!}
-        {!! \Hafijul233\Form\Facades\Form::error($name) !!}
+        {!! \Laraflow\Form\Facades\Form::number($name, $default, $required, $attributes) !!}
+        {!! \Laraflow\Form\Facades\Form::error($name) !!}
     </div>
 </div>

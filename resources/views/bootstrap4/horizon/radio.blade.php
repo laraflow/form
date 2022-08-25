@@ -1,6 +1,6 @@
 <div class="form-group row">
 
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, [
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, [
         'class' => 'col-form-label col-sm-' . $col_size,
     ]) !!}
 
@@ -19,12 +19,12 @@
             @endphp
 
             <div class="custom-control custom-radio">
-                {!! \Hafijul233\Form\Facades\Form::radio($name, $value, $value == $checked, $required, $attributes) !!}
+                {!! \Laraflow\Form\Facades\Form::radio($name, $value, $value == $checked, $required, $attributes) !!}
 
-                {!! \Hafijul233\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
+                {!! \Laraflow\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
             </div>
         @endforeach
 
-        {!! \Hafijul233\Form\Facades\Form::error($name) !!}
+        {!! \Laraflow\Form\Facades\Form::error($name) !!}
     </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
     @php
         
         if (isset($required) && $required == true) {
@@ -18,7 +18,7 @@
             </div>
         @endif
 
-        {!! \Hafijul233\Form\Facades\Form::number($name, $default, $required, $attributes) !!}
+        {!! \Laraflow\Form\Facades\Form::number($name, $default, $required, $attributes) !!}
         @if (isset($position) && $position == 'after')
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -29,5 +29,5 @@
             </div>
         @endif
     </div>
-    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
+    {!! \Laraflow\Form\Facades\Form::error($name) !!}
 </div>

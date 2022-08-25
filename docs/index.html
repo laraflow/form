@@ -1,24 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Laravel Form</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+    <meta charset="UTF-8">
+    <title>Laraflow Form</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content="Laraflow Form package to non html designer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="keywords" content="doc,docs,documentation,gitbook,creator,generator,github,jekyll,github-pages">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/pure.css" title="pure" disabled>
+    <style>
+        nav.app-nav li ul {
+            min-width: 100px;
+        }
+
+    </style>
 </head>
 <body>
-  <div id="app"></div>
-  <script>
+<div id="app"></div>
+<script src="//cdn.jsdelivr.net/npm/docsify-plugin-carbon@1"></script>
+<script>
     window.$docsify = {
-      el : '#app',
-      name: 'Laravel Form',
-      repo: 'https://github.com/hafijul233/form',
-      loadSidebar : true,
+        coverpage: true,
+        loadNavbar: true,
+        mergeNavbar: true,
+        maxLevel: 4,
+        subMaxLevel: 2,
+        search: {
+            placeholder: 'Type to search',
+            noData: 'No Results!',
+            depth: 2,
+            paths : 'auto'
+        },
+        el: '#app',
+        name: 'Laraflow Form',
+        repo: 'https://github.com/laraflow/form',
+        loadSidebar: true,
     }
-  </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+</script>
+<!-- Docsify v4 -->
+<script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
 </body>
 </html>

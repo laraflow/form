@@ -1,5 +1,5 @@
 <div class="form-group row">
-    {!! \Hafijul233\Form\Facades\Form::hLabel($name, $label, $required, $col_size) !!}
+    {!! \Laraflow\Form\Facades\Form::hLabel($name, $label, $required, $col_size) !!}
 
     @php
         $field_size = abs(12 - $col_size);
@@ -10,8 +10,8 @@
         }
     @endphp
     <div class="col-md-{{ $field_size }}">
-        {!! \Hafijul233\Form\Facades\Form::email($name, $default, $required, $attributes) !!}
+        {!! \Laraflow\Form\Facades\Form::email($name, $default, $required, $attributes) !!}
 
-        {!! \Hafijul233\Form\Facades\Form::hError($name, $msg) !!}
+        {!! \Laraflow\Form\Facades\Form::hError($name, $msg) !!}
     </div>
 </div>

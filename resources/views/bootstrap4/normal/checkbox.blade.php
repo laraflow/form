@@ -1,6 +1,6 @@
 <div class="form-group">
 
-    {!! \Hafijul233\Form\Facades\Form::label($name . '[]', $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name . '[]', $label, $required) !!}
 
     @php $attributes['class'][] = 'custom-control-input' @endphp
 
@@ -11,7 +11,7 @@
         @endphp
 
         <div class="custom-control custom-checkbox">
-            {!! \Hafijul233\Form\Facades\Form::checkbox(
+            {!! \Laraflow\Form\Facades\Form::checkbox(
                 $name . '[]',
                 $value,
                 in_array($value, $checked),
@@ -19,9 +19,9 @@
                 $attributes,
             ) !!}
 
-            {!! \Hafijul233\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
+            {!! \Laraflow\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
         </div>
     @endforeach
 
-    {!! \Hafijul233\Form\Facades\Form::error($name . '[]') !!}
+    {!! \Laraflow\Form\Facades\Form::error($name . '[]') !!}
 </div>

@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'd-none']) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, ['class' => 'd-none']) !!}
 
     @php
         $options = ['class' => 'form-control custom-select'];
@@ -16,8 +16,8 @@
                 @endif
             </span>
         </div>
-        {!! \Hafijul233\Form\Facades\Form::selectYear($name, $begin, $end, $selected, $required, $attributes) !!}
+        {!! \Laraflow\Form\Facades\Form::selectYear($name, $begin, $end, $selected, $required, $attributes) !!}
 
-        {!! \Hafijul233\Form\Facades\Form::error($name) !!}
+        {!! \Laraflow\Form\Facades\Form::error($name) !!}
     </div>
 </div>

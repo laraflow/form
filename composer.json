@@ -1,5 +1,5 @@
 {
-    "name": "hafijul233/form",
+    "name": "lafalow/form",
     "type": "library",
     "description": "Laravel form builder based bootstrap form components",
     "support": {
@@ -48,12 +48,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Hafijul233\\Form\\": "src"
+            "Laraflow\\Form\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Hafijul233\\Form\\Tests\\": "tests"
+            "Laraflow\\Form\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -72,10 +72,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Hafijul233\\Form\\FormServiceProvider"
+                "Laraflow\\Form\\FormServiceProvider"
             ],
             "aliases": {
-                "Form": "Hafijul233\\Form\\Facades\\Form"
+                "Form": "Laraflow\\Form\\Facades\\Form"
             }
         }
     },

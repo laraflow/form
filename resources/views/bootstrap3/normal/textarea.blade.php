@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
 
     @php
         $options = ['class' => 'form-control', 'rows' => 3];
@@ -9,7 +9,7 @@
         }
     @endphp
 
-    {!! \Hafijul233\Form\Facades\Form::textarea($name, $default, $required, $attributes) !!}
+    {!! \Laraflow\Form\Facades\Form::textarea($name, $default, $required, $attributes) !!}
 
-    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
+    {!! \Laraflow\Form\Facades\Form::error($name) !!}
 </div>

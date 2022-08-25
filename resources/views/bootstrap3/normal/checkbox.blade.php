@@ -13,8 +13,8 @@
     @endphp
 
     <div class="form-check">
-        {!! \Hafijul233\Form\Facades\Form::checkbox($name, $default, $checked, $required, $attributes) !!}
-        {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required, ['class' => 'form-check-label']) !!}
-        {!! \Hafijul233\Form\Facades\Form::error($name) !!}
+        {!! \Laraflow\Form\Facades\Form::checkbox($name, $default, $checked, $required, $attributes) !!}
+        {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, ['class' => 'form-check-label']) !!}
+        {!! \Laraflow\Form\Facades\Form::error($name) !!}
     </div>
 </div>

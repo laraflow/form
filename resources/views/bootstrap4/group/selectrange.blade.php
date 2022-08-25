@@ -19,13 +19,7 @@
             </div>
         @endif
 
-        {!! \Hafijul233\Form\Facades\Form::selectRange(
-            $name,
-            $begin,
-            $end,
-            $selected,
-            array_merge($options, $attributes),
-        ) !!}
+        {!! \Hafijul233\Form\Facades\Form::selectRange($name, $begin, $end, $selected, $required, $attributes) !!}
 
         @if (isset($position) && $position == 'after')
             <div class="input-group-append">

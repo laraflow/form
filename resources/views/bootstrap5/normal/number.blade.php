@@ -8,6 +8,6 @@
         }
     @endphp
 
-    {!! \Hafijul233\Form\Facades\Form::number($name, $default, array_merge($options, $attributes)) !!}
+    {!! \Hafijul233\Form\Facades\Form::number($name, $default, $required, $attributes) !!}
     {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

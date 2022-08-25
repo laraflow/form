@@ -19,7 +19,7 @@ class FormServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $directives = ['entities', 'decode', 'script', 'style', 'image', 'favicon', 'link', 'secureLink', 'linkAsset', 'linkSecureAsset', 'linkRoute', 'linkAction', 'mailto', 'email', 'ol', 'ul', 'dl', 'meta', 'tag', 'open', 'model', 'close', 'token', 'label', 'input', 'text', 'password', 'hidden', 'email', 'tel', 'number', 'date', 'datetime', 'datetimeLocal', 'time', 'url', 'file', 'textarea', 'select', 'selectRange', 'selectYear', 'selectMonth', 'getSelectOption', 'checkbox', 'radio', 'reset', 'image', 'color', 'submit', 'button', 'old'];
+    protected $directives = ['error', 'open', 'model', 'close', 'token', 'label', 'input', 'text', 'password', 'hidden', 'email', 'tel', 'number', 'date', 'datetime', 'datetimeLocal', 'time', 'url', 'file', 'textarea', 'select', 'selectRange', 'selectYear', 'selectMonth', 'checkbox', 'radio', 'reset', 'image', 'color', 'submit', 'button', 'old'];
 
     /**
      * Boot the application events.
@@ -82,32 +82,16 @@ class FormServiceProvider extends ServiceProvider
     protected function registerBladeDirectives()
     {
         $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
-            $namespaces = [
-                'Form' => get_class_methods(FormBuilder::class),
-            ];
+            $methods = get_class_methods(FormBuilder::class);
 
-            foreach ($namespaces as $namespace => $methods) {
-                foreach ($methods as $method) {
-                    if (in_array($method, $this->directives)) {
-                        $snakeMethod = Str::snake($method);
-                        $directive = strtolower($namespace).'_'.$snakeMethod;
-
-                        $bladeCompiler->directive($directive, function ($expression) use ($namespace, $method) {
-                            return "<?php echo $namespace::$method($expression); ?>";
-                        });
-                    }
+            foreach ($methods as $method) {
+                if (in_array($method, $this->directives)) {
+                    $snakeMethod = Str::snake($method);
+                    $bladeCompiler->directive("form_{$snakeMethod}", function ($expression) use ($method) {
+                        return "<?php echo \Hafijul233\Form\Facades\Form::{$method}({$expression}); ?>";
+                    });
                 }
             }
         });
     }
-
-    /*    /**
-         * Get the services provided by the provider.
-         *
-         * @return array
-         *
-        public function provides(): array
-        {
-            return ['form', FormBuilder::class];
-        }*/
 }

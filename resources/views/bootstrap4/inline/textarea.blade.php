@@ -21,7 +21,7 @@
                 </div>
             @endif
 
-            {!! \Hafijul233\Form\Facades\Form::textarea($name, $default, array_merge($options, $attributes)) !!}
+            {!! \Hafijul233\Form\Facades\Form::textarea($name, $default, $required, $attributes) !!}
 
             @if (isset($position) && $position == 'after')
                 <div class="input-group-append">
@@ -34,7 +34,7 @@
             @endif
         </div>
     @else
-        {!! \Hafijul233\Form\Facades\Form::textarea($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::textarea($name, $default, $required, $attributes) !!}
     @endif
     {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

@@ -17,7 +17,7 @@
         @endphp
 
         <div class="custom-control custom-radio custom-control-inline">
-            {!! \Hafijul233\Form\Facades\Form::radio($name, $value, $value == $checked, array_merge($options, $attributes)) !!}
+            {!! \Hafijul233\Form\Facades\Form::radio($name, $value, $value == $checked, $required, $attributes) !!}
 
             {!! \Hafijul233\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
         </div>

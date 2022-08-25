@@ -2,13 +2,7 @@
 
     {!! \Hafijul233\Form\Facades\Form::label($name . '[]', $label, $required) !!}
 
-    @php
-        $options = ['class' => 'custom-control-input '];
-        
-        if (isset($required) && $required == true) {
-            $options['required'] = 'required';
-        }
-    @endphp
+    @php $attributes['class'][] = 'custom-control-input' @endphp
 
     @foreach ($values as $value => $display)
         @php
@@ -21,7 +15,8 @@
                 $name . '[]',
                 $value,
                 in_array($value, $checked),
-                array_merge($options, $attributes),
+                $required,
+                $attributes,
             ) !!}
 
             {!! \Hafijul233\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}

@@ -9,7 +9,7 @@
         }
     @endphp
 
-    {!! \Hafijul233\Form\Facades\Form::textarea($name, $default, array_merge($options, $attributes)) !!}
+    {!! \Hafijul233\Form\Facades\Form::textarea($name, $default, $required, $attributes) !!}
 
     {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

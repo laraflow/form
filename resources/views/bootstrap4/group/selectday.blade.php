@@ -16,12 +16,7 @@
                 @endif
             </span>
         </div>
-        {!! \Hafijul233\Form\Facades\Form::select(
-            $name,
-            config('form.days'),
-            $selected,
-            array_merge($options, $attributes),
-        ) !!}
+        {!! \Hafijul233\Form\Facades\Form::select($name, config('form.days'), $selected, $required, $attributes) !!}
 
         {!! \Hafijul233\Form\Facades\Form::error($name) !!}
     </div>

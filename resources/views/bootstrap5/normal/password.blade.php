@@ -8,7 +8,7 @@
         }
     @endphp
 
-    {!! \Hafijul233\Form\Facades\Form::password($name, array_merge($options, $attributes)) !!}
+    {!! \Hafijul233\Form\Facades\Form::password($name, $required, $attributes) !!}
 
     {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

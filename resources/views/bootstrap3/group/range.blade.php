@@ -15,7 +15,7 @@
                 @endif
             </span>
         </div>
-        {!! \Hafijul233\Form\Facades\Form::range($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::range($name, $default, $required, $attributes) !!}
 
         {!! \Hafijul233\Form\Facades\Form::error($name) !!}
     </div>

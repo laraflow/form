@@ -10,13 +10,7 @@
         }
     @endphp
     <div class="col-md-{{ $field_size }}">
-        {!! \Hafijul233\Form\Facades\Form::selectRange(
-            $name,
-            $begin,
-            $end,
-            $selected,
-            array_merge($options, $attributes),
-        ) !!}
+        {!! \Hafijul233\Form\Facades\Form::selectRange($name, $begin, $end, $selected, $required, $attributes) !!}
 
         {!! \Hafijul233\Form\Facades\Form::hError($name, $msg) !!}
     </div>

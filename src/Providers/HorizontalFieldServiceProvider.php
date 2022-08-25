@@ -5,12 +5,41 @@ namespace Hafijul233\Form\Providers;
 use Hafijul233\Form\Facades\Form;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 
 /**
  * Class HorizontalFieldServiceProvider
  */
 class HorizontalFieldServiceProvider extends ServiceProvider
 {
+    /**
+     * Supported Blade Directives
+     *
+     * @var array
+     */
+    protected $directives = ['hlabel' => 'hLabel', 'flabel' => 'fLabel'];
+
+    /**
+     * Register Blade directives.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->registerBladeDirectives();
+    }
+
+    protected function registerBladeDirectives()
+    {
+        $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
+            foreach ($this->directives as $directive => $method) {
+                $bladeCompiler->directive("form_{$directive}", function ($expression) use ($method) {
+                    return "<?php echo \Hafijul233\Form\Facades\Form::{$method}({$expression}); ?>";
+                });
+            }
+        });
+    }
+
     public function boot()
     {
         $style = Config::get('form.style', 'bootstrap4');
@@ -34,6 +63,8 @@ class HorizontalFieldServiceProvider extends ServiceProvider
         Form::component('hUrl', 'form::'.$style.'.horizon.url', ['name', 'label', 'default' => null, 'required' => false, 'col_size' => 2, 'attributes' => []]);
 
         Form::component('hFile', 'form::'.$style.'.horizon.file', ['name', 'label', 'required' => false, 'col_size' => 2, 'attributes' => []]);
+
+        Form::component('hImage', 'form::'.$style.'.horizon.image', ['name', 'label', 'required' => false, 'col_size' => 2, 'preview' => ['preview' => false, 'height' => 100, 'default' => '/img/logo-app.png'], 'attributes' => ['accept' => 'image/*']]);
 
         Form::component('hTextarea', 'form::'.$style.'.horizon.textarea', ['name', 'label', 'default' => null, 'required' => false, 'col_size' => 2, 'attributes' => []]);
 

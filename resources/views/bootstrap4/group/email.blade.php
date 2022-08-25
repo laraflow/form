@@ -18,7 +18,7 @@
             </div>
         @endif
 
-        {!! \Hafijul233\Form\Facades\Form::email($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::email($name, $default, $required, $attributes) !!}
         @if (isset($position) && $position == 'after')
             <div class="input-group-append">
                 <div class="input-group-text">

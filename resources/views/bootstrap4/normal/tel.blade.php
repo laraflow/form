@@ -1,14 +1,7 @@
 <div class="form-group">
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
 
-    @php
-        
-        if (isset($required) && $required == true) {
-            $options['required'] = 'required';
-        }
-    @endphp
+    {!! \Hafijul233\Form\Facades\Form::label($name . '[]', $label, $required) !!}
+    {!! \Hafijul233\Form\Facades\Form::tel($name, $default, $required, $attributes) !!}
 
-    {!! \Hafijul233\Form\Facades\Form::tel($name, $default, array_merge($options, $attributes)) !!}
-
-    {!! \Hafijul233\Form\Facades\Form::error($name) !!}
+    {!! \Hafijul233\Form\Facades\Form::error($name . '[]') !!}
 </div>

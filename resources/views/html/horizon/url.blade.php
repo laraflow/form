@@ -10,7 +10,7 @@
         }
     @endphp
     <div class="col-md-{{ $field_size }}">
-        {!! \Hafijul233\Form\Facades\Form::url($name, $default, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::url($name, $default, $required, $attributes) !!}
         {!! \Hafijul233\Form\Facades\Form::hError($name, $msg) !!}
     </div>
 </div>

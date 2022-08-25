@@ -9,7 +9,7 @@
         }
     @endphp
 
-    {!! \Hafijul233\Form\Facades\Form::select($name, $data, $selected, array_merge($options, $attributes)) !!}
+    {!! \Hafijul233\Form\Facades\Form::select($name, $data, $selected, $required, $attributes) !!}
 
     {!! \Hafijul233\Form\Facades\Form::error($name) !!}
 </div>

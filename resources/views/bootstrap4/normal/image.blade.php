@@ -1,18 +1,15 @@
 <div class="form-group">
-    {!! \Hafijul233\Form\Facades\Form::label($name, $label, $required) !!}
-    @php
-        $options = ['class' => 'form-control custom-file-input '];
-        
-        if (isset($required) && $required == true) {
-            $options['required'] = 'required';
-        }
-    @endphp
+
+    {!! \Hafijul233\Form\Facades\Form::label($name . '[]', $label, $required) !!}
+
+    @php $attributes['class'][] = 'custom-file-input' @endphp
+
     <div class="custom-file">
         {!! \Hafijul233\Form\Facades\Form::label('', 'Choose file...', false, [
             'class' => 'custom-file-label',
             'id' => $name . '_file_label',
         ]) !!}
-        {!! \Hafijul233\Form\Facades\Form::file($name, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::file($name, $required, $attributes) !!}
         {!! \Hafijul233\Form\Facades\Form::error($name) !!}
     </div>
 
@@ -45,4 +42,6 @@
             field.innerHTML = fileName;
         });
     </script>
+
+    {!! \Hafijul233\Form\Facades\Form::error($name . '[]') !!}
 </div>

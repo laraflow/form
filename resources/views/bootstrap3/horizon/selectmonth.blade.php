@@ -10,7 +10,7 @@
         }
     @endphp
     <div class="col-md-{{ $field_size }}">
-        {!! \Hafijul233\Form\Facades\Form::selectMonth($name, $selected, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::selectMonth($name, $selected, $required, $attributes) !!}
 
         {!! \Hafijul233\Form\Facades\Form::hError($name, $msg) !!}
     </div>

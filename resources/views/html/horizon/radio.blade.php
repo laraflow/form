@@ -13,7 +13,7 @@
     @endphp
 
     <div class="col-md-{{ $field_size }}">
-        {!! \Hafijul233\Form\Facades\Form::radio($name, $checked, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::radio($name, $checked, $required, $attributes) !!}
 
         {!! \Hafijul233\Form\Facades\Form::hError($name, $msg) !!}
     </div>

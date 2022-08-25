@@ -16,7 +16,7 @@
                 </span>
             </div>
         @endif
-        {!! \Hafijul233\Form\Facades\Form::file($name, array_merge($options, $attributes)) !!}
+        {!! \Hafijul233\Form\Facades\Form::file($name, $required, $attributes) !!}
         @if (isset($position) && ($position = 'after'))
             <div class="input-group-prepend">
                 <span class="input-group-text">

@@ -1,6 +1,6 @@
 <?php
 
-use Hafijul233\Form\Controllers\ExampleController;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,5 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('web')->group(function () {
-    Route::get('/form/examples', ExampleController::class);
+    Route::get('/form/examples', function () {
+        $viewPath = Config::get('form.style', 'bootstrap4');
+
+        return view("form::examples.{$viewPath}");
+    });
 });

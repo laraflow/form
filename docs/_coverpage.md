@@ -1,4 +1,4 @@
-![logo](_media/icon.svg)
+![logo](_media/icon-removebg-preview.png)
 
 # Laraflow Form <small>0.0.9</small>
 
@@ -10,4 +10,4 @@
 - 4+ variant on each style
 
 [GitHub](https://github.com/laraflow/form)
-[Getting Started](#getting-start)
+[Getting Started](#getting-started)

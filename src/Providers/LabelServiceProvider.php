@@ -32,8 +32,6 @@ class LabelServiceProvider extends ServiceProvider
     protected function registerBladeDirectives()
     {
         $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
-
-
             foreach ($this->directives as $directive => $method) {
                 $bladeCompiler->directive("form_{$directive}", function ($expression) use ($method) {
                     return "<?php echo \Hafijul233\Form\Facades\Form::{$method}({$expression}); ?>";
@@ -68,5 +66,4 @@ class LabelServiceProvider extends ServiceProvider
                     return Html::link('<i class="mdi mdi-close-outline fw-bolder"></i>&nbsp;&nbsp;' . $title, $attributes, null, false);
                 });*/
     }
-
 }

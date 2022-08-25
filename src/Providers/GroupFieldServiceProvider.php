@@ -12,7 +12,6 @@ use Illuminate\View\Compilers\BladeCompiler;
  */
 class GroupFieldServiceProvider extends ServiceProvider
 {
-
     /**
      * Supported Blade Directives
      *
@@ -33,8 +32,6 @@ class GroupFieldServiceProvider extends ServiceProvider
     protected function registerBladeDirectives()
     {
         $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
-
-
             foreach ($this->directives as $directive => $method) {
                 $bladeCompiler->directive("form_{$directive}", function ($expression) use ($method) {
                     return "<?php echo \Hafijul233\Form\Facades\Form::{$method}({$expression}); ?>";

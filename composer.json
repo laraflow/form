@@ -3,9 +3,9 @@
     "type": "library",
     "description": "Laravel form builder based bootstrap form components",
     "support": {
-        "issues": "https://github.com/hafijul233/form/issues",
-        "wiki": "https://github.com/hafijul233/form/wiki",
-        "source": "https://github.com/hafijul233/form",
+        "issues": "https://github.com/laraflow/form/issues",
+        "wiki": "https://github.com/laraflow/form/wiki",
+        "source": "https://github.com/laraflow/form",
         "docs": "https://hafijulislam.me/projects/form"
     },
     "keywords": [
@@ -23,6 +23,12 @@
             "email": "hafijul233@gmail.com",
             "homepage": "https://www.hafijulislam.me",
             "role": "Maintainer"
+        },
+        {
+            "name": "Mamunur Rashid",
+            "email": "mamunverse@gmail.com",
+            "homepage": "https://mamunverse.com",
+            "role": "Developer"
         }
     ],
     "require": {

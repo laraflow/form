@@ -1,16 +1,16 @@
 # Laraflow/Form
-[![Latest Stable Version](https://poser.pugx.org/hafijul233/form/v)](//packagist.org/packages/hafijul233/form)
-[![Total Downloads](https://poser.pugx.org/hafijul233/form/downloads)](//packagist.org/packages/hafijul233/form)
-[![run-tests](https://github.com/hafijul233/form/workflows/run-tests/badge.svg)](//github.com/hafijul233/form/actions/workflows/run-tests.yml)
-[![License](https://poser.pugx.org/hafijul233/form/license)](//packagist.org/packages/hafijul233/form)
-[![Latest Unstable Version](https://poser.pugx.org/hafijul233/form/v/unstable)](//packagist.org/packages/hafijul233/form)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/hafijul233/form/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/hafijul233/form/?branch=main)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/hafijul233/form/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/hafijul233/form/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/hafijul233/form/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![Latest Stable Version](https://poser.pugx.org/laraflow/form/v)](//packagist.org/packages/laraflow/form)
+[![Total Downloads](https://poser.pugx.org/laraflow/form/downloads)](//packagist.org/packages/laraflow/form)
+[![run-tests](https://github.com/laraflow/form/workflows/run-tests/badge.svg)](//github.com/laraflow/form/actions/workflows/run-tests.yml)
+[![License](https://poser.pugx.org/laraflow/form/license)](//packagist.org/packages/laraflow/form)
+[![Latest Unstable Version](https://poser.pugx.org/laraflow/form/v/unstable)](//packagist.org/packages/laraflow/form)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/laraflow/form/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/laraflow/form/?branch=main)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/laraflow/form/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/laraflow/form/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/laraflow/form/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 
 
 ## Introduction
-[``hafijul233/form``](https://packagist.org/packages/hafijul233/form) is a collection of [Laravel Collective/HTML](https://packagist.org/packages/laravelcollective/html) components.
+[``laraflow/form``](https://packagist.org/packages/laraflow/form) is a collection of [Laravel Collective/HTML](https://packagist.org/packages/laravelcollective/html) components.
 it was initially planed to create only [Bootstrap4](https://getbootstrap.com/) form element styles.
 
 ## Features
@@ -26,7 +26,7 @@ To get start using this package follow these instructions.
 You can install the package via composer:
 
 ```bash
-composer require hafijul233/form
+composer require laraflow/form
 ```
 
 You need to publish the config file with:
@@ -107,12 +107,12 @@ Done. Now you can fully utilize every form elements from these package
 ### Contributing
 
 Thank you for considering contributing to the Form!
-The contribution guide can be found in the [Form Wiki](https://github.com/hafijul233/form/wiki/).
+The contribution guide can be found in the [Form Wiki](https://github.com/laraflow/form/wiki/).
 
 ### Security Vulnerabilities
 
 If you discover a security vulnerability within Form Package,
-please send an e-mail to Mohammad Hafijul Islam via [hafijul233@gmail.com](mailto:hafijul233@gmail.com).
+please send an e-mail to Mohammad Hafijul Islam via [laraflow@gmail.com](mailto:laraflow@gmail.com).
 All security vulnerabilities will be promptly addressed.
 
 ### License
@@ -132,7 +132,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/hafijul233/.github/blob/main/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/laraflow/.github/blob/main/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
@@ -140,7 +140,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Hafijul Islam](https://github.com/hafijul233)
+- [Hafijul Islam](https://github.com/laraflow)
 - [All Contributors](../../contributors)
 
 ## License

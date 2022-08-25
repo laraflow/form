@@ -145,17 +145,17 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/hafijul233/form.git"
+        "url": "git+https://github.com/laraflow/form.git"
     },
     "keywords": [
         "laravel",
         "form",
         "bootstrap"
     ],
-    "author": "Mohammad Hafijul Islam <hafijul233@gmail.com>",
+    "author": "Mohammad Hafijul Islam <laraflow@gmail.com>",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/hafijul233/form/issues"
+        "url": "https://github.com/laraflow/form/issues"
     },
-    "homepage": "https://github.com/hafijul233/form#readme"
+    "homepage": "https://github.com/laraflow/form#readme"
 }

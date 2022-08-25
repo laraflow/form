@@ -4,7 +4,6 @@ namespace Laraflow\Form\Builders;
 
 use BadMethodCallException;
 use DateTime;
-use Laraflow\Form\Traits\ComponentTrait;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Contracts\View\Factory;
@@ -15,6 +14,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Traits\Macroable;
 use Illuminate\Support\ViewErrorBag;
+use Laraflow\Form\Traits\ComponentTrait;
 
 /**
  * Class FormBuilder

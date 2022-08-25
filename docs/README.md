@@ -1,4 +1,4 @@
-# Getting Start
+# Getting started
 
 [![Latest Stable Version](https://poser.pugx.org/laraflow/form/v)](//packagist.org/packages/laraflow/form)
 [![Total Downloads](https://poser.pugx.org/laraflow/form/downloads)](//packagist.org/packages/laraflow/form)

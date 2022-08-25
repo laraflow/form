@@ -2,10 +2,10 @@
 
 namespace Laraflow\Form\Providers;
 
-use Laraflow\Form\Facades\Form;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
+use Laraflow\Form\Facades\Form;
 
 class NormalFieldServiceProvider extends ServiceProvider
 {

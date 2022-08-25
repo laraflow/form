@@ -2,15 +2,15 @@
 
 namespace Laraflow\Form;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
+use Illuminate\View\Compilers\BladeCompiler;
 use Laraflow\Form\Builders\FormBuilder;
 use Laraflow\Form\Providers\GroupFieldServiceProvider;
 use Laraflow\Form\Providers\HorizontalFieldServiceProvider;
 use Laraflow\Form\Providers\InlineFieldServiceProvider;
 use Laraflow\Form\Providers\LabelServiceProvider;
 use Laraflow\Form\Providers\NormalFieldServiceProvider;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
-use Illuminate\View\Compilers\BladeCompiler;
 
 class FormServiceProvider extends ServiceProvider
 {

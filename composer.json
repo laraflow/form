@@ -1,5 +1,5 @@
 {
-    "name": "lafalow/form",
+    "name": "laraflow/form",
     "type": "library",
     "description": "Laravel form builder based bootstrap form components",
     "support": {

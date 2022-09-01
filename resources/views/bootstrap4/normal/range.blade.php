@@ -1,7 +1,7 @@
 <div class="form-group">
 
-    {!! \Laraflow\Form\Facades\Form::label($name . '[]', $label, $required) !!}
-    @php $attributes['class'][] = 'custom-file-input custom-range' @endphp
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
+    @php $attributes['class'][] = 'custom-range' @endphp
 
     {!! \Laraflow\Form\Facades\Form::range($name, $default, $required, $attributes) !!}
 
@@ -13,4 +13,4 @@
     @endif
     <div class="form-group">
 
-        {!! \Laraflow\Form\Facades\Form::label($name . '[]', $label, $required) !!}
+        {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}

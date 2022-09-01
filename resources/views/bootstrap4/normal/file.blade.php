@@ -1,8 +1,10 @@
 <div class="form-group">
 
-    {!! \Laraflow\Form\Facades\Form::label($name . '[]', $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
 
-    @php $attributes['class'][] = 'custom-file-input' @endphp
+    @php $attributes['class'][] = 'custom-file-input'; @endphp
+    @php $attributes['id'] = $name; @endphp
+
     <div class="custom-file">
         {!! \Laraflow\Form\Facades\Form::label('', 'Choose file...', false, [
             'class' => 'custom-file-label',

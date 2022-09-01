@@ -1,6 +1,6 @@
 <div class="form-group">
 
-    {!! \Laraflow\Form\Facades\Form::label($name . '[]', $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
 
     @php $attributes['class'][] = 'custom-control-input' @endphp
 
@@ -12,7 +12,7 @@
 
         <div class="custom-control custom-checkbox">
             {!! \Laraflow\Form\Facades\Form::checkbox(
-                $name . '[]',
+                $name,
                 $value,
                 in_array($value, $checked),
                 $required,

@@ -1,10 +1,10 @@
 <div class="form-inline">
 
-    {!! \Laraflow\Form\Facades\Form::label($name . '[]', $label, $required, ['class' => 'sr-only d-none']) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
         $options = ['class' => 'custom-control-input '];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -18,7 +18,7 @@
 
         <div class="custom-control custom-checkbox custom-control-inline">
             {!! \Laraflow\Form\Facades\Form::checkbox(
-                $name . '[]',
+                $name,
                 $value,
                 in_array($value, $checked),
                 $required,

@@ -14,7 +14,25 @@ class NormalFieldServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $directives = ['hlabel' => 'hLabel', 'flabel' => 'fLabel'];
+    protected $directives = [
+        'ntext' => 'nText',
+        'nemail' => 'nEmail',
+        'npassword' => 'nPassword',
+/*        'ntext' => 'nText',
+        'ntext' => 'nText',
+        'ntext' => 'nText',
+        'ntext' => 'nText',
+        'ntext' => 'nText',
+        'ntext' => 'nText',
+        'ntext' => 'nText',
+        'ntext' => 'nText',
+        'ntext' => 'nText',
+        'ntext' => 'nText',
+        'ntext' => 'nText',
+        'ntext' => 'nText',
+        'ntext' => 'nText',*/
+
+    ];
 
     /**
      * Register Blade directives.

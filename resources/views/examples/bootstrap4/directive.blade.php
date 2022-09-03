@@ -11,7 +11,7 @@
         <th>1.</th>
         <td>
             <code class="d-block">
-                 @form_ncheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other'], [3, 2], true)
+                 {{  "@form_ncheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other'], [3, 2], true)" }}
             </code>
         </td>
         <td>

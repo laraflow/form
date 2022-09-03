@@ -18,29 +18,29 @@
             <code class="d-block form-directive">form_ncheckbox('item', 'Item(s)', [1=>'Egg', 2 => 'Rice', 3 => 'other'], [3, 2], true)</code>
         </td>
         <td>
-            @form_ncheckbox('item', 'Item(s)', [1 => 'Egg', 2 => 'Rice', 3 => 'Unknown'], [3, 2], true)
+            @form_nCheckbox('item', 'Item(s)', [1 => 'Egg', 2 => 'Rice', 3 => 'Unknown'], [3, 2], true)
         </td>
     </tr>
     <tr>
         <th>2.</th>
         <td>
             <code class="d-block form-directive">
-                @form_ndate('meeting_date', 'Meeting Date', null, true)
+                @form_nDate('meeting_date', 'Meeting Date', null, true)
             </code>
         </td>
         <td>
-            @form_ndate('meeting_date', 'Meeting Date', null, true)
+            @form_nDate('meeting_date', 'Meeting Date', null, true)
         </td>
     </tr>
     <tr>
         <th>3.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nemail('email_address', 'Email Address', 'john@doe.com', true, ['placeholder'=>"Email Example Placeholder"])
+                @form_nEmail('email_address', 'Email Address', 'john@doe.com', true, ['placeholder'=>"Email Example Placeholder"])
             </code>
         </td>
         <td>
-            @form_nemail('email_address', 'Email Address', 'john@doe.com', true, [
+            @form_nEmail('email_address', 'Email Address', 'john@doe.com', true, [
             'placeholder' => 'Email Example Placeholder',
             ])
         </td>
@@ -49,31 +49,31 @@
         <th>4.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nfile('import_file', 'Import File', true,
+                @form_nFile('import_file', 'Import File', true,
                 ['accept' => "audio/*"])
             </code>
         </td>
         <td>
-            @form_nfile('import_file', 'Import File', true, ['accept' => 'audio/*'])
+            @form_nFile('import_file', 'Import File', true, ['accept' => 'audio/*'])
         </td>
     </tr>
     <tr>
         <th>5.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nimage('photo', 'Photo', true, [], ['accept'
+                @form_nImage('photo', 'Photo', true, [], ['accept'
                 => "image/*"])
             </code>
         </td>
         <td>
-            @form_nimage('photo', 'Photo', true, ['accept' => 'image/*'])
+            @form_nImage('photo', 'Photo', true, ['accept' => 'image/*'])
         </td>
     </tr>
     <tr>
         <th>6.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nimage('profile_photo', 'Profile Photo',
+                @form_nImage('profile_photo', 'Profile Photo',
                 true,
                 ['preview' => true, 'height' => 128,
                 'default' => 'https://via.placeholder.com/300x128.png'], ['accept' =>
@@ -81,7 +81,7 @@
             </code>
         </td>
         <td>
-            @form_nimage(
+            @form_nImage(
             'profile_photo',
             'Profile Photo',
             true,
@@ -94,25 +94,25 @@
         <th>7.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nnumber('money', 'Money', 100.00, true,
+                @form_nNumber('money', 'Money', 100.00, true,
                 ['step' =>"0.01", 'min'=> 0])
             </code>
         </td>
         <td>
-            @form_nnumber('money', 'Money', 100.0, true, ['step' => '0.01', 'min' => 0])
+            @form_nNumber('money', 'Money', 100.0, true, ['step' => '0.01', 'min' => 0])
         </td>
     </tr>
     <tr>
         <th>8.</th>
         <td>
             <code class="d-block form-directive">
-                @form_npassword('password', 'Password', true,
+                @form_nPassword('password', 'Password', true,
                 ['placeholder'
                 =>"Password Placeholder"])
             </code>
         </td>
         <td>
-            @form_npassword('password', 'Password', true, [
+            @form_nPassword('password', 'Password', true, [
             'placeholder' => 'Password Placeholder',
             ])
         </td>
@@ -121,39 +121,39 @@
         <th>9.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nradio('gender', 'Gender', [1=>'Male', 2 =>
+                @form_nRadio('gender', 'Gender', [1=>'Male', 2 =>
                 'Female', 3 => 'Other'],
                 3, true)
             </code>
         </td>
         <td>
-            @form_nradio('gender', 'Gender', [1 => 'Male', 2 => 'Female', 3 => 'Other'], 3, true)
+            @form_nRadio('gender', 'Gender', [1 => 'Male', 2 => 'Female', 3 => 'Other'], 3, true)
         </td>
     </tr>
     <tr>
         <th>10.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nrange('rating', 'Rating', 5, true, ['min' =>
+                @form_nRange('rating', 'Rating', 5, true, ['min' =>
                 0, 'max' => 100])
             </code>
         </td>
         <td>
-            @form_nrange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100])
+            @form_nRange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100])
         </td>
     </tr>
     <tr>
         <th>11.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nsearch('search_text', 'Search Text', null,
+                @form_nSearch('search_text', 'Search Text', null,
                 false, ['placeholder' =>
                 "Enter
                 what you want..."])
             </code>
         </td>
         <td>
-            @form_nsearch('search_text', 'Search Text', null, false, [
+            @form_nSearch('search_text', 'Search Text', null, false, [
             'placeholder' => 'Enter what you want...',
             ])
         </td>
@@ -162,14 +162,14 @@
         <th>12.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nselect('state', 'State', [1 => 'Dhaka', 2 =>
+                @form_nSelect('state', 'State', [1 => 'Dhaka', 2 =>
                 'Chittagong'], 2,
                 false,
                 ['placeholder' => "Select a State"])
             </code>
         </td>
         <td>
-            @form_nselect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, [
+            @form_nSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, [
             'placeholder' => 'Select a State',
             ])
         </td>
@@ -178,14 +178,14 @@
         <th>13.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nselect('animal', 'Animal', [ 'Cats' =>
+                @form_nSelect('animal', 'Animal', [ 'Cats' =>
                 ['leopard' => 'Leopard'],
                 'Dogs' =>
                 ['spaniel' => 'Spaniel']], 2, false, ['placeholder' => "Select a Animal"])
             </code>
         </td>
         <td>
-            @form_nselect(
+            @form_nSelect(
             'animal',
             'Animal',
             ['Cats' => ['leopard' => 'Leopard'], 'Dogs' => ['spaniel' => 'Spaniel']],
@@ -199,27 +199,27 @@
         <th>14.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nselectmulti('state', 'State', [1 => 'Dhaka',
+                @form_nSelectmulti('state', 'State', [1 => 'Dhaka',
                 2 => 'Chittagong'],
                 [2,1] ,
                 false, [])
             </code>
         </td>
         <td>
-            @form_nselectmulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2, 1], false, [])
+            @form_nSelectmulti('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], [2, 1], false, [])
         </td>
     </tr>
     <tr>
         <th>15.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nselectmonth('month', 'Month', '2', true,
+                @form_nSelectmonth('month', 'Month', '2', true,
                 ['placeholder' => "Select a
                 Month"])
             </code>
         </td>
         <td>
-            @form_nselectmonth('month', 'Month', '2', true, [
+            @form_nSelectmonth('month', 'Month', '2', true, [
             'placeholder' => 'Select a Month',
             ])
         </td>
@@ -228,14 +228,14 @@
         <th>16.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nselectrange('rating', 'Rating', 1,100, 20,
+                @form_nSelectrange('rating', 'Rating', 1,100, 20,
                 false, ['placeholder' =>
                 "Select
                 a Rating"])
             </code>
         </td>
         <td>
-            @form_nselectrange('rating', 'Rating', 1, 100, 20, false, [
+            @form_nSelectrange('rating', 'Rating', 1, 100, 20, false, [
             'placeholder' => 'Select a Rating',
             ])
         </td>
@@ -244,13 +244,13 @@
         <th>17.</th>
         <td>
             <code class="d-block form-directive">
-                @form_ntel('mobile', 'Mobile', null, true,
+                @form_nTel('mobile', 'Mobile', null, true,
                 ['placeholder' => "Enter Mobile
                 Number"])
             </code>
         </td>
         <td>
-            @form_ntel('mobile', 'Mobile', null, true, [
+            @form_nTel('mobile', 'Mobile', null, true, [
             'placeholder' => 'Enter Mobile Number',
             ])
         </td>
@@ -259,14 +259,14 @@
         <th>18.</th>
         <td>
             <code class="d-block form-directive">
-                @form_ntext('summary', 'Summary', 'short summary',
+                @form_nText('summary', 'Summary', 'short summary',
                 true, ['placeholder' =>
                 "Type
                 some summary"])
             </code>
         </td>
         <td>
-            @form_ntext('summary', 'Summary', 'short summary', true, [
+            @form_nText('summary', 'Summary', 'short summary', true, [
             'placeholder' => 'Type some summary',
             ])
         </td>
@@ -275,13 +275,13 @@
         <th>19.</th>
         <td>
             <code class="d-block form-directive">
-                @form_ntextarea('description', 'Description',
+                @form_nTextarea('description', 'Description',
                 'short description', true,
                 ['placeholder' => "Type some description"])
             </code>
         </td>
         <td>
-            @form_ntextarea('description', 'Description', 'short description', true, [
+            @form_nTextarea('description', 'Description', 'short description', true, [
             'placeholder' => 'Type some description',
             ])
         </td>
@@ -290,13 +290,13 @@
         <th>20.</th>
         <td>
             <code class="d-block form-directive">
-                @form_nurl('website', 'Website', null, true,
+                @form_nUrl('website', 'Website', null, true,
                 ['placeholder' => "Enter Your
                 Portfolio link"])
             </code>
         </td>
         <td>
-            @form_nurl('website', 'Website', null, true, [
+            @form_nUrl('website', 'Website', null, true, [
             'placeholder' => 'Enter Your Portfolio link',
             ])
         </td>

@@ -6,18 +6,21 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Laraflow\Form\Facades\Form;
+use Laraflow\Form\Traits\BladeDirectiveTrait;
 
 /**
  * Class GroupFieldServiceProvider
  */
 class GroupFieldServiceProvider extends ServiceProvider
 {
+    use BladeDirectiveTrait;
+
     /**
      * Supported Blade Directives
      *
      * @var array
      */
-    protected $directives = ['hlabel' => 'hLabel', 'flabel' => 'fLabel'];
+    public static $directives = ['hlabel' => 'hLabel', 'flabel' => 'fLabel'];
 
     /**
      * Register Blade directives.
@@ -27,17 +30,6 @@ class GroupFieldServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerBladeDirectives();
-    }
-
-    protected function registerBladeDirectives()
-    {
-        $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
-            foreach ($this->directives as $directive => $method) {
-                $bladeCompiler->directive("form_{$directive}", function ($expression) use ($method) {
-                    return "<?php echo \Laraflow\Form\Facades\Form::{$method}({$expression}); ?>";
-                });
-            }
-        });
     }
 
     /**

@@ -6,33 +6,36 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Laraflow\Form\Facades\Form;
+use Laraflow\Form\Traits\BladeDirectiveTrait;
 
 class NormalFieldServiceProvider extends ServiceProvider
 {
+    use BladeDirectiveTrait;
+
     /**
      * Supported Blade Directives
      *
      * @var array
      */
-    protected $directives = [
-        'ntext' => 'nText',
-        'nemail' => 'nEmail',
-        'npassword' => 'nPassword',
-        'nrange' => 'nRange',
-        'nsearch' => 'nSearch',
-        'ntel' => 'nTel',
-        'nnumber' => 'nNumber',
-        'ndate' => 'nDate',
-        'nurl' => 'nUrl',
-        'nfile' => 'nFile',
-        'nimage' => 'nImage',
-        'ntextarea' => 'nTextarea',
-        'nselect' => 'nSelect',
-        'nselectmulti' => 'nSelectMulti',
-        'nselectmonth' => 'nSelectRange',
-        'nselectmonth' => 'nSelectMonth',
-        'ncheckbox' => 'nCheckbox',
-        'nradio' => 'nRadio'
+    public static $directives = [
+         'nText',
+         'nEmail',
+         'nPassword',
+         'nRange',
+         'nSearch',
+         'nTel',
+         'nNumber',
+         'nDate',
+         'nUrl',
+         'nFile',
+         'nImage',
+         'nTextarea',
+         'nSelect',
+         'nSelectMulti',
+         'nSelectRange',
+         'nSelectMonth',
+         'nCheckbox',
+         'nRadio'
     ];
 
     /**
@@ -43,17 +46,6 @@ class NormalFieldServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerBladeDirectives();
-    }
-
-    protected function registerBladeDirectives()
-    {
-        $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
-            foreach ($this->directives as $directive => $method) {
-                $bladeCompiler->directive("form_{$directive}", function ($expression) use ($method) {
-                    return "<?php echo \Laraflow\Form\Facades\Form::{$method}({$expression}); ?>";
-                });
-            }
-        });
     }
 
     /**

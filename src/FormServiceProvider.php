@@ -11,6 +11,13 @@ use Laraflow\Form\Providers\LabelServiceProvider;
 use Laraflow\Form\Providers\NormalFieldServiceProvider;
 use Laraflow\Form\Traits\BladeDirectiveTrait;
 
+/**
+ * Class FormServiceProvider
+ *
+ * @property static $directives = []
+ *
+ * @package Laraflow\Form
+ */
 class FormServiceProvider extends ServiceProvider
 {
     use BladeDirectiveTrait;
@@ -57,12 +64,11 @@ class FormServiceProvider extends ServiceProvider
 
         $this->app->alias('form', FormBuilder::class);
 
-        $this->app
-            ->register(LabelServiceProvider::class)
-            ->register(HorizontalFieldServiceProvider::class)
-            ->register(GroupFieldServiceProvider::class)
-            ->register(InlineFieldServiceProvider::class)
-            ->register(NormalFieldServiceProvider::class);
+        $this->app->register(LabelServiceProvider::class);
+        $this->app->register(HorizontalFieldServiceProvider::class);
+        $this->app->register(GroupFieldServiceProvider::class);
+        $this->app->register(InlineFieldServiceProvider::class);
+        $this->app->register(NormalFieldServiceProvider::class);
 
         $this->registerBladeDirectives();
     }

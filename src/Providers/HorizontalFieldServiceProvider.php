@@ -10,6 +10,10 @@ use Laraflow\Form\Traits\BladeDirectiveTrait;
 
 /**
  * Class HorizontalFieldServiceProvider
+ *
+ * @property static $directives = []
+ *
+ * @package Laraflow\Form\Providers
  */
 class HorizontalFieldServiceProvider extends ServiceProvider
 {
@@ -20,7 +24,26 @@ class HorizontalFieldServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    public static $directives = ['hlabel' => 'hLabel', 'flabel' => 'fLabel'];
+    public static $directives = [
+        'hText',
+        'hEmail',
+        'hPassword',
+        'hRange',
+        'hSearch',
+        'hTel',
+        'hNumber',
+        'hDate',
+        'hUrl',
+        'hFile',
+        'hImage',
+        'hTextarea',
+        'hSelect',
+        'hSelectMulti',
+        'hSelectRange',
+        'hSelectMonth',
+        'hCheckbox',
+        'hRadio'
+    ];
 
     /**
      * Register Blade directives.

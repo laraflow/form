@@ -10,6 +10,10 @@ use Laraflow\Form\Traits\BladeDirectiveTrait;
 
 /**
  * Class GroupFieldServiceProvider
+ *
+ * @property static $directives = []
+ *
+ * @package Laraflow\Form\Providers
  */
 class GroupFieldServiceProvider extends ServiceProvider
 {
@@ -20,7 +24,26 @@ class GroupFieldServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    public static $directives = ['hlabel' => 'hLabel', 'flabel' => 'fLabel'];
+    public static $directives = [
+        'gText',
+        'gEmail',
+        'gPassword',
+        'gRange',
+        'gSearch',
+        'gTel',
+        'gNumber',
+        'gDate',
+        'gUrl',
+        'gFile',
+        'gImage',
+        'gTextarea',
+        'gSelect',
+        'gSelectMulti',
+        'gSelectRange',
+        'gSelectMonth',
+        'gCheckbox',
+        'gRadio'
+    ];
 
     /**
      * Register Blade directives.

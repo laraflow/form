@@ -10,6 +10,10 @@ use Laraflow\Form\Traits\BladeDirectiveTrait;
 
 /**
  * Class InlineFieldServiceProvider
+ *
+ * @property static $directives = []
+ *
+ * @package Laraflow\Form\Providers
  */
 class InlineFieldServiceProvider extends ServiceProvider
 {
@@ -20,7 +24,26 @@ class InlineFieldServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    public static $directives = ['hlabel' => 'hLabel', 'flabel' => 'fLabel'];
+    public static $directives = [
+        'iText',
+        'iEmail',
+        'iPassword',
+        'iRange',
+        'iSearch',
+        'iTel',
+        'iNumber',
+        'iDate',
+        'iUrl',
+        'iFile',
+        'iImage',
+        'iTextarea',
+        'iSelect',
+        'iSelectMulti',
+        'iSelectRange',
+        'iSelectMonth',
+        'iCheckbox',
+        'iRadio'
+    ];
 
     /**
      * Register Blade directives.

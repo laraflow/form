@@ -8,6 +8,13 @@ use Illuminate\View\Compilers\BladeCompiler;
 use Laraflow\Form\Facades\Form;
 use Laraflow\Form\Traits\BladeDirectiveTrait;
 
+/**
+ * Class NormalFieldServiceProvider
+ *
+ * @property static $directives = []
+ *
+ * @package Laraflow\Form\Providers
+ */
 class NormalFieldServiceProvider extends ServiceProvider
 {
     use BladeDirectiveTrait;

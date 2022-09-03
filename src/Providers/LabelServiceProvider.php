@@ -10,6 +10,10 @@ use Laraflow\Form\Traits\BladeDirectiveTrait;
 
 /**
  * Class LabelServiceProvider
+ *
+ * @property static $directives = []
+ *
+ * @package Laraflow\Form\Providers
  */
 class LabelServiceProvider extends ServiceProvider
 {
@@ -20,7 +24,7 @@ class LabelServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    public static $directives = ['hlabel' => 'hLabel', 'flabel' => 'fLabel'];
+    public static $directives = ['hLabel', 'fLabel'];
 
     /**
      * Register Blade directives.

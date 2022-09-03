@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('web')->group(function () {
     Route::get('/form/examples', function () {
+        if (App::environment('local') == true) {
+            Artisan::call('view:clear');
+        }
         $viewPath = Config::get('form.style', 'bootstrap4');
-
         return view("form::examples.{$viewPath}");
     });
 });

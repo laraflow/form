@@ -2,6 +2,7 @@
 
 namespace Laraflow\Form;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Laraflow\Form\Builders\FormBuilder;
 use Laraflow\Form\Providers\GroupFieldServiceProvider;
@@ -11,6 +12,7 @@ use Laraflow\Form\Providers\LabelServiceProvider;
 use Laraflow\Form\Providers\NormalFieldServiceProvider;
 use Laraflow\Form\Traits\BladeDirectiveTrait;
 use Illuminate\Support\Facades\View;
+use Illuminate\View\Compilers\BladeCompiler;
 
 /**
  * Class FormServiceProvider
@@ -62,5 +64,11 @@ class FormServiceProvider extends ServiceProvider
         $this->app->register(GroupFieldServiceProvider::class);
         $this->app->register(InlineFieldServiceProvider::class);
         $this->app->register(NormalFieldServiceProvider::class);
+
+        $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
+            $bladeCompiler->directive('wrapper', function ($expression) {
+                return "<?php echo wrapper($expression); ?>";
+            });
+        });
     }
 }

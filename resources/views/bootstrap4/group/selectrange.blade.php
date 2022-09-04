@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="{{ wrapper($attributes) }}">
     {!! \Form::label($name, $label, $required) !!}
     @php
         $options = ['class' => 'form-control custom-select '];

@@ -8,11 +8,16 @@ return [
      * @var string style
      * @value bootstrap3, bootstrap4, bootstrap5
      */
-    'style' => 'bootstrap4',
+    'style' => env('FORM_STYLE', 'bootstrap4'),
 
     'styles' => [
         'bootstrap4' => [
-            'wrapper' => ['form-group'],
+            'wrapper' => [
+                'normal' => 'form-group',
+                'group' => 'form-group',
+                'horizon' => 'form-group',
+                'inline' => 'form-inline',
+            ],
             'field' => ['form-control'],
             'validation' => ['is-invalid'], //if validation false color class
             'error' => ['d-block invalid-feedback'],//if validation false color class
@@ -20,15 +25,6 @@ return [
             'cancel' => ['invalid-feedback'],
             'horizon_label_size' => '2',
         ]
-    ],
-    'field' => [
-        'default_class' => ['form-control'],
-        'error_class' => ['is-invalid'],
-    ],
-
-    'message' => [
-        'default_class' => ['font-weight-bold'],
-        'error_class' => ['invalid-feedback'],
     ],
 
     /**

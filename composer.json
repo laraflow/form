@@ -54,8 +54,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Laraflow\\Form\\": "src"
-        }
+            "Laraflow\\Form\\": "./src"
+        },
+        "files": [
+            "./src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

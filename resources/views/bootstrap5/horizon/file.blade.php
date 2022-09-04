@@ -1,4 +1,4 @@
-{!! \Laraflow\Form\Facades\Form::hLabel($name, $label, $required) !!}
+{!! \Form::hLabel($name, $label, $required) !!}
 
 @php
 $options = ['class' => 'form-control col-md-10'];
@@ -8,4 +8,4 @@ if (isset($required) && $required == true) {
 }
 @endphp
 
-{!! \Laraflow\Form\Facades\Form::file($name, $default, $required, $attributes) !!}
+{!! \Form::file($name, $default, $required, $attributes) !!}

@@ -39,10 +39,6 @@
                             aria-controls="nav-inline" aria-selected="false">
                             Inline
                         </a>
-                        <a class="nav-link" id="nav-directive-tab" data-toggle="tab" href="#nav-directive"
-                           role="tab" aria-controls="nav-directive" aria-selected="false">
-                            Directives
-                        </a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -58,10 +54,6 @@
                     </div>
                     <div class="tab-pane fade" id="nav-inline" role="tabpanel" aria-labelledby="nav-inline-tab">
                         @include('form::examples.bootstrap4.inline')
-                    </div>
-                    <div class="tab-pane fade" id="nav-directive" role="tabpanel"
-                         aria-labelledby="nav-directive-tab">
-                        @include('form::examples.bootstrap4.directive')
                     </div>
                 </div>
             </div>

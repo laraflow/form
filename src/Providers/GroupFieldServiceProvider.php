@@ -17,8 +17,6 @@ use Laraflow\Form\Traits\BladeDirectiveTrait;
  */
 class GroupFieldServiceProvider extends ServiceProvider
 {
-    use BladeDirectiveTrait;
-
     /**
      * Supported Blade Directives
      *
@@ -52,7 +50,7 @@ class GroupFieldServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerBladeDirectives();
+
     }
 
     /**

@@ -15,6 +15,8 @@ trait BladeDirectiveTrait
      */
     public function registerBladeDirectives(array $directives = [])
     {
+        //dump("name : " . self::class, "methos", self::$directives);
+
         if (empty($directives)) {
             if (property_exists(self::class, 'directives')) {
                 $directives = self::$directives;

@@ -10,6 +10,7 @@ use Laraflow\Form\Providers\InlineFieldServiceProvider;
 use Laraflow\Form\Providers\LabelServiceProvider;
 use Laraflow\Form\Providers\NormalFieldServiceProvider;
 use Laraflow\Form\Traits\BladeDirectiveTrait;
+use Illuminate\Support\Facades\View;
 
 /**
  * Class FormServiceProvider
@@ -20,15 +21,6 @@ use Laraflow\Form\Traits\BladeDirectiveTrait;
  */
 class FormServiceProvider extends ServiceProvider
 {
-    use BladeDirectiveTrait;
-
-    /**
-     * Supported Blade Directives
-     *
-     * @var array
-     */
-    public static $directives = ['error', 'open', 'model', 'close', 'token', 'label', 'input', 'text', 'password', 'hidden', 'email', 'tel', 'number', 'date', 'datetime', 'datetimeLocal', 'time', 'url', 'file', 'textarea', 'select', 'selectRange', 'selectYear', 'selectMonth', 'checkbox', 'radio', 'reset', 'image', 'color', 'submit', 'button', 'old'];
-
     /**
      * Boot the application events.
      *
@@ -45,6 +37,7 @@ class FormServiceProvider extends ServiceProvider
         $this->publishes([__DIR__ . '/../resources/dist' => public_path('vendor/form')], 'form-assets');
 
         $this->publishes([__DIR__ . '/../resources/views' => resource_path('views/vendor/form')], 'form-view');
+
     }
 
     /**
@@ -69,7 +62,5 @@ class FormServiceProvider extends ServiceProvider
         $this->app->register(GroupFieldServiceProvider::class);
         $this->app->register(InlineFieldServiceProvider::class);
         $this->app->register(NormalFieldServiceProvider::class);
-
-        $this->registerBladeDirectives();
     }
 }

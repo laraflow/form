@@ -1,6 +1,6 @@
 <div class="form-inline">
 
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
+    {!! \Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
         $options = ['class' => 'custom-control-input '];
@@ -17,7 +17,7 @@
         @endphp
 
         <div class="custom-control custom-checkbox custom-control-inline">
-            {!! \Laraflow\Form\Facades\Form::checkbox(
+            {!! \Form::checkbox(
                 $name,
                 $value,
                 in_array($value, $checked),
@@ -25,9 +25,9 @@
                 $attributes,
             ) !!}
 
-            {!! \Laraflow\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
+            {!! \Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
         </div>
     @endforeach
 
-    {!! \Laraflow\Form\Facades\Form::error($name . '[]') !!}
+    {!! \Form::error($name . '[]') !!}
 </div>

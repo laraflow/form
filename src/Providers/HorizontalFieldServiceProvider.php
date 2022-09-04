@@ -17,7 +17,6 @@ use Laraflow\Form\Traits\BladeDirectiveTrait;
  */
 class HorizontalFieldServiceProvider extends ServiceProvider
 {
-    use BladeDirectiveTrait;
 
     /**
      * Supported Blade Directives
@@ -52,7 +51,7 @@ class HorizontalFieldServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerBladeDirectives();
+
     }
 
     public function boot()

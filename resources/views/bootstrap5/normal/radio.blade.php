@@ -3,16 +3,16 @@
     <label class="custom-control-label" for="customRadio1">Custom radio</label>
 </div>
 <div class="form-group">
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Form::label($name, $label, $required) !!}
 
     @php
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
     @endphp
 
-    {!! \Laraflow\Form\Facades\Form::radio($name, $checked, $required, $attributes) !!}
+    {!! \Form::radio($name, $checked, $required, $attributes) !!}
 
-    {!! \Laraflow\Form\Facades\Form::error($name) !!}
+    {!! \Form::error($name) !!}
 </div>

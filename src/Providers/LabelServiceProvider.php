@@ -17,8 +17,6 @@ use Laraflow\Form\Traits\BladeDirectiveTrait;
  */
 class LabelServiceProvider extends ServiceProvider
 {
-    use BladeDirectiveTrait;
-
     /**
      * Supported Blade Directives
      *
@@ -33,7 +31,7 @@ class LabelServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerBladeDirectives();
+
     }
 
     /**

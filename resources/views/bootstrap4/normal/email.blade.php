@@ -1,8 +1,8 @@
 <div class="form-group">
 
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Form::label($name, $label, $required) !!}
 
-    {!! \Laraflow\Form\Facades\Form::email($name, $default, $required, $attributes) !!}
+    {!! \Form::email($name, $default, $required, $attributes) !!}
 
-    {!! \Laraflow\Form\Facades\Form::error($name . '[]') !!}
+    {!! \Form::error($name . '[]') !!}
 </div>

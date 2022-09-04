@@ -1,6 +1,6 @@
 <div class="form-group">
 
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
-    {!! \Laraflow\Form\Facades\Form::text($name, $default, $required, $attributes) !!}
-    {!! \Laraflow\Form\Facades\Form::error($name . '[]') !!}
+    {!! \Form::label($name, $label, $required) !!}
+    {!! \Form::text($name, $default, $required, $attributes) !!}
+    {!! \Form::error($name . '[]') !!}
 </div>

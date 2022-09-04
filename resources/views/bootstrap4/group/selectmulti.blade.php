@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Form::label($name, $label, $required) !!}
     @php
         $options = ['class' => 'form-control custom-select ', 'multiple' => 'multiple'];
         $options['id'] = $name;
@@ -20,7 +20,7 @@
             </div>
         @endif
 
-        {!! \Laraflow\Form\Facades\Form::select($name, $data, $selected, $required, $attributes) !!}
+        {!! \Form::select($name, $data, $selected, $required, $attributes) !!}
 
         @if (isset($position) && $position == 'after')
             <div class="input-group-append">
@@ -32,5 +32,5 @@
             </div>
         @endif
     </div>
-    {!! \Laraflow\Form\Facades\Form::error($name) !!}
+    {!! \Form::error($name) !!}
 </div>

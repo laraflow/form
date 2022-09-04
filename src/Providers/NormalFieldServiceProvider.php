@@ -17,8 +17,6 @@ use Laraflow\Form\Traits\BladeDirectiveTrait;
  */
 class NormalFieldServiceProvider extends ServiceProvider
 {
-    use BladeDirectiveTrait;
-
     /**
      * Supported Blade Directives
      *
@@ -52,7 +50,7 @@ class NormalFieldServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerBladeDirectives();
+
     }
 
     /**

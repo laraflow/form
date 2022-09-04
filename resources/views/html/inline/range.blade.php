@@ -1,9 +1,9 @@
 <div class="form-group">
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, ['class' => 'd-none']) !!}
+    {!! \Form::label($name, $label, $required, ['class' => 'd-none']) !!}
 
     @php
         $options = ['class' => 'form-control', 'placeholder' => $attributes['placeholder'] ?? $label];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -16,8 +16,8 @@
                 @endif
             </span>
         </div>
-        {!! \Laraflow\Form\Facades\Form::range($name, $default, $required, $attributes) !!}
+        {!! \Form::range($name, $default, $required, $attributes) !!}
 
-        {!! \Laraflow\Form\Facades\Form::error($name) !!}
+        {!! \Form::error($name) !!}
     </div>
 </div>

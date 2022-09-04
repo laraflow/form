@@ -1,6 +1,6 @@
 <div class="form-group row">
 
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, [
+    {!! \Form::label($name, $label, $required, [
         'class' => 'col-form-label col-sm-' . $col_size,
     ]) !!}
 
@@ -20,7 +20,7 @@
             @endphp
 
             <div class="custom-control custom-checkbox">
-                {!! \Laraflow\Form\Facades\Form::checkbox(
+                {!! \Form::checkbox(
                     $name,
                     $value,
                     in_array($value, $checked),
@@ -28,10 +28,10 @@
                     $attributes,
                 ) !!}
 
-                {!! \Laraflow\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
+                {!! \Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
             </div>
         @endforeach
 
-        {!! \Laraflow\Form\Facades\Form::error($name . '[]') !!}
+        {!! \Form::error($name . '[]') !!}
     </div>
 </div>

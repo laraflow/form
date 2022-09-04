@@ -25,12 +25,13 @@
         <th>2.</th>
         <td>
             <code class="d-block">
-                \Form::nDate('meeting_date', 'Meeting Date', null,
-                true)
+                \Form::nRadio('gender', 'Gender', [1=>'Male', 2 =>
+                'Female', 3 => 'Other'],
+                3, true)
             </code>
         </td>
         <td>
-            {!! \Form::nDate('meeting_date', 'Meeting Date', null, true) !!}
+            {!! \Form::nRadio('gender', 'Gender', [1 => 'Male', 2 => 'Female', 3 => 'Other'], 3, true) !!}
         </td>
     </tr>
     <tr>
@@ -65,18 +66,6 @@
         <th>5.</th>
         <td>
             <code class="d-block">
-                \Form::nImage('photo', 'Photo', true, [], ['accept'
-                => "image/*"])
-            </code>
-        </td>
-        <td>
-            {!! \Form::nImage('photo', 'Photo', true, ['accept' => 'image/*']) !!}
-        </td>
-    </tr>
-    <tr>
-        <th>6.</th>
-        <td>
-            <code class="d-block">
                 \Form::nImage('profile_photo', 'Profile Photo',
                 true,
                 ['preview' => true, 'height' => 128,
@@ -95,7 +84,7 @@
         </td>
     </tr>
     <tr>
-        <th>7.</th>
+        <th>6.</th>
         <td>
             <code class="d-block">
                 \Form::nNumber('money', 'Money', 100.00, true,
@@ -107,7 +96,7 @@
         </td>
     </tr>
     <tr>
-        <th>8.</th>
+        <th>7.</th>
         <td>
             <code class="d-block">
                 \Form::nPassword('password', 'Password', true,
@@ -122,20 +111,19 @@
         </td>
     </tr>
     <tr>
-        <th>9.</th>
+        <th>8.</th>
         <td>
             <code class="d-block">
-                \Form::nRadio('gender', 'Gender', [1=>'Male', 2 =>
-                'Female', 3 => 'Other'],
-                3, true)
+                \Form::nDate('meeting_date', 'Meeting Date', null,
+                true)
             </code>
         </td>
         <td>
-            {!! \Form::nRadio('gender', 'Gender', [1 => 'Male', 2 => 'Female', 3 => 'Other'], 3, true) !!}
+            {!! \Form::nDate('meeting_date', 'Meeting Date', null, true) !!}
         </td>
     </tr>
     <tr>
-        <th>10.</th>
+        <th>9.</th>
         <td>
             <code class="d-block">
                 \Form::nRange('rating', 'Rating', 5, true, ['min' =>
@@ -147,7 +135,7 @@
         </td>
     </tr>
     <tr>
-        <th>11.</th>
+        <th>10.</th>
         <td>
             <code class="d-block">
                 \Form::nSearch('search_text', 'Search Text', null,
@@ -163,7 +151,7 @@
         </td>
     </tr>
     <tr>
-        <th>12.</th>
+        <th>11.</th>
         <td>
             <code class="d-block">
                 \Form::nSelect('state', 'State', [1 => 'Dhaka', 2 =>

@@ -1,8 +1,8 @@
 <div class="form-group">
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Form::label($name, $label, $required) !!}
 
     @php
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -15,8 +15,8 @@
                 @endif
             </span>
         </div>
-        {!! \Laraflow\Form\Facades\Form::search($name, $default, $required, $attributes) !!}
+        {!! \Form::search($name, $default, $required, $attributes) !!}
 
-        {!! \Laraflow\Form\Facades\Form::error($name) !!}
+        {!! \Form::error($name) !!}
     </div>
 </div>

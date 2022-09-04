@@ -17,8 +17,6 @@ use Laraflow\Form\Traits\BladeDirectiveTrait;
  */
 class InlineFieldServiceProvider extends ServiceProvider
 {
-    use BladeDirectiveTrait;
-
     /**
      * Supported Blade Directives
      *
@@ -52,7 +50,6 @@ class InlineFieldServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerBladeDirectives();
     }
 
     /**

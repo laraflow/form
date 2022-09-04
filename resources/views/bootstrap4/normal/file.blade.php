@@ -1,16 +1,16 @@
 <div class="form-group">
 
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Form::label($name, $label, $required) !!}
 
     @php $attributes['class'][] = 'custom-file-input'; @endphp
     @php $attributes['id'] = $name; @endphp
 
     <div class="custom-file">
-        {!! \Laraflow\Form\Facades\Form::label('', 'Choose file...', false, [
+        {!! \Form::label('', 'Choose file...', false, [
             'class' => 'custom-file-label',
             'id' => $name . '_file_label',
         ]) !!}
-        {!! \Laraflow\Form\Facades\Form::file($name, $required, $attributes) !!}
+        {!! \Form::file($name, $required, $attributes) !!}
     </div>
     <script>
         document.getElementById('{{ $name }}').addEventListener('change', function() {
@@ -20,5 +20,5 @@
         });
     </script>
 
-    {!! \Laraflow\Form\Facades\Form::error($name . '[]') !!}
+    {!! \Form::error($name . '[]') !!}
 </div>

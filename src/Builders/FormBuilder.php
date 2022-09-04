@@ -10,7 +10,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Traits\Macroable;
 use Illuminate\Support\ViewErrorBag;
@@ -233,7 +232,7 @@ class FormBuilder
         }
 
         //updating class fields
-        $this->classAttributes($name, $options);
+        $this->classAttributes($name, $options, 'field');
 
         // We will get the appropriate value for the given field. We will look for the
         // value in the session for the value in the old input data then we'll look
@@ -354,6 +353,9 @@ class FormBuilder
             : $title;
 
         if ($escape_html) {
+            if (is_array($title)) {
+                $title = implode(", ", $title);
+            }
             $title = htmlentities($title, ENT_QUOTES, 'UTF-8', false);
         }
 
@@ -597,7 +599,7 @@ class FormBuilder
             $options['name'] = $name;
         }
 
-        $this->classAttributes($name, $options);
+        $this->classAttributes($name, $options, 'field');
 
         // Next we will look for the rows and cols attributes, as each of these are put
         // on the textarea element definition. If they are not present, we will just
@@ -678,7 +680,7 @@ class FormBuilder
     {
         $this->type = 'select';
 
-        $this->classAttributes($name, $selectAttributes);
+        $this->classAttributes($name, $selectAttributes, 'field');
         // When building a select box the "value" attribute is really the selected one
         // so we will use that when checking the model or session for a value which
         // should provide a convenient method of re-populating the forms on post.
@@ -730,7 +732,7 @@ class FormBuilder
      */
     public function selectMonth(string $name, $selected = null, bool $required = false, array $options = [])
     {
-        $months = Config::get('form.months', [
+        $months = config('form.months', [
             '1' => 'January',
             '2' => 'February',
             '3' => 'March',
@@ -768,12 +770,12 @@ class FormBuilder
      *
      * @param string $name
      * @param mixed $value
-     * @param null $checked
+     * @param bool $checked
      * @param bool $required
      * @param array $options
      * @return HtmlString
      */
-    public function radio(string $name, $value = null, $checked = null, bool $required = false, array $options = [])
+    public function radio(string $name, $value = null, bool $checked = false, bool $required = false, array $options = [])
     {
         if (is_null($value)) {
             $value = $name;
@@ -857,9 +859,7 @@ class FormBuilder
             $options['type'] = 'submit';
             $options['name'] = $name;
 
-            if (empty($options['class'])) {
-                $options['class'] = Config::get('form.submit_class', 'btn btn-primary fw-bold');
-            }
+            $this->classAttributes($name, $options, 'submit');
 
             return $this->button($value, $options);
         }
@@ -925,11 +925,11 @@ class FormBuilder
      */
     public function error(string $name, bool $all = false, array $options = [])
     {
-        $this->classAttributes($name, $options, 'message');
+        $this->classAttributes($name, $options, 'error');
 
-        if (empty($options['class'])) {
-            $options['class'] = Config::get('form.error_class', 'invalid-feedback');
-        }
+/*        if (empty($options['class'])) {
+            $options['class'] = config('form.error_class', 'invalid-feedback');
+        }*/
 
         return $this->getErrorMessage($name, $all, $options);
     }
@@ -943,10 +943,12 @@ class FormBuilder
      */
     protected function classAttributes($name, array &$options = [], string $field = 'field')
     {
-        $classes = Config::get("form.{$field}.default_class", []);
+        $style = config('form.style');
+
+        $classes = config("form.styles.{$style}.{$field}", []);
 
         if ($this->errors->has($name)) {
-            $classes = array_merge($classes, Config::get("form.{$field}.error_class", []));
+            $classes = array_merge($classes, config("form.styles.{$style}.validation", []));
         }
 
         if (isset($options['class'])) {

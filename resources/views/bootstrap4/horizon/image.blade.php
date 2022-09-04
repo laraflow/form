@@ -1,16 +1,16 @@
 <div class="form-group row">
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, [
+    {!! \Form::label($name, $label, $required, [
         'class' => ['col-form-label col-sm-' . $col_size],
     ]) !!}
     @php $attributes['class'][] = 'custom-file-input'; @endphp
     <div class="col-sm-{{ 12 - $col_size }}">
         <div class="custom-file">
-            {!! \Laraflow\Form\Facades\Form::label('', 'Choose file...', false, [
+            {!! \Form::label('', 'Choose file...', false, [
                 'class' => 'custom-file-label',
                 'id' => $name . '_file_label',
             ]) !!}
-            {!! \Laraflow\Form\Facades\Form::file($name, $required, $attributes) !!}
-            {!! \Laraflow\Form\Facades\Form::error($name) !!}
+            {!! \Form::file($name, $required, $attributes) !!}
+            {!! \Form::error($name) !!}
         </div>
 
         @if ($preview['preview'] ?? false)

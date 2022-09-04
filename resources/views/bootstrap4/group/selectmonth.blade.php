@@ -1,9 +1,9 @@
 <div class="form-group">
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Form::label($name, $label, $required) !!}
 
     @php
         $options = ['class' => 'form-control custom-select'];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -16,8 +16,8 @@
                 @endif
             </span>
         </div>
-        {!! \Laraflow\Form\Facades\Form::select($name, config('form.months'), $selected, $required, $attributes) !!}
+        {!! \Form::select($name, config('form.months'), $selected, $required, $attributes) !!}
 
-        {!! \Laraflow\Form\Facades\Form::error($name) !!}
+        {!! \Form::error($name) !!}
     </div>
 </div>

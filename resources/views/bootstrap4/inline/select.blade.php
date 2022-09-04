@@ -1,9 +1,9 @@
 <div class="form-group">
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
+    {!! \Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
 
     @php
         $options = ['class' => 'form-control custom-select'];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -21,7 +21,7 @@
                 </div>
             @endif
 
-            {!! \Laraflow\Form\Facades\Form::select($name, $data, $selected, $required, $attributes) !!}
+            {!! \Form::select($name, $data, $selected, $required, $attributes) !!}
 
             @if (isset($position) && $position == 'after')
                 <div class="input-group-append">
@@ -34,7 +34,7 @@
             @endif
         </div>
     @else
-        {!! \Laraflow\Form\Facades\Form::select($name, $data, $selected, $required, $attributes) !!}
+        {!! \Form::select($name, $data, $selected, $required, $attributes) !!}
     @endif
-    {!! \Laraflow\Form\Facades\Form::error($name) !!}
+    {!! \Form::error($name) !!}
 </div>

@@ -1,13 +1,13 @@
 <div class="form-group">
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Form::label($name, $label, $required) !!}
 
     @php
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
     @endphp
 
-    {!! \Laraflow\Form\Facades\Form::number($name, $default, $required, $attributes) !!}
-    {!! \Laraflow\Form\Facades\Form::error($name) !!}
+    {!! \Form::number($name, $default, $required, $attributes) !!}
+    {!! \Form::error($name) !!}
 </div>

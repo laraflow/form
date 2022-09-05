@@ -20,6 +20,7 @@ Route::middleware('web')->group(function () {
             Artisan::call('view:clear');
         }
         $viewPath = Config::get('form.style', 'bootstrap4');
+
         return view("form::examples.{$viewPath}");
     });
 });

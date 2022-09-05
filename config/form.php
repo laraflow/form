@@ -20,11 +20,11 @@ return [
             ],
             'field' => ['form-control'],
             'validation' => ['is-invalid'], //if validation false color class
-            'error' => ['d-block invalid-feedback'],//if validation false color class
+            'error' => ['d-block invalid-feedback'], //if validation false color class
             'submit' => ['btn btn-primary', 'font-weight-bold'],
             'cancel' => ['invalid-feedback'],
             'horizon_label_size' => '2',
-        ]
+        ],
     ],
 
     /**

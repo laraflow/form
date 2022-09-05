@@ -1,7 +1,8 @@
 <?php
-if (!function_exists('wrapper')) {
+
+if (! function_exists('wrapper')) {
     /**
-     * @param array $options
+     * @param  array  $options
      * @return string
      */
     function wrapper(array &$options = [])
@@ -10,7 +11,7 @@ if (!function_exists('wrapper')) {
 
         if (isset($options['normal'])) {
             $wrapper = 'normal';
-        } else if (isset($options['inline'])) {
+        } elseif (isset($options['inline'])) {
             $wrapper = 'inline';
         } elseif (isset($options['group'])) {
             $wrapper = 'group';
@@ -19,7 +20,6 @@ if (!function_exists('wrapper')) {
         } else {
             $wrapper = 'normal';
         }
-
 
         return config("form.styles.{$style}.wrapper.{$wrapper}", 'form-group');
     }

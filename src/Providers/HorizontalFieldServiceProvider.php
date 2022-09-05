@@ -4,20 +4,15 @@ namespace Laraflow\Form\Providers;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\Compilers\BladeCompiler;
 use Laraflow\Form\Facades\Form;
-use Laraflow\Form\Traits\BladeDirectiveTrait;
 
 /**
  * Class HorizontalFieldServiceProvider
  *
  * @property static $directives = []
- *
- * @package Laraflow\Form\Providers
  */
 class HorizontalFieldServiceProvider extends ServiceProvider
 {
-
     /**
      * Supported Blade Directives
      *
@@ -41,7 +36,7 @@ class HorizontalFieldServiceProvider extends ServiceProvider
         'hSelectRange',
         'hSelectMonth',
         'hCheckbox',
-        'hRadio'
+        'hRadio',
     ];
 
     /**
@@ -51,7 +46,6 @@ class HorizontalFieldServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 
     public function boot()

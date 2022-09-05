@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Laraflow\Form\Traits;
-
 
 use Illuminate\View\Compilers\BladeCompiler;
 

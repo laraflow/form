@@ -4,16 +4,12 @@ namespace Laraflow\Form\Providers;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\Compilers\BladeCompiler;
 use Laraflow\Form\Facades\Form;
-use Laraflow\Form\Traits\BladeDirectiveTrait;
 
 /**
  * Class LabelServiceProvider
  *
  * @property static $directives = []
- *
- * @package Laraflow\Form\Providers
  */
 class LabelServiceProvider extends ServiceProvider
 {
@@ -31,7 +27,6 @@ class LabelServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 
     /**

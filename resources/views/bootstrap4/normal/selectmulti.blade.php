@@ -4,7 +4,7 @@
     @php $attributes['class'][] = 'custom-select' @endphp
     @php $attributes['multiple'] = 'multiple' @endphp
 
-    @if(isset($attributes['icon']))
+    @if (isset($attributes['icon']))
         <div class="input-group">
             @if (isset($attributes['icon'][1]) && $attributes['icon'][1] == \Laraflow\Form\Builders\FormBuilder::ICON_PREPEND)
                 <div class="input-group-prepend">

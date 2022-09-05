@@ -2,7 +2,7 @@
 
     {!! \Form::label($name, $label, $required) !!}
     @php $attributes['class'][] = 'custom-select' @endphp
-    @if(isset($attributes['icon']))
+    @if (isset($attributes['icon']))
         <div class="input-group">
             @if (isset($attributes['icon'][1]) && $attributes['icon'][1] == \Laraflow\Form\Builders\FormBuilder::ICON_PREPEND)
                 <div class="input-group-prepend">

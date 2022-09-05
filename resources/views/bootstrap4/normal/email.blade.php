@@ -2,7 +2,7 @@
 
     {!! \Form::label($name, $label, $required) !!}
 
-    @if(isset($attributes['icon']))
+    @if (isset($attributes['icon']))
         <div class="input-group">
             @if (isset($attributes['icon'][1]) && $attributes['icon'][1] == \Laraflow\Form\Builders\FormBuilder::ICON_PREPEND)
                 <div class="input-group-prepend">
@@ -14,7 +14,7 @@
                 </div>
             @endif
 
-                {!! \Form::email($name, $default, $required, $attributes) !!}
+            {!! \Form::email($name, $default, $required, $attributes) !!}
 
             @if (isset($attributes['icon'][1]) && $attributes['icon'][1] == \Laraflow\Form\Builders\FormBuilder::ICON_APPEND)
                 <div class="input-group-append">
@@ -27,7 +27,7 @@
             @endif
         </div>
     @else
-            {!! \Form::email($name, $default, $required, $attributes) !!}
+        {!! \Form::email($name, $default, $required, $attributes) !!}
     @endif
 
 

@@ -4,7 +4,7 @@
 
     @php
         $options = ['class' => 'custom-control-input '];
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -17,13 +17,7 @@
         @endphp
 
         <div class="custom-control custom-checkbox custom-control-inline">
-            {!! \Form::checkbox(
-                $name,
-                $value,
-                in_array($value, $checked),
-                $required,
-                $attributes,
-            ) !!}
+            {!! \Form::checkbox($name, $value, in_array($value, $checked), $required, $attributes) !!}
 
             {!! \Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
         </div>

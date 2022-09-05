@@ -10,13 +10,7 @@
         @endphp
 
         <div class="custom-control custom-checkbox">
-            {!! \Form::checkbox(
-                $name,
-                $value,
-                in_array($value, $checked),
-                $required,
-                $attributes,
-            ) !!}
+            {!! \Form::checkbox($name, $value, in_array($value, $checked), $required, $attributes) !!}
 
             {!! \Form::label($attributes['id'], $display, false, ['class' => 'custom-control-label']) !!}
         </div>

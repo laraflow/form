@@ -2,7 +2,7 @@
     {!! \Form::label($name, $label, $required) !!}
     @php $attributes['class'][] = 'custom-control-input' @endphp
 
-    @foreach (($values ?? []) as $value => $display)
+    @foreach ($values ?? [] as $value => $display)
         @php $attributes['id'] = $name . '-radio-' . $value @endphp
 
         <div class="custom-control custom-radio">

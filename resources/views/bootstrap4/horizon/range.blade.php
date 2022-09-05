@@ -5,7 +5,7 @@
 
     @php
         $options = ['class' => 'form-control custom-range '];
-
+        
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }

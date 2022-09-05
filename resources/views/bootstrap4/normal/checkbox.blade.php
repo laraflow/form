@@ -22,5 +22,5 @@
         </div>
     @endforeach
 
-    {!! \Form::error($name . '[]') !!}
+    {!! \Form::error($name) !!}
 </div>

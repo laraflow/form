@@ -1,4 +1,4 @@
-<div class="form-inline">
+<div class="{{ wrapper($attributes) }}">
 
     {!! \Form::label($name, $label, $required, ['class' => 'sr-only d-none']) !!}
 

@@ -61,7 +61,6 @@ class FormServiceProvider extends ServiceProvider
 
         $this->app->register(LabelServiceProvider::class);
         $this->app->register(HorizontalFieldServiceProvider::class);
-        $this->app->register(GroupFieldServiceProvider::class);
         $this->app->register(InlineFieldServiceProvider::class);
         $this->app->register(NormalFieldServiceProvider::class);
 

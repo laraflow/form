@@ -8,8 +8,8 @@
         <div class="custom-control custom-radio">
             {!! \Form::radio($name, $value, $value == $checked, $required, $attributes) !!}
 
-            {!! \Form::label($options['id'], $display, false, ['class' => 'custom-control-label']) !!}
+            {!! \Form::label($attributes['id'], $display, false, ['class' => 'custom-control-label']) !!}
         </div>
     @endforeach
-    {!! \Form::error($name . '[]') !!}
+    {!! \Form::error($name) !!}
 </div>

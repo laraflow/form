@@ -15,7 +15,7 @@ return [
             'wrapper' => [
                 'normal' => 'form-group',
                 'group' => 'form-group',
-                'horizon' => 'form-group',
+                'horizon' => 'form-group row',
                 'inline' => 'form-inline',
             ],
             'field' => ['form-control'],

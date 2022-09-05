@@ -20,5 +20,5 @@
         });
     </script>
 
-    {!! \Form::error($name . '[]') !!}
+    {!! \Form::error($name) !!}
 </div>

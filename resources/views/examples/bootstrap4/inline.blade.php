@@ -18,7 +18,7 @@
             </code>
         </td>
         <td>
-            {!! \Form::iCheckbox('item', 'Item(s)', [1 => 'Egg', 2 => 'Rice', 3 => 'other inline'], [3, 2], true) !!}
+            {!! \Form::iCheckbox('item', 'Item(s)', [1 => 'Egg', 2 => 'Rice', 3 => 'other inline'], [3, 2], true, [                'inline' => true,]) !!}
         </td>
     </tr>
     <tr>
@@ -30,7 +30,7 @@
             </code>
         </td>
         <td>
-            {!! \Form::iDate('meeting_date', 'Meeting Date', null, true) !!}
+            {!! \Form::iDate('meeting_date', 'Meeting Date', null, true, null, 'before', ['inline' => true]) !!}
         </td>
     </tr>
     <tr>
@@ -43,6 +43,7 @@
         </td>
         <td>
             {!! \Form::iEmail('email_address', 'Email Address', 'john@doe.com', true, 'fas fa-envelop', 'before', [
+                    'inline' => true,
                 'placeholder' => 'Email Example Placeholder',
             ]) !!}
         </td>
@@ -56,7 +57,7 @@
             </code>
         </td>
         <td>
-            {!! \Form::iFile('import_file', 'Import File', true, ['accept' => 'audio/*']) !!}
+            {!! \Form::iFile('import_file', 'Import File', true, [                'inline' => true,'accept' => 'audio/*']) !!}
         </td>
     </tr>
     <tr>
@@ -68,7 +69,7 @@
             </code>
         </td>
         <td>
-            {!! \Form::iImage('photo', 'Photo', true, ['accept' => 'image/*']) !!}
+            {!! \Form::iImage('photo', 'Photo', true, [                'inline' => true,'accept' => 'image/*']) !!}
         </td>
     </tr>
     <tr>
@@ -88,7 +89,7 @@
                 'Profile Photo',
                 true,
                 ['preview' => true, 'height' => 128, 'default' => 'https://via.placeholder.com/300x128.png'],
-                ['accept' => 'image/*'],
+                ['accept' => 'image/*',                 'inline' => true,],
             ) !!}
         </td>
     </tr>
@@ -102,7 +103,7 @@
             </code>
         </td>
         <td>
-            {!! \Form::iNumber('money', 'Money', 100.0, true, 'fas fa-user', 'before', [
+            {!! \Form::iNumber('money', 'Money', 100.0, true, 'fas fa-user', 'before', [                'inline' => true,
                 'step' => '0.01',
                 'min' => 0,
             ]) !!}
@@ -118,7 +119,7 @@
             </code>
         </td>
         <td>
-            {!! \Form::iPassword('password', 'Password', '123456789', true, [
+            {!! \Form::iPassword('password', 'Password', '123456789', true, [                'inline' => true,
                 'placeholder' => 'Password Placeholder',
             ]) !!}
         </td>
@@ -133,7 +134,7 @@
             </code>
         </td>
         <td>
-            {!! \Form::iRadio('gender', 'Gender', [1 => 'Male', 2 => 'Female', 3 => 'Other'], 3, true) !!}
+            {!! \Form::iRadio('gender', 'Gender', [1 => 'Male', 2 => 'Female', 3 => 'Other'], 3, true, [                'inline' => true,]) !!}
         </td>
     </tr>
     <tr>
@@ -145,7 +146,7 @@
             </code>
         </td>
         <td>
-            {!! \Form::iRange('rating', 'Rating', 5, true, ['min' => 0, 'max' => 100]) !!}
+            {!! \Form::iRange('rating', 'Rating', 5, true, [                'inline' => true,'min' => 0, 'max' => 100]) !!}
         </td>
     </tr>
     <tr>
@@ -176,6 +177,7 @@
         </td>
         <td>
             {!! \Form::iSelect('state', 'State', [1 => 'Dhaka', 2 => 'Chittagong'], null, false, 'fas fa-user', 'before', [
+    'inline' => true,
                 'placeholder' => 'Select a State',
             ]) !!}
         </td>
@@ -199,7 +201,7 @@
                 false,
                 'fas fa-user',
                 'before',
-                ['placeholder' => 'Select a Animal'],
+                ['placeholder' => 'Select a Animal',                'inline' => true,],
             ) !!}
         </td>
     </tr>
@@ -222,7 +224,7 @@
                 false,
                 'fas fa-user',
                 'before',
-                [],
+                [                'inline' => true,],
             ) !!}
         </td>
     </tr>
@@ -237,6 +239,7 @@
         </td>
         <td>
             {!! \Form::iSelectMonth('month', 'Month', '2', true, 'fas fa-user', 'before', [
+                    'inline' => true,
                 'placeholder' => 'Select a Month',
             ]) !!}
         </td>
@@ -253,6 +256,7 @@
         </td>
         <td>
             {!! \Form::iSelectRange('rating', 'Rating', 1, 100, 20, false, 'fas fa-user', 'before', [
+                    'inline' => true,
                 'placeholder' => 'Select a Rating',
             ]) !!}
         </td>
@@ -269,6 +273,7 @@
         </td>
         <td>
             {!! \Form::iTel('mobile', 'Mobile', null, true, 'fas fa-user', 'before', [
+                    'inline' => true,
                 'placeholder' => 'Enter Mobile Number',
             ]) !!}
         </td>
@@ -285,6 +290,7 @@
         </td>
         <td>
             {!! \Form::iText('summary', 'Summary', 'short summary', true, 'fas fa-user', 'before', [
+                    'inline' => true,
                 'placeholder' => 'Type some summary',
             ]) !!}
         </td>
@@ -300,6 +306,7 @@
         </td>
         <td>
             {!! \Form::iTextarea('description', 'Description', 'short description', true, 'fas fa-user', 'before', [
+                'inline' => true,
                 'placeholder' => 'Type some description',
             ]) !!}
         </td>
@@ -316,6 +323,7 @@
         </td>
         <td>
             {!! \Form::iUrl('website', 'Website', null, true, 'fas fa-user', 'before', [
+                'inline' => true,
                 'placeholder' => 'Enter Your Portfolio link',
             ]) !!}
         </td>

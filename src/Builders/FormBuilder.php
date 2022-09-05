@@ -25,6 +25,10 @@ class FormBuilder
         ComponentTrait::__call as componentCall;
     }
 
+    const ICON_PREPEND = 'before';
+
+    const ICON_APPEND = 'after';
+
     /**
      * @var array
      */
@@ -601,20 +605,10 @@ class FormBuilder
 
         $this->classAttributes($name, $options, 'field');
 
-        // Next we will look for the rows and cols attributes, as each of these are put
-        // on the textarea element definition. If they are not present, we will just
-        // assume some sane default values for these attributes for the developer.
-        $options = $this->setTextAreaSize($options);
-
         $options['id'] = $this->getIdAttribute($name, $options);
 
         $value = (string)$this->getValueAttribute($name, $value);
 
-        unset($options['size']);
-
-        // Next we will convert the attributes into a string form. Also we have removed
-        // the size attribute, as it was merely a short-cut for the rows and cols on
-        // the element. Then we'll create the final textarea elements HTML for us.
         if ($required === true) {
             $options['required'] = 'required';
         }
@@ -1257,27 +1251,6 @@ class FormBuilder
         return $appendage;
     }
 
-    /**
-     * Set the text area size on the attributes.
-     *
-     * @param array $options
-     * @return array
-     */
-    protected function setTextAreaSize(array $options): array
-    {
-        if (isset($options['size'])) {
-            return $this->setQuickTextAreaSize($options);
-        }
-
-        // If the "size" attribute was not specified, we will just look for the regular
-        // columns and rows attributes, using sane defaults if these do not exist on
-        // the attributes array. We'll then return this entire options array back.
-        $cols = Arr::get($options, 'cols', 50);
-
-        $rows = Arr::get($options, 'rows', 10);
-
-        return array_merge($options, compact('cols', 'rows'));
-    }
 
     /**
      * Set the text area size using the quick "size" attribute.

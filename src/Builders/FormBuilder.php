@@ -235,6 +235,12 @@ class FormBuilder
             $options['name'] = $name;
         }
 
+        if (isset($options['inline'])) {
+            if (empty($options['placeholder'])) {
+                $options['placeholder'] = "Enter {$name}";
+            }
+        }
+
         //updating class fields
         $this->classAttributes($name, $options, 'field');
 

@@ -1,4 +1,4 @@
-<div class="{{ wrapper($attributes) }}">
+<div class="form-group">
 
     {!! \Form::label($name, $label, $required) !!}
 

@@ -6,21 +6,16 @@ if (!function_exists('wrapper')) {
      */
     function wrapper(array &$options = [])
     {
-
         $style = config('form.style', 'bootstrap4');
 
         if (isset($options['normal'])) {
             $wrapper = 'normal';
-            unset($options['normal']);
         } else if (isset($options['inline'])) {
             $wrapper = 'inline';
-            unset($options['inline']);
         } elseif (isset($options['group'])) {
             $wrapper = 'group';
-            unset($options['group']);
         } elseif (isset($options['horizon'])) {
             $wrapper = 'horizon';
-            unset($options['horizon']);
         } else {
             $wrapper = 'normal';
         }

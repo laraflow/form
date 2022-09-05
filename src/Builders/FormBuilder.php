@@ -241,6 +241,10 @@ class FormBuilder
             }
         }
 
+        if (isset($options['icon'])) {
+            unset($options['icon']);
+        }
+
         //updating class fields
         $this->classAttributes($name, $options, 'field');
 
@@ -355,6 +359,10 @@ class FormBuilder
     public function label(string $name, $title = null, bool $required = false, array $options = [], $escape_html = true)
     {
         $this->labels[] = $name;
+
+        if (isset($options['inline'])) {
+            $options['style'] = 'display: none;';
+        }
 
         $options = $this->attributes($options);
 

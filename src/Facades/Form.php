@@ -116,7 +116,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString iCheckbox(string $name, string $label, mixed $values = [], mixed $checked = [], bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
  * @method static HtmlString iRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
  *
- * @see \Laraflow\Form\Providers\NormalFieldServiceProvider
+ * @see \Laraflow\Form\Providers\RegularFieldServiceProvider
  *
  * @method static HtmlString nText(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
  * @method static HtmlString nEmail(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])

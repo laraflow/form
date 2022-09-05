@@ -2,22 +2,16 @@
 
 namespace Laraflow\Form;
 
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Laraflow\Form\Builders\FormBuilder;
-use Laraflow\Form\Providers\GroupFieldServiceProvider;
 use Laraflow\Form\Providers\HorizontalFieldServiceProvider;
-use Laraflow\Form\Providers\InlineFieldServiceProvider;
 use Laraflow\Form\Providers\LabelServiceProvider;
 use Laraflow\Form\Providers\RegularFieldServiceProvider;
-use Laraflow\Form\Traits\BladeDirectiveTrait;
-use Illuminate\Support\Facades\View;
-use Illuminate\View\Compilers\BladeCompiler;
 
 /**
  * Class FormServiceProvider
  *
- * @property static $directives = []
+ * @property array $directives = []
  */
 class FormServiceProvider extends ServiceProvider
 {

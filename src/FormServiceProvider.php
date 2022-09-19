@@ -3,7 +3,6 @@
 namespace Laraflow\Form;
 
 use Illuminate\Support\ServiceProvider;
-use Laraflow\Form\Builders\FormBuilder;
 use Laraflow\Form\Providers\HorizontalFieldServiceProvider;
 use Laraflow\Form\Providers\LabelServiceProvider;
 use Laraflow\Form\Providers\RegularFieldServiceProvider;

@@ -1,8 +1,8 @@
 <?php
 
-if (!function_exists('wrapper')) {
+if (! function_exists('wrapper')) {
     /**
-     * @param array $options
+     * @param  array  $options
      * @return string
      */
     function wrapper(array &$options = [])

@@ -97,6 +97,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString rSelectRange(string $name, string $label, mixed $begin = 0, mixed $end = 100, $selected = null, bool $required = false, array $attributes = [])
  * @method static HtmlString rSelectDay(string $name, string $label, mixed $selected = null, $selected = null, bool $required = false, array $attributes = [])
  * @method static HtmlString rSelectMonth(string $name, string $label, mixed $selected = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rSelectYear(string $name, string $label, mixed $begin = 0, mixed $end = 100, $selected = null, bool $required = false, array $attributes = [])
  * @method static HtmlString rCheckbox(string $name, string $label, mixed $values = [], mixed $checked = [], bool $required = false, array $attributes = [])
  * @method static HtmlString rRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, array $attributes = [])
  **/

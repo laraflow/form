@@ -25,7 +25,7 @@ class RegularFormTest extends TestCase
 
     public function test_regular_password_field()
     {
-        $result = Form::rPassword('Name', 'name', null, true, []);
+        $result = Form::rPassword('Name', 'name', true, []);
         $this->assertIsString($result);
     }
 
@@ -95,42 +95,48 @@ class RegularFormTest extends TestCase
 
     public function test_regular_select_field()
     {
-        $result = Form::r('Name', 'name', null, true, []);
+        $result = Form::rSelect('Name', 'name', [], null, true, []);
         $this->assertIsString($result);
     }
 
 
-    public function test_regular_selectmulti_field()
+    public function test_regular_select_multi_field()
     {
-        $result = Form::r('Name', 'name', null, true, []);
+        $result = Form::rSelectMulti('Name', 'name', [], null, true, []);
         $this->assertIsString($result);
     }
 
 
-    public function test_regular_selectrange_field()
+    public function test_regular_select_range_field()
     {
-        $result = Form::r('Name', 'name', null, true, []);
+        $result = Form::rSelectRange('Name', 'name', 1, 10, null, true, []);
         $this->assertIsString($result);
     }
 
 
-    public function test_regular_selectmonth_field()
+    public function test_regular_select_month_field()
     {
-        $result = Form::r('Name', 'name', null, true, []);
+        $result = Form::rSelectMonth('Name', 'name', null, true, []);
+        $this->assertIsString($result);
+    }
+
+    public function test_regular_select_year_field()
+    {
+        $result = Form::rSelectYear('Name', 'name', null, null, null, true, []);
         $this->assertIsString($result);
     }
 
 
     public function test_regular_checkbox_field()
     {
-        $result = Form::r('Name', 'name', null, true, []);
+        $result = Form::rCheckbox('Name', 'name', [], null, true, []);
         $this->assertIsString($result);
     }
 
 
     public function test_regular_radio_field()
     {
-        $result = Form::r('Name', 'name', null, true, []);
+        $result = Form::rRadio('Name', 'name', [], null, true, []);
         $this->assertIsString($result);
     }
 

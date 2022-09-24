@@ -57,7 +57,6 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString  hLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
  * @method static HtmlString  fLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
  *
- *
  * @see \Laraflow\Form\Providers\HorizontalFieldServiceProvider
  *
  * @method static HtmlString hText(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
@@ -78,7 +77,6 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString hSelectMonth(string $name, string $label, mixed $selected = null, bool $required = false, int $col_size = 2, array $attributes = [])
  * @method static HtmlString hCheckbox(string $name, string $label, mixed $values = [], mixed $checked = [], bool $required = false, int $col_size = 2, array $attributes = [])
  * @method static HtmlString hRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, int $col_size = 2, array $attributes = [])
- *
  *
  * @see \Laraflow\Form\Providers\RegularFieldServiceProvider
  *

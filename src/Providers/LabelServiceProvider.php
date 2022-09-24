@@ -8,7 +8,6 @@ use Laraflow\Form\Facades\Form;
 
 /**
  * Class LabelServiceProvider
- *
  */
 class LabelServiceProvider extends ServiceProvider
 {

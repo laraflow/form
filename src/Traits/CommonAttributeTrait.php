@@ -4,24 +4,19 @@
 namespace Laraflow\Form\Traits;
 
 
-use Illuminate\Support\Str;
+use Laraflow\Form\Field;
 
 trait CommonAttributeTrait
 {
     /**
-     * Set the Label and name attribute value
+     * Set this field should be required or not
      *
-     * @param string $label
-     * @param string|null $attribute
+     * @param bool $required
      * @return self
      */
-    public function make(string $label, string $attribute = null)
+    public function required(bool $required = false)
     {
-        $this->label = $label;
-
-        $this->name = (is_null($attribute))
-            ? Str::snake($attribute, '_')
-            : $attribute;
+        $this->required = $required;
 
         return $this;
     }
@@ -29,20 +24,30 @@ trait CommonAttributeTrait
     /**
      * Set this field should be required or not
      *
-     * @param bool $required
-     */
-    public function required(bool $required = false)
-    {
-        $this->required = $required;
-    }
-
-    /**
-     * Set this field should be required or not
-     *
      * @param mixed $value
+     * @return self
      */
     public function default($value = null)
     {
         $this->default = $value;
+
+        return $this;
+    }
+
+    /**
+     * Set icon for field
+     *
+     * @param string $icon
+     * @param string $position
+     * @return self
+     */
+    public function icon(string $icon, string $position = Field::ICON_PREPEND)
+    {
+        $this->icon['class'] = $icon;
+
+        $this->icon['position'] = $position;
+
+        return $this;
+
     }
 }

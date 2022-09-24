@@ -13,6 +13,11 @@ use Illuminate\Support\ViewErrorBag;
  */
 class Field
 {
+
+    const ICON_PREPEND = 'before';
+
+    const ICON_APPEND = 'after';
+
     /**
      * The session store implementation.
      *
@@ -44,7 +49,7 @@ class Field
     /**
      * The field name attribute value
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
 
@@ -58,9 +63,30 @@ class Field
     /**
      * If this field has a default value
      *
-     * @var mixed
+     * @var mixed|null
      */
     protected $default = null;
+
+    /**
+     * If this field may have a icon default null
+     *
+     * @var array
+     */
+    protected $icon = [
+        'class' => null,
+        'position' => self::ICON_PREPEND
+    ];
+
+    /**
+     * Transform the string to an Html serializable object
+     *
+     * @param $html
+     * @return string
+     */
+    protected function toHtmlString($html): string
+    {
+        return (string)$html;
+    }
 
     /**
      * Render the field object to plain html field
@@ -73,13 +99,18 @@ class Field
     }
 
     /**
-     * Transform the string to an Html serializable object
+     * Set the Label and name attribute value
      *
-     * @param $html
-     * @return string
+     * @param string $label
+     * @param string|null $attribute
+     * @return self
      */
-    protected function toHtmlString($html): string
+    public function make(string $label, string $attribute = null)
     {
-        return (string)$html;
+        $this->label = $label;
+
+        $this->name = $attribute ?? str_replace(' ', '_', strtolower($label));
+
+        return $this;
     }
 }

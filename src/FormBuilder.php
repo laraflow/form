@@ -25,10 +25,6 @@ class FormBuilder
         ComponentTrait::__call as componentCall;
     }
 
-    const ICON_PREPEND = 'before';
-
-    const ICON_APPEND = 'after';
-
     /**
      * @var array
      */

@@ -24,7 +24,7 @@ trait ComponentTrait
      *
      * @param    $name
      * @param    $view
-     * @param  array  $signature
+     * @param array $signature
      * @return void
      */
     public static function component($name, $view, array $signature)
@@ -35,8 +35,8 @@ trait ComponentTrait
     /**
      * Dynamically handle calls to the class.
      *
-     * @param  string  $method
-     * @param  array  $parameters
+     * @param string $method
+     * @param array $parameters
      * @return View|HtmlString|mixed
      *
      * @throws BadMethodCallException
@@ -65,7 +65,7 @@ trait ComponentTrait
      * Render a custom component.
      *
      * @param    $name
-     * @param  array  $arguments
+     * @param array $arguments
      * @return View|HtmlString
      */
     protected function renderComponent($name, array $arguments)
@@ -81,8 +81,8 @@ trait ComponentTrait
     /**
      * Prepare the component data, while respecting provided defaults.
      *
-     * @param  array  $signature
-     * @param  array  $arguments
+     * @param array $signature
+     * @param array $arguments
      * @return array
      */
     protected function getComponentData(array $signature, array $arguments)

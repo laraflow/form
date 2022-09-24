@@ -9,7 +9,6 @@ use Laraflow\Form\Facades\Form;
 /**
  * Class LabelServiceProvider
  *
- * @property static $directives = []
  */
 class LabelServiceProvider extends ServiceProvider
 {

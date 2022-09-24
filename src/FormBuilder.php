@@ -244,6 +244,126 @@ class FormBuilder
     }
 
     /**
+     * Parse the form action method.
+     *
+     * @param string $method
+     * @return string
+     */
+    protected function getMethod(string $method)
+    {
+        $method = strtoupper($method);
+
+        return $method !== 'GET' ? 'POST' : $method;
+    }
+
+    /**
+     * Get the form action from the options.
+     *
+     * @param array $options
+     * @return string
+     */
+    protected function getAction(array $options)
+    {
+        // We will also check for a "route" or "action" parameter on the array so that
+        // developers can easily specify a route or controller action when creating
+        // a form providing a convenient interface for creating the form actions.
+        if (isset($options['url'])) {
+            return $this->getUrlAction($options['url']);
+        }
+
+        if (isset($options['route'])) {
+            return $this->getRouteAction($options['route']);
+        }
+
+        // If an action is available, we are attempting to open a form to a controller
+        // action route. So, we will use the URL generator to get the path to these
+        // actions and return them from the method. Otherwise, we'll use current.
+        elseif (isset($options['action'])) {
+            return $this->getControllerAction($options['action']);
+        }
+
+        return $this->url->current();
+    }
+
+    /**
+     * Get the action for a "url" option.
+     *
+     * @param array|string $options
+     * @return string
+     */
+    protected function getUrlAction($options)
+    {
+        if (is_array($options)) {
+            return $this->url->to($options[0], array_slice($options, 1));
+        }
+
+        return $this->url->to($options);
+    }
+
+    /**
+     * Get the action for a "route" option.
+     *
+     * @param array|string $options
+     * @return string
+     */
+    protected function getRouteAction($options)
+    {
+        if (is_array($options)) {
+            $parameters = array_slice($options, 1);
+
+            if (array_keys($options) === [0, 1]) {
+                $parameters = head($parameters);
+            }
+
+            return $this->url->route($options[0], $parameters);
+        }
+
+        return $this->url->route($options);
+    }
+
+    /**
+     * Get the action for an "action" option.
+     *
+     * @param array|string $options
+     * @return string
+     */
+    protected function getControllerAction($options)
+    {
+        if (is_array($options)) {
+            return $this->url->action($options[0], array_slice($options, 1));
+        }
+
+        return $this->url->action($options);
+    }
+
+    /**
+     * Get the form appendage for the given method.
+     *
+     * @param string $method
+     * @return string
+     */
+    protected function getAppendage(string $method)
+    {
+        [$method, $appendage] = [strtoupper($method), ''];
+
+        // If the HTTP method is in this list of spoofed methods, we will attach the
+        // method spoofer hidden input to the form. This allows us to use regular
+        // form to initiate PUT and DELETE requests in addition to the typical.
+        if (in_array($method, $this->spoofedMethods)) {
+            $appendage .= $this->hidden('_method', $method);
+        }
+
+        // If the method is something other than GET we will go ahead and attach the
+        // CSRF token to the form, as this can't hurt and is convenient to simply
+        // always have available on every form the developers creates for them.
+        if ($method !== 'GET') {
+            $appendage .= $this->token();
+        }
+
+        return $appendage;
+    }
+
+    /**
      * Create a hidden input field.
      *
      * @param string $name
@@ -312,6 +432,99 @@ class FormBuilder
     }
 
     /**
+     * @param $name
+     * @param array $options
+     * @param string $field
+     */
+    protected function classAttributes($name, array &$options = [], string $field = 'field')
+    {
+        $style = config('form.style');
+
+        $classes = config("form.styles.{$style}.{$field}", []);
+
+        if ($this->errors->has($name)) {
+            $classes = array_merge($classes, config("form.styles.{$style}.validation", []));
+        }
+
+        if (isset($options['class'])) {
+            $classes = (is_array($options['class']))
+                ? array_merge($classes, ($options['class'] ?? []))
+                : [$classes, $options['class']];
+        }
+
+        $options['class'] = implode(' ', Arr::flatten($classes));
+    }
+
+    /**
+     * Get the ID attribute for a field name.
+     *
+     * @param string $name
+     * @param array $attributes
+     * @return string|null
+     */
+    protected function getIdAttribute(string $name, array $attributes): ?string
+    {
+        if (array_key_exists('id', $attributes)) {
+            return $attributes['id'];
+        }
+
+        if (in_array($name, $this->labels)) {
+            return $name;
+        }
+
+        return null;
+    }
+
+    /**
+     * Get the value that should be assigned to the field.
+     *
+     * @param string|null $name
+     * @param null $value
+     * @return mixed
+     */
+    protected function getValueAttribute(string $name = null, $value = null)
+    {
+        if (is_null($name)) {
+            return $value;
+        }
+
+        $old = $this->old($name);
+
+        if (!is_null($old) && $name !== '_method') {
+            return $old;
+        }
+
+        if (function_exists('app')) {
+            $hasNullMiddleware = app("Illuminate\Contracts\Http\Kernel")
+                ->hasMiddleware('\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull');
+
+            if ($hasNullMiddleware
+                && is_null($old)
+                && is_null($value)
+                && !is_null($this->view->shared('errors'))
+                && count(is_countable($this->view->shared('errors')) ? $this->view->shared('errors') : []) > 0
+            ) {
+                return null;
+            }
+        }
+
+        $request = $this->request($name);
+        if (!is_null($request) && $name != '_method') {
+            return $request;
+        }
+
+        if (!is_null($value)) {
+            return $value;
+        }
+
+        if (isset($this->model)) {
+            return $this->getModelValueAttribute($name);
+        }
+
+        return null;
+    }
+
+    /**
      * Get a value from the session's old input.
      *
      * @param string $name
@@ -337,6 +550,114 @@ class FormBuilder
         }
 
         return $payload;
+    }
+
+    /**
+     * Transform key from array to dot syntax.
+     *
+     * @param string $key
+     * @return mixed
+     */
+    protected function transformKey(string $key)
+    {
+        return str_replace(['.', '[]', '[', ']'], ['_', '', '.', ''], $key);
+    }
+
+    /**
+     * Get value from current Request
+     *
+     * @param $name
+     * @return array|null|string
+     */
+    protected function request($name)
+    {
+        if (!$this->considerRequest) {
+            return null;
+        }
+
+        if (!isset($this->request)) {
+            return null;
+        }
+
+        return $this->request->input($this->transformKey($name));
+    }
+
+    /**
+     * Get the model value that should be assigned to the field.
+     *
+     * @param string $name
+     * @return mixed
+     */
+    protected function getModelValueAttribute(string $name)
+    {
+        $key = $this->transformKey($name);
+
+        if ((is_string($this->model) || is_object($this->model)) && method_exists($this->model, 'getFormValue')) {
+            return $this->model->getFormValue($key);
+        }
+
+        return data_get($this->model, $key);
+    }
+
+    /**
+     * Transform the string to an Html serializable object
+     *
+     * @param $html
+     * @return HtmlString
+     */
+    protected function toHtmlString($html)
+    {
+        return new HtmlString($html);
+    }
+
+    /**
+     * Build an HTML attribute string from an array.
+     *
+     * @param array $attributes
+     * @return string
+     */
+    protected function attributes(array $attributes)
+    {
+        $html = [];
+
+        foreach ((array)$attributes as $key => $value) {
+            $element = $this->attributeElement($key, $value);
+
+            if ($element != null) {
+                $html[] = $element;
+            }
+        }
+
+        return count($html) > 0 ? ' ' . implode(' ', $html) : '';
+    }
+
+    /**
+     * Build a single attribute element.
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return string
+     */
+    private function attributeElement(string $key, $value)
+    {
+        if (is_numeric($key)) {
+            return $value;
+        }
+
+        // Treat boolean attributes as HTML properties
+        if (is_bool($value) && $key !== 'value') {
+            return $value ? $key : '';
+        }
+
+        if (is_array($value) && $key === 'class') {
+            return 'class="' . implode(' ', $value) . '"';
+        }
+
+        if (!is_null($value)) {
+            return $key . '="' . e($value, false) . '"';
+        }
+
+        return '';
     }
 
     /**
@@ -640,6 +961,8 @@ class FormBuilder
         return $this->input('file', $name, null, $required, $options);
     }
 
+    //------------------------------------------- Internal Methods ---------------------------------------------------//
+
     /**
      * Create a textarea input field.
      *
@@ -770,6 +1093,116 @@ class FormBuilder
     }
 
     /**
+     * Create a placeholder select element option.
+     *
+     * @param $display
+     * @param $selected
+     * @return HtmlString
+     */
+    protected function placeholderOption($display, $selected)
+    {
+        $selected = $this->getSelectedValue(null, $selected);
+
+        $options = [
+            'selected' => $selected,
+            'value' => '',
+        ];
+
+        return $this->toHtmlString('<option' . $this->attributes($options) . '>' . e($display, false) . '</option>');
+    }
+
+    /**
+     * Determine if the value is selected.
+     *
+     * @param string|null $value
+     * @param mixed $selected
+     * @return mixed
+     */
+    protected function getSelectedValue($value, $selected)
+    {
+        if (is_array($selected)) {
+            return in_array($value, $selected, true) || in_array((string)$value, $selected, true) ? 'selected' : null;
+        } elseif ($selected instanceof Collection) {
+            return $selected->contains($value) ? 'selected' : null;
+        }
+        /** @phpstan-ignore-next-line */
+        if (is_int($value) && is_bool($selected)) {
+            return (bool)$value === $selected;
+        }
+
+        return ((string)$value === (string)$selected) ? 'selected' : null;
+    }
+
+    /**
+     * Get the select option for the given value.
+     *
+     * @param mixed $display
+     * @param string $value
+     * @param string|null $selected
+     * @param array $attributes
+     * @param array $optgroupAttributes
+     * @return HtmlString
+     */
+    protected function getSelectOption($display, string $value, $selected = null, array $attributes = [], array $optgroupAttributes = [])
+    {
+        if (is_iterable($display)) {
+            return $this->optionGroup($display, $value, $selected, $optgroupAttributes, $attributes);
+        }
+
+        return $this->option($display, $value, $selected, $attributes);
+    }
+
+    /**
+     * Create an option group form element.
+     *
+     * @param array $list
+     * @param string $label
+     * @param string $selected
+     * @param array $attributes
+     * @param array $optionsAttributes
+     * @param int $level
+     * @return HtmlString
+     */
+    protected function optionGroup(array $list, string $label, string $selected, array $attributes = [], array $optionsAttributes = [], $level = 0)
+    {
+        $html = [];
+        $space = str_repeat('&nbsp;', $level);
+        foreach ($list as $value => $display) {
+            $optionAttributes = $optionsAttributes[$value] ?? [];
+            if (is_iterable($display)) {
+                $html[] = $this->optionGroup($display, $value, $selected, $attributes, $optionAttributes, $level + 5);
+            } else {
+                $html[] = $this->option($space . $display, $value, $selected, $optionAttributes);
+            }
+        }
+
+        return $this->toHtmlString('<optgroup label="' . e($space . $label, false) . '"' . $this->attributes($attributes) . '>' . implode('', $html) . '</optgroup>');
+    }
+
+    /**
+     * Create a select element option.
+     *
+     * @param string $display
+     * @param string $value
+     * @param string|null $selected
+     * @param array $attributes
+     * @return HtmlString
+     */
+    protected function option(string $display, string $value, $selected = null, array $attributes = [])
+    {
+        $selected = $this->getSelectedValue($value, $selected);
+
+        $options = array_merge(['value' => $value, 'selected' => $selected], $attributes);
+
+        $string = '<option' . $this->attributes($options) . '>';
+        if ($display !== null) {
+            $string .= e($display, false) . '</option>';
+        }
+
+        return $this->toHtmlString($string);
+    }
+
+    /**
      * Create a select month field.
      *
      * @param string $name
@@ -811,6 +1244,138 @@ class FormBuilder
     public function checkbox(string $name, $value = 1, $checked = null, bool $required = false, array $options = [])
     {
         return $this->checkable('checkbox', $name, $value, $checked, $required, $options);
+    }
+
+    /**
+     * Create a checkable input field.
+     *
+     * @param string $type
+     * @param string $name
+     * @param mixed $value
+     * @param bool $checked
+     * @param bool $required
+     * @param array $options
+     * @return HtmlString
+     */
+    protected function checkable(string $type, string $name, $value, bool $checked, bool $required = false, array $options = [])
+    {
+        $this->type = $type;
+
+        $checked = $this->getCheckedState($type, $name, $value, $checked);
+
+        if ($checked) {
+            $options['checked'] = 'checked';
+        }
+
+        return $this->input($type, $name, $value, $required, $options);
+    }
+
+    /**
+     * Get the check state for a checkable input.
+     *
+     * @param string $type
+     * @param string $name
+     * @param mixed $value
+     * @param bool $checked
+     * @return bool
+     */
+    protected function getCheckedState(string $type, string $name, $value, bool $checked): bool
+    {
+        switch ($type) {
+            case 'checkbox':
+                return $this->getCheckboxCheckedState($name, $value, $checked);
+
+            case 'radio':
+                return $this->getRadioCheckedState($name, $value, $checked);
+
+            default:
+                return $this->compareValues($name, $value);
+        }
+    }
+
+    /**
+     * Get the check state for a checkbox input.
+     *
+     * @param string $name
+     * @param mixed $value
+     * @param bool $checked
+     * @return bool
+     */
+    protected function getCheckboxCheckedState(string $name, $value, bool $checked): bool
+    {
+        $request = $this->request($name);
+
+        if (!$this->oldInputIsEmpty() && is_null($this->old($name)) && !$request) {
+            return false;
+        }
+
+        if ($this->missingOldAndModel($name) && is_null($request)) {
+            return $checked;
+        }
+
+        $posted = $this->getValueAttribute($name, $checked);
+
+        if (is_array($posted)) {
+            return in_array($value, $posted);
+        } elseif ($posted instanceof Collection) {
+            return $posted->contains('id', $value);
+        } else {
+            return (bool)$posted;
+        }
+    }
+
+    /**
+     * Determine if the old input is empty.
+     *
+     * @return bool
+     */
+    private function oldInputIsEmpty(): bool
+    {
+        return count((array)$this->session->getOldInput()) === 0;
+    }
+
+    /**
+     * Determine if old input or model input exists for a key.
+     *
+     * @param string $name
+     * @return bool
+     */
+    protected function missingOldAndModel(string $name): bool
+    {
+        return is_null($this->old($name)) && is_null($this->getModelValueAttribute($name));
+    }
+
+    /**
+     * Get the check state for a radio input.
+     *
+     * @param string $name
+     * @param mixed $value
+     * @param bool $checked
+     * @return bool
+     */
+    protected function getRadioCheckedState(string $name, $value, bool $checked): bool
+    {
+        $request = $this->request($name);
+
+        if ($this->missingOldAndModel($name) && !$request) {
+            return $checked;
+        }
+
+        return $this->compareValues($name, $value);
+    }
+
+    /**
+     * Determine if the provide value loosely compares to the value assigned to the field.
+     * Use loose comparison because Laravel model casting may be in affect and therefore
+     * 1 == true and 0 == false.
+     *
+     * @param string $name
+     * @param string $value
+     * @return bool
+     */
+    protected function compareValues(string $name, string $value): bool
+    {
+        return $this->getValueAttribute($name) == $value;
     }
 
     /**
@@ -964,6 +1529,17 @@ class FormBuilder
     }
 
     /**
+     * Determine if an array is associative.
+     *
+     * @param array $array
+     * @return bool
+     */
+    protected function isAssociativeArray(array $array): bool
+    {
+        return array_values($array) !== $array;
+    }
+
+    /**
      * Create a form error display element.
      *
      * @param string $name
@@ -980,595 +1556,6 @@ class FormBuilder
                 }*/
 
         return $this->getErrorMessage($name, $all, $options);
-    }
-
-    //------------------------------------------- Internal Methods ---------------------------------------------------//
-
-    /**
-     * @param $name
-     * @param array $options
-     * @param string $field
-     */
-    protected function classAttributes($name, array &$options = [], string $field = 'field')
-    {
-        $style = config('form.style');
-
-        $classes = config("form.styles.{$style}.{$field}", []);
-
-        if ($this->errors->has($name)) {
-            $classes = array_merge($classes, config("form.styles.{$style}.validation", []));
-        }
-
-        if (isset($options['class'])) {
-            $classes = (is_array($options['class']))
-                ? array_merge($classes, ($options['class'] ?? []))
-                : [$classes, $options['class']];
-        }
-
-        $options['class'] = implode(' ', Arr::flatten($classes));
-    }
-
-    /**
-     * Get the ID attribute for a field name.
-     *
-     * @param string $name
-     * @param array $attributes
-     * @return string|null
-     */
-    protected function getIdAttribute(string $name, array $attributes): ?string
-    {
-        if (array_key_exists('id', $attributes)) {
-            return $attributes['id'];
-        }
-
-        if (in_array($name, $this->labels)) {
-            return $name;
-        }
-
-        return null;
-    }
-
-    /**
-     * Get the value that should be assigned to the field.
-     *
-     * @param string|null $name
-     * @param null $value
-     * @return mixed
-     */
-    protected function getValueAttribute(string $name = null, $value = null)
-    {
-        if (is_null($name)) {
-            return $value;
-        }
-
-        $old = $this->old($name);
-
-        if (!is_null($old) && $name !== '_method') {
-            return $old;
-        }
-
-        if (function_exists('app')) {
-            $hasNullMiddleware = app("Illuminate\Contracts\Http\Kernel")
-                ->hasMiddleware('\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull');
-
-            if ($hasNullMiddleware
-                && is_null($old)
-                && is_null($value)
-                && !is_null($this->view->shared('errors'))
-                && count(is_countable($this->view->shared('errors')) ? $this->view->shared('errors') : []) > 0
-            ) {
-                return null;
-            }
-        }
-
-        $request = $this->request($name);
-        if (!is_null($request) && $name != '_method') {
-            return $request;
-        }
-
-        if (!is_null($value)) {
-            return $value;
-        }
-
-        if (isset($this->model)) {
-            return $this->getModelValueAttribute($name);
-        }
-
-        return null;
-    }
-
-    /**
-     * Transform key from array to dot syntax.
-     *
-     * @param string $key
-     * @return mixed
-     */
-    protected function transformKey(string $key)
-    {
-        return str_replace(['.', '[]', '[', ']'], ['_', '', '.', ''], $key);
-    }
-
-    /**
-     * Get value from current Request
-     *
-     * @param $name
-     * @return array|null|string
-     */
-    protected function request($name)
-    {
-        if (!$this->considerRequest) {
-            return null;
-        }
-
-        if (!isset($this->request)) {
-            return null;
-        }
-
-        return $this->request->input($this->transformKey($name));
-    }
-
-    /**
-     * Get the model value that should be assigned to the field.
-     *
-     * @param string $name
-     * @return mixed
-     */
-    protected function getModelValueAttribute(string $name)
-    {
-        $key = $this->transformKey($name);
-
-        if ((is_string($this->model) || is_object($this->model)) && method_exists($this->model, 'getFormValue')) {
-            return $this->model->getFormValue($key);
-        }
-
-        return data_get($this->model, $key);
-    }
-
-    /**
-     * Transform the string to an Html serializable object
-     *
-     * @param $html
-     * @return HtmlString
-     */
-    protected function toHtmlString($html)
-    {
-        return new HtmlString($html);
-    }
-
-    /**
-     * Build an HTML attribute string from an array.
-     *
-     * @param array $attributes
-     * @return string
-     */
-    protected function attributes(array $attributes)
-    {
-        $html = [];
-
-        foreach ((array)$attributes as $key => $value) {
-            $element = $this->attributeElement($key, $value);
-
-            if ($element != null) {
-                $html[] = $element;
-            }
-        }
-
-        return count($html) > 0 ? ' ' . implode(' ', $html) : '';
-    }
-
-    /**
-     * Build a single attribute element.
-     *
-     * @param string $key
-     * @param mixed $value
-     * @return string
-     */
-    private function attributeElement(string $key, $value)
-    {
-        if (is_numeric($key)) {
-            return $value;
-        }
-
-        // Treat boolean attributes as HTML properties
-        if (is_bool($value) && $key !== 'value') {
-            return $value ? $key : '';
-        }
-
-        if (is_array($value) && $key === 'class') {
-            return 'class="' . implode(' ', $value) . '"';
-        }
-
-        if (!is_null($value)) {
-            return $key . '="' . e($value, false) . '"';
-        }
-
-        return '';
-    }
-
-    /**
-     * Parse the form action method.
-     *
-     * @param string $method
-     * @return string
-     */
-    protected function getMethod(string $method)
-    {
-        $method = strtoupper($method);
-
-        return $method !== 'GET' ? 'POST' : $method;
-    }
-
-    /**
-     * Get the form action from the options.
-     *
-     * @param array $options
-     * @return string
-     */
-    protected function getAction(array $options)
-    {
-        // We will also check for a "route" or "action" parameter on the array so that
-        // developers can easily specify a route or controller action when creating
-        // a form providing a convenient interface for creating the form actions.
-        if (isset($options['url'])) {
-            return $this->getUrlAction($options['url']);
-        }
-
-        if (isset($options['route'])) {
-            return $this->getRouteAction($options['route']);
-        }
-
-        // If an action is available, we are attempting to open a form to a controller
-        // action route. So, we will use the URL generator to get the path to these
-        // actions and return them from the method. Otherwise, we'll use current.
-        elseif (isset($options['action'])) {
-            return $this->getControllerAction($options['action']);
-        }
-
-        return $this->url->current();
-    }
-
-    /**
-     * Get the action for a "url" option.
-     *
-     * @param array|string $options
-     * @return string
-     */
-    protected function getUrlAction($options)
-    {
-        if (is_array($options)) {
-            return $this->url->to($options[0], array_slice($options, 1));
-        }
-
-        return $this->url->to($options);
-    }
-
-    /**
-     * Get the action for a "route" option.
-     *
-     * @param array|string $options
-     * @return string
-     */
-    protected function getRouteAction($options)
-    {
-        if (is_array($options)) {
-            $parameters = array_slice($options, 1);
-
-            if (array_keys($options) === [0, 1]) {
-                $parameters = head($parameters);
-            }
-
-            return $this->url->route($options[0], $parameters);
-        }
-
-        return $this->url->route($options);
-    }
-
-    /**
-     * Get the action for an "action" option.
-     *
-     * @param array|string $options
-     * @return string
-     */
-    protected function getControllerAction($options)
-    {
-        if (is_array($options)) {
-            return $this->url->action($options[0], array_slice($options, 1));
-        }
-
-        return $this->url->action($options);
-    }
-
-    /**
-     * Get the form appendage for the given method.
-     *
-     * @param string $method
-     * @return string
-     */
-    protected function getAppendage(string $method)
-    {
-        [$method, $appendage] = [strtoupper($method), ''];
-
-        // If the HTTP method is in this list of spoofed methods, we will attach the
-        // method spoofer hidden input to the form. This allows us to use regular
-        // form to initiate PUT and DELETE requests in addition to the typical.
-        if (in_array($method, $this->spoofedMethods)) {
-            $appendage .= $this->hidden('_method', $method);
-        }
-
-        // If the method is something other than GET we will go ahead and attach the
-        // CSRF token to the form, as this can't hurt and is convenient to simply
-        // always have available on every form the developers creates for them.
-        if ($method !== 'GET') {
-            $appendage .= $this->token();
-        }
-
-        return $appendage;
-    }
-
-    /**
-     * Set the text area size using the quick "size" attribute.
-     *
-     * @param array $options
-     * @return array
-     */
-    protected function setQuickTextAreaSize(array $options): array
-    {
-        $segments = explode('x', $options['size']);
-
-        return array_merge($options, ['cols' => $segments[0], 'rows' => $segments[1]]);
-    }
-
-    /**
-     * Create a placeholder select element option.
-     *
-     * @param $display
-     * @param $selected
-     * @return HtmlString
-     */
-    protected function placeholderOption($display, $selected)
-    {
-        $selected = $this->getSelectedValue(null, $selected);
-
-        $options = [
-            'selected' => $selected,
-            'value' => '',
-        ];
-
-        return $this->toHtmlString('<option' . $this->attributes($options) . '>' . e($display, false) . '</option>');
-    }
-
-    /**
-     * Determine if the value is selected.
-     *
-     * @param string|null $value
-     * @param mixed $selected
-     * @return mixed
-     */
-    protected function getSelectedValue($value, $selected)
-    {
-        if (is_array($selected)) {
-            return in_array($value, $selected, true) || in_array((string)$value, $selected, true) ? 'selected' : null;
-        } elseif ($selected instanceof Collection) {
-            return $selected->contains($value) ? 'selected' : null;
-        }
-        /** @phpstan-ignore-next-line */
-        if (is_int($value) && is_bool($selected)) {
-            return (bool)$value === $selected;
-        }
-
-        return ((string)$value === (string)$selected) ? 'selected' : null;
-    }
-
-    /**
-     * Get the select option for the given value.
-     *
-     * @param mixed $display
-     * @param string $value
-     * @param string|null $selected
-     * @param array $attributes
-     * @param array $optgroupAttributes
-     * @return HtmlString
-     */
-    protected function getSelectOption($display, string $value, $selected = null, array $attributes = [], array $optgroupAttributes = [])
-    {
-        if (is_iterable($display)) {
-            return $this->optionGroup($display, $value, $selected, $optgroupAttributes, $attributes);
-        }
-
-        return $this->option($display, $value, $selected, $attributes);
-    }
-
-    /**
-     * Create an option group form element.
-     *
-     * @param array $list
-     * @param string $label
-     * @param string $selected
-     * @param array $attributes
-     * @param array $optionsAttributes
-     * @param int $level
-     * @return HtmlString
-     */
-    protected function optionGroup(array $list, string $label, string $selected, array $attributes = [], array $optionsAttributes = [], $level = 0)
-    {
-        $html = [];
-        $space = str_repeat('&nbsp;', $level);
-        foreach ($list as $value => $display) {
-            $optionAttributes = $optionsAttributes[$value] ?? [];
-            if (is_iterable($display)) {
-                $html[] = $this->optionGroup($display, $value, $selected, $attributes, $optionAttributes, $level + 5);
-            } else {
-                $html[] = $this->option($space . $display, $value, $selected, $optionAttributes);
-            }
-        }
-
-        return $this->toHtmlString('<optgroup label="' . e($space . $label, false) . '"' . $this->attributes($attributes) . '>' . implode('', $html) . '</optgroup>');
-    }
-
-    /**
-     * Create a select element option.
-     *
-     * @param string $display
-     * @param string $value
-     * @param string|null $selected
-     * @param array $attributes
-     * @return HtmlString
-     */
-    protected function option(string $display, string $value, $selected = null, array $attributes = [])
-    {
-        $selected = $this->getSelectedValue($value, $selected);
-
-        $options = array_merge(['value' => $value, 'selected' => $selected], $attributes);
-
-        $string = '<option' . $this->attributes($options) . '>';
-        if ($display !== null) {
-            $string .= e($display, false) . '</option>';
-        }
-
-        return $this->toHtmlString($string);
-    }
-
-    /**
-     * Create a checkable input field.
-     *
-     * @param string $type
-     * @param string $name
-     * @param mixed $value
-     * @param bool $checked
-     * @param bool $required
-     * @param array $options
-     * @return HtmlString
-     */
-    protected function checkable(string $type, string $name, $value, bool $checked, bool $required = false, array $options = [])
-    {
-        $this->type = $type;
-
-        $checked = $this->getCheckedState($type, $name, $value, $checked);
-
-        if ($checked) {
-            $options['checked'] = 'checked';
-        }
-
-        return $this->input($type, $name, $value, $required, $options);
-    }
-
-    /**
-     * Get the check state for a checkable input.
-     *
-     * @param string $type
-     * @param string $name
-     * @param mixed $value
-     * @param bool $checked
-     * @return bool
-     */
-    protected function getCheckedState(string $type, string $name, $value, bool $checked): bool
-    {
-        switch ($type) {
-            case 'checkbox':
-                return $this->getCheckboxCheckedState($name, $value, $checked);
-
-            case 'radio':
-                return $this->getRadioCheckedState($name, $value, $checked);
-
-            default:
-                return $this->compareValues($name, $value);
-        }
-    }
-
-    /**
-     * Get the check state for a checkbox input.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param bool $checked
-     * @return bool
-     */
-    protected function getCheckboxCheckedState(string $name, $value, bool $checked): bool
-    {
-        $request = $this->request($name);
-
-        if (!$this->oldInputIsEmpty() && is_null($this->old($name)) && !$request) {
-            return false;
-        }
-
-        if ($this->missingOldAndModel($name) && is_null($request)) {
-            return $checked;
-        }
-
-        $posted = $this->getValueAttribute($name, $checked);
-
-        if (is_array($posted)) {
-            return in_array($value, $posted);
-        } elseif ($posted instanceof Collection) {
-            return $posted->contains('id', $value);
-        } else {
-            return (bool)$posted;
-        }
-    }
-
-    /**
-     * Determine if the old input is empty.
-     *
-     * @return bool
-     */
-    private function oldInputIsEmpty(): bool
-    {
-        return count((array)$this->session->getOldInput()) === 0;
-    }
-
-    /**
-     * Determine if old input or model input exists for a key.
-     *
-     * @param string $name
-     * @return bool
-     */
-    protected function missingOldAndModel(string $name): bool
-    {
-        return is_null($this->old($name)) && is_null($this->getModelValueAttribute($name));
-    }
-
-    /**
-     * Get the check state for a radio input.
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param bool $checked
-     * @return bool
-     */
-    protected function getRadioCheckedState(string $name, $value, bool $checked): bool
-    {
-        $request = $this->request($name);
-
-        if ($this->missingOldAndModel($name) && !$request) {
-            return $checked;
-        }
-
-        return $this->compareValues($name, $value);
-    }
-
-    /**
-     * Determine if the provide value loosely compares to the value assigned to the field.
-     * Use loose comparison because Laravel model casting may be in affect and therefore
-     * 1 == true and 0 == false.
-     *
-     * @param string $name
-     * @param string $value
-     * @return bool
-     */
-    protected function compareValues(string $name, string $value): bool
-    {
-        return $this->getValueAttribute($name) == $value;
-    }
-
-    /**
-     * Determine if an array is associative.
-     *
-     * @param array $array
-     * @return bool
-     */
-    protected function isAssociativeArray(array $array): bool
-    {
-        return array_values($array) !== $array;
     }
 
     /**
@@ -1600,6 +1587,19 @@ class FormBuilder
         }
 
         return $this->toHtmlString($message);
+    }
+
+    /**
+     * Set the text area size using the quick "size" attribute.
+     *
+     * @param array $options
+     * @return array
+     */
+    protected function setQuickTextAreaSize(array $options): array
+    {
+        $segments = explode('x', $options['size']);
+
+        return array_merge($options, ['cols' => $segments[0], 'rows' => $segments[1]]);
     }
 
     /**

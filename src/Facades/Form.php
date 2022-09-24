@@ -9,7 +9,7 @@ use Illuminate\Support\HtmlString;
 /**
  * Class Form
  *
- * @see \Laraflow\Form\Builders\FormBuilder
+ * @see \Laraflow\Form\FormBuilder
  *
  * @method static HtmlString model(mixed $model, array $options = [])
  * @method static HtmlString open(array $options = [])

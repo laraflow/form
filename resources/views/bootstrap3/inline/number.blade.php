@@ -1,9 +1,9 @@
 <div class="form-group">
-    {!! \Form::label($name, $label, $required, ['class' => 'd-none']) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, ['class' => 'd-none']) !!}
 
     @php
         $options = ['class' => 'form-control', 'placeholder' => $attributes['placeholder'] ?? $label];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -18,7 +18,7 @@
                 </span>
             </div>
         @endif
-        {!! \Form::number($name, $default, $required, $attributes) !!}
+        {!! \Laraflow\Form\Facades\Form::number($name, $default, $required, $attributes) !!}
         @if (isset($position) && ($position = 'after'))
             <div class="input-group-prepend">
                 <span class="input-group-text">
@@ -28,6 +28,6 @@
                 </span>
             </div>
         @endif
-        {!! \Form::error($name) !!}
+        {!! \Laraflow\Form\Facades\Form::error($name) !!}
     </div>
 </div>

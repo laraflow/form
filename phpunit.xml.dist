@@ -14,26 +14,32 @@
     executionOrder="random"
     failOnWarning="true"
     failOnRisky="true"
-    failOnEmptyTestSuite="true"
     beStrictAboutOutputDuringTests="true"
     verbose="true"
 >
     <testsuites>
-        <testsuite name="VendorName Test Suite">
+        <testsuite name="Laraflow Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
-    <coverage>
-        <include>
+<!--    <coverage cacheDirectory="/build/cache/PHPUnit"-->
+<!--              includeUncoveredFiles="true"-->
+<!--              processUncoveredFiles="true"-->
+<!--              pathCoverage="false"-->
+<!--              ignoreDeprecatedCodeUnits="true"-->
+<!--              disableCodeCoverageIgnore="true">-->
+<!--        <include>-->
+<!--            <directory suffix=".php">./src</directory>-->
+<!--        </include>-->
+<!--        <report>-->
+<!--            <html outputDirectory="build/coverage"/>-->
+<!--            <text outputFile="build/coverage.txt"/>-->
+<!--            <clover outputFile="build/logs/clover.xml"/>-->
+<!--        </report>-->
+<!--    </coverage>-->
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src</directory>
-        </include>
-        <report>
-            <html outputDirectory="build/coverage"/>
-            <text outputFile="build/coverage.txt"/>
-            <clover outputFile="build/logs/clover.xml"/>
-        </report>
-    </coverage>
-    <logging>
-        <junit outputFile="build/report.junit.xml"/>
-    </logging>
+        </whitelist>
+    </filter>
 </phpunit>

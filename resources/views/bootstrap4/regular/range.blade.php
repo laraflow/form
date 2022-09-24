@@ -1,9 +1,9 @@
 <div class="form-group">
 
-    {!! \Form::label($name, $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
     @php $attributes['class'][] = 'custom-range' @endphp
 
-    {!! \Form::range($name, $default, $required, $attributes) !!}
+    {!! \Laraflow\Form\Facades\Form::range($name, $default, $required, $attributes) !!}
 
     @if (isset($attributes['min']) && isset($attributes['max']))
         <div class="d-flex justify-content-between">

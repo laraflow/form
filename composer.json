@@ -63,7 +63,8 @@
         }
     },
     "scripts": {
-        "analyse": "vendor/bin/phpstan analyse"
+        "analyse": "vendor/bin/phpstan analyse",
+        "test" : "vendor/bin/phpunit"
     },
     "config": {
         "sort-packages": true,

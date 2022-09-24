@@ -1,14 +1,14 @@
 <div class="form-group">
-    {!! \Form::label($name, $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
 
     @php
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
     @endphp
 
-    {!! \Form::checkbox($name, $checked, $required, $attributes) !!}
+    {!! \Laraflow\Form\Facades\Form::checkbox($name, $checked, $required, $attributes) !!}
 
-    {!! \Form::error($name) !!}
+    {!! \Laraflow\Form\Facades\Form::error($name) !!}
 </div>

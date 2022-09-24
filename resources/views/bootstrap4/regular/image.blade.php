@@ -1,17 +1,17 @@
 <div class="form-group">
 
-    {!! \Form::label($name, $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
 
     @php $attributes['class'][] = 'custom-file-input'; @endphp
     @php $attributes['id'] = $name; @endphp
 
     <div class="custom-file">
-        {!! \Form::label('', 'Choose file...', false, [
+        {!! \Laraflow\Form\Facades\Form::label('', 'Choose file...', false, [
             'class' => 'custom-file-label',
             'id' => $name . '_file_label',
         ]) !!}
-        {!! \Form::file($name, $required, $attributes) !!}
-        {!! \Form::error($name) !!}
+        {!! \Laraflow\Form\Facades\Form::file($name, $required, $attributes) !!}
+        {!! \Laraflow\Form\Facades\Form::error($name) !!}
     </div>
 
     @if ($preview['preview'] ?? false)
@@ -44,5 +44,5 @@
         });
     </script>
 
-    {!! \Form::error($name) !!}
+    {!! \Laraflow\Form\Facades\Form::error($name) !!}
 </div>

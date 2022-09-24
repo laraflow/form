@@ -25,6 +25,10 @@ class FormBuilder
         ComponentTrait::__call as componentCall;
     }
 
+    const ICON_PREPEND = 'before';
+
+    const ICON_APPEND = 'after';
+
     /**
      * @var array
      */
@@ -1573,7 +1577,10 @@ class FormBuilder
      */
     protected function getErrorMessage(string $name, bool $list = false, array $options = [])
     {
-        $errors = $this->request->session()->get('errors') ?? new ViewErrorBag;
+
+        $errors = ($this->request->hasSession())
+            ? $this->request->session()->get('errors')
+            : new ViewErrorBag;
 
         $errorMessage = ($list)
             ? (($errors->all($name) ?? []))

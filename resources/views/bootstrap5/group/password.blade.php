@@ -1,8 +1,8 @@
 <div class="form-group">
-    {!! \Form::label($name, $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
 
     @php
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
@@ -17,7 +17,7 @@
                 </div>
             </div>
         @endif
-        {!! \Form::password($name, $required, $attributes) !!}
+        {!! \Laraflow\Form\Facades\Form::password($name, $required, $attributes) !!}
 
         @if (isset($position) && $position == 'after')
             <div class="input-group-append">
@@ -29,5 +29,5 @@
             </div>
         @endif
     </div>
-    {!! \Form::error($name) !!}
+    {!! \Laraflow\Form\Facades\Form::error($name) !!}
 </div>

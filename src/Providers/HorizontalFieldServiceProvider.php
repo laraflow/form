@@ -8,37 +8,9 @@ use Laraflow\Form\Facades\Form;
 
 /**
  * Class HorizontalFieldServiceProvider
- *
- * @property static $directives = []
  */
 class HorizontalFieldServiceProvider extends ServiceProvider
 {
-    /**
-     * Supported Blade Directives
-     *
-     * @var array
-     */
-    public static $directives = [
-        'hText',
-        'hEmail',
-        'hPassword',
-        'hRange',
-        'hSearch',
-        'hTel',
-        'hNumber',
-        'hDate',
-        'hUrl',
-        'hFile',
-        'hImage',
-        'hTextarea',
-        'hSelect',
-        'hSelectMulti',
-        'hSelectRange',
-        'hSelectMonth',
-        'hCheckbox',
-        'hRadio',
-    ];
-
     /**
      * Register Blade directives.
      *

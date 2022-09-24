@@ -90,6 +90,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString rDate(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
  * @method static HtmlString rUrl(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
  * @method static HtmlString rFile(string $name, string $label, bool $required = false, array $attributes = [])
+ * @method static HtmlString rImage(string $name, string $label, bool $required = false, array $attributes = [])
  * @method static HtmlString rTextarea(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
  * @method static HtmlString rSelect(string $name, string $label, mixed $data = [], mixed $selected = null, bool $required = false, array $attributes = [])
  * @method static HtmlString rSelectMulti(string $name, string $label, mixed $data = [], mixed $selected = [], bool $required = false, array $attributes = [])

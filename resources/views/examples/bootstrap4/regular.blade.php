@@ -47,7 +47,7 @@
             <td>
                 {!! \Form::nEmail('email_address', 'Email Address', 'john@doe.com', true, [
                     'placeholder' => 'Email Example Placeholder',
-                    'icon' => ['fa fa-box', 'before']
+                    'icon' => ['fa fa-box', 'before'],
                 ]) !!}
             </td>
         </tr>

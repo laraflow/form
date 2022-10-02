@@ -2,7 +2,7 @@
     {!! \Laraflow\Form\Facades\Form::fLabel($name, $label, $required, ['class' => 'd-block mb-2']) !!}
     <div class="custom-file">
         @php
-            
+
             if (isset($required) && $required == true) {
                 $options['required'] = 'required';
             }

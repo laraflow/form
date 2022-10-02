@@ -4,7 +4,6 @@ namespace Laraflow\Form\Providers;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\Compilers\BladeCompiler;
 use Laraflow\Form\Facades\Form;
 
 /**
@@ -13,31 +12,12 @@ use Laraflow\Form\Facades\Form;
 class HorizontalFieldServiceProvider extends ServiceProvider
 {
     /**
-     * Supported Blade Directives
-     *
-     * @var array
-     */
-    protected $directives = ['hlabel' => 'hLabel', 'flabel' => 'fLabel'];
-
-    /**
      * Register Blade directives.
      *
      * @return void
      */
     public function register()
     {
-        $this->registerBladeDirectives();
-    }
-
-    protected function registerBladeDirectives()
-    {
-        $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
-            foreach ($this->directives as $directive => $method) {
-                $bladeCompiler->directive("form_{$directive}", function ($expression) use ($method) {
-                    return "<?php echo \Laraflow\Form\Facades\Form::{$method}({$expression}); ?>";
-                });
-            }
-        });
     }
 
     public function boot()

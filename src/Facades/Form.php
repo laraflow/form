@@ -9,7 +9,7 @@ use Illuminate\Support\HtmlString;
 /**
  * Class Form
  *
- * @see \Laraflow\Form\Builders\FormBuilder
+ * @see \Laraflow\Form\FormBuilder
  *
  * @method static HtmlString model(mixed $model, array $options = [])
  * @method static HtmlString open(array $options = [])
@@ -57,23 +57,6 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString  hLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
  * @method static HtmlString  fLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
  *
- * @see \Laraflow\Form\Providers\GroupFieldServiceProvider
- *
- * @method static HtmlString  gText(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString  gEmail(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString  gPassword(string $name, string $label, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString  gSearch(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString  gTel(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString  gNumber(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString  gDate(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString  gUrl(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString  gTextarea(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString  gSelect(string $name, string $label, mixed $data = [], mixed $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString  gSelectMulti(string $name, string $label, mixed $data = [], mixed $selected = [], bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString  gSelectRange(string $name, string $label, mixed $begin = 0, mixed $end = 100, $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString  gSelectDay(string $name, string $label, mixed $selected = null, $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString  gSelectMonth(string $name, string $label, mixed $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- *
  * @see \Laraflow\Form\Providers\HorizontalFieldServiceProvider
  *
  * @method static HtmlString hText(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
@@ -95,47 +78,28 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString hCheckbox(string $name, string $label, mixed $values = [], mixed $checked = [], bool $required = false, int $col_size = 2, array $attributes = [])
  * @method static HtmlString hRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, int $col_size = 2, array $attributes = [])
  *
- * @see \Laraflow\Form\Providers\InlineFieldServiceProvider
+ * @see \Laraflow\Form\Providers\RegularFieldServiceProvider
  *
- * @method static HtmlString iText(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iEmail(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iPassword(string $name, string $label, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iRange(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iSearch(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iTel(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iNumber(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iDate(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iUrl(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iFile(string $name, string $label, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iTextarea(string $name, string $label, mixed $default = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iSelect(string $name, string $label, mixed $data = [], mixed $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iSelectMulti(string $name, string $label, mixed $data = [], mixed $selected = [], bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iSelectRange(string $name, string $label, mixed $begin = 0, mixed $end = 100, $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iSelectDay(string $name, string $label, mixed $selected = null, $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iSelectMonth(string $name, string $label, mixed $selected = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iCheckbox(string $name, string $label, mixed $values = [], mixed $checked = [], bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- * @method static HtmlString iRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, string $icon = null, string $position = 'before', array $attributes = [])
- *
- * @see \Laraflow\Form\Providers\NormalFieldServiceProvider
- *
- * @method static HtmlString nText(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
- * @method static HtmlString nEmail(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
- * @method static HtmlString nPassword(string $name, string $label, bool $required = false, array $attributes = [])
- * @method static HtmlString nRange(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
- * @method static HtmlString nSearch(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
- * @method static HtmlString nTel(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
- * @method static HtmlString nNumber(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
- * @method static HtmlString nDate(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
- * @method static HtmlString nUrl(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
- * @method static HtmlString nFile(string $name, string $label, bool $required = false, array $attributes = [])
- * @method static HtmlString nTextarea(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
- * @method static HtmlString nSelect(string $name, string $label, mixed $data = [], mixed $selected = null, bool $required = false, array $attributes = [])
- * @method static HtmlString nSelectMulti(string $name, string $label, mixed $data = [], mixed $selected = [], bool $required = false, array $attributes = [])
- * @method static HtmlString nSelectRange(string $name, string $label, mixed $begin = 0, mixed $end = 100, $selected = null, bool $required = false, array $attributes = [])
- * @method static HtmlString nSelectDay(string $name, string $label, mixed $selected = null, $selected = null, bool $required = false, array $attributes = [])
- * @method static HtmlString nSelectMonth(string $name, string $label, mixed $selected = null, bool $required = false, array $attributes = [])
- * @method static HtmlString nCheckbox(string $name, string $label, mixed $values = [], mixed $checked = [], bool $required = false, array $attributes = [])
- * @method static HtmlString nRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rText(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rEmail(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rPassword(string $name, string $label, bool $required = false, array $attributes = [])
+ * @method static HtmlString rRange(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rSearch(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rTel(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rNumber(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rDate(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rUrl(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rFile(string $name, string $label, bool $required = false, array $attributes = [])
+ * @method static HtmlString rImage(string $name, string $label, bool $required = false, array $attributes = [])
+ * @method static HtmlString rTextarea(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rSelect(string $name, string $label, mixed $data = [], mixed $selected = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rSelectMulti(string $name, string $label, mixed $data = [], mixed $selected = [], bool $required = false, array $attributes = [])
+ * @method static HtmlString rSelectRange(string $name, string $label, mixed $begin = 0, mixed $end = 100, $selected = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rSelectDay(string $name, string $label, mixed $selected = null, $selected = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rSelectMonth(string $name, string $label, mixed $selected = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rSelectYear(string $name, string $label, mixed $begin = 0, mixed $end = 100, $selected = null, bool $required = false, array $attributes = [])
+ * @method static HtmlString rCheckbox(string $name, string $label, mixed $values = [], mixed $checked = [], bool $required = false, array $attributes = [])
+ * @method static HtmlString rRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, array $attributes = [])
  **/
 class Form extends Facade
 {

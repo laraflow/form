@@ -4,7 +4,6 @@ namespace Laraflow\Form\Providers;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\Compilers\BladeCompiler;
 use Laraflow\Form\Facades\Form;
 
 /**
@@ -17,7 +16,7 @@ class LabelServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $directives = ['hlabel' => 'hLabel', 'flabel' => 'fLabel'];
+    public static $directives = ['hLabel', 'fLabel'];
 
     /**
      * Register Blade directives.
@@ -26,18 +25,6 @@ class LabelServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerBladeDirectives();
-    }
-
-    protected function registerBladeDirectives()
-    {
-        $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
-            foreach ($this->directives as $directive => $method) {
-                $bladeCompiler->directive("form_{$directive}", function ($expression) use ($method) {
-                    return "<?php echo \Laraflow\Form\Facades\Form::{$method}({$expression}); ?>";
-                });
-            }
-        });
     }
 
     /**

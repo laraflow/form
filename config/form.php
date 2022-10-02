@@ -8,47 +8,24 @@ return [
      * @var string style
      * @value bootstrap3, bootstrap4, bootstrap5
      */
-    'style' => 'bootstrap4',
+    'style' => env('FORM_STYLE', 'bootstrap4'),
 
-    'field' => [
-        'default_class' => ['form-control'],
-        'error_class' => ['is-invalid'],
+    'styles' => [
+        'bootstrap4' => [
+            'wrapper' => [
+                'normal' => 'form-group',
+                'group' => 'form-group',
+                'horizon' => 'form-group row',
+                'inline' => 'form-inline',
+            ],
+            'field' => ['form-control'],
+            'validation' => ['is-invalid'], //if validation false color class
+            'error' => ['d-block invalid-feedback'], //if validation false color class
+            'submit' => ['btn btn-primary', 'font-weight-bold'],
+            'cancel' => ['invalid-feedback'],
+            'horizon_label_size' => '2',
+        ],
     ],
-
-    'message' => [
-        'default_class' => ['font-weight-bold'],
-        'error_class' => ['invalid-feedback'],
-    ],
-
-    /**
-     * Form local language for field that support localization
-     *
-     * @reference month, day etc
-     *
-     * @var string style
-     * @value bootstrap3, bootstrap4, bootstrap5
-     */
-    'submit_class' => 'btn btn-primary fw-bold',
-
-    /**
-     * Form local language for field that support localization
-     *
-     * @reference month, day etc
-     *
-     * @var string style
-     * @value bootstrap3, bootstrap4, bootstrap5
-     */
-    'cancel_class' => 'invalid-feedback',
-
-    /**
-     * Form local language for field that support localization
-     *
-     * @reference month, day etc
-     *
-     * @var string style
-     * @value bootstrap3, bootstrap4, bootstrap5
-     */
-    'horizon_label_size' => '2',
 
     /**
      * Form month values what value and label month dropdown

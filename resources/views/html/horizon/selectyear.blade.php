@@ -4,7 +4,7 @@
     @php
         $field_size = abs(12 - $col_size);
         $options = ['class' => 'form-control custom-select'];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }

@@ -6,7 +6,7 @@
 
     @php
         $options = ['class' => 'custom-control-input '];
-        
+
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }

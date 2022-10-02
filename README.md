@@ -4,8 +4,6 @@
 [![run-tests](https://github.com/laraflow/form/workflows/run-tests/badge.svg)](//github.com/laraflow/form/actions/workflows/run-tests.yml)
 [![License](https://poser.pugx.org/laraflow/form/license)](//packagist.org/packages/laraflow/form)
 [![Latest Unstable Version](https://poser.pugx.org/laraflow/form/v/unstable)](//packagist.org/packages/laraflow/form)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/laraflow/form/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/laraflow/form/?branch=main)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/laraflow/form/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/laraflow/form/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/laraflow/form/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 
 

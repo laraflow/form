@@ -130,7 +130,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/laraflow/.github/blob/main/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](../docs/contributing.md) for details.
 
 ## Security Vulnerabilities
 

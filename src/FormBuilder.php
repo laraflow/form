@@ -239,7 +239,7 @@ class FormBuilder
 
         );
 
-        // Finally, we will concatenate all of the attributes into a single string so
+        // Finally, we will concatenate all the attributes into a single string so
         // we can build out the final form open statement. We'll also append on an
         // extra value for the hidden _method field if it's needed for the form.
         $attributes = $this->attributes($attributes);
@@ -290,7 +290,7 @@ class FormBuilder
     }
 
     /**
-     * Get the action for a "url" option.
+     * Get the action for an "url" option.
      *
      * @param  array|string  $options
      * @return string
@@ -446,7 +446,7 @@ class FormBuilder
 
         $classes = config("form.styles.{$style}.{$field}", []);
 
-        if ($this->errors->has($name)) {
+        if ($this->errors instanceof ViewErrorBag && $this->errors->has($name)) {
             $classes = array_merge($classes, config("form.styles.{$style}.validation", []));
         }
 
@@ -1267,7 +1267,7 @@ class FormBuilder
      * @param  array  $options
      * @return HtmlString
      */
-    protected function checkable(string $type, string $name, $value, bool $checked, bool $required = false, array $options = [])
+    protected function checkable(string $type, string $name, $value, bool $checked = null, bool $required = false, array $options = [])
     {
         $this->type = $type;
 

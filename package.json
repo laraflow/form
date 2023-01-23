@@ -1,6 +1,6 @@
 {
     "name": "form-docs",
-    "version": "0.0.9",
+    "version": "0.1.0",
     "description": "docs",
     "main": "index.js",
     "dependencies": {
@@ -152,7 +152,7 @@
         "form",
         "bootstrap"
     ],
-    "author": "Mohammad Hafijul Islam <laraflow@gmail.com>",
+    "author": "Mohammad Hafijul Islam <hafijul233@gmail.com>",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/laraflow/form/issues"

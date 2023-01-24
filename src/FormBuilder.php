@@ -1576,9 +1576,15 @@ class FormBuilder
      */
     protected function getErrorMessage(string $name, bool $list = false, array $options = [])
     {
-        $errors = ($this->request->hasSession())
-            ? $this->request->session()->get('errors')
-            : new ViewErrorBag;
+        $errors = null;
+
+        if($this->request->hasSession()) {
+            $errors = $this->request->session()->get('errors');
+        }
+
+        if($errors == null) {
+            $errors = new ViewErrorBag;
+        }
 
         $errorMessage = ($list)
             ? (($errors->all($name) ?? []))

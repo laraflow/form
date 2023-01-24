@@ -23,12 +23,6 @@
             "email": "hafijul233@gmail.com",
             "homepage": "https://www.hafijulislam.me",
             "role": "Maintainer"
-        },
-        {
-            "name": "Mamunur Rashid",
-            "email": "mamunverse@gmail.com",
-            "homepage": "https://mamunverse.com",
-            "role": "Developer"
         }
     ],
     "require": {

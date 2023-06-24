@@ -141,6 +141,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 - [Hafijul Islam](https://github.com/laraflow)
 - [All Contributors](../../contributors)
 
+Spacial Thanks to <img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg" width="50px" alt="JetBrains Logo (Main) logo."> For Awesome IDE support.
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

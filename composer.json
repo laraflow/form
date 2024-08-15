@@ -1,7 +1,7 @@
 {
     "name": "laraflow/form",
     "type": "library",
-    "description": "Laravel form builder based bootstrap form components",
+    "description": "Laravel form builder library based bootstrap form components",
     "support": {
         "issues": "https://github.com/laraflow/form/issues",
         "wiki": "https://github.com/laraflow/form/wiki",

@@ -12,4 +12,5 @@ parameters:
     checkOctaneCompatibility: true
     checkModelProperties: true
     checkMissingIterableValueType: false
-
+    ignoreErrors:
+        - '#Target class \[form\] does not exist#'

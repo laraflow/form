@@ -55,8 +55,8 @@ use Illuminate\Support\HtmlString;
  *
  * @see \Laraflow\Form\Providers\LabelServiceProvider
  *
- * @method static HtmlString  hLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
- * @method static HtmlString  fLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
+ * @method static HtmlString hLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
+ * @method static HtmlString fLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
  *
  * @see \Laraflow\Form\Providers\HorizontalFieldServiceProvider
  *
@@ -106,8 +106,6 @@ class Form extends Facade
 {
     /**
      * Get the registered name of the component.
-     *
-     * @return string
      */
     protected static function getFacadeAccessor(): string
     {

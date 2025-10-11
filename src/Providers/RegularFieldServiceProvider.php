@@ -16,9 +16,7 @@ class RegularFieldServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-    }
+    public function register() {}
 
     /**
      * Load All Normal Bootstrap Style Forms

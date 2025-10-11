@@ -1,5 +1,6 @@
 <div class="form-group">
     {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::hint($attributes) !!}
     @php $attributes['class'][] = 'custom-control-input' @endphp
 
     @foreach ($values ?? [] as $value => $display)

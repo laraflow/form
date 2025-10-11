@@ -6,6 +6,7 @@ return [
      * be selected form this section
      *
      * @var string style
+     *
      * @value bootstrap3, bootstrap4, bootstrap5
      */
     'style' => env('FORM_STYLE', 'bootstrap4'),
@@ -19,8 +20,8 @@ return [
                 'inline' => 'form-inline',
             ],
             'field' => ['form-control'],
-            'validation' => ['is-invalid'], //if validation false color class
-            'error' => ['d-block invalid-feedback'], //if validation false color class
+            'validation' => ['is-invalid'], // if validation false color class
+            'error' => ['d-block invalid-feedback'], // if validation false color class
             'submit' => ['btn btn-primary', 'font-weight-bold'],
             'cancel' => ['invalid-feedback'],
             'horizon_label_size' => '2',

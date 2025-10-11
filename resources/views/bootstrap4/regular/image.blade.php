@@ -13,7 +13,7 @@
         {!! \Laraflow\Form\Facades\Form::file($name, $required, $attributes) !!}
         {!! \Laraflow\Form\Facades\Form::error($name) !!}
     </div>
-
+    {!! \Laraflow\Form\Facades\Form::hint($attributes) !!}
     @if ($preview['preview'] ?? false)
         <div class="img-thumbnail mt-2 text-center">
             <img id="{{ $name }}_preview" src="{{ $preview['default'] }}" height="{{ $preview['height'] ?? 90 }}">

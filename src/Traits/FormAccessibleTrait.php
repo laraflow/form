@@ -19,7 +19,6 @@ trait FormAccessibleTrait
     protected $reflection;
 
     /**
-     * @param  string  $key
      * @return mixed
      */
     public function getFormValue(string $key)
@@ -61,10 +60,6 @@ trait FormAccessibleTrait
         return data_get($this, $key);
     }
 
-    /**
-     * @param  string  $key
-     * @return bool
-     */
     public function hasFormMutator(string $key): bool
     {
         $methods = $this->getReflection()->getMethods(ReflectionMethod::IS_PUBLIC);
@@ -79,8 +74,6 @@ trait FormAccessibleTrait
 
     /**
      * Get a ReflectionClass Instance
-     *
-     * @return ReflectionClass
      */
     protected function getReflection(): ReflectionClass
     {
@@ -92,8 +85,6 @@ trait FormAccessibleTrait
     }
 
     /**
-     * @param $key
-     * @param $value
      * @return mixed
      */
     private function mutateFormAttribute($key, $value)
@@ -103,9 +94,6 @@ trait FormAccessibleTrait
 
     /**
      * Check for a nested model.
-     *
-     * @param  string  $key
-     * @return bool
      */
     public function isNestedModel(string $key): bool
     {

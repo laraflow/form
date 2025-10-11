@@ -24,9 +24,7 @@ class LabelServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-    }
+    public function register() {}
 
     /**
      * Loading All Label Style
@@ -49,7 +47,7 @@ class LabelServiceProvider extends ServiceProvider
         });
 
         Form::macro('hint', function (array $options = []) {
-            if (!empty($options['hint'])) {
+            if (! empty($options['hint'])) {
                 return new HtmlString("<small class='text-muted small d-block'>{$options['hint']}</small>");
             }
         });

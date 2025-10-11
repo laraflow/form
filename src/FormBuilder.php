@@ -20,7 +20,7 @@ use Laraflow\Form\Traits\ComponentTrait;
  */
 class FormBuilder
 {
-    use Macroable, ComponentTrait {
+    use ComponentTrait, Macroable {
         Macroable::__call as macroCall;
         ComponentTrait::__call as componentCall;
     }
@@ -123,13 +123,8 @@ class FormBuilder
 
     /**
      * Create a new form builder instance.
-     *
-     * @param  Factory  $view
-     * @param  string|null  $csrfToken
-     * @param  UrlGenerator|null  $url
-     * @param  Request|null  $request
      */
-    public function __construct(Factory $view, string $csrfToken = null, UrlGenerator $url = null, Request $request = null)
+    public function __construct(Factory $view, ?string $csrfToken = null, ?UrlGenerator $url = null, ?Request $request = null)
     {
         $this->view = $view;
         $this->csrfToken = $csrfToken;
@@ -144,8 +139,6 @@ class FormBuilder
     /**
      * Dynamically handle calls to the class.
      *
-     * @param  string  $method
-     * @param  array  $parameters
      * @return mixed
      *
      * @throws BadMethodCallException
@@ -162,12 +155,12 @@ class FormBuilder
 
         throw new BadMethodCallException("Method {$method} does not exist.");
     }
-    //--------------------------------------------- Usable Methods ---------------------------------------------------//
+    // --------------------------------------------- Usable Methods ---------------------------------------------------//
 
     /**
      * Get the session store implementation.
      *
-     * @return  Session  $session
+     * @return Session $session
      */
     public function getSessionStore(): Session
     {
@@ -177,7 +170,6 @@ class FormBuilder
     /**
      * Set the session store implementation.
      *
-     * @param  Session  $session
      * @return $this
      */
     public function setSessionStore(Session $session): self
@@ -191,7 +183,6 @@ class FormBuilder
      * Create a new model based form builder.
      *
      * @param  mixed  $model
-     * @param  array  $options
      * @return HtmlString
      */
     public function model($model, array $options = [])
@@ -205,7 +196,6 @@ class FormBuilder
      * Open up a new HTML form.
      * Form::open()
      *
-     * @param  array  $options
      * @return HtmlString
      */
     public function open(array $options = [])
@@ -250,7 +240,6 @@ class FormBuilder
     /**
      * Parse the form action method.
      *
-     * @param  string  $method
      * @return string
      */
     protected function getMethod(string $method)
@@ -263,7 +252,6 @@ class FormBuilder
     /**
      * Get the form action from the options.
      *
-     * @param  array  $options
      * @return string
      */
     protected function getAction(array $options)
@@ -343,7 +331,6 @@ class FormBuilder
     /**
      * Get the form appendage for the given method.
      *
-     * @param  string  $method
      * @return string
      */
     protected function getAppendage(string $method)
@@ -370,10 +357,7 @@ class FormBuilder
     /**
      * Create a hidden input field.
      *
-     * @param  string  $name
      * @param  null  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function hidden(string $name, $value = null, bool $required = false, array $options = [])
@@ -384,11 +368,7 @@ class FormBuilder
     /**
      * Create a form input field.
      *
-     * @param  string  $type
-     * @param  string  $name
      * @param  null  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function input(string $type, string $name, $value = null, bool $required = false, array $options = [])
@@ -409,7 +389,7 @@ class FormBuilder
             unset($options['icon']);
         }
 
-        //updating class fields
+        // updating class fields
         $this->classAttributes($name, $options, 'field');
 
         // We will get the appropriate value for the given field. We will look for the
@@ -435,11 +415,6 @@ class FormBuilder
         return $this->toHtmlString('<input'.$this->attributes($options).'>');
     }
 
-    /**
-     * @param $name
-     * @param  array  $options
-     * @param  string  $field
-     */
     protected function classAttributes($name, array &$options = [], string $field = 'field')
     {
         $style = config('form.style');
@@ -461,10 +436,6 @@ class FormBuilder
 
     /**
      * Get the ID attribute for a field name.
-     *
-     * @param  string  $name
-     * @param  array  $attributes
-     * @return string|null
      */
     protected function getIdAttribute(string $name, array $attributes): ?string
     {
@@ -482,11 +453,10 @@ class FormBuilder
     /**
      * Get the value that should be assigned to the field.
      *
-     * @param  string|null  $name
      * @param  null  $value
      * @return mixed
      */
-    protected function getValueAttribute(string $name = null, $value = null)
+    protected function getValueAttribute(?string $name = null, $value = null)
     {
         if (is_null($name)) {
             return $value;
@@ -531,7 +501,6 @@ class FormBuilder
     /**
      * Get a value from the session's old input.
      *
-     * @param  string  $name
      * @return mixed
      */
     public function old(string $name)
@@ -559,7 +528,6 @@ class FormBuilder
     /**
      * Transform key from array to dot syntax.
      *
-     * @param  string  $key
      * @return mixed
      */
     protected function transformKey(string $key)
@@ -570,7 +538,6 @@ class FormBuilder
     /**
      * Get value from current Request
      *
-     * @param $name
      * @return array|null|string
      */
     protected function request($name)
@@ -589,7 +556,6 @@ class FormBuilder
     /**
      * Get the model value that should be assigned to the field.
      *
-     * @param  string  $name
      * @return mixed
      */
     protected function getModelValueAttribute(string $name)
@@ -606,7 +572,6 @@ class FormBuilder
     /**
      * Transform the string to an Html serializable object
      *
-     * @param $html
      * @return HtmlString
      */
     protected function toHtmlString($html)
@@ -617,7 +582,6 @@ class FormBuilder
     /**
      * Build an HTML attribute string from an array.
      *
-     * @param  array  $attributes
      * @return string
      */
     protected function attributes(array $attributes)
@@ -638,7 +602,6 @@ class FormBuilder
     /**
      * Build a single attribute element.
      *
-     * @param  string  $key
      * @param  mixed  $value
      * @return string
      */
@@ -714,10 +677,7 @@ class FormBuilder
     /**
      * Create a form label element.
      *
-     * @param  string  $name
      * @param  null  $title
-     * @param  bool  $required
-     * @param  array  $options
      * @param  bool  $escape_html
      * @return HtmlString
      */
@@ -752,10 +712,7 @@ class FormBuilder
     /**
      * Create a text input field.
      *
-     * @param  string  $name
      * @param  null  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function text(string $name, $value = null, bool $required = false, array $options = [])
@@ -766,9 +723,6 @@ class FormBuilder
     /**
      * Create a password input field.
      *
-     * @param  string  $name
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function password(string $name, bool $required = false, array $options = [])
@@ -779,10 +733,7 @@ class FormBuilder
     /**
      * Create a range input field.
      *
-     * @param  string  $name
      * @param  null  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function range(string $name, $value = null, bool $required = false, array $options = [])
@@ -795,10 +746,7 @@ class FormBuilder
     /**
      * Create a search input field.
      *
-     * @param  string  $name
      * @param  null  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function search(string $name, $value = null, bool $required = false, array $options = [])
@@ -809,10 +757,7 @@ class FormBuilder
     /**
      * Create an e-mail input field.
      *
-     * @param  string  $name
      * @param  null  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function email(string $name, $value = null, bool $required = false, array $options = [])
@@ -823,10 +768,7 @@ class FormBuilder
     /**
      * Create a tel input field.
      *
-     * @param  string  $name
      * @param  null  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function tel(string $name, $value = null, bool $required = false, array $options = [])
@@ -837,10 +779,7 @@ class FormBuilder
     /**
      * Create a number input field.
      *
-     * @param  string  $name
      * @param  null  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function number(string $name, $value = null, bool $required = false, array $options = [])
@@ -851,10 +790,7 @@ class FormBuilder
     /**
      * Create a date input field.
      *
-     * @param  string  $name
      * @param  mixed  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function date(string $name, $value = null, bool $required = false, array $options = [])
@@ -869,10 +805,7 @@ class FormBuilder
     /**
      * Create a datetime input field.
      *
-     * @param  string  $name
      * @param  mixed  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function datetime(string $name, $value = null, bool $required = false, array $options = [])
@@ -887,10 +820,7 @@ class FormBuilder
     /**
      * Create a datetime-local input field.
      *
-     * @param  string  $name
      * @param  mixed  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function datetimeLocal(string $name, $value = null, bool $required = false, array $options = [])
@@ -905,10 +835,7 @@ class FormBuilder
     /**
      * Create a time input field.
      *
-     * @param  string  $name
      * @param  mixed  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function time(string $name, $value = null, bool $required = false, array $options = [])
@@ -923,10 +850,7 @@ class FormBuilder
     /**
      * Create a url input field.
      *
-     * @param  string  $name
      * @param  null  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function url(string $name, $value = null, bool $required = false, array $options = [])
@@ -937,10 +861,7 @@ class FormBuilder
     /**
      * Create a week input field.
      *
-     * @param  string  $name
      * @param  mixed  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function week(string $name, $value = null, bool $required = false, array $options = [])
@@ -955,9 +876,6 @@ class FormBuilder
     /**
      * Create a file input field.
      *
-     * @param  string  $name
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function file(string $name, bool $required = false, array $options = [])
@@ -965,15 +883,12 @@ class FormBuilder
         return $this->input('file', $name, null, $required, $options);
     }
 
-    //------------------------------------------- Internal Methods ---------------------------------------------------//
+    // ------------------------------------------- Internal Methods ---------------------------------------------------//
 
     /**
      * Create a textarea input field.
      *
-     * @param  string  $name
      * @param  null  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function textarea(string $name, $value = null, bool $required = false, array $options = [])
@@ -1000,15 +915,11 @@ class FormBuilder
     /**
      * Create a select year field.
      *
-     * @param  string  $name
      * @param  mixed  $begin
      * @param  mixed  $end
-     * @param  string|null  $selected
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
-    public function selectYear(string $name, $begin, $end, string $selected = null, bool $required = false, array $options = [])
+    public function selectYear(string $name, $begin, $end, ?string $selected = null, bool $required = false, array $options = [])
     {
         return $this->selectRange($name, $begin, $end, $selected, $required, $options);
     }
@@ -1016,12 +927,9 @@ class FormBuilder
     /**
      * Create a select range field.
      *
-     * @param  string  $name
      * @param  string  $begin
      * @param  string  $end
      * @param  null  $selected
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function selectRange(string $name, $begin, $end, $selected = null, bool $required = false, array $options = [])
@@ -1041,13 +949,7 @@ class FormBuilder
     /**
      * Create a select box field.
      *
-     * @param  string  $name
-     * @param  array  $list
      * @param  null  $selected
-     * @param  bool  $required
-     * @param  array  $selectAttributes
-     * @param  array  $optionsAttributes
-     * @param  array  $optgroupsAttributes
      * @return HtmlString
      */
     public function select(
@@ -1105,8 +1007,6 @@ class FormBuilder
     /**
      * Create a placeholder select element option.
      *
-     * @param $display
-     * @param $selected
      * @return HtmlString
      */
     protected function placeholderOption($display, $selected)
@@ -1147,10 +1047,7 @@ class FormBuilder
      * Get the select option for the given value.
      *
      * @param  mixed  $display
-     * @param  string  $value
      * @param  string|null  $selected
-     * @param  array  $attributes
-     * @param  array  $optgroupAttributes
      * @return HtmlString
      */
     protected function getSelectOption($display, string $value, $selected = null, array $attributes = [], array $optgroupAttributes = [])
@@ -1165,11 +1062,6 @@ class FormBuilder
     /**
      * Create an option group form element.
      *
-     * @param  array  $list
-     * @param  string  $label
-     * @param  string  $selected
-     * @param  array  $attributes
-     * @param  array  $optionsAttributes
      * @param  int  $level
      * @return HtmlString
      */
@@ -1192,10 +1084,7 @@ class FormBuilder
     /**
      * Create a select element option.
      *
-     * @param  string  $display
-     * @param  string  $value
      * @param  string|null  $selected
-     * @param  array  $attributes
      * @return HtmlString
      */
     protected function option(string $display, string $value, $selected = null, array $attributes = [])
@@ -1215,10 +1104,7 @@ class FormBuilder
     /**
      * Create a select month field.
      *
-     * @param  string  $name
      * @param  null  $selected
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function selectMonth(string $name, $selected = null, bool $required = false, array $options = [])
@@ -1244,11 +1130,8 @@ class FormBuilder
     /**
      * Create a checkbox input field.
      *
-     * @param  string  $name
      * @param  mixed  $value
      * @param  null  $checked
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function checkbox(string $name, $value = 1, $checked = null, bool $required = false, array $options = [])
@@ -1259,15 +1142,10 @@ class FormBuilder
     /**
      * Create a checkable input field.
      *
-     * @param  string  $type
-     * @param  string  $name
      * @param  mixed  $value
-     * @param  bool  $checked
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
-    protected function checkable(string $type, string $name, $value, bool $checked = null, bool $required = false, array $options = [])
+    protected function checkable(string $type, string $name, $value, ?bool $checked = null, bool $required = false, array $options = [])
     {
         $this->type = $type;
 
@@ -1283,11 +1161,7 @@ class FormBuilder
     /**
      * Get the check state for a checkable input.
      *
-     * @param  string  $type
-     * @param  string  $name
      * @param  mixed  $value
-     * @param  bool  $checked
-     * @return bool
      */
     protected function getCheckedState(string $type, string $name, $value, bool $checked): bool
     {
@@ -1306,10 +1180,7 @@ class FormBuilder
     /**
      * Get the check state for a checkbox input.
      *
-     * @param  string  $name
      * @param  mixed  $value
-     * @param  bool  $checked
-     * @return bool
      */
     protected function getCheckboxCheckedState(string $name, $value, bool $checked): bool
     {
@@ -1336,8 +1207,6 @@ class FormBuilder
 
     /**
      * Determine if the old input is empty.
-     *
-     * @return bool
      */
     private function oldInputIsEmpty(): bool
     {
@@ -1346,9 +1215,6 @@ class FormBuilder
 
     /**
      * Determine if old input or model input exists for a key.
-     *
-     * @param  string  $name
-     * @return bool
      */
     protected function missingOldAndModel(string $name): bool
     {
@@ -1358,10 +1224,7 @@ class FormBuilder
     /**
      * Get the check state for a radio input.
      *
-     * @param  string  $name
      * @param  mixed  $value
-     * @param  bool  $checked
-     * @return bool
      */
     protected function getRadioCheckedState(string $name, $value, bool $checked): bool
     {
@@ -1378,10 +1241,6 @@ class FormBuilder
      * Determine if the provide value loosely compares to the value assigned to the field.
      * Use loose comparison because Laravel model casting may be in affect and therefore
      * 1 == true and 0 == false.
-     *
-     * @param  string  $name
-     * @param  string  $value
-     * @return bool
      */
     protected function compareValues(string $name, string $value): bool
     {
@@ -1391,11 +1250,7 @@ class FormBuilder
     /**
      * Create a radio button input field.
      *
-     * @param  string  $name
      * @param  mixed  $value
-     * @param  bool  $checked
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function radio(string $name, $value = null, bool $checked = false, bool $required = false, array $options = [])
@@ -1410,7 +1265,6 @@ class FormBuilder
     /**
      * Create a HTML reset input element.
      *
-     * @param  string  $value
      * @param  array  $attributes
      * @return HtmlString
      */
@@ -1422,9 +1276,7 @@ class FormBuilder
     /**
      * Create a HTML image input element.
      *
-     * @param  string  $url
      * @param  null  $name
-     * @param  bool  $required
      * @param  array  $attributes
      * @return HtmlString
      */
@@ -1438,10 +1290,7 @@ class FormBuilder
     /**
      * Create a month input field.
      *
-     * @param  string  $name
      * @param  mixed  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function month(string $name, $value = null, bool $required = false, array $options = [])
@@ -1456,10 +1305,7 @@ class FormBuilder
     /**
      * Create a color input field.
      *
-     * @param  string  $name
      * @param  null  $value
-     * @param  bool  $required
-     * @param  array  $options
      * @return HtmlString
      */
     public function color(string $name, $value = null, bool $required = false, array $options = [])
@@ -1473,7 +1319,6 @@ class FormBuilder
      * @param  string  $name
      * @param  null  $value
      * @param  bool  $button
-     * @param  array  $options
      * @return HtmlString
      */
     public function submit($name = 'submit', $value = null, $button = false, array $options = [])
@@ -1494,7 +1339,6 @@ class FormBuilder
      * Create a button element.
      *
      * @param  string  $value
-     * @param  array  $options
      * @return HtmlString
      */
     public function button($value = null, array $options = [])
@@ -1509,7 +1353,6 @@ class FormBuilder
     /**
      * Create a datalist box field.
      *
-     * @param  string  $id
      * @param  array  $list
      * @return HtmlString
      */
@@ -1540,9 +1383,6 @@ class FormBuilder
 
     /**
      * Determine if an array is associative.
-     *
-     * @param  array  $array
-     * @return bool
      */
     protected function isAssociativeArray(array $array): bool
     {
@@ -1552,9 +1392,6 @@ class FormBuilder
     /**
      * Create a form error display element.
      *
-     * @param  string  $name
-     * @param  bool  $all
-     * @param  array  $options
      * @return HtmlString
      */
     public function error(string $name, bool $all = false, array $options = [])
@@ -1569,20 +1406,17 @@ class FormBuilder
     }
 
     /**
-     * @param  string  $name
-     * @param  bool  $list
-     * @param  array  $options
      * @return HtmlString
      */
     protected function getErrorMessage(string $name, bool $list = false, array $options = [])
     {
         $errors = null;
 
-        if($this->request->hasSession()) {
+        if ($this->request->hasSession()) {
             $errors = $this->request->session()->get('errors');
         }
 
-        if($errors == null) {
+        if ($errors == null) {
             $errors = new ViewErrorBag;
         }
 
@@ -1609,9 +1443,6 @@ class FormBuilder
 
     /**
      * Set the text area size using the quick "size" attribute.
-     *
-     * @param  array  $options
-     * @return array
      */
     protected function setQuickTextAreaSize(array $options): array
     {
@@ -1622,8 +1453,6 @@ class FormBuilder
 
     /**
      * Take Request in fill process
-     *
-     * @param  bool  $consider
      */
     protected function considerRequest(bool $consider = true)
     {

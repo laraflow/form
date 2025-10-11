@@ -22,9 +22,6 @@ trait ComponentTrait
     /**
      * Register a custom component.
      *
-     * @param    $name
-     * @param    $view
-     * @param  array  $signature
      * @return void
      */
     public static function component($name, $view, array $signature)
@@ -52,9 +49,6 @@ trait ComponentTrait
 
     /**
      * Check if a component is registered.
-     *
-     * @param $name
-     * @return bool
      */
     public static function hasComponent($name): bool
     {
@@ -64,8 +58,6 @@ trait ComponentTrait
     /**
      * Render a custom component.
      *
-     * @param    $name
-     * @param  array  $arguments
      * @return View|HtmlString
      */
     protected function renderComponent($name, array $arguments)
@@ -81,8 +73,6 @@ trait ComponentTrait
     /**
      * Prepare the component data, while respecting provided defaults.
      *
-     * @param  array  $signature
-     * @param  array  $arguments
      * @return array
      */
     protected function getComponentData(array $signature, array $arguments)

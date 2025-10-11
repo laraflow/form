@@ -1,21 +1,31 @@
-<div class="form-group row">
-    {!! \Laraflow\Form\Facades\Form::hLabel($name, $label, $required, $col_size) !!}
+<div class="mb-3 row">
+
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, [
+        'class' => 'col-form-label col-sm-' . $col_size,
+    ]) !!}
 
     @php
-
-        $field_size = abs(12 - $col_size);
-        $options = ['class' => 'form-control '];
+        $options = ['class' => 'custom-control-input '];
 
         if (isset($required) && $required == true) {
             $options['required'] = 'required';
         }
-
     @endphp
 
-    <div class="col-md-{{ $field_size }}">
-        {!! \Laraflow\Form\Facades\Form::checkbox($name, $checked, $required, $attributes) !!}
+    <div class="col-sm-{{ 12 - $col_size }}">
+        @foreach ($values as $value => $display)
+            @php
+                $id = $name . '-checkbox-' . $value;
+                $options['id'] = $id;
+            @endphp
 
-        {!! \Laraflow\Form\Facades\Form::hError($name, $msg) !!}
+            <div class="custom-control custom-checkbox">
+                {!! \Laraflow\Form\Facades\Form::checkbox($name, $value, in_array($value, $checked), $required, $attributes) !!}
+
+                {!! \Laraflow\Form\Facades\Form::label($id, $display, false, ['class' => 'custom-control-label']) !!}
+            </div>
+        @endforeach
+
+        {!! \Laraflow\Form\Facades\Form::error($name . '[]') !!}
     </div>
-
 </div>

@@ -28,6 +28,6 @@
     @else
         {!! \Laraflow\Form\Facades\Form::password($name, $required, $attributes) !!}
     @endif
-
+    {!! \Laraflow\Form\Facades\Form::hint($attributes) !!}
     {!! \Laraflow\Form\Facades\Form::error($name) !!}
 </div>

@@ -3,6 +3,7 @@
 namespace Laraflow\Form\Providers;
 
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\HtmlString;
 use Illuminate\Support\ServiceProvider;
 use Laraflow\Form\Facades\Form;
 
@@ -45,6 +46,12 @@ class LabelServiceProvider extends ServiceProvider
 
         Form::macro('fLabel', function ($name, $value, $required = false, $options = []) {
             return str_replace('label', 'span', Form::label($name, $value, $required, $options, false));
+        });
+
+        Form::macro('hint', function (array $options = []) {
+            if (!empty($options['hint'])) {
+                return new HtmlString("<small class='text-muted small d-block'>{$options['hint']}</small>");
+            }
         });
 
         /*        Form::macro('nCancel', function ($title, $options = []) {

@@ -18,6 +18,7 @@
             {!! \Laraflow\Form\Facades\Form::file($name, $required, $attributes) !!}
             {!! \Laraflow\Form\Facades\Form::error($name) !!}
         </div>
+        {!! \Laraflow\Form\Facades\Form::hint($attributes) !!}
         <script>
             document.getElementById('{{ $name }}').addEventListener('change', function() {
                 var field = document.getElementById('{{ $name . '_file_label' }}');

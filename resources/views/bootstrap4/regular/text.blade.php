@@ -28,6 +28,7 @@
     @else
         {!! \Laraflow\Form\Facades\Form::text($name, $default, $required, $attributes) !!}
     @endif
+    {!! \Laraflow\Form\Facades\Form::hint($attributes) !!}
 
     {!! \Laraflow\Form\Facades\Form::error($name) !!}
 </div>

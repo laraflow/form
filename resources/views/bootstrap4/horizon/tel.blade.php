@@ -11,7 +11,7 @@
     @endphp
     <div class="col-sm-{{ 12 - $col_size }}">
         {!! \Laraflow\Form\Facades\Form::tel($name, $default, $required, $attributes) !!}
-
+        {!! \Laraflow\Form\Facades\Form::hint($attributes) !!}
         {!! \Laraflow\Form\Facades\Form::error($name) !!}
     </div>
 </div>

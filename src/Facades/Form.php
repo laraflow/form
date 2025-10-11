@@ -12,8 +12,10 @@ use Illuminate\Support\HtmlString;
  * @see \Laraflow\Form\FormBuilder
  *
  * @method static HtmlString model(mixed $model, array $options = [])
+ * @method static HtmlString hint(array $options = [])
  * @method static HtmlString open(array $options = [])
  * @method static HtmlString hidden(string $name, mixed $value = null, bool $required = false, array $options = [])
+ * @method static HtmlString error(string $name)
  * @method static HtmlString input(string $type, string $name, mixed $value = null, bool $required = false, array $options = [])
  * @method static HtmlString getIdAttribute(string $name, array $attributes)
  * @method static HtmlString getValueAttribute(string $name, string $value = null)
@@ -31,7 +33,6 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString textarea(string $name, string $value = null, bool $required = false, array $options = [])
  * @method static HtmlString file(string $name, bool $required = false, array $options = [])
  * @method static HtmlString date(string $name, string $value = null, bool $required = false, array $options = [])
- * @method static HtmlString error(string $name, bool $all = false, bool $required = false, array $options = [])
  * @method static HtmlString datetime(string $name, string $value = null, bool $required = false, array $options = [])
  * @method static HtmlString datetimeLocal(string $name, string $value = null, bool $required = false, array $options = [])
  * @method static HtmlString time(string $name, string $value = null, bool $required = false, array $options = [])

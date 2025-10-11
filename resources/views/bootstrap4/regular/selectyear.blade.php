@@ -29,7 +29,7 @@
     @else
         {!! \Laraflow\Form\Facades\Form::selectYear($name, $begin, $end, $selected, $required, $attributes) !!}
     @endif
-
+    {!! \Laraflow\Form\Facades\Form::hint($attributes) !!}
 
     {!! \Laraflow\Form\Facades\Form::error($name) !!}
 </div>

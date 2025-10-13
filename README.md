@@ -52,7 +52,7 @@ return [
      * Form style validation and other component will
      * be selected form this section
      * @var string style
-     * @value bootstrap3, bootstrap4, bootstrap5
+     * @value bootstrap4, bootstrap5
      */
     'style' => 'bootstrap4',
 
@@ -141,7 +141,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/sajibAdhi/laraflow-form/blob/contributing/docs/contributing.md) for details.
+Please see [CONTRIBUTING](https://github.com/laraflow/form/blob/main/docs/contributing.md) for details.
 
 ## Security Vulnerabilities
 
@@ -149,7 +149,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Hafijul Islam](https://github.com/laraflow)
+- [Hafijul Islam](https://github.com/hafijul233)
 - [All Contributors](../../contributors)
 
 Spacial Thanks to <img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg" width="50px" alt="JetBrains Logo (Main) logo."> For Awesome IDE support.

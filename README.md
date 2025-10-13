@@ -8,8 +8,19 @@
 
 
 ## Introduction
-[``laraflow/form``](https://packagist.org/packages/laraflow/form) is a collection of [Laravel Collective/HTML](https://packagist.org/packages/laravelcollective/html) components.
-it was initially planed to create only [Bootstrap4](https://getbootstrap.com/) form element styles.
+[``laraflow/form``](https://packagist.org/packages/laraflow/form) is a collection of Laravel form components.
+
+## Roadmap
+| Feature | Status |
+|----------|-------|
+|Boostrap4 Regular| Complated|
+|Boostrap4 Horizontal| Complated|
+|Boostrap5 Regular| Complated|
+|Boostrap5 Horizontal| Complated|
+|TailwindCSS Regular| WIP|
+|TailwindCSS Horizontal| WIP|
+|Blade X Component| Todo |
+
 
 ## Features
 This package has basic form element style that is supported by bootstrap.

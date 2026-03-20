@@ -1,4 +1,4 @@
-<div @class(['form-group' => !$inline, 'form-inline' => !$inline])>
+<div @class(['form-group' => !$inline, 'form-inline' => $inline])>
 
     {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, ['inline' => $inline]) !!}
 

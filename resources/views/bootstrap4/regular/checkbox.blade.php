@@ -10,7 +10,7 @@
             $attributes['id'] = "{$name}-checkbox-{$value}";
         @endphp
 
-        <div class="custom-control custom-checkbox">
+        <div @class(['custom-control custom-checkbox', 'custom-control-inline' => $inline])>
             {!! \Laraflow\Form\Facades\Form::checkbox($name, $value, in_array($value, $checked), $required, $attributes) !!}
 
             {!! \Laraflow\Form\Facades\Form::label($attributes['id'], $display, false, ['class' => 'custom-control-label']) !!}

@@ -77,9 +77,15 @@ trait ComponentTrait
      */
     protected function getComponentData(array $signature, array $arguments)
     {
-        $data = [];
+        $data = ['inline' => false];
 
         $i = 0;
+
+        if (isset($arguments['attributes']['inline'])) {
+            $data['inline'] = $arguments['attributes']['inline'];
+            unset($arguments['attributes']['inline']);
+        }
+
         foreach ($signature as $variable => $default) {
             // If the "variable" value is actually a numeric key, we can assume that
             // no default had been specified for the component argument and we'll

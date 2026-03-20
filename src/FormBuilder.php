@@ -588,7 +588,7 @@ class FormBuilder
     {
         $html = [];
 
-        foreach ((array) $attributes as $key => $value) {
+        foreach ($attributes as $key => $value) {
             $element = $this->attributeElement($key, $value);
 
             if ($element != null) {
@@ -685,8 +685,12 @@ class FormBuilder
     {
         $this->labels[] = $name;
 
-        if (isset($options['inline'])) {
-            $options['style'] = 'display: none;';
+        if (isset($options['inline']) && $options['inline']) {
+            if (isset($options['class'])) {
+                $options['class'][] = 'sr-only';
+            } else {
+                $options['class'] = ['sr-only'];
+            }
         }
 
         $options = $this->attributes($options);

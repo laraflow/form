@@ -1,6 +1,6 @@
-<div class="form-group">
+<div @class(['form-group' => !$inline, 'form-inline' => !$inline])>
 
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, ['inline' => $inline]) !!}
     @if (isset($attributes['icon']))
         <div class="input-group">
             @if (isset($attributes['icon'][1]) && $attributes['icon'][1] == \Laraflow\Form\FormBuilder::ICON_PREPEND)

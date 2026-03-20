@@ -5,11 +5,15 @@ namespace Laraflow\Form\Facades;
 use Closure;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\HtmlString;
+use Laraflow\Form\FormBuilder;
+use Laraflow\Form\Providers\HorizontalFieldServiceProvider;
+use Laraflow\Form\Providers\LabelServiceProvider;
+use Laraflow\Form\Providers\RegularFieldServiceProvider;
 
 /**
  * Class Form
  *
- * @see \Laraflow\Form\FormBuilder
+ * @see FormBuilder
  *
  * @method static HtmlString model(mixed $model, array $options = [])
  * @method static HtmlString hint(array $options = [])
@@ -53,12 +57,12 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString component(string $name, string $view, array $attributes = [])
  * @method static HtmlString macro(string $name, Closure $function)
  *
- * @see \Laraflow\Form\Providers\LabelServiceProvider
+ * @see LabelServiceProvider
  *
  * @method static HtmlString hLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
  * @method static HtmlString fLabel(string $name, string $title, bool $required = false, array $options = ['col_size' => 2])
  *
- * @see \Laraflow\Form\Providers\HorizontalFieldServiceProvider
+ * @see HorizontalFieldServiceProvider
  *
  * @method static HtmlString hText(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
  * @method static HtmlString hEmail(string $name, string $label, mixed $default = null, bool $required = false, int $col_size = 2, array $attributes = [])
@@ -79,7 +83,7 @@ use Illuminate\Support\HtmlString;
  * @method static HtmlString hCheckbox(string $name, string $label, mixed $values = [], mixed $checked = [], bool $required = false, int $col_size = 2, array $attributes = [])
  * @method static HtmlString hRadio(string $name, string $label, mixed $values = [], mixed $checked = null, bool $required = false, int $col_size = 2, array $attributes = [])
  *
- * @see \Laraflow\Form\Providers\RegularFieldServiceProvider
+ * @see RegularFieldServiceProvider
  *
  * @method static HtmlString rText(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])
  * @method static HtmlString rEmail(string $name, string $label, mixed $default = null, bool $required = false, array $attributes = [])

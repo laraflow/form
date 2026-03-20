@@ -1,6 +1,6 @@
-<div class="form-group">
+<div @class(['form-group' => !$inline, 'form-inline' => !$inline])>
 
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required) !!}
+    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, ['inline' => $inline]) !!}
 
     @php $attributes['class'][] = 'custom-file-input'; @endphp
     @php $attributes['id'] = $name; @endphp

@@ -691,6 +691,7 @@ class FormBuilder
             } else {
                 $options['class'] = ['sr-only'];
             }
+            unset($options['inline']);
         }
 
         $options = $this->attributes($options);

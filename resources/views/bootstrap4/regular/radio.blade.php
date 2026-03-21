@@ -1,5 +1,7 @@
 <div class="form-group">
-    {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, ['inline' => $inline]) !!}
+    @if(!empty($label))
+        {!! \Laraflow\Form\Facades\Form::label($name, $label, $required, ['class' => $inline ? ['custom-control-inline'] : []]) !!}
+    @endif
     {!! \Laraflow\Form\Facades\Form::hint($attributes) !!}
     @php $attributes['class'][] = 'custom-control-input' @endphp
 
